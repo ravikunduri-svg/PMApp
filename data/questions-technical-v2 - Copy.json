@@ -1,0 +1,1772 @@
+{
+  "question_bank_id": "questions-technical",
+  "description": "90 Technical PM practice questions: 30 per module (s-tech-1, s-tech-2, s-tech-3). Approximately 1/3 MCQs.",
+  "archetype": "technical",
+  "total_questions": 90,
+
+  "questions": [
+    {
+      "id": "tech-m1-q01",
+      "module_id": "s-tech-1",
+      "text": "You're building a real-time collaborative document editor (like Google Docs). Walk me through the high-level system design from a PM perspective.",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "communication_clarity"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Structure: (1) Clarify requirements — how many concurrent users per document? What collaboration features? Offline support? (2) Key challenges — conflict resolution, real-time sync, persistence. (3) High-level components — client editor, WebSocket server, operational transformation or CRDT for conflicts, document storage, presence service. (4) Tradeoffs — eventual vs. strict consistency, complexity of conflict resolution. PM focus: latency, conflict UX, offline behavior.",
+      "scoring_notes": {
+        "weak_signals": ["Jumps to implementation without requirements", "Doesn't address concurrent editing", "No mention of real-time sync", "Ignores conflict UX"],
+        "strong_signals": ["Clarifies scale and features first", "Identifies conflict resolution as key", "Discusses user experience", "Acknowledges tradeoffs"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q02",
+      "module_id": "s-tech-1",
+      "text": "What does API stand for, and what is its primary purpose?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Application Programming Interface — a contract that allows different software systems to communicate.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the acronym"],
+        "strong_signals": ["Understands it enables system communication"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Advanced Programming Integration — a way to write faster code", "is_correct": false, "explanation": "Incorrect acronym and definition."},
+        {"option": "B", "text": "Application Programming Interface — a contract allowing software systems to communicate", "is_correct": true, "explanation": "Correct. APIs define how systems request and exchange data."},
+        {"option": "C", "text": "Automated Process Interface — a tool for automating workflows", "is_correct": false, "explanation": "Incorrect acronym and definition."},
+        {"option": "D", "text": "Application Protocol Internet — the way websites connect", "is_correct": false, "explanation": "Incorrect. You may be thinking of HTTP protocols."}
+      ]
+    },
+    {
+      "id": "tech-m1-q03",
+      "module_id": "s-tech-1",
+      "text": "Design a notification system for a food delivery app that sends push notifications, SMS, and email. What are the key components?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "user_empathy", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Components: (1) Notification service — receives triggers, decides what/when/how. (2) User preferences — channel preferences, quiet hours. (3) Channel providers — FCM/APNS for push, Twilio for SMS, SendGrid for email. (4) Queue system — handle spikes, retry failures. (5) Tracking — delivery receipts, open rates. PM considerations: notification fatigue, preferences, cost per channel, delivery guarantees, timing.",
+      "scoring_notes": {
+        "weak_signals": ["Lists channels without system thinking", "Ignores user preferences", "No failure handling", "Doesn't consider costs"],
+        "strong_signals": ["Structures as components", "Addresses user experience", "Considers reliability", "Mentions cost tradeoffs"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q04",
+      "module_id": "s-tech-1",
+      "text": "What is a rate limit in the context of APIs?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A restriction on how many API requests can be made in a given time period.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand the concept"],
+        "strong_signals": ["Knows it prevents overuse"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The maximum file size that can be uploaded", "is_correct": false, "explanation": "That's a file size limit, not a rate limit."},
+        {"option": "B", "text": "A restriction on how many API requests can be made in a time period", "is_correct": true, "explanation": "Correct. Rate limits prevent abuse and ensure fair usage (e.g., 100 requests/minute)."},
+        {"option": "C", "text": "The speed at which data transfers over the network", "is_correct": false, "explanation": "That's bandwidth or throughput, not rate limiting."},
+        {"option": "D", "text": "The number of users who can access an API simultaneously", "is_correct": false, "explanation": "That's concurrent user limits, different from rate limits."}
+      ]
+    },
+    {
+      "id": "tech-m1-q05",
+      "module_id": "s-tech-1",
+      "text": "Your e-commerce app's search is slow (3+ seconds). As a PM, what questions would you ask engineering to diagnose and prioritize fixes?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "text",
+      "dimensions_tested": ["problem_framing", "structured_thinking", "communication_clarity"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Diagnostic questions: (1) Where is time spent? — frontend, network, backend, database? (2) Is it all searches or specific patterns? (3) Current architecture — search service or main database? (4) Data volume — how many products? (5) Is there caching? Prioritization: (1) User impact — drop-off rates? (2) Fastest fix — caching popular searches? (3) Long-term solution — dedicated search infrastructure?",
+      "scoring_notes": {
+        "weak_signals": ["Jumps to solution", "Only asks 'why slow'", "Doesn't consider user impact", "No prioritization"],
+        "strong_signals": ["Systematic diagnostic questions", "Breaks down latency sources", "Connects to user impact", "Quick wins vs. long-term"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q06",
+      "module_id": "s-tech-1",
+      "text": "What is the difference between a GET and POST HTTP request?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "GET retrieves data without changing server state. POST sends data to create or modify resources.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses the two"],
+        "strong_signals": ["Understands read vs. write semantics"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "GET is faster; POST is slower", "is_correct": false, "explanation": "Speed isn't the distinguishing factor. It's about intent and side effects."},
+        {"option": "B", "text": "GET retrieves data without side effects; POST sends data to create/modify resources", "is_correct": true, "explanation": "Correct. GET is idempotent (safe to repeat); POST may change state."},
+        {"option": "C", "text": "GET is for authenticated requests; POST is for anonymous", "is_correct": false, "explanation": "Both can be authenticated or anonymous. The difference is purpose."},
+        {"option": "D", "text": "They're interchangeable; just different syntax", "is_correct": false, "explanation": "They have different semantics and caching behavior."}
+      ]
+    },
+    {
+      "id": "tech-m1-q07",
+      "module_id": "s-tech-1",
+      "text": "You're adding a feature that requires fetching data from a third-party API (e.g., weather data). What technical considerations should you address in your spec?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "prioritization"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Considerations: (1) Reliability — uptime SLA? What if down? (2) Rate limits — how many requests? Need caching? (3) Latency — how fast? Does it block UX? (4) Cost — per-request pricing? How does it scale? (5) Data freshness — how often updated? Caching acceptable? (6) Fallback behavior — if fails, show cached? Error? (7) Authentication — API keys, secure storage. (8) Terms of service — restrictions?",
+      "scoring_notes": {
+        "weak_signals": ["Only 'call the API'", "Ignores failures", "No rate limits/costs", "Doesn't consider fallback"],
+        "strong_signals": ["Comprehensive integration risks", "Fallback/degradation", "Cost and scaling", "Caching strategy"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q08",
+      "module_id": "s-tech-1",
+      "text": "What does 'latency' mean in system performance?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "The time delay between a request and its response.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with throughput"],
+        "strong_signals": ["Understands it's about time/delay"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The amount of data transferred per second", "is_correct": false, "explanation": "That's throughput or bandwidth, not latency."},
+        {"option": "B", "text": "The time delay between a request and its response", "is_correct": true, "explanation": "Correct. Low latency = fast response. Measured in milliseconds."},
+        {"option": "C", "text": "The number of users a system can handle", "is_correct": false, "explanation": "That's capacity or concurrent users."},
+        {"option": "D", "text": "The reliability of a system over time", "is_correct": false, "explanation": "That's uptime or reliability."}
+      ]
+    },
+    {
+      "id": "tech-m1-q09",
+      "module_id": "s-tech-1",
+      "text": "Explain the difference between a synchronous and asynchronous API call. When would you use each?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Synchronous: Caller waits for response. User sees loading state until complete. Use for: things user is waiting for (profile fetch, page load). Asynchronous: Caller continues without waiting. Response handled later. Use for: background tasks (email sending, video processing, reports). PM implication: async improves perceived performance but needs more complex UX (progress indicators, completion notifications).",
+      "scoring_notes": {
+        "weak_signals": ["Confuses concepts", "No practical examples"],
+        "strong_signals": ["Clear definitions", "Appropriate use cases", "Understands UX implications"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q10",
+      "module_id": "s-tech-1",
+      "text": "What is a CDN (Content Delivery Network)?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "A network of geographically distributed servers that cache and deliver content closer to users.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Understands geographic distribution and caching"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A central database that stores all content", "is_correct": false, "explanation": "CDNs are distributed, not centralized."},
+        {"option": "B", "text": "Geographically distributed servers that cache and deliver content closer to users", "is_correct": true, "explanation": "Correct. CDNs reduce latency by serving from nearby locations."},
+        {"option": "C", "text": "A tool for creating and editing digital content", "is_correct": false, "explanation": "That's a content management system (CMS), not CDN."},
+        {"option": "D", "text": "A network protocol for secure communication", "is_correct": false, "explanation": "That would be HTTPS or TLS, not CDN."}
+      ]
+    },
+    {
+      "id": "tech-m1-q11",
+      "module_id": "s-tech-1",
+      "text": "Your product integrates with Salesforce via their API. Salesforce has a maintenance window every Sunday 2-4 AM. How should your product handle this?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["problem_framing", "user_empathy", "structured_thinking"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Handling: (1) Queue requests during downtime — don't lose data, process when available. (2) Show user-friendly message — 'Salesforce sync temporarily unavailable' not cryptic errors. (3) Cache recent data — show last known state, mark as 'synced X hours ago'. (4) Retry logic — automatic retry with exponential backoff when service returns. (5) Alerts — notify ops team if downtime exceeds expected window. (6) Documentation — let users know about scheduled maintenance. Don't: fail silently, show technical errors, or lose user actions.",
+      "scoring_notes": {
+        "weak_signals": ["Show error and stop", "No queuing/retry", "Technical error messages", "No user communication"],
+        "strong_signals": ["Graceful degradation", "Queue and retry", "User-friendly messaging", "Caching for continuity"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q12",
+      "module_id": "s-tech-1",
+      "text": "What is 'caching' and why is it used?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Storing frequently accessed data in a fast-access location to reduce load times and server requests.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand caching"],
+        "strong_signals": ["Knows it improves speed by storing results"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Encrypting data for security", "is_correct": false, "explanation": "That's encryption, not caching."},
+        {"option": "B", "text": "Storing frequently accessed data in fast-access location to reduce load times", "is_correct": true, "explanation": "Correct. Caching avoids re-fetching or recomputing the same data."},
+        {"option": "C", "text": "Permanently deleting old data", "is_correct": false, "explanation": "That's data deletion or archival, not caching."},
+        {"option": "D", "text": "Converting data to a different format", "is_correct": false, "explanation": "That's data transformation, not caching."}
+      ]
+    },
+    {
+      "id": "tech-m1-q13",
+      "module_id": "s-tech-1",
+      "text": "You're designing a feature that shows 'live' stock prices. What technical approach would you recommend, and what are the tradeoffs?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "prioritization"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Approaches: (1) Polling — client requests updates every N seconds. Simple but inefficient, higher latency. (2) WebSockets — persistent connection, server pushes updates. Real-time but more complex infrastructure. (3) Server-Sent Events (SSE) — one-way push from server. Simpler than WebSocket, good for read-only updates. Tradeoffs: Real-time (WebSocket) vs. simplicity (polling). Cost (more connections = more infra). Battery/data (mobile considerations). Recommendation: For stock prices, SSE or WebSocket since near-real-time matters. Polling every 5 seconds acceptable for casual users.",
+      "scoring_notes": {
+        "weak_signals": ["Only knows one approach", "No tradeoff discussion", "Ignores mobile/battery", "Doesn't match approach to use case"],
+        "strong_signals": ["Multiple approaches with tradeoffs", "Matches recommendation to use case", "Considers infrastructure cost", "Mobile/battery awareness"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q14",
+      "module_id": "s-tech-1",
+      "text": "What does 'idempotent' mean in API design?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "An operation that produces the same result regardless of how many times it's executed.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Understands safe-to-retry concept"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "An operation that only works once", "is_correct": false, "explanation": "Idempotent operations can be repeated safely, not limited to once."},
+        {"option": "B", "text": "An operation that produces the same result regardless of how many times it's called", "is_correct": true, "explanation": "Correct. GET and DELETE should be idempotent. Useful for retry logic."},
+        {"option": "C", "text": "An operation that requires authentication", "is_correct": false, "explanation": "Authentication is separate from idempotency."},
+        {"option": "D", "text": "An operation that modifies data", "is_correct": false, "explanation": "Some idempotent operations modify data (PUT), others don't (GET)."}
+      ]
+    },
+    {
+      "id": "tech-m1-q15",
+      "module_id": "s-tech-1",
+      "text": "Your PM spec says 'the feature should load fast.' How would you make this requirement more specific and testable?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "text",
+      "dimensions_tested": ["communication_clarity", "structured_thinking", "metrics_reasoning"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Make it specific: (1) Define 'load' — first paint? Fully interactive? Data loaded? (2) Define 'fast' — < 2 seconds? < 500ms? (3) Specify conditions — on what network? (4G, WiFi, 3G). On what device? (flagship, low-end). (4) Define percentile — p50 (median) or p95 (worst case)? Example: 'Page should be fully interactive (Time to Interactive) in < 2 seconds for p95 users on 4G connection.' Now it's testable with tools like Lighthouse.",
+      "scoring_notes": {
+        "weak_signals": ["Accepts 'fast' as sufficient", "No specific numbers", "Ignores network/device", "No percentile thinking"],
+        "strong_signals": ["Specific metric (TTI, FCP)", "Concrete time target", "Network/device conditions", "Percentile consideration"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q16",
+      "module_id": "s-tech-1",
+      "text": "What is 'load balancing'?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Distributing incoming traffic across multiple servers to prevent any single server from being overwhelmed.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand concept"],
+        "strong_signals": ["Understands traffic distribution"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Reducing the weight of data packets for faster transmission", "is_correct": false, "explanation": "That's data compression, not load balancing."},
+        {"option": "B", "text": "Distributing traffic across multiple servers to prevent overload", "is_correct": true, "explanation": "Correct. Load balancers ensure no single server is overwhelmed."},
+        {"option": "C", "text": "Measuring how much traffic a server can handle", "is_correct": false, "explanation": "That's capacity testing or benchmarking."},
+        {"option": "D", "text": "Scheduling server maintenance during low-traffic periods", "is_correct": false, "explanation": "That's maintenance scheduling, not load balancing."}
+      ]
+    },
+    {
+      "id": "tech-m1-q17",
+      "module_id": "s-tech-1",
+      "text": "An engineer tells you a feature will require 'pagination' for the data. What does this mean and why does it matter for product?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "user_empathy", "communication_clarity"],
+      "time_limit_seconds": 120,
+      "ideal_answer_outline": "Pagination: Instead of loading all results at once, load them in chunks (pages). Technical reason: Loading 10,000 items at once is slow and memory-intensive. Product implications: (1) UX design — how do users navigate? (Page numbers, infinite scroll, 'Load more'). (2) Default page size — 10? 25? 50? (3) Sorting and filtering — does it work across pages? (4) Performance — faster initial load but requires user action for more. PM should discuss: Which pagination style fits our UX? What's the default page size?",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know pagination", "Only technical explanation", "No UX implications"],
+        "strong_signals": ["Clear definition", "Explains why needed", "Discusses UX options", "Identifies PM decisions"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q18",
+      "module_id": "s-tech-1",
+      "text": "What is a 'webhook'?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "An automated HTTP callback that notifies your system when an event occurs in another system.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with API"],
+        "strong_signals": ["Understands push notification from external system"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A tool for monitoring website performance", "is_correct": false, "explanation": "That's a monitoring tool, not a webhook."},
+        {"option": "B", "text": "An automated HTTP callback that notifies your system when an event occurs elsewhere", "is_correct": true, "explanation": "Correct. Webhooks push events to you instead of you polling for them."},
+        {"option": "C", "text": "A type of fishing attack on websites", "is_correct": false, "explanation": "You're thinking of phishing. Webhooks are legitimate integrations."},
+        {"option": "D", "text": "A JavaScript library for building web pages", "is_correct": false, "explanation": "That would be a framework like React. Webhooks are event notifications."}
+      ]
+    },
+    {
+      "id": "tech-m1-q19",
+      "module_id": "s-tech-1",
+      "text": "Your mobile app needs to work offline for certain features. What technical approaches would you consider, and what are the PM implications?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "user_empathy", "problem_framing"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Approaches: (1) Local storage/caching — store data on device, sync when online. (2) Queue actions — user can create/edit offline, changes sync later. (3) Conflict resolution — what if user and server both changed same data? Last-write-wins vs. merge. PM implications: (1) Which features work offline? (Read-only easier than read-write). (2) How do we show sync status? (3) What's the conflict resolution UX? (4) Storage limits — how much can we cache? (5) Stale data — how do we indicate data might be old? Decisions: Start with read-only offline, expand to write if needed. Clear sync status indicators.",
+      "scoring_notes": {
+        "weak_signals": ["Says 'just cache everything'", "Ignores conflicts", "No UX considerations", "Underestimates complexity"],
+        "strong_signals": ["Multiple approaches", "Conflict resolution mentioned", "UX for sync status", "Prioritizes features for offline"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q20",
+      "module_id": "s-tech-1",
+      "text": "What does 'p95 latency' mean?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "The latency at the 95th percentile — 95% of requests are faster than this value.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand percentiles"],
+        "strong_signals": ["Understands it captures worst-case performance"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The average response time across all requests", "is_correct": false, "explanation": "That's mean latency. p95 focuses on the slower tail."},
+        {"option": "B", "text": "The latency at the 95th percentile — 95% of requests are faster than this", "is_correct": true, "explanation": "Correct. p95 helps identify slow requests that affect some users."},
+        {"option": "C", "text": "The probability that latency exceeds 95 milliseconds", "is_correct": false, "explanation": "p95 isn't a probability or a fixed millisecond value."},
+        {"option": "D", "text": "The latency when server is at 95% capacity", "is_correct": false, "explanation": "p95 refers to percentile of requests, not server capacity."}
+      ]
+    },
+    {
+      "id": "tech-m1-q21",
+      "module_id": "s-tech-1",
+      "text": "Engineering proposes using a message queue (like RabbitMQ or Kafka) for a feature. As a PM, what questions should you ask to understand the implications?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["problem_framing", "structured_thinking", "communication_clarity"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Questions: (1) Why a queue? What problem does it solve? (Decoupling, handling spikes, async processing). (2) What's the user impact? Will they see delays? (3) What happens if queue is slow or fails? (4) Is order important? (Some queues guarantee order, others don't). (5) How do we monitor queue health? (6) What's the operational complexity? Do we have expertise? PM implications: Users might not see instant results. Need UX for 'processing' state. Queue failures could mean lost work.",
+      "scoring_notes": {
+        "weak_signals": ["Accepts without questions", "Doesn't understand why queues", "No user impact thinking"],
+        "strong_signals": ["Asks why needed", "Understands async implications", "Considers failure modes", "Thinks about UX"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q22",
+      "module_id": "s-tech-1",
+      "text": "What is the difference between authentication and authorization?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Authentication verifies who you are. Authorization determines what you can do.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses the two"],
+        "strong_signals": ["Clear distinction between identity and permissions"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "They're the same thing — both verify user identity", "is_correct": false, "explanation": "They're related but different. One is identity, one is permissions."},
+        {"option": "B", "text": "Authentication verifies who you are; authorization determines what you can do", "is_correct": true, "explanation": "Correct. Login is authentication. Checking if you can edit a file is authorization."},
+        {"option": "C", "text": "Authentication is for mobile; authorization is for web", "is_correct": false, "explanation": "Both apply to all platforms."},
+        {"option": "D", "text": "Authentication is automatic; authorization requires user action", "is_correct": false, "explanation": "Both can be automatic or require action depending on implementation."}
+      ]
+    },
+    {
+      "id": "tech-m1-q23",
+      "module_id": "s-tech-1",
+      "text": "Your feature requires storing sensitive user data (like credit card numbers). What technical considerations should your spec address?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "problem_framing"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Considerations: (1) Don't store full credit cards yourself — use a payment processor (Stripe, Razorpay) that handles PCI compliance. (2) If must store: encryption at rest, encryption in transit (HTTPS). (3) Access controls — who can view sensitive data? Audit logs. (4) Tokenization — store token reference, not actual card number. (5) Data retention — delete when no longer needed. (6) Compliance — PCI DSS for payments, GDPR for personal data. (7) Masking — show only last 4 digits in UI. Recommendation: Always prefer third-party payment processor over storing cards yourself.",
+      "scoring_notes": {
+        "weak_signals": ["Suggests storing cards plainly", "No encryption mention", "Ignores compliance", "No access controls"],
+        "strong_signals": ["Third-party processor recommendation", "Encryption and tokenization", "Compliance awareness", "Data minimization"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q24",
+      "module_id": "s-tech-1",
+      "text": "What is 'uptime' and what does '99.9% uptime' mean practically?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Uptime is the percentage of time a system is available. 99.9% allows about 8.76 hours of downtime per year.",
+      "scoring_notes": {
+        "weak_signals": ["Can't calculate downtime"],
+        "strong_signals": ["Understands practical implications of nines"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "System runs 99.9% faster than competitors", "is_correct": false, "explanation": "Uptime is about availability, not speed."},
+        {"option": "B", "text": "System is available 99.9% of the time — about 8.76 hours downtime per year", "is_correct": true, "explanation": "Correct. Each '9' adds significant difficulty and cost to achieve."},
+        {"option": "C", "text": "99.9% of users experience no issues", "is_correct": false, "explanation": "Uptime is about system availability, not user-specific issues."},
+        {"option": "D", "text": "System uses 99.9% of server capacity", "is_correct": false, "explanation": "That's utilization, not uptime."}
+      ]
+    },
+    {
+      "id": "tech-m1-q25",
+      "module_id": "s-tech-1",
+      "text": "You're building a product that needs to send 1 million emails per day. What technical architecture considerations matter?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "prioritization"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Considerations: (1) Use email service provider (SendGrid, SES) — don't build your own mail server. (2) Deliverability — SPF, DKIM, DMARC setup for reputation. (3) Rate limiting — ISPs limit how many emails you can send per hour. Need to throttle. (4) Queuing — queue emails, process asynchronously. (5) Bounce handling — handle hard bounces (invalid emails) and soft bounces (temporary failures). (6) Unsubscribe — CAN-SPAM compliance, one-click unsubscribe. (7) Tracking — opens, clicks, bounces. (8) Cost — 1M emails = significant cost. Compare providers. PM decisions: When are emails sent? How to handle bounces? What's the unsubscribe UX?",
+      "scoring_notes": {
+        "weak_signals": ["Build own mail server", "Ignores deliverability", "No bounce handling", "Compliance ignored"],
+        "strong_signals": ["ESP recommendation", "Deliverability awareness", "Queuing and throttling", "Compliance and unsubscribe"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q26",
+      "module_id": "s-tech-1",
+      "text": "What does 'HTTPS' provide that 'HTTP' doesn't?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Encryption of data in transit, preventing eavesdropping and tampering.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the difference"],
+        "strong_signals": ["Understands encryption and security"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Faster page loading", "is_correct": false, "explanation": "HTTPS has slightly more overhead. The benefit is security, not speed."},
+        {"option": "B", "text": "Encryption of data in transit, preventing eavesdropping and tampering", "is_correct": true, "explanation": "Correct. The 'S' stands for Secure (SSL/TLS encryption)."},
+        {"option": "C", "text": "Support for larger file uploads", "is_correct": false, "explanation": "File size limits are server-configured, not protocol-based."},
+        {"option": "D", "text": "Better search engine ranking only", "is_correct": false, "explanation": "SEO is a side benefit. The primary purpose is security."}
+      ]
+    },
+    {
+      "id": "tech-m1-q27",
+      "module_id": "s-tech-1",
+      "text": "Engineering says they need to add 'indexes' to the database to speed up your feature. What does this mean, and what should you know as a PM?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "communication_clarity"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "What indexes are: Think of a book index — instead of reading every page, you look up the term and go directly to the page. Database indexes work the same way for queries. PM implications: (1) Indexes make reads faster but writes slightly slower (index must be updated). (2) Adding indexes is usually a routine optimization, not a major change. (3) For very large tables, creating indexes can take time and may need off-peak scheduling. (4) Ask: 'Will this solve the performance issue?' and 'Any risks or downtime?' Usually straightforward, but always good to understand scope.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand indexes", "Treats as black box", "No questions asked"],
+        "strong_signals": ["Good analogy or explanation", "Understands read/write tradeoff", "Asks clarifying questions"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q28",
+      "module_id": "s-tech-1",
+      "text": "What is 'throughput' in system performance?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "The number of operations or requests a system can handle per unit of time.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with latency"],
+        "strong_signals": ["Understands volume over time"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "How fast a single request is processed", "is_correct": false, "explanation": "That's latency. Throughput is about volume."},
+        {"option": "B", "text": "The number of operations a system can handle per unit of time", "is_correct": true, "explanation": "Correct. E.g., 1000 requests per second."},
+        {"option": "C", "text": "The total storage capacity of a system", "is_correct": false, "explanation": "That's storage capacity, not throughput."},
+        {"option": "D", "text": "The percentage of successful requests", "is_correct": false, "explanation": "That's success rate or availability."}
+      ]
+    },
+    {
+      "id": "tech-m1-q29",
+      "module_id": "s-tech-1",
+      "text": "Your product has a feature that processes uploaded CSV files. Users are uploading files with millions of rows and complaining it's slow. What questions would you ask to diagnose?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["problem_framing", "structured_thinking", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Questions: (1) What's 'slow'? — 30 seconds or 30 minutes? What's acceptable? (2) Where is time spent? — Upload, parsing, processing, or database writes? (3) Is processing synchronous? — User waiting, or background with notification? (4) Are there limits? — Max file size? Max rows? (5) What operations on data? — Simple import or complex transformations? (6) Can we process in chunks? — Show progress as rows are processed. (7) What's user expectation? — Immediate results or acceptable to wait? Solutions might include: background processing, progress indicators, chunked processing, file size limits.",
+      "scoring_notes": {
+        "weak_signals": ["Assumes problem without diagnosis", "No specific questions", "Ignores user expectation"],
+        "strong_signals": ["Systematic diagnosis", "Distinguishes upload vs. processing", "Considers async processing", "User expectation focus"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m1-q30",
+      "module_id": "s-tech-1",
+      "text": "What is a '500 error' vs a '404 error'?",
+      "archetype": "technical",
+      "type": "system_design",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "404 means resource not found (client error). 500 means server error (something broke on the backend).",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know error codes"],
+        "strong_signals": ["Understands client vs server errors"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "404 is a server crash; 500 is page not found", "is_correct": false, "explanation": "Reversed. 404 = not found, 500 = server error."},
+        {"option": "B", "text": "404 means resource not found; 500 means internal server error", "is_correct": true, "explanation": "Correct. 4xx = client errors, 5xx = server errors."},
+        {"option": "C", "text": "They're the same — both mean the website is down", "is_correct": false, "explanation": "They're different. 404 can occur even when site is working."},
+        {"option": "D", "text": "404 is faster than 500 in page load", "is_correct": false, "explanation": "These are error codes, not performance metrics."}
+      ]
+    },
+    {
+      "id": "tech-m2-q01",
+      "module_id": "s-tech-2",
+      "text": "Your product stores user-generated content (posts, comments). Engineering proposes moving from PostgreSQL to MongoDB. What questions do you ask?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "communication_clarity"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Questions: (1) What's driving the change? Scale? Flexibility? Developer preference? (2) What are the tradeoffs? — Lose ACID, lose JOINs, gain flexibility. (3) Migration plan? Downtime? Data integrity? Rollback? (4) Operational impact? Team expertise? Monitoring? (5) What product features depend on relational queries? Evaluate: If driver is scale and model is document-like, might make sense. If driver is preference alone, dig deeper.",
+      "scoring_notes": {
+        "weak_signals": ["Accepts/rejects without investigation", "Doesn't understand tradeoffs", "No migration risk consideration"],
+        "strong_signals": ["Asks why", "Understands specific tradeoffs", "Migration risk", "Product implications"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q02",
+      "module_id": "s-tech-2",
+      "text": "What's the main difference between SQL and NoSQL databases?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "SQL uses structured tables with relationships; NoSQL uses flexible schemas (documents, key-value, etc.).",
+      "scoring_notes": {
+        "weak_signals": ["Can't distinguish them"],
+        "strong_signals": ["Understands structure vs flexibility tradeoff"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "SQL is older; NoSQL is newer and better", "is_correct": false, "explanation": "Age doesn't determine quality. Each has use cases."},
+        {"option": "B", "text": "SQL uses structured tables with relationships; NoSQL uses flexible schemas", "is_correct": true, "explanation": "Correct. SQL = relational, rigid schema. NoSQL = various models, flexible."},
+        {"option": "C", "text": "SQL is free; NoSQL costs money", "is_correct": false, "explanation": "Both have free and paid options."},
+        {"option": "D", "text": "SQL is for small data; NoSQL is for big data", "is_correct": false, "explanation": "Both can handle large data. The choice depends on data model and access patterns."}
+      ]
+    },
+    {
+      "id": "tech-m2-q03",
+      "module_id": "s-tech-2",
+      "text": "Your app is built as a monolith. Engineering wants to extract the payment system into a microservice. What are the pros and cons?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "prioritization", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Pros: (1) Independent scaling. (2) Isolation — payment bugs don't crash everything. (3) Independent deployment. (4) Security isolation. Cons: (1) Distributed system complexity. (2) Deployment overhead. (3) Latency — network calls. (4) Transaction complexity. Recommendation: If payments are bottleneck or security boundary, makes sense. Don't extract just because microservices are trendy.",
+      "scoring_notes": {
+        "weak_signals": ["Only pros OR only cons", "No specific context", "No recommendation"],
+        "strong_signals": ["Balanced analysis", "Specific to payments", "Clear recommendation", "Operational complexity acknowledged"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q04",
+      "module_id": "s-tech-2",
+      "text": "What is a 'monolith' in software architecture?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A single, unified codebase where all features are deployed together.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand the term"],
+        "strong_signals": ["Knows it's unified deployment"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "An outdated programming language", "is_correct": false, "explanation": "Monolith describes architecture, not language."},
+        {"option": "B", "text": "A single, unified codebase where all features are deployed together", "is_correct": true, "explanation": "Correct. One codebase, one deployment unit."},
+        {"option": "C", "text": "A very large database", "is_correct": false, "explanation": "That's just a big database, not monolith architecture."},
+        {"option": "D", "text": "A type of stone used in ancient computing", "is_correct": false, "explanation": "The name is metaphorical — monolith means single large block."}
+      ]
+    },
+    {
+      "id": "tech-m2-q05",
+      "module_id": "s-tech-2",
+      "text": "You need user authentication for your product. Should you build your own or use a service like Auth0?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["prioritization", "structured_thinking", "metrics_reasoning"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Framework: (1) Is auth your core competency? Probably not. (2) Costs? Auth0: ~$2-20K/year. Build: 3-6 months engineering plus maintenance. (3) Risks? Build: security vulnerabilities, compliance. Buy: vendor dependency. (4) Requirements? Unusual patterns might need building. Recommendation: Use Auth0 for most products. Auth is complex and not your differentiator. Build only if specific requirements.",
+      "scoring_notes": {
+        "weak_signals": ["Picks without analysis", "Ignores security complexity", "No opportunity cost thinking"],
+        "strong_signals": ["Structured framework", "Cost comparison", "Security awareness", "Clear recommendation with conditions"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q06",
+      "module_id": "s-tech-2",
+      "text": "What does 'horizontal scaling' mean?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Adding more machines to distribute load, rather than making one machine bigger.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with vertical"],
+        "strong_signals": ["Knows it's adding machines"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Making a single server more powerful", "is_correct": false, "explanation": "That's vertical scaling. Horizontal = more machines."},
+        {"option": "B", "text": "Adding more machines to distribute load", "is_correct": true, "explanation": "Correct. Horizontal scaling can theoretically scale infinitely."},
+        {"option": "C", "text": "Expanding screen size for better UX", "is_correct": false, "explanation": "That's UI/UX, not infrastructure scaling."},
+        {"option": "D", "text": "Hiring more engineers", "is_correct": false, "explanation": "That's team scaling, not system scaling."}
+      ]
+    },
+    {
+      "id": "tech-m2-q07",
+      "module_id": "s-tech-2",
+      "text": "Engineering says your feature request will add technical debt. They want 3 extra weeks to do it 'the right way.' How do you evaluate this?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "communication_clarity", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Evaluation: (1) Understand the debt — what's suboptimal? What breaks later? (2) Quantify interest — 3 weeks now vs. how many weeks later? (3) Assess urgency — time-sensitive window? (4) Consider codebase area — high-change or stable code? (5) Negotiate — middle ground? Decision: If high-change area and interest compounds, take 3 weeks. If stable and urgent, accept debt with plan to revisit.",
+      "scoring_notes": {
+        "weak_signals": ["Automatically sides with speed or quality", "No investigation", "No negotiation"],
+        "strong_signals": ["Investigates specifics", "Quantifies future cost", "Code area consideration", "Middle ground options"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q08",
+      "module_id": "s-tech-2",
+      "text": "What is 'technical debt'?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "The accumulated cost of shortcuts or suboptimal solutions that will need to be fixed later.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand the concept"],
+        "strong_signals": ["Knows it's shortcuts with future cost"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Money owed to technology vendors", "is_correct": false, "explanation": "It's a metaphor, not actual financial debt."},
+        {"option": "B", "text": "The accumulated cost of shortcuts that will need to be fixed later", "is_correct": true, "explanation": "Correct. Like financial debt, it accrues 'interest' over time."},
+        {"option": "C", "text": "The cost of technical training for engineers", "is_correct": false, "explanation": "That's education expense, not technical debt."},
+        {"option": "D", "text": "Bugs that were never fixed", "is_correct": false, "explanation": "Bugs can be part of debt, but debt also includes architectural shortcuts."}
+      ]
+    },
+    {
+      "id": "tech-m2-q09",
+      "module_id": "s-tech-2",
+      "text": "Your team is debating between building a feature in-house or using a third-party API. What factors should influence this decision?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "prioritization", "metrics_reasoning"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Factors: (1) Core competency — is this what makes your product special? (2) Time to market — building takes longer. (3) Total cost — build cost + maintenance vs. API cost at scale. (4) Control — do you need full customization? (5) Reliability — can you depend on third party? What if they go down/change pricing? (6) Expertise — do you have skills to build and maintain? (7) Integration — how well does API fit your needs? Framework: Build if core competency and unique requirements. Buy for commodity capabilities.",
+      "scoring_notes": {
+        "weak_signals": ["Only considers cost", "Ignores maintenance", "No core competency thinking"],
+        "strong_signals": ["Multiple factors considered", "Core competency distinction", "Maintenance and reliability considered", "Clear framework"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q10",
+      "module_id": "s-tech-2",
+      "text": "What does ACID stand for in database transactions?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Atomicity, Consistency, Isolation, Durability — guarantees for reliable database transactions.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know ACID"],
+        "strong_signals": ["Knows all four properties"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Automated, Controlled, Integrated, Distributed", "is_correct": false, "explanation": "Incorrect acronym."},
+        {"option": "B", "text": "Atomicity, Consistency, Isolation, Durability", "is_correct": true, "explanation": "Correct. These properties ensure reliable transaction processing."},
+        {"option": "C", "text": "Available, Consistent, Indexed, Documented", "is_correct": false, "explanation": "Incorrect acronym."},
+        {"option": "D", "text": "Advanced Configuration for Intelligent Databases", "is_correct": false, "explanation": "Incorrect. ACID describes transaction properties."}
+      ]
+    },
+    {
+      "id": "tech-m2-q11",
+      "module_id": "s-tech-2",
+      "text": "When would you recommend a SQL database over NoSQL, and vice versa?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "SQL when: (1) Data has clear relationships. (2) Need complex queries/JOINs. (3) Consistency is critical (financial). (4) Schema is stable. NoSQL when: (1) Schema flexibility needed. (2) Massive horizontal scale. (3) Document/key-value access patterns. (4) Eventual consistency acceptable. Examples: User profiles with orders → SQL. User sessions/cache → Key-value NoSQL. Product catalog with varying attributes → Document NoSQL.",
+      "scoring_notes": {
+        "weak_signals": ["One is always better", "No specific use cases", "Can't explain tradeoffs"],
+        "strong_signals": ["Clear criteria for each", "Specific examples", "Understands consistency tradeoffs"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q12",
+      "module_id": "s-tech-2",
+      "text": "What is 'eventual consistency' in distributed systems?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "A model where data replicas will eventually become consistent, but may show different values briefly.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand concept"],
+        "strong_signals": ["Knows it allows temporary inconsistency"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Data is always consistent across all nodes", "is_correct": false, "explanation": "That's strong consistency and its opposite of eventual consistency."},
+        {"option": "B", "text": "Data will eventually become consistent, but may briefly show different values", "is_correct": true, "explanation": "Correct. Reads might see stale data temporarily, but will converge."},
+        {"option": "C", "text": "The system eventually fails without consistency checks", "is_correct": false, "explanation": "It's a design choice, not a failure mode."},
+        {"option": "D", "text": "Transactions are processed one at a time", "is_correct": false, "explanation": "That's serialization, not eventual consistency."}
+      ]
+    },
+    {
+      "id": "tech-m2-q13",
+      "module_id": "s-tech-2",
+      "text": "Your product currently uses a REST API. Engineering proposes switching to GraphQL. What should you consider as a PM?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "prioritization"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Considerations: (1) Problem being solved — is REST causing issues? Over-fetching? Multiple roundtrips? (2) GraphQL benefits — clients request exactly what they need, single endpoint, strong typing. (3) GraphQL costs — learning curve, caching complexity, N+1 query risks. (4) Migration effort — rewrite APIs or wrap existing? (5) Team expertise — do we have GraphQL skills? (6) Client diversity — mobile/web benefit differently. PM perspective: What's the user/developer pain? Is migration worth the effort? Usually: GraphQL shines with complex, nested data. REST is fine for simple CRUD.",
+      "scoring_notes": {
+        "weak_signals": ["No understanding of either", "Blindly supports switch", "Ignores migration cost"],
+        "strong_signals": ["Understands both approaches", "Evaluates based on problem", "Migration cost considered", "Realistic about tradeoffs"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q14",
+      "module_id": "s-tech-2",
+      "text": "What does 'schema migration' mean in database terms?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Changing the structure of a database (adding tables, columns, changing types) in a controlled way.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand concept"],
+        "strong_signals": ["Knows it's changing database structure"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Moving data from one database to another", "is_correct": false, "explanation": "That's data migration. Schema migration changes structure, not moves data."},
+        {"option": "B", "text": "Changing the database structure (tables, columns) in a controlled way", "is_correct": true, "explanation": "Correct. Schema migrations evolve your database as requirements change."},
+        {"option": "C", "text": "Backing up the database", "is_correct": false, "explanation": "That's backup, not migration."},
+        {"option": "D", "text": "Optimizing query performance", "is_correct": false, "explanation": "That's query optimization, not schema migration."}
+      ]
+    },
+    {
+      "id": "tech-m2-q15",
+      "module_id": "s-tech-2",
+      "text": "Your product is growing and you need to decide between using a managed database service (like AWS RDS) or self-hosting PostgreSQL. What factors matter?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "prioritization", "metrics_reasoning"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Factors: (1) Team expertise — do you have DBAs? (2) Operational overhead — managed handles backups, patches, failover. (3) Cost — managed has premium; self-host needs ops engineers. (4) Control — self-host allows more tuning. (5) Scale requirements — managed often scales easier. (6) Compliance — some industries require specific controls. Recommendation: Most startups should use managed. The ops overhead of self-hosting isn't worth it until you have specific needs and DBA expertise.",
+      "scoring_notes": {
+        "weak_signals": ["Only considers cost", "Ignores ops burden", "No team context"],
+        "strong_signals": ["Expertise consideration", "Ops overhead understood", "Clear recommendation with reasoning", "Acknowledges exceptions"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q16",
+      "module_id": "s-tech-2",
+      "text": "What is 'container orchestration' (like Kubernetes)?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Automated management of containerized applications — deploying, scaling, and maintaining across servers.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the concept"],
+        "strong_signals": ["Understands automated container management"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A music composition software", "is_correct": false, "explanation": "Orchestration here is technical, not musical."},
+        {"option": "B", "text": "Automated management of containerized apps — deploying, scaling, maintaining", "is_correct": true, "explanation": "Correct. Kubernetes automates container lifecycle management."},
+        {"option": "C", "text": "Organizing shipping containers at ports", "is_correct": false, "explanation": "Software containers, not physical containers."},
+        {"option": "D", "text": "A type of database", "is_correct": false, "explanation": "Kubernetes manages applications, not data storage."}
+      ]
+    },
+    {
+      "id": "tech-m2-q17",
+      "module_id": "s-tech-2",
+      "text": "Engineering wants to refactor a critical component. They estimate 4 weeks with no new features. How do you evaluate whether to approve this?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["prioritization", "structured_thinking", "communication_clarity"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Evaluation: (1) Why refactor? What problems does current state cause? (Bugs? Slow development? Technical risk?) (2) Cost of not refactoring? Will it get worse? Is it blocking features? (3) Can we phase it? Incremental improvement vs. big bang? (4) Timing — is there a natural pause in feature work? (5) Risk — what could go wrong? Rollback plan? Approval depends on: severity of current issues, feature pressure, and risk tolerance. Document the decision either way with clear reasoning.",
+      "scoring_notes": {
+        "weak_signals": ["Always says yes or no", "No investigation", "Ignores opportunity cost", "No timing consideration"],
+        "strong_signals": ["Investigates root cause", "Cost-benefit analysis", "Phased approach consideration", "Risk assessment"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q18",
+      "module_id": "s-tech-2",
+      "text": "What's the difference between 'vertical scaling' and 'horizontal scaling'?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Vertical = bigger machine (more CPU/RAM). Horizontal = more machines. Vertical has limits; horizontal scales further but is more complex.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses the two"],
+        "strong_signals": ["Clear distinction and tradeoffs"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Vertical is faster; horizontal is cheaper", "is_correct": false, "explanation": "The difference is approach (bigger vs. more), not speed vs. cost."},
+        {"option": "B", "text": "Vertical: bigger machine; Horizontal: more machines. Vertical has limits; horizontal is more complex", "is_correct": true, "explanation": "Correct. Both have tradeoffs depending on use case."},
+        {"option": "C", "text": "They're the same thing; just different terms", "is_correct": false, "explanation": "Fundamentally different approaches to handling load."},
+        {"option": "D", "text": "Vertical is for databases; horizontal is for web servers", "is_correct": false, "explanation": "Both can apply to various components."}
+      ]
+    },
+    {
+      "id": "tech-m2-q19",
+      "module_id": "s-tech-2",
+      "text": "Your startup is choosing a cloud provider (AWS, GCP, Azure). What factors should influence this decision?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "prioritization", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Factors: (1) Team familiarity — what do your engineers know? (2) Specific services needed — does one provider have better ML, data, or specific services? (3) Pricing — credits for startups? Cost structure? (4) Geographic presence — data residency requirements? Latency? (5) Enterprise customers — some prefer specific clouds. (6) Lock-in — how easy to migrate later? (7) Support — what level of support do you need? Recommendation: For most startups, team familiarity and startup credits matter most. Avoid over-optimizing early.",
+      "scoring_notes": {
+        "weak_signals": ["Only price matters", "No team consideration", "Over-engineering for scale you don't have"],
+        "strong_signals": ["Team familiarity prioritized", "Multiple factors considered", "Practical recommendation", "Lock-in awareness"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q20",
+      "module_id": "s-tech-2",
+      "text": "What is a 'single point of failure' (SPOF)?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A component that, if it fails, brings down the entire system.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand concept"],
+        "strong_signals": ["Knows it's a critical dependency risk"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The first bug found in testing", "is_correct": false, "explanation": "That's an initial defect, not SPOF."},
+        {"option": "B", "text": "A component that, if it fails, brings down the entire system", "is_correct": true, "explanation": "Correct. SPOFs are risks that should be eliminated through redundancy."},
+        {"option": "C", "text": "The login screen of an application", "is_correct": false, "explanation": "Login is a single point of entry, not failure."},
+        {"option": "D", "text": "A feature with only one use case", "is_correct": false, "explanation": "That's narrow scope, not SPOF."}
+      ]
+    },
+    {
+      "id": "tech-m2-q21",
+      "module_id": "s-tech-2",
+      "text": "Your application uses a monolithic architecture. The team wants to extract the search functionality into a separate service. What would you consider before approving?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "prioritization", "problem_framing"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Considerations: (1) Why extract search? — Performance bottleneck? Different scaling needs? Team ownership? (2) Complexity added — network calls, service discovery, deployment. (3) Data consistency — how does search stay updated with main database? (4) Operational readiness — monitoring, alerting, on-call for new service. (5) Team structure — does Conway's Law apply? (6) Incremental approach — can we start with a clear API boundary within monolith first? Decision: If search is genuinely a bottleneck or needs specialized tech (Elasticsearch), extraction makes sense. If it's premature optimization, defer.",
+      "scoring_notes": {
+        "weak_signals": ["Automatic yes to microservices", "Ignores complexity", "No 'why' investigation"],
+        "strong_signals": ["Problem-driven decision", "Complexity acknowledged", "Incremental approach considered", "Operational readiness checked"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q22",
+      "module_id": "s-tech-2",
+      "text": "What does 'CI/CD' stand for?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Continuous Integration / Continuous Deployment (or Delivery).",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the acronym"],
+        "strong_signals": ["Knows both parts"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Customer Interface / Customer Design", "is_correct": false, "explanation": "CI/CD is about development practices, not customers."},
+        {"option": "B", "text": "Continuous Integration / Continuous Deployment (or Delivery)", "is_correct": true, "explanation": "Correct. Automated building, testing, and deploying of code."},
+        {"option": "C", "text": "Code Inspection / Code Debugging", "is_correct": false, "explanation": "Those are development activities but not CI/CD."},
+        {"option": "D", "text": "Central Intelligence / Central Database", "is_correct": false, "explanation": "Unrelated to software deployment."}
+      ]
+    },
+    {
+      "id": "tech-m2-q23",
+      "module_id": "s-tech-2",
+      "text": "You need to implement full-text search in your product. What are the options, and when would you use each?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "prioritization"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Options: (1) Database native — PostgreSQL full-text search. Simple, no extra infrastructure. Good for basic search. (2) Dedicated search engine — Elasticsearch, Algolia. Better relevance, faceting, typo tolerance. More infrastructure. (3) Managed search service — Algolia, AWS OpenSearch. Operational burden removed, but costs. Decision factors: Search complexity, scale, operational capacity. Recommendation: Start with database native if search is simple. Graduate to dedicated search when you need advanced features or scale.",
+      "scoring_notes": {
+        "weak_signals": ["Only knows one option", "No tradeoff discussion", "Over-engineers early"],
+        "strong_signals": ["Multiple options with tradeoffs", "Matches to complexity", "Phased approach", "Cost consideration"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q24",
+      "module_id": "s-tech-2",
+      "text": "What does 'API versioning' mean and why is it important?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Maintaining multiple API versions (v1, v2) so clients can upgrade at their own pace without breaking.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand versioning"],
+        "strong_signals": ["Knows it prevents breaking changes"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Tracking the date an API was created", "is_correct": false, "explanation": "That's metadata. Versioning is about compatibility."},
+        {"option": "B", "text": "Maintaining multiple API versions so clients can upgrade without breaking", "is_correct": true, "explanation": "Correct. v1 keeps working while v2 introduces changes."},
+        {"option": "C", "text": "Limiting how many API calls a client can make", "is_correct": false, "explanation": "That's rate limiting, not versioning."},
+        {"option": "D", "text": "Encrypting API communications", "is_correct": false, "explanation": "That's security, not versioning."}
+      ]
+    },
+    {
+      "id": "tech-m2-q25",
+      "module_id": "s-tech-2",
+      "text": "Engineering proposes using a new, cutting-edge technology for a core feature. What questions should you ask before approving?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["problem_framing", "prioritization", "communication_clarity"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Questions: (1) What problem does this solve that existing tools don't? (2) Maturity — is it battle-tested? Who else uses it? (3) Community/support — if we have issues, can we get help? (4) Team expertise — learning curve? Hiring pool? (5) Exit strategy — can we migrate away if it fails? (6) Operational — monitoring, debugging, documentation? (7) Long-term — will this project be maintained? (8) Risk vs. reward — is the upside worth the risk for a core feature? Recommendation: New tech for experiments = OK. New tech for core revenue feature = be cautious.",
+      "scoring_notes": {
+        "weak_signals": ["Approves because it's new", "No risk assessment", "Ignores maturity"],
+        "strong_signals": ["Systematic risk questions", "Maturity/support consideration", "Exit strategy thinking", "Core vs. experiment distinction"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q26",
+      "module_id": "s-tech-2",
+      "text": "What is 'vendor lock-in'?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["problem_framing"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Dependency on a vendor that makes switching difficult or costly.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand concept"],
+        "strong_signals": ["Knows it's about switching costs"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A security feature that protects vendor data", "is_correct": false, "explanation": "Lock-in is about customer dependency, not security."},
+        {"option": "B", "text": "Dependency on a vendor that makes switching difficult or costly", "is_correct": true, "explanation": "Correct. Lock-in happens when migration costs are high."},
+        {"option": "C", "text": "A contract that guarantees vendor support", "is_correct": false, "explanation": "That's SLA or support agreement."},
+        {"option": "D", "text": "A vendor's exclusive rights to your product", "is_correct": false, "explanation": "That would be IP assignment, not lock-in."}
+      ]
+    },
+    {
+      "id": "tech-m2-q27",
+      "module_id": "s-tech-2",
+      "text": "Your system needs to process payments. Should you build your own payment processing or use Stripe/Razorpay?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "structured_thinking"],
+      "time_limit_seconds": 120,
+      "ideal_answer_outline": "Almost always use Stripe/Razorpay. Reasons: (1) PCI compliance — building is extremely complex and risky. (2) Fraud prevention — they have sophisticated systems you can't replicate. (3) Payment methods — cards, UPI, wallets already integrated. (4) Maintenance — they handle bank relationships, regulations. Build only if: you ARE a payments company (like Stripe itself). Transaction fees (2-3%) are worth not having to handle PCI compliance and payment complexity.",
+      "scoring_notes": {
+        "weak_signals": ["Considers building seriously", "Doesn't mention compliance", "Underestimates complexity"],
+        "strong_signals": ["Strong buy recommendation", "PCI compliance mentioned", "Understands complexity", "Cost justified"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q28",
+      "module_id": "s-tech-2",
+      "text": "What is 'sharding' in database design?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Splitting a database into smaller pieces (shards) distributed across multiple servers.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Understands horizontal data partitioning"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Creating backup copies of data", "is_correct": false, "explanation": "That's replication, not sharding."},
+        {"option": "B", "text": "Splitting a database into smaller pieces distributed across servers", "is_correct": true, "explanation": "Correct. Sharding enables horizontal scaling of databases."},
+        {"option": "C", "text": "Encrypting sensitive database fields", "is_correct": false, "explanation": "That's encryption, not sharding."},
+        {"option": "D", "text": "Deleting old data to free space", "is_correct": false, "explanation": "That's data archival or cleanup."}
+      ]
+    },
+    {
+      "id": "tech-m2-q29",
+      "module_id": "s-tech-2",
+      "text": "Engineering proposes rewriting a legacy component 'from scratch' instead of incremental improvement. How do you evaluate this?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "problem_framing", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Evaluation: (1) Why rewrite? What's wrong with current state? (2) History — have rewrites been successful here? (3) Joel's Law — 'Things You Should Never Do' warns against big rewrites. You lose years of bug fixes. (4) Alternative — can we strangle/refactor incrementally? (5) Risk — rewrite takes longer than estimated; bugs re-introduced. (6) Parallel systems — how long do we maintain both? Recommendation: Usually favor incremental improvement. Full rewrites are high-risk. Only rewrite if current system is truly unmaintainable AND you can accept the risk.",
+      "scoring_notes": {
+        "weak_signals": ["Approves without investigation", "Ignores rewrite risks", "No incremental alternative"],
+        "strong_signals": ["Questions necessity", "Knows rewrite risks", "Suggests incremental approach", "Realistic about timeline"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m2-q30",
+      "module_id": "s-tech-2",
+      "text": "What is 'feature flagging'?",
+      "archetype": "technical",
+      "type": "technical_tradeoff",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A technique to enable or disable features without deploying new code — for testing, rollouts, or A/B testing.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the concept"],
+        "strong_signals": ["Knows it's for controlled feature release"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Marking features as complete in project management", "is_correct": false, "explanation": "That's project tracking, not feature flagging."},
+        {"option": "B", "text": "Enabling/disabling features without deploying code — for testing or gradual rollout", "is_correct": true, "explanation": "Correct. Feature flags allow controlled releases and quick rollbacks."},
+        {"option": "C", "text": "Adding country flags to localized features", "is_correct": false, "explanation": "That's localization, not feature flagging."},
+        {"option": "D", "text": "Reporting bugs in specific features", "is_correct": false, "explanation": "That's bug tracking."}
+      ]
+    },
+    {
+      "id": "tech-m3-q01",
+      "module_id": "s-tech-3",
+      "text": "You're writing a spec for a new feature. Engineering says your spec is 'too vague.' What should you do, and what makes a spec clear?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "text",
+      "dimensions_tested": ["communication_clarity", "problem_framing", "user_empathy"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Response: Don't defend — understand. Ask: 'Which parts are unclear?' Clear spec includes: (1) Explicit user flows — step-by-step. (2) Edge cases. (3) Specific values — not 'fast' but '< 2 seconds'. (4) Acceptance criteria. (5) Non-goals. (6) Mockups. Vague: 'Add search.' Clear: 'User types in box → 300ms debounce → show results → max 20 → empty shows suggestions.'",
+      "scoring_notes": {
+        "weak_signals": ["Defensive", "Doesn't know clear specs", "Blames engineering"],
+        "strong_signals": ["Seeks feedback", "Lists spec elements", "Clear vs. vague examples", "Takes ownership"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q02",
+      "module_id": "s-tech-3",
+      "text": "What is a 'user story' in agile development?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A short description of a feature from the user's perspective: 'As a [user], I want [action] so that [benefit].'",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the format"],
+        "strong_signals": ["Knows the standard format"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A detailed technical specification", "is_correct": false, "explanation": "User stories are brief and user-focused, not technical."},
+        {"option": "B", "text": "A short description from user's perspective: 'As a [user], I want [action] so that [benefit]'", "is_correct": true, "explanation": "Correct. User stories capture who, what, and why."},
+        {"option": "C", "text": "A customer testimonial for marketing", "is_correct": false, "explanation": "That's marketing content, not a user story."},
+        {"option": "D", "text": "A bug report from users", "is_correct": false, "explanation": "Bug reports are different from user stories."}
+      ]
+    },
+    {
+      "id": "tech-m3-q03",
+      "module_id": "s-tech-3",
+      "text": "Engineering estimates your feature at 8 weeks. You think it should take 4 weeks. How do you resolve this?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "structured_thinking", "prioritization"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Don't negotiate time — understand the estimate. Steps: (1) Ask for breakdown — what are the major chunks? (2) Identify drivers — complexity? Dependencies? Unknowns? (3) Check scope — maybe they're including scope you didn't intend. (4) Explore reduction — what if we cut X? Simplified Y? (5) Consider phasing — what's minimum for V1? If justified, accept. Don't pressure for faster — creates bad code and burns trust.",
+      "scoring_notes": {
+        "weak_signals": ["Pressures without understanding", "Assumes padding", "No scope negotiation"],
+        "strong_signals": ["Seeks understanding", "Breakdown requested", "Scope exploration", "Respects expertise"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q04",
+      "module_id": "s-tech-3",
+      "text": "What is 'acceptance criteria' in a user story or spec?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "The specific conditions that must be met for the feature to be considered complete.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand term"],
+        "strong_signals": ["Knows it defines 'done'"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The list of users who approved the feature", "is_correct": false, "explanation": "That's stakeholder approval, not acceptance criteria."},
+        {"option": "B", "text": "Specific conditions that must be met for the feature to be considered complete", "is_correct": true, "explanation": "Correct. Acceptance criteria define 'done' in testable terms."},
+        {"option": "C", "text": "The deadline for feature completion", "is_correct": false, "explanation": "That's timeline, not acceptance criteria."},
+        {"option": "D", "text": "The budget allocated for the feature", "is_correct": false, "explanation": "That's resource allocation."}
+      ]
+    },
+    {
+      "id": "tech-m3-q05",
+      "module_id": "s-tech-3",
+      "text": "Your team wants 30% of the next quarter for 'tech debt reduction.' Leadership wants more features. How do you navigate?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "communication_clarity", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Navigation: (1) Understand the debt — what specifically? What's the impact? Ask engineering to quantify. (2) Translate to business — 'This slows development by X%' or 'causes Y incidents/month.' (3) Propose balance — 15-25% is healthy. Maybe 30% is too much, but 0% is wrong. (4) Prioritize debt — not all equal. Which items have highest impact? (5) Make visible — include in roadmap. Outcome: Align on sustainable allocation both parties accept.",
+      "scoring_notes": {
+        "weak_signals": ["Sides entirely with one group", "Can't translate to business", "No prioritization"],
+        "strong_signals": ["Bridges perspectives", "Business impact translation", "Balanced allocation", "Prioritizes by impact"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q06",
+      "module_id": "s-tech-3",
+      "text": "What is a 'sprint' in agile methodology?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A fixed time period (usually 1-4 weeks) during which a specific set of work is completed.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know agile basics"],
+        "strong_signals": ["Knows it's a time-boxed iteration"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Running quickly to meet deadlines", "is_correct": false, "explanation": "Sprint is a methodology term, not physical running."},
+        {"option": "B", "text": "A fixed time period (1-4 weeks) for completing specific work", "is_correct": true, "explanation": "Correct. Sprints are time-boxed iterations in agile."},
+        {"option": "C", "text": "A type of project management software", "is_correct": false, "explanation": "Sprint is a concept, not software."},
+        {"option": "D", "text": "The final phase before launch", "is_correct": false, "explanation": "Sprints are ongoing, not just pre-launch."}
+      ]
+    },
+    {
+      "id": "tech-m3-q07",
+      "module_id": "s-tech-3",
+      "text": "You join a new team as PM. The engineers seem skeptical of PMs based on past experiences. How do you build credibility?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["communication_clarity", "user_empathy", "problem_framing"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Credibility-building: (1) Listen first — understand their concerns. (2) Do homework — learn the product, architecture. (3) Bring user context — share research, data they don't have. (4) Deliver on commitments — specs on time, decisions when promised. (5) Respect expertise — ask 'how would you approach?' (6) Shield from noise — filter stakeholder requests. (7) Be present — attend standups, be available. (8) Admit mistakes — 'I was wrong' builds trust.",
+      "scoring_notes": {
+        "weak_signals": ["Tries to prove technical skills", "Ignores past context", "Asserts authority"],
+        "strong_signals": ["Acknowledges past issues", "Listening first", "Unique PM value", "Reliability commitment"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q08",
+      "module_id": "s-tech-3",
+      "text": "What does 'standup' or 'daily standup' refer to in software development?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A brief daily meeting where team members share what they did, what they'll do, and any blockers.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the format"],
+        "strong_signals": ["Knows the three questions format"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A physical exercise routine for developers", "is_correct": false, "explanation": "It's called standup because people stand to keep it short."},
+        {"option": "B", "text": "A brief daily meeting: what I did, what I'll do, any blockers", "is_correct": true, "explanation": "Correct. Quick sync to surface blockers and coordinate work."},
+        {"option": "C", "text": "A comedy performance for team morale", "is_correct": false, "explanation": "Different kind of standup!"},
+        {"option": "D", "text": "A system that monitors server uptime", "is_correct": false, "explanation": "That's monitoring, not standup."}
+      ]
+    },
+    {
+      "id": "tech-m3-q09",
+      "module_id": "s-tech-3",
+      "text": "An engineer on your team consistently disagrees with your product decisions. How do you handle this ongoing tension?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "user_empathy", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Approach: (1) Seek to understand — 1:1 conversation. Why do they disagree? Valid concerns or different priorities? (2) Share context — maybe they don't have full picture of user needs, business constraints. (3) Find common ground — we both want product success. (4) Establish process — 'Disagree and commit' — debate openly, commit once decided. (5) Address patterns — if disagreement is consistent, is there a deeper issue? (6) Don't make it personal — focus on decisions, not personalities. Sometimes: healthy tension produces better decisions. Don't suppress it; channel it.",
+      "scoring_notes": {
+        "weak_signals": ["Asserts authority", "Avoids the person", "Makes it personal", "Escalates immediately"],
+        "strong_signals": ["1:1 conversation", "Seeks understanding", "Shares context", "Disagree and commit framework"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q10",
+      "module_id": "s-tech-3",
+      "text": "What is a 'retrospective' in agile?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A meeting at the end of a sprint to reflect on what went well, what didn't, and how to improve.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Knows it's for continuous improvement"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A review of code before merging", "is_correct": false, "explanation": "That's code review. Retro is about process."},
+        {"option": "B", "text": "A meeting to reflect on what went well, what didn't, and how to improve", "is_correct": true, "explanation": "Correct. Retrospectives drive continuous improvement."},
+        {"option": "C", "text": "A report on past project metrics", "is_correct": false, "explanation": "That's analytics. Retro is a team discussion."},
+        {"option": "D", "text": "A document summarizing completed features", "is_correct": false, "explanation": "That's release notes or changelog."}
+      ]
+    },
+    {
+      "id": "tech-m3-q11",
+      "module_id": "s-tech-3",
+      "text": "You need to communicate a product decision that engineering disagrees with. How do you deliver the message?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["communication_clarity", "user_empathy", "structured_thinking"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Communication approach: (1) Acknowledge their perspective — 'I know you preferred X approach...' (2) Explain the why — business context, user research, constraints they may not know. (3) Show you heard them — 'Your concern about Y is valid, here's how we're addressing it...' (4) Be direct — don't hedge or be unclear about the decision. (5) Invite ongoing input — decision made, but implementation details open. (6) Private before public — tell key engineers before team announcement. (7) Own the decision — 'I decided' not 'leadership decided' (unless actually their call).",
+      "scoring_notes": {
+        "weak_signals": ["No acknowledgment", "No explanation", "Blame others", "Vague announcement"],
+        "strong_signals": ["Acknowledges disagreement", "Clear reasoning", "Shows they were heard", "Direct and owned"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q12",
+      "module_id": "s-tech-3",
+      "text": "What is 'scope creep'?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["problem_framing"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Uncontrolled expansion of project scope beyond original requirements, often leading to delays.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Knows it's expanding scope problem"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A bug that slowly spreads through the codebase", "is_correct": false, "explanation": "That might be technical debt spreading, not scope creep."},
+        {"option": "B", "text": "Uncontrolled expansion of project scope beyond original requirements", "is_correct": true, "explanation": "Correct. Scope creep delays projects and frustrates teams."},
+        {"option": "C", "text": "Moving too slowly on feature development", "is_correct": false, "explanation": "That's different — scope creep is about growing scope."},
+        {"option": "D", "text": "A type of security vulnerability", "is_correct": false, "explanation": "Unrelated to security."}
+      ]
+    },
+    {
+      "id": "tech-m3-q13",
+      "module_id": "s-tech-3",
+      "text": "How do you write a good bug report that engineers will appreciate?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "text",
+      "dimensions_tested": ["communication_clarity", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Good bug report: (1) Title — clear, specific description. (2) Steps to reproduce — numbered, exact steps. (3) Expected behavior — what should happen. (4) Actual behavior — what actually happens. (5) Environment — browser, device, OS, account type. (6) Screenshots/video — visual evidence. (7) Frequency — always, sometimes, rare? (8) Impact — how many users affected? Severity? Avoid: vague titles ('it's broken'), no repro steps, emotional language.",
+      "scoring_notes": {
+        "weak_signals": ["Vague description", "No repro steps", "No expected vs actual"],
+        "strong_signals": ["All key elements", "Specific steps", "Environment details", "Impact assessment"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q14",
+      "module_id": "s-tech-3",
+      "text": "What is 'backlog grooming' or 'refinement'?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A session to review, prioritize, and clarify upcoming work items in the product backlog.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the process"],
+        "strong_signals": ["Knows it's backlog preparation"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Cleaning up old code from the repository", "is_correct": false, "explanation": "That's code cleanup. Grooming is about backlog items."},
+        {"option": "B", "text": "A session to review, prioritize, and clarify upcoming backlog items", "is_correct": true, "explanation": "Correct. Grooming prepares items for future sprints."},
+        {"option": "C", "text": "A personal hygiene policy for remote work", "is_correct": false, "explanation": "Grooming here means refining, not hygiene."},
+        {"option": "D", "text": "Deleting completed items from the task list", "is_correct": false, "explanation": "That's just cleanup. Grooming involves clarification."}
+      ]
+    },
+    {
+      "id": "tech-m3-q15",
+      "module_id": "s-tech-3",
+      "text": "Engineering completed a feature, but it doesn't match your spec. How do you handle this?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "problem_framing", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Approach: (1) Assume good intent — they didn't intentionally deviate. (2) Review together — 'I see it works differently than spec. Help me understand.' (3) Diagnose root cause — Was spec unclear? Misinterpreted? Intentional change? (4) Evaluate outcome — is what they built actually better? (5) Decide path — fix to spec, accept as-is, or iterate together. (6) Prevent recurrence — clearer specs? More check-ins? Don't: blame publicly, redo without discussion, always insist on spec compliance if their version is better.",
+      "scoring_notes": {
+        "weak_signals": ["Blames engineer", "Insists on spec without discussion", "Avoids confrontation"],
+        "strong_signals": ["Assumes good intent", "Reviews together", "Evaluates if better", "Prevents recurrence"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q16",
+      "module_id": "s-tech-3",
+      "text": "What does 'MVP' stand for and what's its purpose?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["problem_framing"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Minimum Viable Product — the smallest version that delivers value and enables learning.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Knows both acronym and purpose"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Most Valuable Player — the best engineer on the team", "is_correct": false, "explanation": "That's sports terminology. MVP in product means something else."},
+        {"option": "B", "text": "Minimum Viable Product — the smallest version that delivers value and enables learning", "is_correct": true, "explanation": "Correct. MVP tests hypotheses with minimal investment."},
+        {"option": "C", "text": "Maximum Value Proposition — the full feature set", "is_correct": false, "explanation": "MVP is about minimum, not maximum."},
+        {"option": "D", "text": "Multiple Version Platform — software that runs everywhere", "is_correct": false, "explanation": "Incorrect acronym."}
+      ]
+    },
+    {
+      "id": "tech-m3-q17",
+      "module_id": "s-tech-3",
+      "text": "How do you balance user requests with technical constraints when prioritizing features?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "problem_framing", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Balance: (1) Understand both — user value AND technical cost. (2) Use framework (RICE) — explicitly includes effort. (3) Look for alternatives — same user value with lower technical cost? (4) Phase approach — can we deliver partial value now, full later? (5) Involve engineering in prioritization — they see tradeoffs PM might miss. (6) Accept constraints — sometimes right answer is 'not now' due to tech cost. Key: Neither side always wins. Best decisions consider both dimensions explicitly.",
+      "scoring_notes": {
+        "weak_signals": ["User always wins", "Tech always wins", "No framework", "Adversarial framing"],
+        "strong_signals": ["Both dimensions explicit", "Framework used", "Alternatives explored", "Engineering involved"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q18",
+      "module_id": "s-tech-3",
+      "text": "What is a 'code freeze'?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A period when no new code changes are allowed, typically before a major release.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Knows it's a stability measure"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "When the codebase becomes so complex nobody can change it", "is_correct": false, "explanation": "That's technical debt paralysis, not freeze."},
+        {"option": "B", "text": "A period when no new code changes are allowed, typically before release", "is_correct": true, "explanation": "Correct. Code freeze ensures stability for testing and release."},
+        {"option": "C", "text": "When servers get too cold and stop working", "is_correct": false, "explanation": "Not a temperature issue!"},
+        {"option": "D", "text": "A technique to preserve old code for historical purposes", "is_correct": false, "explanation": "That's archiving. Code freeze is temporary."}
+      ]
+    },
+    {
+      "id": "tech-m3-q19",
+      "module_id": "s-tech-3",
+      "text": "You have a feature launch in 2 days and engineering finds a significant bug. How do you make the call on whether to delay?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["prioritization", "problem_framing", "communication_clarity"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Decision framework: (1) Severity assessment — how many users affected? What's the impact? Data loss? Security? Just visual? (2) Workaround exists? Can users complete task despite bug? (3) Fix timeline — can we fix before launch? How confident? (4) Rollback capability — if we launch and bug is worse than expected, can we quickly roll back? (5) Stakeholder impact — are there external commitments? (6) Options: (A) Delay launch. (B) Launch without feature (feature flag off). (C) Launch with known bug + hotfix. (D) Launch and fix post-launch. Decision: Security/data issues = delay. Minor visual bug = can launch. Communication is key either way.",
+      "scoring_notes": {
+        "weak_signals": ["Automatic delay or launch", "No severity assessment", "No stakeholder consideration", "Panic response"],
+        "strong_signals": ["Severity framework", "Multiple options considered", "Rollback planning", "Clear communication"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q20",
+      "module_id": "s-tech-3",
+      "text": "What is 'story points' in agile estimation?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A relative measure of effort/complexity used to estimate work, not tied to hours.",
+      "scoring_notes": {
+        "weak_signals": ["Thinks it's hours"],
+        "strong_signals": ["Knows it's relative complexity"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The number of hours a task will take", "is_correct": false, "explanation": "Story points are relative, not hours."},
+        {"option": "B", "text": "A relative measure of effort/complexity, not tied to specific hours", "is_correct": true, "explanation": "Correct. 5-point story isn't necessarily 5 hours — it's relative to other stories."},
+        {"option": "C", "text": "Points earned by completing user stories", "is_correct": false, "explanation": "They measure effort, not rewards."},
+        {"option": "D", "text": "Key plot points in the product narrative", "is_correct": false, "explanation": "Agile term, not storytelling term."}
+      ]
+    },
+    {
+      "id": "tech-m3-q21",
+      "module_id": "s-tech-3",
+      "text": "Your spec asks for a feature, but engineering proposes a simpler alternative that achieves 80% of the value with 20% of the effort. How do you evaluate?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "problem_framing", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Evaluation: (1) Understand the alternative — what exactly are they proposing? (2) Validate the 80% claim — does it really solve the core user problem? (3) What's the 20% we lose? Is it nice-to-have or essential? (4) Consider iteration — can we ship simpler now, add rest later? (5) Check opportunity cost — what else could team do with saved time? Often: simpler alternative is the right call. But sometimes the 20% is the differentiator. Key question: Does the simpler version achieve the job-to-be-done?",
+      "scoring_notes": {
+        "weak_signals": ["Insists on original spec", "Accepts without validation", "No user lens"],
+        "strong_signals": ["Validates the 80%", "Understands what's lost", "Iteration mindset", "Job-to-be-done focus"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q22",
+      "module_id": "s-tech-3",
+      "text": "What is a 'blocker' in project management?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "An obstacle that prevents work from progressing, requiring external help or decision.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Knows it's an impediment needing help"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A team member who blocks new ideas", "is_correct": false, "explanation": "That's a different meaning. Blocker here is about work."},
+        {"option": "B", "text": "An obstacle preventing progress that needs external help or decision", "is_correct": true, "explanation": "Correct. Blockers are surfaced in standups for resolution."},
+        {"option": "C", "text": "A tool that blocks distracting websites", "is_correct": false, "explanation": "That's productivity software, not project management."},
+        {"option": "D", "text": "A type of defensive code pattern", "is_correct": false, "explanation": "Not a coding pattern."}
+      ]
+    },
+    {
+      "id": "tech-m3-q23",
+      "module_id": "s-tech-3",
+      "text": "How do you handle a situation where sales has promised a feature to a customer that engineering says is impossible in the promised timeframe?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "problem_framing", "prioritization"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Handling: (1) Verify impossibility — is it truly impossible or just hard? (2) Understand the commitment — what exactly was promised? Any flexibility? (3) Explore options — partial delivery? Different approach? (4) Assess customer relationship — what's the cost of missing commitment? (5) Communicate early — don't wait until deadline. (6) Own internally — PM should be in the loop for commitments. (7) Create prevention — process for sales to validate technical feasibility before promising. Resolution: Negotiate with customer if possible. If not possible, honest communication about delay.",
+      "scoring_notes": {
+        "weak_signals": ["Blames sales or engineering", "Accepts impossible commitment", "Hides until deadline"],
+        "strong_signals": ["Verifies with engineering", "Explores options", "Early communication", "Prevention process"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q24",
+      "module_id": "s-tech-3",
+      "text": "What is 'definition of done' (DoD) in agile?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A shared checklist of criteria that must be met before work is considered complete (coded, tested, documented, deployed, etc.).",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Knows it's shared completion criteria"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The final line of code in a function", "is_correct": false, "explanation": "DoD is a process concept, not code structure."},
+        {"option": "B", "text": "Shared checklist: coded, tested, documented, deployed, etc.", "is_correct": true, "explanation": "Correct. DoD ensures consistent quality across the team."},
+        {"option": "C", "text": "The deadline for the sprint", "is_correct": false, "explanation": "That's a timeline. DoD is about quality criteria."},
+        {"option": "D", "text": "When the PM approves a feature", "is_correct": false, "explanation": "DoD is objective criteria, not just PM approval."}
+      ]
+    },
+    {
+      "id": "tech-m3-q25",
+      "module_id": "s-tech-3",
+      "text": "Your team has capacity for 10 story points this sprint, but the highest priority feature is 15 points. How do you handle this?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["prioritization", "structured_thinking", "communication_clarity"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Options: (1) Split the feature — can we break into smaller shippable pieces? First 10 points this sprint, rest next sprint. (2) Reduce scope — is 15 points the MVP, or can we cut to 10 points of core value? (3) Accept multi-sprint — some features need multiple sprints. Plan accordingly. (4) Add capacity — if critical, can we temporarily add resources or reduce other work? (5) Re-estimate — is 15 points accurate, or can we descope? Best approach: Usually #1 or #2. Avoid: cramming 15 into 10 (leads to quality issues or burnout).",
+      "scoring_notes": {
+        "weak_signals": ["Forces 15 into 10", "Defers without analysis", "No creative solutions"],
+        "strong_signals": ["Split exploration", "Scope reduction", "Multi-sprint acceptance", "Realistic planning"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q26",
+      "module_id": "s-tech-3",
+      "text": "What is 'technical specification' vs 'product specification'?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Product spec: what to build and why (user problems, requirements). Technical spec: how to build it (architecture, components, implementation).",
+      "scoring_notes": {
+        "weak_signals": ["Confuses the two"],
+        "strong_signals": ["Clear what vs how distinction"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "They're the same document with different names", "is_correct": false, "explanation": "They serve different purposes and audiences."},
+        {"option": "B", "text": "Product spec: what and why to build. Technical spec: how to build it", "is_correct": true, "explanation": "Correct. PM owns product spec; engineering owns technical spec."},
+        {"option": "C", "text": "Product spec is for marketing; technical spec is for engineering", "is_correct": false, "explanation": "Product spec is for everyone, including engineering."},
+        {"option": "D", "text": "Technical spec comes before product spec", "is_correct": false, "explanation": "Usually product spec (what) comes before technical spec (how)."}
+      ]
+    },
+    {
+      "id": "tech-m3-q27",
+      "module_id": "s-tech-3",
+      "text": "You're working with a remote engineering team in a different timezone. How do you maintain effective collaboration?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "user_empathy", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Strategies: (1) Overlap hours — find 2-3 hours of overlap and protect them. (2) Written communication — decisions, context, specs in documents (not just verbal). (3) Async updates — daily written standups instead of or in addition to sync. (4) Record meetings — for those who can't attend live. (5) Clear ownership — who decides what, so async decisions can happen. (6) Patience — responses take longer; build buffer into timelines. (7) Build relationship — occasional video calls for rapport, not just work. Key: Over-communicate in writing. Async-first mindset.",
+      "scoring_notes": {
+        "weak_signals": ["Expects sync communication", "No written documentation", "Ignores timezone impact"],
+        "strong_signals": ["Overlap hours identified", "Async-first approach", "Written communication emphasis", "Relationship building"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q28",
+      "module_id": "s-tech-3",
+      "text": "What does 'ship it' culture mean, and what are its pros and cons?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["problem_framing"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "A bias toward releasing quickly and iterating. Pros: faster feedback, less wasted work. Cons: quality risks, tech debt accumulation.",
+      "scoring_notes": {
+        "weak_signals": ["Only sees one side"],
+        "strong_signals": ["Balanced pros and cons"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A logistics company culture focused on shipping products", "is_correct": false, "explanation": "'Ship it' means releasing software, not physical shipping."},
+        {"option": "B", "text": "Bias toward releasing quickly. Pro: faster feedback. Con: potential quality issues", "is_correct": true, "explanation": "Correct. Ship-it culture trades some polish for speed and learning."},
+        {"option": "C", "text": "A rule that all code must ship within 24 hours", "is_correct": false, "explanation": "It's a mindset, not a rigid rule."},
+        {"option": "D", "text": "Only applies to e-commerce companies", "is_correct": false, "explanation": "Any software company can have this culture."}
+      ]
+    },
+    {
+      "id": "tech-m3-q29",
+      "module_id": "s-tech-3",
+      "text": "How do you create alignment between product, engineering, and design on a complex feature?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["communication_clarity", "structured_thinking", "user_empathy"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Alignment process: (1) Shared context — start with user problem and business goal that all three functions understand. (2) Collaborative kickoff — not PM presenting a finished spec, but discussing problem together. (3) Iterative refinement — design shares concepts, engineering flags constraints, PM provides user context. (4) Written artifact — document the decisions so there's shared source of truth. (5) Clear decision rights — who has final say on what? (Design on UX, engineering on architecture, PM on scope/priority). (6) Regular syncs — don't let functions go into silos for weeks. (7) Celebrate together — shared ownership of success.",
+      "scoring_notes": {
+        "weak_signals": ["PM dictates", "Sequential handoffs", "No shared artifact", "Siloed work"],
+        "strong_signals": ["Collaborative from start", "Shared context", "Clear decision rights", "Iterative refinement"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "tech-m3-q30",
+      "module_id": "s-tech-3",
+      "text": "What is 'velocity' in agile metrics?",
+      "archetype": "technical",
+      "type": "technical_strategy",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "The amount of work (usually story points) a team completes in a sprint, used for planning future capacity.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the metric"],
+        "strong_signals": ["Knows it's for capacity planning"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "How fast the application loads", "is_correct": false, "explanation": "That's performance, not team velocity."},
+        {"option": "B", "text": "The amount of work a team completes per sprint, used for planning capacity", "is_correct": true, "explanation": "Correct. If velocity is 20 points/sprint, you can plan accordingly."},
+        {"option": "C", "text": "The speed at which engineers type code", "is_correct": false, "explanation": "Velocity measures team output, not typing speed."},
+        {"option": "D", "text": "A physics concept unrelated to software", "is_correct": false, "explanation": "Velocity is used metaphorically in agile."}
+      ]
+    }
+  ],
+
+  "metadata": {
+    "author": "Praveen",
+    "created_date": "2026-03-21",
+    "version": "2.0",
+    "review_status": "pending",
+    "notes": "90 questions total. 30 per module. Approximately 1/3 MCQs (10 per module)."
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "module_id": "s-b2b-2",
+  "title": "Multi-Stakeholder Dynamics: Buyer, User, Admin",
+  "description": "Navigate the complex stakeholder ecosystem of enterprise products. Learn to balance the needs of buyers, users, and administrators while managing procurement cycles and sales alignment.",
+  "archetype": "b2b",
+  "sequence_order": 2,
+  "estimated_duration_minutes": 45,
+  "prerequisite_modules": ["f1-pm-roles", "f4-product-sense", "s-b2b-1"],
+  
+  "learning_objectives": [
+    "Map the stakeholder ecosystem for enterprise products",
+    "Design features that satisfy multiple stakeholders with different goals",
+    "Navigate enterprise procurement cycles and their impact on product decisions",
+    "Collaborate effectively with sales teams as a PM"
+  ],
+
+  "sections": [
+    {
+      "section_id": "sb2b2-s1",
+      "type": "text",
+      "title": "The Enterprise Stakeholder Map",
+      "content": "In consumer products, the user is the customer. Simple. In enterprise, you have at least three distinct personas:\n\n**The Buyer (Economic Decision Maker)**\nUsually a VP or C-level executive. Signs the check. Cares about: ROI, risk mitigation, vendor reputation, strategic alignment, total cost of ownership. Rarely uses the product daily. Evaluates during sales process and renewal.\n\n**The User (Daily Operator)**\nIndividual contributors who use the product every day. Cares about: ease of use, speed, workflow integration, not looking stupid in front of colleagues. Evaluates continuously. Will create workarounds if your product is painful.\n\n**The Admin (Technical Implementer)**\nIT manager or technical admin who sets up and maintains the product. Cares about: security, SSO integration, user provisioning, API access, data export, compliance. Evaluates during procurement and ongoing. Can veto deals on technical grounds.\n\nOften there's a fourth:\n\n**The Champion (Internal Advocate)**\nSomeone who discovered your product and is pushing for adoption. Might be a user or manager. Cares about: looking good internally, solving a problem that's been bugging them, career advancement. Your success is tied to their internal credibility.\n\n**The complexity:** These personas have conflicting needs. Users want simplicity; admins want control. Buyers want low cost; users want full-featured. Your product must satisfy all of them at different stages."
+    },
+    {
+      "section_id": "sb2b2-s2",
+      "type": "text",
+      "title": "Designing for Multiple Stakeholders",
+      "content": "The mistake is thinking you need to build different products. You don't. You need to design one product that presents differently to each persona.\n\n**For Buyers: Design for demonstrable value**\n- ROI calculators and value dashboards\n- Executive-level reporting (usage, adoption, outcomes)\n- Security and compliance certifications\n- Case studies and social proof\n- Low-touch expansion paths (predictable spend)\n\n**For Users: Design for daily delight**\n- Fast, intuitive core workflows\n- Minimal learning curve\n- Mobile/flexible access\n- Integrations with tools they already use\n- Quick wins they can show colleagues\n\n**For Admins: Design for controllable simplicity**\n- Robust SSO and provisioning\n- Granular permissions (but with sensible defaults)\n- Audit logs and compliance reporting\n- Easy user management at scale\n- Clear API documentation\n\n**The ordering principle:** Get users to love it (usage), help admins approve it (security), and give buyers confidence to pay (ROI). But the purchase decision often starts from the top: a buyer sees a need, admins check technical fit, and users eventually use it. Your product must survive each checkpoint."
+    },
+    {
+      "section_id": "sb2b2-s3",
+      "type": "text",
+      "title": "Enterprise Procurement Cycles and Product Timing",
+      "content": "Enterprise sales cycles are long — often 3-6 months for mid-market, 6-12+ months for true enterprise. This affects your product roadmap more than you'd expect.\n\n**The timeline reality:**\n\nMonth 0-1: Discovery. Champion finds your product. Sales gets involved.\n\nMonth 1-2: Evaluation. Demos, trials, technical assessment. Admins check security. Users pilot.\n\nMonth 2-4: Procurement. Legal review, vendor assessment, pricing negotiation. This can stall for months.\n\nMonth 4-6: Decision. Budget approval, contract signing, implementation planning.\n\nMonth 6-8: Implementation. Onboarding, data migration, training.\n\nMonth 8+: Value realization. Users actually start getting value.\n\n**What this means for product:**\n\n1. **Features promised in sales must exist at implementation.** If sales promises 'we're building X' during a 6-month cycle, you have 6 months to deliver. Don't promise what you can't ship.\n\n2. **Procurement-blocking issues are P0.** Missing a security certification or compliance feature can kill deals. These aren't 'nice to have.'\n\n3. **Time-to-value is a product problem.** If implementation takes 3 months, you're delaying ROI and increasing churn risk. Self-serve implementation is a competitive advantage.\n\n4. **Renewal starts at implementation.** By the time renewal conversations happen (month 10-11), the buyer needs evidence of value. Build measurement into the product."
+    },
+    {
+      "section_id": "sb2b2-s4",
+      "type": "text",
+      "title": "Working with Sales as a PM",
+      "content": "Sales and product sometimes feel like they're on different teams. They're not. But their incentives differ, and understanding this is essential.\n\n**What sales cares about:**\n- Closing deals this quarter\n- Deal size and commission\n- Removing obstacles from the sales process\n- Having features to demo that competitors don't\n- Being able to say 'yes' to customer requests\n\n**Common tensions:**\n\n*Sales wants feature X promised to close a deal.*\nBad response: 'We don't do roadmap by customer request.'\nBetter response: 'Let's understand the use case. If it's unique to this customer, we can discuss custom solutions. If it's a pattern, let's prioritize properly.'\n\n*Sales says competitors have feature Y.*\nBad response: 'That's not what users want.'\nBetter response: 'Help me understand how this came up in the deal. Is it a checkbox requirement or a genuine gap? Let's look at win/loss data.'\n\n*Sales asks for a custom demo for a prospect.*\nBad response: 'That's not my job.'\nBetter response: 'Let's prioritize. Which deal? What's the ACV? What specific customization? Happy to help on high-value opportunities.'\n\n**Building the partnership:**\n\n1. **Join sales calls.** Hear objections firsthand. Understand what prospects actually say.\n\n2. **Share roadmap context.** Help sales understand what's coming and when. They can position accurately.\n\n3. **Create feedback loops.** Win/loss analysis, deal debrief sessions, competitive intel tracking.\n\n4. **Prioritize 'sales enablement' features.** Better demo environment, sandbox mode, ROI calculator — these have direct revenue impact."
+    }
+  ],
+
+  "worked_examples": [
+    {
+      "example_id": "sb2b2-ex1",
+      "title": "Resolving Stakeholder Conflict: Security vs. Usability",
+      "scenario": "Your product has a simple login flow that users love. IT admins are asking for mandatory 2FA and session timeouts. Users are complaining that frequent re-authentication is killing their workflow. How do you navigate this?",
+      "weak_approach": "Side with one group. Either tell admins 'users hate 2FA, we won't add it' (lose deals on security requirements) or tell users 'sorry, security is non-negotiable' (watch usage drop and workarounds emerge).",
+      "strong_approach": "Find the intersection of needs:\n\n1. **Understand the real requirements.** Admins need 2FA for compliance (SOC 2, customer security questionnaires). Which compliance? Which controls specifically?\n\n2. **Segment the solution.** Risk-based authentication: require 2FA for sensitive actions (payment changes, admin settings) but not for every login. Allow admins to configure based on their compliance needs.\n\n3. **Improve the 2FA experience.** Use device trust, push notifications instead of SMS, remember devices for X days. Make compliance less painful.\n\n4. **Communicate value to users.** 'Your IT team enabled additional security because [company] handles sensitive data. We've made it as seamless as possible.'\n\nResult: Admins get compliance controls. Users get a streamlined version. Neither group gets everything, but both can live with the outcome.",
+      "key_insight": "Stakeholder conflicts often aren't zero-sum. Dig into the underlying needs to find solutions that address the 'why' behind each request."
+    },
+    {
+      "example_id": "sb2b2-ex2",
+      "title": "Managing Sales Pressure for a One-Off Feature",
+      "scenario": "Your largest sales opportunity (₹2Cr ARR) requires a custom integration that would take 6 engineering weeks. Sales is pressuring you to commit. The integration would only benefit this one customer.",
+      "weak_approach": "Option A: Capitulate. Build the integration, delaying roadmap for other customers. Set precedent that big deals get custom features. Option B: Refuse flatly. 'We don't build for single customers.' Lose the deal and create sales resentment.",
+      "strong_approach": "Evaluate systematically:\n\n1. **Is this really unique?** Talk to 5 other prospects. If 3+ would use this integration, it's not custom — it's a gap in your roadmap.\n\n2. **What's the true cost?** 6 weeks × 2 engineers = ~₹25L fully loaded. For ₹2Cr ARR, that's 8:1 ROI in year 1 alone. Not unreasonable.\n\n3. **What's the alternative?** Could professional services build it as custom work, charged to the customer? Could a partner integrate instead?\n\n4. **What's the precedent?** Document the decision criteria. 'For deals over X ARR with Y strategic value, we'll consider custom scope.' This becomes policy, not exception.\n\nDecision might be: Build it, but charge ₹20L professional services fee, recouping engineering cost while validating customer commitment. Or: Build it on the roadmap but scope it generally so others can use it.\n\nCommunicate to sales: 'We're partnering on this deal. Here's what we can do, here's the tradeoff, here's how we'll handle similar requests.'",
+      "key_insight": "The goal isn't to say 'yes' or 'no' to sales. It's to make good decisions together based on transparent criteria."
+    }
+  ],
+
+  "key_takeaways": [
+    {
+      "takeaway_id": "sb2b2-t1",
+      "text": "Enterprise products serve three personas: buyers (sign the check), users (use daily), and admins (implement and maintain). Each evaluates your product differently.",
+      "related_dimensions": ["user_empathy", "problem_framing"]
+    },
+    {
+      "takeaway_id": "sb2b2-t2",
+      "text": "Enterprise sales cycles (3-12 months) mean your product roadmap is tied to deal timelines. Features promised in sales must exist at implementation.",
+      "related_dimensions": ["prioritization", "structured_thinking"]
+    },
+    {
+      "takeaway_id": "sb2b2-t3",
+      "text": "Sales partnership is a PM skill. Join calls, share roadmap context, and create decision criteria for handling custom requests.",
+      "related_dimensions": ["communication_clarity", "prioritization"]
+    }
+  ],
+
+  "practice_question_ids": ["b2b-q06", "b2b-q07", "b2b-q08"],
+
+  "completion_criteria": {
+    "sections_read": true,
+    "examples_reviewed": true,
+    "practice_attempted": 1
+  },
+
+  "resources": [
+    {
+      "title": "Selling to Multiple Stakeholders",
+      "url": "https://www.intercom.com/blog/selling-to-multiple-stakeholders/",
+      "type": "article",
+      "description": "Intercom's guide on navigating complex enterprise buying committees."
+    },
+    {
+      "title": "The Challenger Sale (Book)",
+      "url": "https://www.challengerinc.com/the-challenger-sale/",
+      "type": "book",
+      "description": "Research-backed approach to enterprise sales and stakeholder management."
+    },
+    {
+      "title": "Enterprise Sales Cycle: A Complete Guide",
+      "url": "https://www.salesforce.com/resources/articles/enterprise-sales/",
+      "type": "article",
+      "description": "Understanding the stages and timeline of enterprise procurement."
+    },
+    {
+      "title": "Working with Sales as a PM",
+      "url": "https://www.lennysnewsletter.com/p/working-with-sales",
+      "type": "article",
+      "description": "How to build productive PM-Sales relationships in B2B companies."
+    },
+    {
+      "title": "The Enterprise Procurement Process Explained",
+      "url": "https://review.firstround.com/the-founders-guide-to-enterprise-sales",
+      "type": "article",
+      "description": "First Round's guide to understanding how enterprises buy software."
+    },
+    {
+      "title": "Managing Feature Requests from Large Customers",
+      "url": "https://www.productplan.com/learn/manage-customer-feature-requests/",
+      "type": "article",
+      "description": "Framework for handling custom feature requests without derailing roadmap."
+    }
+  ],
+
+  "metadata": {
+    "author": "Shubh",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending"
+  }
+}

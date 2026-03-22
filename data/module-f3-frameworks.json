@@ -1,0 +1,134 @@
+{
+  "module_id": "f3-frameworks",
+  "title": "Structured Thinking Frameworks",
+  "description": "Master the core PM frameworks — CIRCLES for product design, RICE for prioritization, and AARRR for metrics. Learn when to use each framework and how to avoid mechanical application.",
+  "archetype": "shared",
+  "sequence_order": 3,
+  "estimated_duration_minutes": 55,
+  "prerequisite_modules": ["f1-pm-roles", "f2-pm-journey"],
+  
+  "learning_objectives": [
+    "Apply CIRCLES framework to product design questions systematically",
+    "Use RICE scoring to make defensible prioritization decisions",
+    "Map product metrics using the AARRR funnel",
+    "Know when to use frameworks vs. when to think from first principles"
+  ],
+
+  "sections": [
+    {
+      "section_id": "f3-s1",
+      "type": "text",
+      "title": "Why Frameworks Matter (And When They Don't)",
+      "content": "Frameworks are thinking tools, not thinking replacements. They give you structure when you're stuck and help you communicate clearly. But mechanical framework application — reciting CIRCLES like a checklist without genuine thought — is a red flag in interviews.\n\n**When frameworks help:**\n- You're under time pressure and need to structure quickly\n- You're communicating with someone who knows the framework\n- You're stuck on where to start\n- You want to ensure you don't miss an important dimension\n\n**When frameworks hurt:**\n- You apply them rigidly without adapting to the specific problem\n- You use framework jargon without substance behind it\n- You let the framework do your thinking instead of guiding it\n- You use the wrong framework for the problem type\n\nThe best PM answers feel structured but not formulaic. The framework is invisible scaffolding, not the building itself.\n\nIn this module, we'll cover three essential frameworks: CIRCLES for product design, RICE for prioritization, and AARRR for metrics. Master these, and you'll have tools for 80% of PM interview questions."
+    },
+    {
+      "section_id": "f3-s2",
+      "type": "text",
+      "title": "CIRCLES: Structuring Product Design Answers",
+      "content": "CIRCLES is the most common framework for product design questions ('Design an app for X', 'Improve feature Y'). It ensures you cover all bases without jumping to solutions.\n\n**C — Comprehend the Situation**\nClarify the question. What product? What company? What constraints? 'Design a fitness app' is different for Nike (brand extension, existing users) vs. a startup (user acquisition, differentiation). Ask questions upfront.\n\n**I — Identify the Users**\nWho are we designing for? Segment users by behavior, not demographics. 'Busy professionals who want to stay fit but have unpredictable schedules' is more useful than 'adults 25-40.'\n\n**R — Report the User's Needs**\nWhat are their pain points? What job are they hiring this product to do? Use Jobs-to-be-Done framing: 'When I have a 20-minute gap between meetings, I want to get a quick workout so I don't skip exercise entirely.'\n\n**C — Cut Through Prioritization**\nYou can't solve everything. Pick 1-2 user needs to focus on. Explain why: frequency of need, intensity of pain, alignment with business goals.\n\n**L — List Solutions**\nBrainstorm 3-5 solutions for your prioritized need. Don't self-edit too early — get ideas out, then evaluate.\n\n**E — Evaluate Tradeoffs**\nFor each solution, consider: user impact, technical feasibility, business alignment, resource cost. Pick one and justify.\n\n**S — Summarize**\nClose with a crisp summary: user, need, solution, why it wins."
+    },
+    {
+      "section_id": "f3-s3",
+      "type": "text",
+      "title": "RICE: Making Prioritization Defensible",
+      "content": "RICE helps you compare features or initiatives objectively. It's not the only prioritization framework, but it's widely used and easy to explain.\n\n**R — Reach**\nHow many users/customers will this impact in a given time period? Be specific: 'Affects 10,000 users per month' not 'high reach.' Consider: total potential reach vs. realistic adoption.\n\n**I — Impact**\nHow much will this change behavior or outcomes for those reached? Use a consistent scale:\n- 3 = Massive impact (transforms core experience)\n- 2 = High impact (significantly improves experience)\n- 1 = Medium impact (noticeable improvement)\n- 0.5 = Low impact (minor improvement)\n- 0.25 = Minimal impact\n\nThis is subjective — be honest about your assumptions.\n\n**C — Confidence**\nHow sure are you about reach and impact estimates? Scale:\n- 100% = High confidence (data-backed, validated)\n- 80% = Medium confidence (some evidence)\n- 50% = Low confidence (gut feel, no data)\n\nConfidence multiplies the score — uncertain bets get discounted.\n\n**E — Effort**\nHow much work to build this? Usually measured in person-weeks or person-months. Include design, engineering, QA, launch support.\n\n**RICE Score = (Reach × Impact × Confidence) / Effort**\n\n**Example:**\n- Feature A: Reach 5,000, Impact 2, Confidence 80%, Effort 4 weeks\n- Score = (5000 × 2 × 0.8) / 4 = 2,000\n\n- Feature B: Reach 50,000, Impact 0.5, Confidence 50%, Effort 8 weeks\n- Score = (50000 × 0.5 × 0.5) / 8 = 1,562.5\n\nFeature A wins despite lower reach because of higher impact and confidence per unit effort.\n\n**RICE limitations:**\n- Doesn't account for strategic alignment\n- Hard to compare different types of impact\n- Can be gamed with optimistic estimates\n- Doesn't capture dependencies or sequencing\n\nUse RICE as input to prioritization conversations, not as the final word."
+    },
+    {
+      "section_id": "f3-s4",
+      "type": "text",
+      "title": "AARRR: The Pirate Metrics Funnel",
+      "content": "AARRR (also called Pirate Metrics) maps the user lifecycle into five stages. It's essential for metrics questions and understanding how product changes affect business outcomes.\n\n**A — Acquisition**\nHow do users discover your product? Channels: organic search, paid ads, referrals, social, partnerships.\nMetrics: visitors, signups, cost per acquisition (CPA), channel conversion rates.\nProduct implications: landing page optimization, signup flow, onboarding friction.\n\n**A — Activation**\nDo users have a good first experience? Did they reach the 'aha moment'?\nMetrics: activation rate (% of signups who complete key action), time to first value, onboarding completion.\nProduct implications: onboarding flow, quick wins, first-session experience.\n\n**R — Retention**\nDo users come back? This is often the most important stage.\nMetrics: D1/D7/D30 retention, cohort retention curves, churn rate.\nProduct implications: core loop strength, habit formation, engagement features.\n\n**R — Revenue**\nDo users pay? How much?\nMetrics: conversion to paid, ARPU/ARPA, LTV, revenue by cohort.\nProduct implications: paywall design, pricing, upgrade triggers, expansion paths.\n\n**R — Referral**\nDo users tell others?\nMetrics: referral rate, viral coefficient (K-factor), NPS.\nProduct implications: sharing mechanics, referral incentives, word-of-mouth triggers.\n\n**Using AARRR for prioritization:**\nIdentify your funnel's weakest stage. If activation is low, acquisition spend is wasted. If retention is weak, monetization won't compound. Fix the leaky bucket before pouring in more water.\n\n**Example analysis:**\n'We have 100K signups/month but only 10% retention at D30.'\n→ The problem isn't acquisition; it's activation or retention.\n→ Focus product work on first-session experience and core loop."
+    }
+  ],
+
+  "worked_examples": [
+    {
+      "example_id": "f3-ex1",
+      "title": "Applying CIRCLES: Design a Grocery Delivery App for Seniors",
+      "scenario": "You're asked: 'Design a grocery delivery app for senior citizens in India.'",
+      "weak_approach": "Jump immediately to features: big buttons, voice interface, simple checkout. Lists 10 features without explaining who specifically uses them or why. No prioritization. Sounds like a feature list, not a product vision.",
+      "strong_approach": "**C — Comprehend:** Who's building this? Startup or BigBasket extension? What's the business model? Assume: standalone app, subscription + delivery fee model.\n\n**I — Identify Users:** Seniors aren't monolithic. Segment: (1) Tech-comfortable seniors (60-70, smartphone users, live alone, value convenience). (2) Tech-hesitant seniors (70+, limited smartphone use, need family assistance). (3) Caregivers ordering for seniors.\n\n**R — Report Needs:** Tech-comfortable seniors: 'I want to order groceries without struggling with tiny text or complex navigation. I want to reorder my usual items easily. I don't want to feel like I'm using a 'senior' app — that's condescending.'\n\n**C — Cut:** Focus on tech-comfortable seniors first — they can self-serve. Needs: easy reordering, readable interface, trustworthy delivery.\n\n**L — List Solutions:** (1) One-tap reorder of previous baskets. (2) Large, high-contrast UI without feeling medicalized. (3) Scheduled recurring orders. (4) Voice search for products. (5) Delivery person photo and real-time tracking for safety.\n\n**E — Evaluate:** One-tap reorder is highest impact (reduces friction on every order) and medium effort. Scheduled recurring is lower effort but narrower use case. Voice search is high effort and uncertain adoption.\n\nPrioritize: One-tap reorder + clean UI as launch features.\n\n**S — Summarize:** For tech-comfortable seniors who value convenience, we're building a grocery delivery app that makes reordering effortless through one-tap repeat orders and a clean, readable interface — without feeling like a 'special needs' product.",
+      "key_insight": "CIRCLES forces you to go narrow (one user segment, one core need) before going broad. The weak answer tries to solve everything; the strong answer solves one thing well."
+    },
+    {
+      "example_id": "f3-ex2",
+      "title": "Applying RICE: Prioritizing Three Feature Requests",
+      "scenario": "You have three feature requests from different stakeholders. You can only build one this quarter. How do you decide?\n\nFeature A: Dark mode (design team pushed, user requests)\nFeature B: Integration with Slack (sales says needed for deals)\nFeature C: Performance improvements (engineering wants it, users mention lag)",
+      "weak_approach": "Pick based on who's loudest or personal preference. 'Dark mode is trendy, let's do that.' Or: 'Sales needs Slack integration for revenue.' No systematic comparison.",
+      "strong_approach": "Score each with RICE:\n\n**Dark Mode:**\n- Reach: 80% of users would see it (assume 100K users = 80K reach)\n- Impact: 0.5 (nice UX improvement, not transformative)\n- Confidence: 80% (user requests exist, clear scope)\n- Effort: 3 weeks (mostly design + CSS work)\n- Score: (80,000 × 0.5 × 0.8) / 3 = 10,667\n\n**Slack Integration:**\n- Reach: 20% of users would use it (enterprise power users)\n- But also: 5 blocked deals worth ₹50L ARR\n- Impact: 2 (high for those who need it — enables key workflow)\n- Confidence: 70% (sales says it's needed, but competitor has it too)\n- Effort: 6 weeks (API work, auth, testing)\n- Score: (20,000 × 2 × 0.7) / 6 = 4,667 (or higher if we weight deal revenue)\n\n**Performance Improvements:**\n- Reach: 100K users (everyone benefits)\n- Impact: 1 (noticeable improvement, reduces frustration)\n- Confidence: 90% (we can measure before/after)\n- Effort: 4 weeks\n- Score: (100,000 × 1 × 0.9) / 4 = 22,500\n\n**Decision:** Performance improvements score highest. It affects everyone and has high confidence. BUT — if those 5 deals are strategic (logo customers, expansion potential), Slack integration might be the right call despite lower score.\n\nRICE is input, not verdict. Pair it with strategic judgment.",
+      "key_insight": "RICE makes the decision transparent and debatable. Even if you override the score for strategic reasons, you know what you're trading off."
+    }
+  ],
+
+  "key_takeaways": [
+    {
+      "takeaway_id": "f3-t1",
+      "text": "Frameworks are scaffolding, not the building. Use CIRCLES to structure product design answers, but don't let the acronym replace genuine thinking about users and needs.",
+      "related_dimensions": ["structured_thinking", "problem_framing"]
+    },
+    {
+      "takeaway_id": "f3-t2",
+      "text": "RICE makes prioritization defensible by forcing explicit estimates of reach, impact, confidence, and effort. Use it to structure conversations, not end them.",
+      "related_dimensions": ["prioritization", "metrics_reasoning"]
+    },
+    {
+      "takeaway_id": "f3-t3",
+      "text": "AARRR maps product work to business outcomes. Find your leakiest funnel stage (acquisition → activation → retention → revenue → referral) and focus there first.",
+      "related_dimensions": ["metrics_reasoning", "structured_thinking"]
+    }
+  ],
+
+  "practice_question_ids": ["f3-q01", "f3-q02", "f3-q03"],
+
+  "completion_criteria": {
+    "sections_read": true,
+    "examples_reviewed": true,
+    "practice_attempted": 1
+  },
+
+  "resources": [
+    {
+      "title": "CIRCLES Method: The Framework for Product Design Questions",
+      "url": "https://www.lewis-lin.com/blog/circles-method",
+      "type": "article",
+      "description": "Original explanation of the CIRCLES framework by Lewis Lin, author of Decode and Conquer."
+    },
+    {
+      "title": "RICE Scoring Model by Intercom",
+      "url": "https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/",
+      "type": "article",
+      "description": "How Intercom's PM team developed and uses RICE for prioritization decisions."
+    },
+    {
+      "title": "Pirate Metrics (AARRR) by Dave McClure",
+      "url": "https://www.slideshare.net/dmc500hats/startup-metrics-for-pirates-long-version",
+      "type": "slides",
+      "description": "Original presentation by Dave McClure introducing the AARRR framework for startup metrics."
+    },
+    {
+      "title": "How to Prioritize Features: A PM's Guide",
+      "url": "https://www.lennysnewsletter.com/p/how-to-prioritize",
+      "type": "article",
+      "description": "Lenny Rachitsky's comprehensive guide on feature prioritization with real examples."
+    },
+    {
+      "title": "Jobs-to-be-Done Framework Explained",
+      "url": "https://hbr.org/2016/09/know-your-customers-jobs-to-be-done",
+      "type": "article",
+      "description": "Clayton Christensen's HBR article on the Jobs-to-be-Done theory for understanding customer needs."
+    },
+    {
+      "title": "The Reforge Prioritization Framework",
+      "url": "https://www.reforge.com/blog/prioritization-frameworks",
+      "type": "article",
+      "description": "Advanced prioritization thinking beyond simple scoring models."
+    }
+  ],
+
+  "metadata": {
+    "author": "Praveen",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending"
+  }
+}

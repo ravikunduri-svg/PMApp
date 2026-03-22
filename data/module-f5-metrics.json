@@ -1,0 +1,199 @@
+{
+  "id": "f5-metrics",
+  "title": "Metrics and prioritization",
+  "description": "Learn how to define the right success metrics for any product, apply RICE scoring to prioritization decisions, and make tradeoffs that demonstrate real PM judgment \u2014 not just framework recitation.",
+  "category": "foundation",
+  "order": 5,
+  "estimated_minutes": 30,
+  "icon": "bar-chart-2",
+  "prerequisites": [
+    "f1-pm-roles",
+    "f2-pm-journey",
+    "f3-frameworks",
+    "f4-product-sense"
+  ],
+  "sections": [
+    {
+      "type": "text",
+      "title": "The metrics question interviewers actually ask",
+      "content": "Metrics questions are the most commonly failed part of PM interviews \u2014 not because candidates do not know the metrics vocabulary, but because they answer the wrong question.\n\nWhen an interviewer asks 'How would you measure the success of this feature?', they are not asking for a list of metrics you know. They are asking: can you think clearly about what success actually means for this specific product, this specific user, and this specific business?\n\nThe distinction matters. A candidate who lists DAU, NPS, and conversion rate has demonstrated vocabulary. A candidate who says 'First I want to understand: are we trying to grow new users or deepen engagement with existing ones? Because those require completely different metrics' has demonstrated judgment. Interviewers hire for the second type.\n\nThis module gives you the mental model for metrics that works across archetypes and question types: North Star framing, input-output-guardrail decomposition, and the RICE prioritization method that makes tradeoffs explicit and defensible."
+    },
+    {
+      "type": "text",
+      "title": "North Star, input metrics, and guardrail metrics",
+      "content": "Every product needs three types of metrics \u2014 and knowing the difference between them is what separates a PM answer from an analyst answer.\n\nNorth Star metric: The single metric that best captures the core value your product delivers to users. It is not a revenue metric \u2014 it is a user value metric. For Spotify, it might be monthly listening hours. For Slack, messages sent between active teams. For Amazon, items purchased per household per year. The North Star is the metric you would be willing to sacrifice short-term revenue to protect.\n\nInput metrics (leading indicators): The behaviors that, if they improve, will cause the North Star to improve. For Spotify's listening hours North Star: playlist creation rate, search-to-play conversion, discovery of new artists per user. These are actionable \u2014 your team can run experiments to move them. They also warn you early: if input metrics are falling, your North Star will follow in 2-4 weeks.\n\nGuardrail metrics: The metrics you must not break while improving the North Star. For Spotify: ad load tolerance \u2014 do not tank premium conversion to boost free-tier listening. For a checkout flow: do not improve conversion rate by making refunds harder. Guardrails prevent local optimization that damages the business.\n\nIn a PM interview, when asked about success metrics, structure your answer in this order: state the North Star and explain why it represents user value; name 2-3 input metrics that your proposed feature would move; name 1 guardrail metric that you would protect. This three-part answer demonstrates systems thinking, not list-making."
+    },
+    {
+      "type": "callout",
+      "title": "The single biggest metrics mistake",
+      "content": "Listing output metrics you cannot directly control \u2014 revenue, NPS, retention \u2014 as success metrics for a specific feature. These are business outcomes, not feature metrics. A feature metric should be directly attributable to the feature you shipped. 'Number of users who saved a playlist within 7 days of first use' is a feature metric. 'Monthly active users' is a business metric. Know the difference.",
+      "callout_type": "warning"
+    },
+    {
+      "type": "text",
+      "title": "RICE prioritization: making tradeoffs explicit",
+      "content": "RICE (Reach times Impact times Confidence divided by Effort) is the most useful prioritization tool in PM interviews because it forces you to be explicit about what you are assuming \u2014 and that is exactly what interviewers want to see.\n\nReach: How many users will this affect in a given period? Use a specific number and time frame. 'About 40% of monthly active users over 30 days' is reach. 'A lot of users' is not.\n\nImpact: How much will it move the needle per user reached? Use a 3-point scale: 0.25 is minimal, 0.5 is low, 1 is medium, 2 is high, 3 is massive. The key is your reasoning \u2014 why is this a 2 and not a 1?\n\nConfidence: What percentage confident are you in your reach and impact estimates? If you have data from user research, you might say 80%. If it is a gut feeling, say 40%. Being honest about low confidence is a sign of maturity, not weakness.\n\nEffort: How many person-months will this take? Include the whole team: engineering, design, PM, QA.\n\nRICE Score = (Reach times Impact times Confidence) divided by Effort.\n\nThe power of RICE in an interview is not the math \u2014 it is the conversation it forces. When you assign RICE scores to two competing features, you make your prioritization assumptions auditable. The interviewer can say 'Why did you rate this impact as 2?' and you have a real answer. This is what PM judgment looks like."
+    },
+    {
+      "type": "callout",
+      "title": "RICE is a thinking tool, not a calculator",
+      "content": "Do not lead with the formula in an interview. Lead with the tradeoff. Say: 'Feature A has much higher reach but lower confidence. Feature B has lower reach but we have strong user research backing the impact. Given our stage, I would prioritize Feature B because we cannot afford to build something with 40% confidence.' That is the answer. RICE is the scaffolding for that reasoning \u2014 use it to structure your thinking, not to generate a number to hide behind.",
+      "callout_type": "key_concept"
+    },
+    {
+      "type": "example",
+      "title": "Defining metrics for a new feature",
+      "example_scenario": "Question: 'You are a PM at WhatsApp. You are about to launch Status (ephemeral stories). How would you define success for this feature in the first 90 days?'",
+      "example_good_answer": "Before I define metrics, I want to understand what problem Status is solving. Is this primarily about giving users a lower-stakes way to share content that disappears, versus the permanence of posts? Or is it a competitive response to Instagram Stories?\n\nAssuming the core job-to-be-done is casual sharing without permanence anxiety, here is how I would frame success.\n\nNorth Star metric: Weekly Status creators as a percentage of WAU. Not viewers \u2014 creators. The feature creates value only if users create, because that drives viewing behavior. I would set a 90-day target of 15% of WAU posting at least one Status per week.\n\nInput metrics: Status creation rate (statuses posted per user per week). First-time Status creator rate (new users trying it each week). Status-to-reply conversion (how often a Status leads to a direct message conversation \u2014 this is WhatsApp's core value, connection).\n\nGuardrail: Core messaging volume should not decline. If people start communicating via Status instead of messages, we are fragmenting the experience. If message volume drops more than 3% in cohorts that adopt Status heavily, that is a signal worth investigating.\n\nI would NOT use views as the North Star because views are passive. A feature used only for passive consumption creates no new value \u2014 it competes with Instagram, where users are better served.",
+      "example_bad_answer": "I would track daily active users, number of statuses posted, and engagement rate. We could also look at retention \u2014 do users who use Status stay on WhatsApp longer? We should also check our NPS to see if users like the feature.\n\nWhy this is weak: Engagement rate is not a defined metric. DAU is not attributable to Status specifically \u2014 it was already happening. NPS takes months to move and is noise for a feature launch. This answer shows vocabulary without thinking. It does not explain why these metrics reveal whether the feature is solving the problem, or what a good versus bad result looks like.",
+      "content": ""
+    },
+    {
+      "type": "example",
+      "title": "Making a prioritization tradeoff with RICE",
+      "example_scenario": "Question: 'You are a PM at a food delivery app. You have two features ready: (A) Re-order button \u2014 lets users reorder their last order in one tap. (B) Dietary filter \u2014 filters menu by vegan, gluten-free, halal. You have capacity for one sprint. Which do you prioritize?'",
+      "example_good_answer": "I need to understand our current biggest problem, but let me reason through both options using RICE, then flag the one data point I would check before finalizing.\n\nRe-order button:\nReach: Every returning user who has placed at least one order \u2014 roughly 60% of MAU.\nImpact: High (2). Removing friction from the most common use case. Repeat orders are the highest-frequency behavior in food delivery.\nConfidence: High (90%). We can verify repeat order frequency from existing data right now.\nEffort: Low. Around 1-2 engineer-weeks. Simple UI plus backend lookup.\nRICE = (0.60 times 2 times 0.9) divided by 0.5 = 2.16.\n\nDietary filter:\nReach: Users with dietary restrictions \u2014 roughly 15-20% of MAU who actively look for dietary options.\nImpact: Very high (3) for users it affects. Dietary restrictions are a blocker, not a preference.\nConfidence: Medium (60%). We do not have clean data on how many users abandon due to dietary friction.\nEffort: Medium. 3-4 weeks. Requires restaurant data tagging, which has data quality risk.\nRICE = (0.175 times 3 times 0.6) divided by 1 = 0.315.\n\nRe-order wins by a large margin. But here is the tradeoff I want to surface before committing: if our retention data shows users with dietary needs churn at 2-3x the rate of other users, the dietary filter becomes a higher-priority retention play despite lower RICE. I would check that one data point before finalizing.\n\nRecommendation: build re-order now, queue dietary filter for next sprint, validate with retention segmentation first.",
+      "example_bad_answer": "I would prioritize the dietary filter because it serves an underserved segment. Users with dietary restrictions have no good options right now and this could be a big differentiator. The re-order button is nice to have but not critical.\n\nWhy this is weak: Underserved segment without quantification is not a prioritization argument. No reach or effort comparison. The re-order button dismissal ignores that it has far higher reach. This answer sounds like an opinion, not a decision framework. An interviewer cannot tell whether this PM would make good decisions on the job.",
+      "content": ""
+    },
+    {
+      "type": "callout",
+      "title": "Data point",
+      "content": "Across PM interviews at tier-1 companies, prioritization and metrics questions are cited by hiring managers as the single most differentiating category. The most common failure: candidates who reason from personal preference or user empathy alone without connecting to business impact, reach, or effort. Making assumptions visible \u2014 and being willing to defend or revise them \u2014 is what distinguishes a PM answer from a user opinion.",
+      "callout_type": "data_point"
+    },
+    {
+      "type": "list",
+      "title": "Three metrics traps to avoid in every interview",
+      "items": [
+        "Metrics without a claim: listing metrics without stating what a good result looks like. 'I would track signup conversion rate' is incomplete. 'I would target signup conversion above 35% within 60 days, benchmarking against industry standard for this onboarding type' is a claim that can be probed and discussed.",
+        "Vanity metrics: total downloads, cumulative users, page views \u2014 these only go up unless the product stops working. Use metrics that can decline: DAU/MAU ratio, D30 retention, task completion rate, session depth. These reveal whether the product is actually useful.",
+        "Forgetting counter-metrics: every optimization creates a risk somewhere else. If you optimize for session time, you might incentivize patterns that harm user wellbeing. If you optimize for conversion rate, you might approve users who churn faster. Name the counter-metric and explain how you would protect it."
+      ]
+    }
+  ],
+  "key_takeaways": [
+    "Structure every metrics answer in three layers: North Star (user value the product delivers), input metrics (leading indicators your team can move), and guardrail metrics (what you will not break). This framework works across all PM archetypes and question types.",
+    "RICE prioritization is valuable because it makes your assumptions auditable, not because of the math. State your reasoning for each score explicitly \u2014 the interviewer will probe your confidence ratings and impact estimates, and that conversation is the real interview.",
+    "Avoid vanity metrics and unattributable business outcomes when answering feature-level questions. A good feature metric is directly caused by the feature, can be measured within weeks, and can decline if the feature underperforms."
+  ],
+  "practice_question_ids": [
+    "foundation-mt-01",
+    "foundation-pr-01",
+    "foundation-pr-03"
+  ],
+  "references": [
+    {
+      "category": "North Star Metrics",
+      "title": "Every Product Needs a North Star Metric: Here's How to Find Yours",
+      "url": "https://amplitude.com/blog/product-north-star-metric",
+      "source": "Amplitude",
+      "description": "The definitive guide to choosing your north star metric \u2014 covers what makes a good one, real examples across product types, and how to avoid the common mistake of picking a business metric instead of a user value metric."
+    },
+    {
+      "category": "North Star Metrics",
+      "title": "Choosing, Refining, and Tracking Product Metrics \u2014 Shreyas Doshi",
+      "url": "https://mixpanel.com/blog/shreyas-doshi-product-metrics/",
+      "source": "Mixpanel / Shreyas Doshi",
+      "description": "Shreyas Doshi (ex-Stripe, Twitter, Google) on the full hierarchy of product metrics \u2014 health, usage, adoption, and outcome metrics \u2014 and why your north star should respond to product changes, not just business outcomes."
+    },
+    {
+      "category": "North Star Metrics",
+      "title": "How to Choose and Measure North Star Metrics",
+      "url": "https://www.reforge.com/blog/north-star-metrics",
+      "source": "Reforge",
+      "description": "Reforge's framework for picking north star metrics across acquisition, retention, and monetization dimensions. Includes worked examples for consumer, B2B, and marketplace products."
+    },
+    {
+      "category": "North Star Metrics",
+      "title": "The Product Manager's Guide to North Star Metrics",
+      "url": "https://gopractice.io/product/the-product-managers-guide-to-north-star-metrics/",
+      "source": "GoPractice",
+      "description": "Deep-dive on what a north star metric is, why it matters, how to validate yours is correct, and how companies like Airbnb and Duolingo chose theirs. Includes a common-mistakes section worth reviewing before any interview."
+    },
+    {
+      "category": "Guardrail Metrics",
+      "title": "Guardrail Metrics: The Complete Guide to Balanced Product Growth",
+      "url": "https://mixpanel.com/blog/guardrail-metrics/",
+      "source": "Mixpanel",
+      "description": "What guardrail metrics (also called counter-metrics) are, why they exist, and how Instagram uses them when running Stories experiments to avoid cannibalising the main feed. Essential reading before any metrics interview answer."
+    },
+    {
+      "category": "Guardrail Metrics",
+      "title": "Better Product Decisions with Guardrail Metrics",
+      "url": "https://confidence.spotify.com/blog/better-decisions-with-guardrails",
+      "source": "Spotify Engineering",
+      "description": "Spotify's engineering blog on using guardrail metrics in A/B testing to prevent unintended consequences \u2014 with concrete inferiority and non-inferiority test examples. More technical, but very practical."
+    },
+    {
+      "category": "Guardrail Metrics",
+      "title": "What Are Guardrail Metrics in A/B Tests?",
+      "url": "https://www.statsig.com/blog/what-are-guardrail-metrics-in-ab-tests",
+      "source": "Statsig",
+      "description": "Beginner-friendly explainer on guardrail metrics in A/B testing with a DoorDash-style scenario. Good starting point if the concept is new to you, before moving to the Spotify article above."
+    },
+    {
+      "category": "RICE Prioritization",
+      "title": "RICE: Simple Prioritization for Product Managers",
+      "url": "https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/",
+      "source": "Intercom \u2014 Sean McBride (original article)",
+      "description": "The original RICE framework article by the PM who invented it. Read this before any other RICE resource \u2014 it explains the motivation behind each component and why Confidence exists to counter overconfidence in Reach and Impact estimates."
+    },
+    {
+      "category": "RICE Prioritization",
+      "title": "RICE Score: A Prioritization Framework for Estimating Value",
+      "url": "https://roadmunk.com/guides/rice-score-prioritization-framework-product-management/",
+      "source": "Roadmunk",
+      "description": "An interview with Sean McBride explaining RICE nuances \u2014 how to score Impact without gut-feel, why Confidence is the most underused component, and common ways teams misapply the formula."
+    },
+    {
+      "category": "Retention Curves and DAU/MAU",
+      "title": "Retention \u2014 The Complete Guide",
+      "url": "https://articles.sequoiacap.com/retention",
+      "source": "Sequoia Capital",
+      "description": "Sequoia's reference guide on retention: D1/D7/D30 curves, triangle retention charts, DAU/MAU ratios, and what 'good' looks like by product category. The benchmark section is essential context before answering any retention metrics question."
+    },
+    {
+      "category": "Retention Curves and DAU/MAU",
+      "title": "Do You Have Lightning in a Bottle? How to Benchmark Your Social App",
+      "url": "https://a16z.com/do-you-have-lightning-in-a-bottle-how-to-benchmark-your-social-app/",
+      "source": "Andreessen Horowitz (a16z)",
+      "description": "a16z's framework for evaluating app retention with specific D1, D7, and D30 benchmarks, plus the L-ness curve for understanding power user distribution. Directly relevant to the retention curve analysis practice question."
+    },
+    {
+      "category": "Retention Curves and DAU/MAU",
+      "title": "Retention Rate: Complete Definition and Calculation Guide",
+      "url": "https://amplitude.com/explore/growth/retention-rate",
+      "source": "Amplitude",
+      "description": "How to calculate bounded vs. unbounded retention, set up cohort analysis, and find the behaviours that actually cause better retention. Includes the analytical thinking you need to interpret retention curves in a live interview."
+    },
+    {
+      "category": "PM Interview \u2014 Metrics Questions",
+      "title": "How to Ace Facebook's Product Execution Interview",
+      "url": "https://www.tryexponent.com/blog/how-to-ace-facebooks-product-execution-interview",
+      "source": "Exponent",
+      "description": "Breaks down the three metrics question types interviewers use \u2014 Success, Debug, and Trade-off \u2014 and explains why the north star goal must come before any metric is named. Directly maps to the core principle of this module."
+    },
+    {
+      "category": "PM Interview \u2014 Metrics Questions",
+      "title": "Product Sense Interview Questions and Answers",
+      "url": "https://www.tryexponent.com/blog/product-sense-interview",
+      "source": "Exponent",
+      "description": "A seven-step framework for answering product sense questions in PM interviews, with worked examples from Google and Meta. Good for practising how to tie your metrics answer to user insight rather than just business goals."
+    },
+    {
+      "category": "Metrics Hierarchy and Context",
+      "title": "Hierarchy of Product Metrics",
+      "url": "https://www.linkedin.com/pulse/hierarchy-product-metrics-luke-swartz-miywc",
+      "source": "LinkedIn \u2014 Luke Swartz",
+      "description": "A Maslow-style hierarchy showing why you cannot succeed at engagement or revenue layers without first nailing health and stability. Strongly influenced by Shreyas Doshi's framework \u2014 useful visual reference for understanding metric dependencies."
+    },
+    {
+      "category": "Metrics Hierarchy and Context",
+      "title": "Defining Product Metrics \u2014 The Ultimate Guide",
+      "url": "https://towardsdatascience.com/defining-product-metrics-the-ultimate-guide-part-1-of-2-585b8c63fcef/",
+      "source": "Towards Data Science",
+      "description": "Comprehensive breakdown of primary metrics, north star metrics, and counter-metrics (guardrails) with Amazon and Instagram examples. Explains why a primary metric improvement can still signal a product failure when guardrails are ignored."
+    }
+  ]
+}

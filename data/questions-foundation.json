@@ -1,0 +1,241 @@
+{
+  "archetype": "foundation",
+  "version": "1.0",
+  "total_questions": 10,
+  "description": "Mixed-archetype product sense and prioritization questions. These work across all three archetypes (consumer, b2b, technical) and form the common practice layer before archetype-specific drill. 5 product sense questions + 5 prioritization questions.",
+  "questions": [
+    {
+      "id": "foundation-ps-01",
+      "text": "Pick any app on your phone that you use at least once a week. Identify the single most important metric the PM team is probably tracking as their North Star, and explain why that metric \u2014 and not another \u2014 best represents the value the product delivers to users.",
+      "archetype": "foundation",
+      "type": "product_design",
+      "difficulty": "easy",
+      "time_limit_minutes": 4,
+      "source_context": "Common warm-up question in PM interviews at all company types",
+      "ideal_answer_outline": "A strong answer should: (1) Pick a real app they genuinely use \u2014 not one that sounds impressive. (2) Define the North Star as a user value metric, not a revenue metric. 'Time spent' is NOT a good North Star for most products \u2014 it conflates engagement with value. (3) Explain WHY this metric captures actual user value: for a navigation app, 'successful trips completed' is better than 'sessions opened' because a session that gets the user lost is a failure, not a success. (4) Acknowledge what the North Star does NOT measure \u2014 and why that limitation is acceptable. A weak answer picks 'DAU' or 'revenue' as the North Star without explaining why user value and business value align for this specific product.",
+      "scoring_emphasis": {
+        "primary": "metrics_reasoning",
+        "secondary": "problem_framing"
+      }
+    },
+    {
+      "id": "foundation-ps-02",
+      "text": "Pick a product you use every day and identify its three biggest weaknesses. For each weakness, explain who is most affected, why the company might not have fixed it yet, and what you would do about it.",
+      "archetype": "foundation",
+      "type": "product_design",
+      "difficulty": "easy",
+      "time_limit_minutes": 5,
+      "source_context": "Common opening question in PM interviews across all company types and archetypes",
+      "ideal_answer_outline": "A strong answer should: (1) Pick a real product they genuinely use \u2014 not one they think sounds impressive. (2) Identify weaknesses that are real pain points, not UI nitpicks like 'the icon could be prettier.' (3) For each weakness, specify WHO is affected \u2014 a user segment, not 'all users.' (4) Show business reasoning about why it is not fixed \u2014 resource constraints, strategic deprioritization, technical debt, conflicting stakeholder priorities \u2014 demonstrating understanding that PM work involves tradeoffs, not wishlists. (5) Propose realistic solutions, not moonshots. A weak answer lists surface-level UI complaints without connecting them to user segments or business logic.",
+      "scoring_emphasis": {
+        "primary": "problem_framing",
+        "secondary": "user_empathy"
+      }
+    },
+    {
+      "id": "foundation-ps-03",
+      "text": "A product you manage has seen a 20% week-over-week drop in its key engagement metric. Walk me through exactly how you would investigate the root cause. Do not jump to solutions \u2014 focus entirely on the diagnostic process.",
+      "archetype": "foundation",
+      "type": "metrics",
+      "difficulty": "medium",
+      "time_limit_minutes": 6,
+      "source_context": "One of the most common metrics questions across consumer, B2B, and technical PM interviews",
+      "ideal_answer_outline": "A strong answer should: (1) Start by validating the data \u2014 is this a real drop or a tracking/reporting artifact? Was there a holiday, code deploy, or data pipeline issue? (2) Segment before hypothesizing. Segment by: new vs. returning users (acquisition vs. retention problem); platform (iOS, Android, web \u2014 platform-specific drops suggest technical issues); geography (global vs. regional \u2014 local drops suggest competitive or operational causes); user behavior cohort (power users vs. casual users \u2014 the severity and cause differ dramatically). (3) Only AFTER segmentation, form 2-3 specific hypotheses tied to what the segmentation revealed. (4) Describe which data you would pull to validate or eliminate each hypothesis. (5) NOT prescribe solutions until root cause is confirmed. A weak answer jumps immediately to fixes without segmenting, or describes a generic 'look at the data' process without specifying which data or why.",
+      "scoring_emphasis": {
+        "primary": "structured_thinking",
+        "secondary": "metrics_reasoning"
+      }
+    },
+    {
+      "id": "foundation-ps-04",
+      "text": "You are a PM at a productivity app (your choice \u2014 notes, task manager, calendar, etc.). The CEO asks you to add an AI feature to the product. How do you decide what to build?",
+      "archetype": "foundation",
+      "type": "strategy",
+      "difficulty": "medium",
+      "time_limit_minutes": 5,
+      "source_context": "Common strategy question in 2024-2026 PM interviews across all company types given the AI trend",
+      "ideal_answer_outline": "A strong answer should: (1) Resist the pull to immediately brainstorm AI features \u2014 instead ask: what user problem are we solving and does AI actually help? AI is a technology, not a strategy. (2) Identify the highest-friction point in the current product where AI could reduce effort or increase quality for users. In a notes app, this might be: recalling information across notes (AI search/synthesis), converting messy notes into structured formats (AI organization), or identifying action items (AI extraction). (3) Evaluate each AI idea against: does the user actually want this? Is the technical risk acceptable? Does this match our archetype's value proposition? (4) Choose ONE use case and explain the build sequence: what is the MVP, what data do you need, what does the feedback loop look like? (5) Explicitly address the risk: what happens if the AI gets it wrong? How does the user recover? A weak answer lists AI features (summarization! smart search! AI assistant!) without explaining which user problem each solves, why it matters more than other problems, or how to validate it.",
+      "scoring_emphasis": {
+        "primary": "problem_framing",
+        "secondary": "prioritization"
+      }
+    },
+    {
+      "id": "foundation-ps-05",
+      "text": "You are a PM at a company launching in India for the first time (pick any product category). What are the three most important things you would do differently compared to a US launch, and why?",
+      "archetype": "foundation",
+      "type": "strategy",
+      "difficulty": "medium",
+      "time_limit_minutes": 5,
+      "source_context": "Common in PM interviews at companies expanding to emerging markets; relevant to all archetypes given the India PM market context",
+      "ideal_answer_outline": "A strong answer should: (1) Pick a real product category and commit to it \u2014 not speak generically. (2) Demonstrate genuine understanding of India-specific context: device fragmentation and low-end Android prevalence, data cost sensitivity (especially 2G/3G areas), payment infrastructure differences (UPI dominance, cash on delivery preference, no credit card penetration), language and regional diversity, and price point sensitivity. (3) Connect each adaptation to a specific user behavior or constraint \u2014 not just 'localize for India.' 'We would build a lite version with 40% smaller APK size because 60% of our target segment uses devices under 3GB RAM' is a specific, reasoned adaptation. (4) Prioritize which adaptation matters most for the specific product category they chose. (5) Name one thing they would NOT change and why \u2014 this shows strategic discipline, not just cultural sensitivity. A weak answer gives generic emerging market advice ('localize content,' 'offer regional pricing') without specifics tied to the chosen product.",
+      "scoring_emphasis": {
+        "primary": "user_empathy",
+        "secondary": "structured_thinking"
+      }
+    },
+    {
+      "id": "foundation-pr-01",
+      "text": "You are a PM with capacity to build exactly one feature this quarter. You have three options: (A) Improve onboarding \u2014 reduce time-to-first-value from 5 minutes to 2 minutes for new users. (B) Add a sharing feature \u2014 let users share their work output with people outside the product. (C) Build an analytics dashboard \u2014 let users see their own usage data and progress. All three have been requested by users. How do you decide?",
+      "archetype": "foundation",
+      "type": "product_design",
+      "difficulty": "medium",
+      "time_limit_minutes": 6,
+      "source_context": "Classic prioritization question used across all PM archetypes to test structured decision-making",
+      "ideal_answer_outline": "A strong answer should: (1) NOT immediately pick a winner \u2014 first ask what problem the product is currently most facing. Are users churning early (onboarding problem)? Are users hitting a ceiling and needing to share their work (virality/growth problem)? Are power users not feeling rewarded (retention/engagement problem)? (2) Apply a prioritization framework \u2014 RICE, impact/effort matrix, or a stage-based argument (fix retention before growth, fix activation before retention). (3) Make the stage-based argument: if new users are churning before experiencing value, onboarding is the highest-leverage fix regardless of what users say they want. Users ask for features; they cannot diagnose why they leave. (4) Explain what data they would look at to validate: activation rate (what % of new users reach a meaningful first action?), D1 and D7 retention by cohort, and any qualitative feedback about why users leave. (5) State a clear recommendation WITH a decision rule: 'I would prioritize onboarding improvement IF our D1 retention is below 30%, because fixing a leaky bucket matters more than adding inflow.' A weak answer picks one feature based on personal preference without framework, or gives a wishy-washy 'it depends' without specifying what it depends on.",
+      "scoring_emphasis": {
+        "primary": "prioritization",
+        "secondary": "metrics_reasoning"
+      }
+    },
+    {
+      "id": "foundation-pr-02",
+      "text": "Your engineering team tells you that addressing 6 months of accumulated technical debt will require the next full sprint \u2014 meaning no new features for 4-6 weeks. Your sales team is pushing back hard, saying you will lose deals without the three features prospects are asking for. How do you handle this?",
+      "archetype": "foundation",
+      "type": "strategy",
+      "difficulty": "medium",
+      "time_limit_minutes": 5,
+      "source_context": "Classic stakeholder tradeoff question used in all PM interview types, especially relevant to B2B and Technical PM archetypes",
+      "ideal_answer_outline": "A strong answer should: (1) Not immediately take a side \u2014 instead gather information. What is the technical debt actually costing? Slower feature velocity? System instability? Scaling risk? What are the three features sales is asking for \u2014 are they truly blockers for deals or nice-to-haves? (2) Reframe the question from 'features vs. debt' to 'what will cause us to lose more value in the next 6 months.' (3) Consider a hybrid approach: can you address the highest-risk technical debt while delivering a partial version of the most critical feature? Not always possible, but worth asking. (4) Make the stakeholder communication explicit \u2014 what would they tell sales? 'The technical debt is causing X customer-facing incidents per week. If we ignore it for another sprint, our current customers will experience Y impact.' Convert engineering debt to customer impact language. (5) Name a decision framework: 'I would recommend doing the technical debt sprint IF the engineering team can demonstrate that current debt is actively degrading product reliability for existing customers.' A weak answer either always sides with engineering (appearing naive to business pressure) or always sides with sales (appearing naive to engineering reality).",
+      "scoring_emphasis": {
+        "primary": "prioritization",
+        "secondary": "communication_clarity"
+      }
+    },
+    {
+      "id": "foundation-pr-03",
+      "text": "You have just been hired as a PM at an early-stage startup. The product has 200 active users, a 40% D7 retention rate, and no revenue yet. The CEO wants to add a premium subscription tier. What do you tell them?",
+      "archetype": "foundation",
+      "type": "strategy",
+      "difficulty": "hard",
+      "time_limit_minutes": 6,
+      "source_context": "Common strategy question testing whether candidates understand product stage and the relationship between retention, product-market fit, and monetization",
+      "ideal_answer_outline": "A strong answer should: (1) Identify the key data point: 40% D7 retention is actually a meaningful signal. For consumer apps industry benchmarks, 40% D7 is in the strong range for early-stage products (typical is 20-30%). However, 200 users is an extremely small sample \u2014 the retention number may not be stable or representative. (2) Name the core question: do we have product-market fit? Signs of PMF: users come back without prompting, users are visibly disappointed when the product is unavailable, organic word-of-mouth referral even at small scale. (3) Make the monetization argument: adding a premium tier before PMF risks two things \u2014 it may screen out the users who would otherwise become your best advocates (missionaries, not mercenaries), and it will obscure your retention signal because paid users behave differently. (4) The counter-argument worth acknowledging: some users actually WANT to pay \u2014 it signals commitment to the product. A waitlist for a premium tier can be a demand validation signal before building the full tier. (5) Recommend a staged approach: spend the next 4-6 weeks validating PMF with 20+ user interviews before building any monetization. A weak answer either reflexively says 'not yet' (correct but not explained) or reflexively says 'great idea' without examining the retention data or PMF question.",
+      "scoring_emphasis": {
+        "primary": "problem_framing",
+        "secondary": "metrics_reasoning"
+      }
+    },
+    {
+      "id": "foundation-pr-04",
+      "text": "You are a PM and your team has just completed user research showing that 65% of users want Feature X. Your engineering team estimates it will take 8 weeks to build. Should you build it?",
+      "archetype": "foundation",
+      "type": "product_design",
+      "difficulty": "easy",
+      "time_limit_minutes": 4,
+      "source_context": "Deliberately simple trap question used in PM interviews to test whether candidates blindly follow user research data",
+      "ideal_answer_outline": "A strong answer should: (1) NOT say yes immediately \u2014 65% of users wanting something is necessary but not sufficient evidence to build it. (2) Ask the right follow-up questions: What problem does Feature X solve \u2014 and is it a real pain point or a nice-to-have? What did the other 35% say? What would users have to give up to get Feature X (time, money, data, workflow change)? Is there a faster/cheaper way to test the demand before committing 8 weeks? (3) Distinguish between stated preference and revealed preference: users say they want many things they do not actually use. Has anyone validated demand with a prototype or mockup, not just a survey? (4) Apply opportunity cost: what are you NOT building in those 8 weeks? Is there something with higher ROI or lower effort that would better serve users or the business? (5) State a clear answer with conditions: 'I would build it IF user research shows it solves a real pain point with high frequency and high intensity, AND we have validated that users will actually use it (not just say they want it), AND the opportunity cost of 8 engineering weeks is acceptable given our roadmap.' A weak answer says yes because '65% is a majority.' This is the trap. Feature adoption and survey intent routinely diverge by 40-60 percentage points.",
+      "scoring_emphasis": {
+        "primary": "prioritization",
+        "secondary": "structured_thinking"
+      }
+    },
+    {
+      "id": "foundation-pr-05",
+      "text": "You are a PM reviewing your product's metrics dashboard on a Monday morning. You notice two things: (1) last week's revenue was your best ever \u2014 up 22% week-over-week. (2) Your D7 retention for users who signed up last week dropped from 34% to 21%. What do you do?",
+      "archetype": "foundation",
+      "type": "metrics",
+      "difficulty": "hard",
+      "time_limit_minutes": 6,
+      "source_context": "Advanced metrics question testing the ability to hold conflicting signals and reason about leading vs. lagging indicators; relevant to all archetypes",
+      "ideal_answer_outline": "A strong answer should: (1) Immediately identify the tension: a revenue spike accompanied by a retention drop is a classic sign of acquisition channel quality degradation \u2014 you are bringing in users who are a poor fit, either because of targeting changes, discounting, or a viral spike from an atypical source. (2) Investigate the acquisition cohort: who signed up last week? What channel did they come from? Was there a campaign, a referral spike, a PR hit, or a pricing change? (3) Compare last week's new users to your historical best-retention cohorts: what behavioral differences are visible in the first 24-48 hours? Do they complete the same activation steps? Do they match the same demographic/use-case profile? (4) Reason about what NOT to do: do NOT celebrate the revenue spike before understanding its source. Do NOT assume retention will recover \u2014 the drop from 34% to 21% is extremely large and suggests a structural problem with this cohort, not noise. (5) State the most likely explanation and how to validate: 'My hypothesis is that last week's revenue came from a channel or campaign that brought in users with different expectations or use cases. I would validate by segmenting new signups by acquisition source and comparing their first-session behavior to high-retention historical cohorts.' A weak answer either treats the two signals as unrelated or focuses only on fixing the retention number without investigating the root cause.",
+      "scoring_emphasis": {
+        "primary": "metrics_reasoning",
+        "secondary": "problem_framing"
+      }
+    }
+  ],
+  "references": [
+    {
+      "category": "Metrics Questions \u2014 Interview Technique",
+      "title": "How to Ace Facebook's Product Execution Interview",
+      "url": "https://www.tryexponent.com/blog/how-to-ace-facebooks-product-execution-interview",
+      "source": "Exponent",
+      "description": "Explains the Success/Debug/Trade-off taxonomy for metrics interview questions and why defining the north star goal before naming metrics is the key differentiator between average and strong answers."
+    },
+    {
+      "category": "Metrics Questions \u2014 Interview Technique",
+      "title": "Product Manager Analytical Interview Questions",
+      "url": "https://www.tryexponent.com/questions?role=pm&type=analytical",
+      "source": "Exponent",
+      "description": "Bank of real analytical and metrics questions asked at Google, Meta, Amazon, and Stripe. Use alongside this question bank to compare your answers to community responses."
+    },
+    {
+      "category": "Prioritization Questions \u2014 Interview Technique",
+      "title": "Product Manager Execution Interview Questions",
+      "url": "https://www.tryexponent.com/questions?role=pm&type=execution",
+      "source": "Exponent",
+      "description": "Real execution questions from PM interviews including prioritization, goal-setting, and trade-off scenarios. Maps to the strategy and prioritization questions in this foundation bank."
+    },
+    {
+      "category": "North Star and Metrics Framework",
+      "title": "Every Product Needs a North Star Metric: Here's How to Find Yours",
+      "url": "https://amplitude.com/blog/product-north-star-metric",
+      "source": "Amplitude",
+      "description": "The reference article for north star metrics. Required reading before attempting the metrics questions in this bank \u2014 especially foundation-ps-05 (north star for a food delivery app) and foundation-ps-10 (retention curve analysis)."
+    },
+    {
+      "category": "North Star and Metrics Framework",
+      "title": "Choosing, Refining, and Tracking Product Metrics \u2014 Shreyas Doshi",
+      "url": "https://mixpanel.com/blog/shreyas-doshi-product-metrics/",
+      "source": "Mixpanel / Shreyas Doshi",
+      "description": "Shreyas Doshi's primer on the full spectrum of metrics \u2014 health, usage, adoption, outcome \u2014 with the key insight that most PRDs don't specify what metrics dashboard should exist for a feature. Directly relevant to foundation-ps-07 (setting targets without baseline data)."
+    },
+    {
+      "category": "RICE Prioritization",
+      "title": "RICE: Simple Prioritization for Product Managers",
+      "url": "https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/",
+      "source": "Intercom \u2014 Sean McBride (original article)",
+      "description": "The original article behind the RICE framework. Read before answering foundation-ps-02 (three-way prioritization trade-off) and foundation-ps-09 (build vs. polish trade-off)."
+    },
+    {
+      "category": "RICE Prioritization",
+      "title": "RICE Score: A Prioritization Framework for Estimating Value",
+      "url": "https://roadmunk.com/guides/rice-score-prioritization-framework-product-management/",
+      "source": "Roadmunk",
+      "description": "Sean McBride interview with nuances on scoring: why Confidence is the most underused factor and how to defend your Impact estimate without gut-feel. Directly maps to the 'RICE scores without defended assumptions' mistake in the module."
+    },
+    {
+      "category": "Retention Analysis",
+      "title": "Retention \u2014 The Complete Guide",
+      "url": "https://articles.sequoiacap.com/retention",
+      "source": "Sequoia Capital",
+      "description": "Sequoia's full reference on D1/D7/D30 retention benchmarks, triangle retention charts, and how to read a cohort retention curve. Essential before attempting foundation-ps-10 (compare two apps' retention curves)."
+    },
+    {
+      "category": "Retention Analysis",
+      "title": "Do You Have Lightning in a Bottle? How to Benchmark Your Social App",
+      "url": "https://a16z.com/do-you-have-lightning-in-a-bottle-how-to-benchmark-your-social-app/",
+      "source": "Andreessen Horowitz (a16z)",
+      "description": "a16z's benchmarks for D1/D7/D30 retention and the L-ness (power user) curve. Gives you the context to interpret whether a 45% D1 / 22% D7 / 8% D30 curve is good, bad, or structurally problematic \u2014 the exact scenario in foundation-ps-10."
+    },
+    {
+      "category": "Retention Analysis",
+      "title": "Retention Rate: Complete Definition and Calculation Guide",
+      "url": "https://amplitude.com/explore/growth/retention-rate",
+      "source": "Amplitude",
+      "description": "How to calculate bounded and unbounded retention and set up cohort analysis. Covers how to identify behaviours correlated with better retention \u2014 the causal reasoning required by foundation-ps-01 (diagnose low DAU with 200k downloads)."
+    },
+    {
+      "category": "Guardrail Metrics",
+      "title": "Guardrail Metrics: The Complete Guide to Balanced Product Growth",
+      "url": "https://mixpanel.com/blog/guardrail-metrics/",
+      "source": "Mixpanel",
+      "description": "What guardrails are, when to use them, and the Instagram Reels / main-feed example. Required reading before attempting any question that asks for a complete metrics answer \u2014 guardrails are the most frequently missing component in candidate answers."
+    },
+    {
+      "category": "Product Judgment and Trade-offs",
+      "title": "Hierarchy of Product Metrics",
+      "url": "https://www.linkedin.com/pulse/hierarchy-product-metrics-luke-swartz-miywc",
+      "source": "LinkedIn \u2014 Luke Swartz",
+      "description": "Maslow-style framework showing the dependency chain between health, engagement, and revenue metrics. Useful mental model for foundation-ps-03 (30% week-over-week drop) and foundation-ps-06 (launch with 6/8 confused users)."
+    },
+    {
+      "category": "Product Judgment and Trade-offs",
+      "title": "Product Sense Interview Questions and Answers",
+      "url": "https://www.tryexponent.com/blog/product-sense-interview",
+      "source": "Exponent",
+      "description": "Seven-step framework for product sense questions with worked examples from real PM interviews. Covers the clarification, user definition, and prioritization steps that are tested across all 10 questions in this bank."
+    }
+  ]
+}

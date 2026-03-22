@@ -1,0 +1,134 @@
+{
+  "module_id": "s-b2b-3",
+  "title": "Go-To-Market Strategy for Enterprise Products",
+  "description": "Learn how enterprise products launch, price, package, and position. Master the strategic thinking that separates PMs who ship features from PMs who drive business outcomes.",
+  "archetype": "b2b",
+  "sequence_order": 3,
+  "estimated_duration_minutes": 50,
+  "prerequisite_modules": ["s-b2b-1", "s-b2b-2"],
+  
+  "learning_objectives": [
+    "Structure an enterprise product launch for maximum adoption",
+    "Design pricing and packaging that aligns incentives and captures value",
+    "Position your product against competitors effectively",
+    "Collaborate with marketing and sales on GTM execution"
+  ],
+
+  "sections": [
+    {
+      "section_id": "sb2b3-s1",
+      "type": "text",
+      "title": "Enterprise Launch Strategy: It's Not a Press Release",
+      "content": "Consumer product launches are events: countdown, big reveal, viral moment. Enterprise launches are campaigns: months of preparation, coordinated rollout, ongoing enablement.\n\n**The enterprise launch timeline:**\n\n**T-90 days: Internal alignment**\n- Lock feature scope and positioning\n- Brief sales and customer success teams\n- Prepare competitive battlecards\n- Create pricing and packaging decisions\n\n**T-60 days: Early customer seeding**\n- Beta with 3-5 design partners\n- Gather testimonials and case studies\n- Refine positioning based on feedback\n- Identify launch-day referenceable customers\n\n**T-30 days: Sales enablement**\n- Demo training and certification\n- Objection handling documentation\n- Update pitch decks and proposals\n- Set quota and compensation for new offering\n\n**T-14 days: Market preparation**\n- Press and analyst briefings (embargoed)\n- Customer advisory board preview\n- Partner channel briefing\n- Social and content calendar finalized\n\n**Launch day: Coordinated execution**\n- Press release and blog post\n- Customer announcement emails\n- Sales outbound to priority accounts\n- Webinar or virtual event\n\n**T+30 days: Momentum maintenance**\n- Win stories from early adopters\n- Feedback loop to product team\n- Sales pipeline review\n- Iteration on messaging based on results\n\n**Common launch failures:**\n- Sales learns about the feature from the press release\n- No referenceable customers on day one\n- Pricing not finalized, sales can't quote\n- Positioning unclear, marketing and sales say different things"
+    },
+    {
+      "section_id": "sb2b3-s2",
+      "type": "text",
+      "title": "Pricing and Packaging: Value Capture as Product Strategy",
+      "content": "Pricing is product strategy. How you charge determines who buys, how they use it, and whether you capture the value you create.\n\n**Common enterprise pricing models:**\n\n**Per-seat pricing:** Charge per user. Simple to understand. Works when value scales with users. Risk: customers limit seats to save money, reducing adoption.\n\n**Usage-based pricing:** Charge for consumption (API calls, storage, events). Aligns with value — use more, pay more. Risk: unpredictable costs make budgeting hard for customers.\n\n**Tiered pricing:** Feature-based tiers (Starter, Professional, Enterprise). Captures different willingness to pay. Risk: confusion about what's in each tier; customers feel nickel-and-dimed for upgrades.\n\n**Platform pricing:** Base platform fee plus modules/add-ons. Works for complex products with optional capabilities. Risk: complexity in sales process and customer understanding.\n\n**Pricing principles for PMs:**\n\n1. **Price on value, not cost.** What is the outcome worth to the customer? Not: what does it cost you to deliver?\n\n2. **Create natural expansion paths.** Pricing should encourage starting small and growing. Punitive pricing for small customers reduces top-of-funnel.\n\n3. **Align with customer mental model.** If customers think in terms of 'projects' or 'teams,' price that way. Don't force unfamiliar units.\n\n4. **Leave room for negotiation.** Enterprise buyers expect to negotiate. Build list prices with headroom.\n\n5. **Consider implementation and support costs.** Enterprise pricing must cover the cost of high-touch onboarding and support."
+    },
+    {
+      "section_id": "sb2b3-s3",
+      "type": "text",
+      "title": "Competitive Positioning: Winning in a Crowded Market",
+      "content": "Every enterprise category has incumbents, fast followers, and niche players. Your positioning determines which deals you compete for and which you don't.\n\n**Positioning framework:**\n\n**1. For [target customer]**\nWho specifically are you for? 'Mid-market SaaS companies with 50-500 employees' is more useful than 'businesses.'\n\n**2. Who [has this problem/need]**\nWhat pain do they experience? Be specific. 'Struggle to track feature requests across multiple channels' beats 'need product feedback.'\n\n**3. Our product is [category]**\nWhat box do you fit in? Buyers use categories to search, shortlist, and budget. Don't invent a new category unless you're well-funded enough to create it.\n\n**4. That [key benefit]**\nWhat's the one thing you do better than anyone? Not five things. One. This is your wedge.\n\n**5. Unlike [alternative/competitor]**\nWhat's the explicit contrast? 'Unlike legacy ERPs that require 6-month implementations' or 'Unlike spreadsheets that can't scale.'\n\n**Competitive positioning tactics:**\n\n**Against the incumbent:** You're faster, simpler, more modern. 'Built for how teams work today.' Risk: incumbents have relationships, budget, and switching costs working for them.\n\n**Against other challengers:** You're more mature, more specialized, better supported. 'The only solution built specifically for [your niche].' Risk: becoming too niche limits TAM.\n\n**Category creation:** You're defining a new way of solving the problem. 'Not [old category], but [new concept].' Risk: expensive to educate market, competitors copy messaging.\n\n**Don't compete everywhere.** Choose your battles. It's better to win 80% of deals in a well-defined segment than 20% of deals in a broad market."
+    },
+    {
+      "section_id": "sb2b3-s4",
+      "type": "text",
+      "title": "PM's Role in GTM Execution",
+      "content": "As a PM, you're not responsible for running marketing campaigns or closing deals. But you are responsible for ensuring the product story is clear, consistent, and compelling across all GTM motions.\n\n**Your GTM responsibilities:**\n\n**Positioning and messaging (co-own with PMM):**\n- Define the core value proposition\n- Articulate key differentiators\n- Validate messaging with customers\n- Ensure consistency across channels\n\n**Sales enablement (co-own with sales):**\n- Create and maintain demo environment\n- Document use cases and outcomes\n- Build competitive battlecards\n- Train sales on technical depth\n\n**Customer evidence (co-own with CS):**\n- Identify and recruit case study customers\n- Document quantified outcomes\n- Create referenceable customer program\n- Build social proof library\n\n**Launch coordination (orchestrate):**\n- Own launch timeline and checklist\n- Ensure cross-functional alignment\n- Make go/no-go decisions\n- Run launch retrospectives\n\n**What's NOT your job:**\n- Writing ad copy or running campaigns (marketing)\n- Negotiating contract terms (sales)\n- Solving customer support tickets (CS)\n- Making pricing decisions alone (requires finance, exec input)\n\n**The core PM GTM skill:** Translating product complexity into customer value. If you can't explain why this matters to a customer in 30 seconds, the messaging isn't ready."
+    }
+  ],
+
+  "worked_examples": [
+    {
+      "example_id": "sb2b3-ex1",
+      "title": "Designing a Pricing Model for a New Product",
+      "scenario": "You're launching an analytics add-on to your core B2B SaaS product. The add-on provides advanced reporting and dashboards. How do you price it?",
+      "weak_approach": "Price it at ₹X/month based on estimated costs plus a margin. Package it as a single SKU: you either have it or you don't. Launch and see what happens.",
+      "strong_approach": "Start with value analysis:\n\n1. **What outcomes does this enable?** Advanced analytics helps customers make better decisions, potentially saving hours of manual reporting and improving business outcomes. Quantify: if a customer saves 10 hours/month of analyst time at ₹2,000/hour, the value is ₹20,000/month.\n\n2. **Who values it most?** Larger teams with dedicated analysts get more value. Small teams might not need it. Segment by company size or user count.\n\n3. **What's competitive pricing?** Check standalone analytics tools (Amplitude, Mixpanel). They charge ₹50-200K/year for mid-market. Your add-on needs to be clearly cheaper than rip-and-replace.\n\n4. **Design the packaging:**\n   - Include basic reporting in core product (table stakes)\n   - Standard Analytics: ₹15,000/month — dashboards, saved reports, basic exports\n   - Advanced Analytics: ₹40,000/month — custom queries, API access, data warehouse integration\n\n5. **Create expansion triggers:** Usage-based limits (10 custom reports in Standard, unlimited in Advanced) create natural upgrade moments.\n\n6. **Test with design partners:** Run pricing conversations with 5 existing customers before finalizing. 'At this price, would you buy it?' is direct.",
+      "key_insight": "Good pricing starts with customer value, not your costs. Package features into tiers that create natural expansion paths."
+    },
+    {
+      "example_id": "sb2b3-ex2",
+      "title": "Repositioning Against a New Competitor",
+      "scenario": "A well-funded startup has entered your market with a lower-priced, simpler product. They're winning some of your pipeline deals. How do you respond?",
+      "weak_approach": "Panic-cut prices to match them. Add features they have that you don't. Trash-talk them in sales conversations. Ignore the threat and hope it goes away.",
+      "strong_approach": "Analyze before reacting:\n\n1. **Which deals are they winning?** Segment: customer size, use case, buyer persona. If they're winning SMB but you're winning enterprise, you might not have a problem.\n\n2. **Why are they winning?** Price? Simplicity? Specific feature? Different positioning? Talk to lost prospects: 'What made you choose them?'\n\n3. **What's their wedge?** Every competitor has a core strength. Identify it honestly. Yours might be: depth, integrations, support, security. Theirs might be: speed, simplicity, price.\n\n4. **Define your counterpositioning:**\n   - If they're 'simpler,' you're 'more powerful for serious teams'\n   - If they're 'cheaper,' you're 'better ROI when you factor in total cost of ownership'\n   - If they're 'faster to implement,' you're 'built to scale with your business'\n\n5. **Equip sales with battlecards:**\n   - When to compete: deals with requirements they can't meet\n   - When to walk away: price-only buyers who don't value depth\n   - Key questions to ask: uncover requirements that favor you\n\n6. **Don't chase their roadmap.** Building everything they have makes you a copy. Double down on your strengths instead.",
+      "key_insight": "Competitive response is strategic, not reactive. Understand why you lose specific deals, then make deliberate choices about where to compete."
+    }
+  ],
+
+  "key_takeaways": [
+    {
+      "takeaway_id": "sb2b3-t1",
+      "text": "Enterprise launches are campaigns, not events. Start 90 days out with internal alignment, seed early customers, enable sales, then coordinate market execution.",
+      "related_dimensions": ["structured_thinking", "prioritization"]
+    },
+    {
+      "takeaway_id": "sb2b3-t2",
+      "text": "Price on value, not cost. Design pricing tiers that create natural expansion paths and align with how customers think about your product.",
+      "related_dimensions": ["metrics_reasoning", "user_empathy"]
+    },
+    {
+      "takeaway_id": "sb2b3-t3",
+      "text": "Positioning is about choosing where to compete. Define your target customer, key benefit, and explicit contrast to alternatives. Don't try to win everywhere.",
+      "related_dimensions": ["problem_framing", "communication_clarity"]
+    }
+  ],
+
+  "practice_question_ids": ["b2b-q11", "b2b-q12", "b2b-q13"],
+
+  "completion_criteria": {
+    "sections_read": true,
+    "examples_reviewed": true,
+    "practice_attempted": 1
+  },
+
+  "resources": [
+    {
+      "title": "The SaaS Pricing Bible",
+      "url": "https://www.priceintelligently.com/blog/saas-pricing-strategy",
+      "type": "guide",
+      "description": "Comprehensive guide to SaaS pricing models, strategies, and optimization."
+    },
+    {
+      "title": "Launching Enterprise Products",
+      "url": "https://www.lennysnewsletter.com/p/how-to-launch-your-product",
+      "type": "article",
+      "description": "Best practices for B2B product launches with cross-functional coordination."
+    },
+    {
+      "title": "Positioning: The Battle for Your Mind (Book)",
+      "url": "https://www.amazon.com/Positioning-Battle-Your-Mind-Anniversary/dp/0071373586",
+      "type": "book",
+      "description": "The classic marketing book on competitive positioning by Al Ries and Jack Trout."
+    },
+    {
+      "title": "Obviously Awesome (Book)",
+      "url": "https://www.aprildunford.com/obviously-awesome",
+      "type": "book",
+      "description": "April Dunford's practical guide to product positioning for tech companies."
+    },
+    {
+      "title": "Product-Led Growth vs Sales-Led Growth",
+      "url": "https://openviewpartners.com/blog/product-led-growth-vs-sales-led-growth/",
+      "type": "article",
+      "description": "Understanding when each GTM motion works and how to combine them."
+    },
+    {
+      "title": "Competitive Battlecards That Actually Help",
+      "url": "https://www.klue.com/blog/competitive-battlecards",
+      "type": "guide",
+      "description": "How to create competitive intelligence materials that sales teams will use."
+    }
+  ],
+
+  "metadata": {
+    "author": "Shubh",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending"
+  }
+}

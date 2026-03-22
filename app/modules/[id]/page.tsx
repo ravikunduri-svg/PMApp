@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 
-const DATA_DIR = path.join(process.cwd(), '..')
+const DATA_DIR = path.join(process.cwd(), 'data')
 
 const MODULE_FILES: Record<string, string> = {
   'f1-pm-roles': 'module-f1-pm-roles.md',

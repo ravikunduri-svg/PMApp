@@ -1,0 +1,382 @@
+{
+  "question_bank_id": "questions-shared",
+  "description": "15 shared practice questions applicable to all archetypes: 5 behavioral (STAR format), 5 estimation/market sizing, 5 MCQ concept checks",
+  "archetype": "shared",
+  "total_questions": 15,
+
+  "questions": [
+    {
+      "id": "shared-q01",
+      "text": "Tell me about a time when you had to make a product decision with incomplete data. How did you approach it, and what was the outcome?",
+      "archetype": "shared",
+      "type": "behavioral",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "communication_clarity"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Strong answers follow STAR format clearly. Situation: specific context with constraints (timeline, missing data type). Task: what decision needed to be made and why it couldn't wait. Action: how they gathered available signals, used proxies, set up reversibility, or de-risked the decision. Result: outcome with specific metrics if possible, plus learnings applied later. Look for: comfort with ambiguity, structured decision-making process, awareness of risks taken.",
+      "scoring_notes": {
+        "weak_signals": ["Vague situation without specifics", "No clear framework for decision-making", "Outcome described without learnings", "Claims to 'always have enough data'"],
+        "strong_signals": ["Specific context with real constraints", "Clear proxy metrics or signals used", "Acknowledged uncertainty and mitigated risks", "Quantified outcome where possible", "Reflected on what they'd do differently"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q02",
+      "text": "Describe a situation where you disagreed with a stakeholder (engineer, designer, manager, or executive) about a product direction. How did you handle it?",
+      "archetype": "shared",
+      "type": "behavioral",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "prioritization", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Situation: who disagreed, what was at stake, why opinions differed. Task: candidate's role and what resolution was needed. Action: how they sought to understand the other perspective, what data or frameworks they used to find common ground, how they communicated their position. Result: resolution reached, relationship preserved, and learning about collaboration. Red flag: candidates who 'won' by hierarchy or politics without genuine alignment.",
+      "scoring_notes": {
+        "weak_signals": ["Blamed the other party", "Escalated without attempting resolution", "Vague about the actual disagreement", "No reflection on own blind spots"],
+        "strong_signals": ["Showed genuine curiosity about opposing view", "Used data or customer evidence to ground discussion", "Found compromise or acknowledged when they were wrong", "Maintained relationship while advocating for position"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q03",
+      "text": "Tell me about a product or feature you shipped that didn't perform as expected. What happened, and what did you learn?",
+      "archetype": "shared",
+      "type": "behavioral",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "problem_framing", "communication_clarity"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Situation: what was shipped, what metrics were expected, what actually happened. Task: candidate's responsibility and accountability. Action: how they diagnosed the gap (data analysis, user research, technical investigation), what corrective actions were taken. Result: whether it was fixed, deprecated, or iterated — and specific learnings applied to future work. Strong answers show ownership without excessive self-flagellation.",
+      "scoring_notes": {
+        "weak_signals": ["Blamed external factors entirely", "No metrics or vague metrics", "Didn't take ownership", "No clear learnings articulated"],
+        "strong_signals": ["Owned the outcome regardless of role", "Specific metrics before/after", "Clear diagnosis of root cause", "Concrete changes to process or approach going forward"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q04",
+      "text": "Describe a time when you had to influence without authority — getting something done when you didn't have direct control over the people or resources involved.",
+      "archetype": "shared",
+      "type": "behavioral",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "prioritization", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Situation: cross-functional context where candidate lacked formal authority. Task: what outcome they needed and who they needed to influence. Action: how they built alignment (understanding others' incentives, finding shared goals, creating urgency, demonstrating value). Result: did they achieve the goal? How did the relationship evolve? Strong answers show strategic thinking about stakeholder motivations.",
+      "scoring_notes": {
+        "weak_signals": ["Relied on manager escalation", "Didn't understand stakeholder incentives", "Described manipulation rather than alignment", "Vague about actual influence tactics"],
+        "strong_signals": ["Mapped stakeholder motivations explicitly", "Found win-win framing", "Built trust before asking for help", "Showed patience and long-term relationship building"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q05",
+      "text": "Tell me about a time when you had to rapidly learn a new domain or technology to make a product decision. How did you get up to speed?",
+      "archetype": "shared",
+      "type": "behavioral",
+      "difficulty": "beginner",
+      "answer_mode": "voice",
+      "dimensions_tested": ["problem_framing", "structured_thinking", "communication_clarity"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Situation: unfamiliar domain with time pressure. Task: what decision hinged on this learning. Action: specific learning tactics — talking to experts, reading documentation, building prototypes, asking structured questions. Result: quality of decision made and speed of ramp-up. Look for: intellectual curiosity, humility, structured approach to learning.",
+      "scoring_notes": {
+        "weak_signals": ["Claimed to already know everything", "Relied only on one source", "No structured approach to learning", "Decision quality unclear"],
+        "strong_signals": ["Multiple learning sources (experts, docs, hands-on)", "Asked clarifying questions to validate understanding", "Knew what they didn't know", "Made sound decision despite limited time"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q06",
+      "text": "How many auto rickshaws are there in Bangalore?",
+      "archetype": "shared",
+      "type": "estimation",
+      "difficulty": "beginner",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "metrics_reasoning", "communication_clarity"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Strong approach: 1) Frame the problem — define what counts as an auto rickshaw (registered, operational). 2) Choose an estimation method — supply-side (drivers, vehicles per driver) or demand-side (trips per day, autos needed to serve demand). 3) Build from anchors — Bangalore population (~12M), percentage who use autos, trips per user per day, trips per auto per day. 4) Sanity check — compare to known data points (if any). Reasonable range: 100,000-200,000 autos. The number matters less than the structure.",
+      "scoring_notes": {
+        "weak_signals": ["Guessed without structure", "Used only one approach without sanity check", "Unreasonable assumptions without justification", "No acknowledgment of uncertainty ranges"],
+        "strong_signals": ["Clear framework stated upfront", "Multiple approaches triangulated", "Assumptions explicitly stated and reasonable", "Acknowledged confidence interval", "Sanity checked against intuition or known data"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q07",
+      "text": "Estimate the annual revenue of Zomato's food delivery business in India.",
+      "archetype": "shared",
+      "type": "estimation",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["metrics_reasoning", "structured_thinking", "problem_framing"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Approach 1 (demand-side): Active users × orders per user per month × average order value × take rate × 12. Approach 2 (supply-side): Number of restaurant partners × orders per restaurant per day × average order value × take rate × 365. Key assumptions: 50M+ monthly active users, 3-4 orders per user per month, ₹350-400 AOV, 20-25% take rate. Should arrive at ₹8,000-15,000 crore range. Bonus: acknowledge that 'revenue' could mean GMV vs. net revenue (after restaurant payouts).",
+      "scoring_notes": {
+        "weak_signals": ["Confused GMV with revenue", "Single approach without validation", "Unrealistic assumptions (e.g., 10 orders per user per week)", "No awareness of take rate concept"],
+        "strong_signals": ["Defined revenue clearly (GMV vs. net)", "Built from reasonable user/order assumptions", "Cross-checked with public data if mentioned", "Acknowledged major uncertainty drivers"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q08",
+      "text": "How would you estimate the number of smartphones sold in India last year?",
+      "archetype": "shared",
+      "type": "estimation",
+      "difficulty": "beginner",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "metrics_reasoning", "communication_clarity"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Approach 1 (stock-based): Total smartphone users in India × replacement rate. ~700M smartphone users, 2.5-3 year replacement cycle = 230-280M per year. Approach 2 (flow-based): New smartphone buyers + replacement buyers. New buyers shrinking as penetration saturates. Should get to 150-200M range (actual is ~150M). Key: distinguish 'sold' from 'shipped' and account for feature phone to smartphone migration slowing.",
+      "scoring_notes": {
+        "weak_signals": ["Used total population instead of smartphone users", "Ignored replacement cycle", "No sanity check against intuition", "Assumed 100% penetration"],
+        "strong_signals": ["Distinguished smartphone users from total population", "Considered both new and replacement demand", "Reasonable replacement cycle (2-4 years)", "Acknowledged market saturation trends"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q09",
+      "text": "Estimate the market size for premium coffee (₹200+ per cup) in Indian metros.",
+      "archetype": "shared",
+      "type": "estimation",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["problem_framing", "metrics_reasoning", "structured_thinking"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Define scope: metros (Delhi, Mumbai, Bangalore, Chennai, Hyderabad, Pune, Kolkata). Define premium: ₹200+ (Starbucks, Blue Tokai, third wave). Approach: Metro population (~80M) → income bracket that can afford (top 10-15%: ~10M) → % who drink premium coffee (30-40%: ~3-4M) → frequency (1-2x per week: 6 cups/month) → average spend (₹250). Monthly: 3.5M × 6 × 250 = ₹5,250 crore/year. Sanity check against Starbucks India revenue + competitors.",
+      "scoring_notes": {
+        "weak_signals": ["Didn't define 'premium'", "Used all-India population for metros", "Assumed everyone drinks premium coffee", "No income segmentation"],
+        "strong_signals": ["Clear scope definition", "Income-based segmentation for affordability", "Realistic consumption frequency", "Sanity check against known player data"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q10",
+      "text": "How many weddings happen in India each year, and what's the total market size for wedding-related services?",
+      "archetype": "shared",
+      "type": "estimation",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "metrics_reasoning", "problem_framing"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Part 1 - Number of weddings: India population (~1.4B) × marriage rate. Alternatively: marriageable population (ages 20-35, ~300M) ÷ average marriage age span × marriage rate (~90%). Should get to 8-12M weddings per year. Part 2 - Market size: Segment by income (budget/mid/luxury). Average wedding spend by segment. Weight by distribution. Budget (₹5-10L) × 60%, Mid (₹10-30L) × 30%, Luxury (₹30L+) × 10%. Total: ₹4-5 lakh crore market. Break down by service: venue, catering, photography, jewelry, clothing, etc.",
+      "scoring_notes": {
+        "weak_signals": ["Used total population without age filtering", "Single average wedding cost for all segments", "Forgot that each wedding involves 2 families", "No service breakdown"],
+        "strong_signals": ["Age-cohort based estimation", "Income segmentation with different spend levels", "Acknowledged regional variation", "Broke down into service categories", "Cross-checked against industry reports if mentioned"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "shared-q11",
+      "text": "In the STAR interview format, what does the 'A' stand for, and why is it the most important part?",
+      "archetype": "shared",
+      "type": "behavioral",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "A stands for Action. It's the most important because interviewers want to understand YOUR specific contributions, decisions, and behaviors — not just what happened or the outcome.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know STAR format"],
+        "strong_signals": ["Understands Action is about personal contribution"]
+      },
+      "mcq_options": [
+        {
+          "option": "A",
+          "text": "Assessment — evaluating the situation is the foundation for good decisions",
+          "is_correct": false,
+          "explanation": "A stands for Action, not Assessment. While evaluation matters, STAR focuses on what you did."
+        },
+        {
+          "option": "B",
+          "text": "Action — it shows YOUR specific contributions and decisions, not just what happened",
+          "is_correct": true,
+          "explanation": "Correct. The Action section demonstrates your personal impact, skills, and decision-making approach."
+        },
+        {
+          "option": "C",
+          "text": "Achievement — results matter most in any behavioral question",
+          "is_correct": false,
+          "explanation": "A stands for Action. Results are covered in R (Result), which is important but Action shows how you operate."
+        },
+        {
+          "option": "D",
+          "text": "Analysis — breaking down the problem is the key PM skill",
+          "is_correct": false,
+          "explanation": "A stands for Action. Analysis might be part of your action, but STAR specifically asks about what you did."
+        }
+      ]
+    },
+    {
+      "id": "shared-q12",
+      "text": "When estimating market size, what's the key difference between TAM, SAM, and SOM?",
+      "archetype": "shared",
+      "type": "estimation",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "TAM = Total Addressable Market (everyone who could theoretically buy). SAM = Serviceable Addressable Market (the portion you could reach with your current model). SOM = Serviceable Obtainable Market (what you can realistically capture).",
+      "scoring_notes": {
+        "weak_signals": ["Confuses the three terms"],
+        "strong_signals": ["Clear understanding of the funnel from theoretical to realistic"]
+      },
+      "mcq_options": [
+        {
+          "option": "A",
+          "text": "TAM is current market, SAM is growth potential, SOM is competition's share",
+          "is_correct": false,
+          "explanation": "This mischaracterizes all three. TAM is total theoretical market, not current market."
+        },
+        {
+          "option": "B",
+          "text": "TAM is total theoretical market, SAM is what you could serve, SOM is what you can realistically capture",
+          "is_correct": true,
+          "explanation": "Correct. TAM → SAM → SOM represents a funnel from theoretical maximum to realistic target."
+        },
+        {
+          "option": "C",
+          "text": "They're different ways of measuring the same market; use whichever sounds best",
+          "is_correct": false,
+          "explanation": "They represent different scopes. Using the wrong one misleads investors and planning."
+        },
+        {
+          "option": "D",
+          "text": "TAM is for startups, SAM is for growth companies, SOM is for mature companies",
+          "is_correct": false,
+          "explanation": "All three are relevant for any company. They represent scope of market, not company stage."
+        }
+      ]
+    },
+    {
+      "id": "shared-q13",
+      "text": "A user says 'I want the app to load faster.' What's the best PM response?",
+      "archetype": "shared",
+      "type": "behavioral",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["user_empathy", "problem_framing"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "The best response digs into the underlying need. Ask follow-up questions to understand context, use case, and what 'faster' means to them.",
+      "scoring_notes": {
+        "weak_signals": ["Takes request at face value without investigation"],
+        "strong_signals": ["Seeks to understand the underlying job-to-be-done"]
+      },
+      "mcq_options": [
+        {
+          "option": "A",
+          "text": "Add it to the backlog and prioritize based on how many users request it",
+          "is_correct": false,
+          "explanation": "This treats the symptom without understanding the cause. Vote-counting isn't product strategy."
+        },
+        {
+          "option": "B",
+          "text": "Tell engineering to optimize performance across the board",
+          "is_correct": false,
+          "explanation": "This is too vague and doesn't address the specific user need or context."
+        },
+        {
+          "option": "C",
+          "text": "Ask follow-up questions: 'When does it feel slow? What are you trying to do when it's slow?'",
+          "is_correct": true,
+          "explanation": "Correct. Understanding context reveals the real problem — maybe it's slow on mobile data, or during checkout, or only at certain times."
+        },
+        {
+          "option": "D",
+          "text": "Check analytics to see actual load times and decide if the complaint is valid",
+          "is_correct": false,
+          "explanation": "Data is useful but doesn't replace understanding user context. Perception matters even if metrics look fine."
+        }
+      ]
+    },
+    {
+      "id": "shared-q14",
+      "text": "In a Fermi estimation, why is it important to state your assumptions explicitly?",
+      "archetype": "shared",
+      "type": "estimation",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking", "communication_clarity"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Explicit assumptions let the interviewer evaluate your reasoning, make the estimate debuggable, and allow for adjustment if an assumption is corrected.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand why assumptions matter"],
+        "strong_signals": ["Understands that process > final number"]
+      },
+      "mcq_options": [
+        {
+          "option": "A",
+          "text": "So the interviewer can correct wrong assumptions and give you the right answer",
+          "is_correct": false,
+          "explanation": "Interviewers rarely give you 'right' answers. The point is evaluating your reasoning, not getting to a specific number."
+        },
+        {
+          "option": "B",
+          "text": "To show off how much you know about the industry",
+          "is_correct": false,
+          "explanation": "Estimations test reasoning, not industry knowledge. Reasonable assumptions based on logic are better than memorized facts."
+        },
+        {
+          "option": "C",
+          "text": "So your reasoning is transparent, debuggable, and can be adjusted if an assumption is off",
+          "is_correct": true,
+          "explanation": "Correct. Explicit assumptions show your thought process, let others verify your logic, and make the estimate adjustable."
+        },
+        {
+          "option": "D",
+          "text": "Because you'll be graded on the accuracy of your final number",
+          "is_correct": false,
+          "explanation": "Estimation interviews grade reasoning, not accuracy. A well-reasoned estimate that's off by 2x beats a lucky guess."
+        }
+      ]
+    },
+    {
+      "id": "shared-q15",
+      "text": "When answering 'Tell me about a time you failed,' what's the most important element to include?",
+      "archetype": "shared",
+      "type": "behavioral",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity", "structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "The most important element is what you learned and how you applied it. This shows growth mindset and self-awareness.",
+      "scoring_notes": {
+        "weak_signals": ["Focuses only on the failure itself or blaming others"],
+        "strong_signals": ["Emphasizes learning and application"]
+      },
+      "mcq_options": [
+        {
+          "option": "A",
+          "text": "A detailed explanation of why the failure wasn't really your fault",
+          "is_correct": false,
+          "explanation": "Deflecting blame is a red flag. Interviewers want to see ownership and self-awareness."
+        },
+        {
+          "option": "B",
+          "text": "The specific metrics that showed the failure (to prove it was real)",
+          "is_correct": false,
+          "explanation": "Metrics help, but the learning matters more than proving the failure was significant."
+        },
+        {
+          "option": "C",
+          "text": "What you learned and how you applied that learning to future situations",
+          "is_correct": true,
+          "explanation": "Correct. This demonstrates growth mindset, self-awareness, and the ability to improve — key PM traits."
+        },
+        {
+          "option": "D",
+          "text": "How you eventually turned the failure into a success",
+          "is_correct": false,
+          "explanation": "Not every failure gets 'fixed.' The question tests how you handle and learn from failure, not just whether you recovered."
+        }
+      ]
+    }
+  ],
+
+  "metadata": {
+    "author": "Rudra",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending",
+    "notes": "STAR format expected for behavioral questions. Estimation questions test structured approach. MCQs are quick concept checks (30-60 seconds)."
+  }
+}

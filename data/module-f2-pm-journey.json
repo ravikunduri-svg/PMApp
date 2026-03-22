@@ -1,0 +1,134 @@
+{
+  "module_id": "f2-pm-journey",
+  "title": "The PM Journey: Stages, Expectations, and Timeline Reality",
+  "description": "Understand the realistic path to becoming a Product Manager — what each stage looks like, how long it actually takes, and what separates successful transitions from failed ones.",
+  "archetype": "shared",
+  "sequence_order": 2,
+  "estimated_duration_minutes": 40,
+  "prerequisite_modules": ["f1-pm-roles"],
+  
+  "learning_objectives": [
+    "Map the typical PM transition journey from exploration to first role",
+    "Set realistic timeline expectations based on your starting point",
+    "Identify the key milestones that separate successful transitions",
+    "Understand what hiring managers actually look for at each stage"
+  ],
+
+  "sections": [
+    {
+      "section_id": "f2-s1",
+      "type": "text",
+      "title": "The Three Stages of PM Transition",
+      "content": "Every PM transition follows roughly the same path, though the timeline varies wildly based on background. Understanding where you are helps you focus on the right activities.\n\n**Stage 1: Exploration (1-3 months)**\nYou're figuring out if PM is actually right for you. Reading PM blogs, watching YouTube videos, talking to PMs. Most people stay here too long because it feels productive without being uncomfortable. The trap: consuming content without doing.\n\n**Stage 2: Active Preparation (2-6 months)**\nYou've committed. You're building skills through practice, not just reading. Mock interviews, side projects, structured learning. You're getting feedback and iterating. This is where real progress happens — and where most people give up because it's hard.\n\n**Stage 3: Job Search (2-4 months)**\nYou're actively applying, interviewing, and getting rejected. Yes, rejected. A lot. This stage is emotionally brutal but necessary. Each rejection teaches you something if you're paying attention.\n\nTotal realistic timeline: 6-12 months for career switchers. Faster if you have adjacent experience (engineering, design, analytics). Slower if you're switching from completely unrelated fields."
+    },
+    {
+      "section_id": "f2-s2",
+      "type": "text",
+      "title": "What Hiring Managers Actually Look For",
+      "content": "Forget the job descriptions with 47 bullet points. Here's what actually matters when hiring an Associate PM or PM with <3 years experience:\n\n**1. Product Thinking (40% of evaluation)**\nCan you break down a problem systematically? Do you think about users, not just features? Can you make tradeoffs and explain your reasoning? This is tested through product design and strategy questions.\n\n**2. Execution Credibility (30% of evaluation)**\nHave you actually shipped something? Built something? Led a project, even if small? Hiring managers want evidence you can get things done, not just think about them. Side projects, work experience, or even well-documented personal projects count.\n\n**3. Communication (20% of evaluation)**\nCan you explain complex things simply? Do you structure your thoughts clearly? Can you adjust your message for different audiences? Every PM interview is also a communication test.\n\n**4. Culture Fit (10% of evaluation)**\nDo you seem like someone the team would enjoy working with? Are you curious, humble, and energetic? This matters less than you think for getting the offer, but more than you think for enjoying the job.\n\nNotice what's NOT on this list: technical certifications, MBA from a top school, or years of experience in a specific industry. Those help at the margins but don't compensate for weak product thinking."
+    },
+    {
+      "section_id": "f2-s3",
+      "type": "text",
+      "title": "The Uncomfortable Truth About Timelines",
+      "content": "Let's get specific. Based on hundreds of PM transitions, here's what realistic timelines look like:\n\n**From Engineering (3-6 months)**\nYou already understand technical tradeoffs and have shipped products. Gap: user empathy, business thinking, communication polish. Focus: customer conversations, case practice, storytelling.\n\n**From Design (3-6 months)**\nYou already have user empathy and can articulate product vision. Gap: metrics reasoning, technical depth, prioritization frameworks. Focus: analytics, basic SQL, RICE/prioritization practice.\n\n**From Consulting/Strategy (4-8 months)**\nYou have structured thinking and presentation skills. Gap: execution credibility, technical understanding, user research. Focus: build something, talk to users, learn basic technical concepts.\n\n**From Operations/Business Roles (6-10 months)**\nYou understand business mechanics and have execution experience. Gap: product thinking, technical literacy, design sensibility. Focus: intensive product case practice, technical learning, portfolio building.\n\n**From Completely Unrelated Fields (8-14 months)**\nYou're starting from scratch. No shortcuts — you need to build everything: product thinking, technical literacy, execution evidence, and communication skills. Focus: treat this like a part-time second job.\n\nThese timelines assume 10-15 hours per week of focused preparation. Doing less stretches the timeline; doing more can compress it slightly but has diminishing returns."
+    },
+    {
+      "section_id": "f2-s4",
+      "type": "text",
+      "title": "Milestones That Matter",
+      "content": "How do you know you're making progress? Track these milestones:\n\n**Exploration Stage Complete:**\n- You can explain the PM role to someone else clearly\n- You've talked to at least 3 working PMs about their day-to-day\n- You've decided which archetype (Consumer/B2B/Technical) fits you best\n- You have a target company stage (startup/growth/big tech)\n\n**Active Preparation Milestones:**\n- You've completed a structured case practice (50+ product questions)\n- You've done 5+ mock interviews with feedback\n- You have something you can point to as 'I built/shipped this'\n- You can score 7+/10 on AI practice consistently\n- You've gotten at least one 'you're ready' signal from a mock interviewer\n\n**Job Search Milestones:**\n- You've applied to 30+ roles (quality applications, not spray and pray)\n- You've gotten past resume screen at 3+ companies\n- You've completed at least one full interview loop (even if rejected)\n- You've incorporated feedback from rejections into your preparation\n\nIf you're not hitting these milestones at the expected pace, something needs to change. Either your effort level, your focus areas, or your expectations."
+    }
+  ],
+
+  "worked_examples": [
+    {
+      "example_id": "f2-ex1",
+      "title": "A Realistic Transition Plan: Engineer → PM",
+      "scenario": "Priya is a software engineer with 3 years of experience at a mid-stage startup. She's been the go-to person for product questions on her team and wants to transition to PM. She can dedicate 12-15 hours per week outside work.",
+      "weak_approach": "Priya reads PM blogs for 3 months, takes an online PM certification, updates her resume to emphasize 'product mindset,' and starts applying to PM roles. She gets no responses. Frustrated, she gives up after 2 months of applications.",
+      "strong_approach": "Month 1-2: Priya talks to 5 PMs (3 at her company, 2 external) to understand what skills she's missing. Feedback: she's strong technically but hasn't done formal customer research. She volunteers to join 3 customer calls with her PM.\n\nMonth 2-3: She practices 30 product design questions using the CIRCLES framework. She records herself and notices she jumps to solutions too fast. She adjusts.\n\nMonth 3-4: She starts a side project — a simple tool that solves a problem she's seen at work. She does 10 user interviews and documents insights. She ships a working MVP.\n\nMonth 4-5: She does 8 mock interviews with other aspiring PMs and 2 paid mock interviews with experienced PMs. Feedback: her structure is good but she needs more depth on metrics. She focuses on metrics cases.\n\nMonth 5-6: She applies to 40 roles, tailoring each application. She gets 8 first rounds, 3 full loops, and 1 offer. Timeline: 6 months, exactly as expected for her background.",
+      "key_insight": "Structured preparation with feedback loops beats passive learning every time. Priya compressed her timeline by being intentional, not by working harder."
+    },
+    {
+      "example_id": "f2-ex2",
+      "title": "Adjusting Expectations: Non-Tech Background",
+      "scenario": "Rahul is a management consultant with 4 years of experience. He's great at structured thinking and presentations but has never worked in tech. He wants to become a PM at a growth-stage startup.",
+      "weak_approach": "Rahul assumes his consulting skills directly translate. He applies to PM roles immediately, emphasizing his 'strategic thinking.' Hiring managers see someone who's never built anything and doesn't understand technical constraints. Rejections pile up. He concludes PM hiring is 'broken.'",
+      "strong_approach": "Rahul acknowledges his gaps honestly. Technical literacy: he takes a basic SQL course and learns to read API documentation. Product experience: he joins a friend's early-stage startup part-time for 3 months, doing actual PM work (writing specs, talking to users, prioritizing backlog).\n\nHe practices 50+ product cases, specifically working on not over-structuring answers. He learns to show scrappiness, not just polish. He applies to growth-stage companies (not big tech) where his strategy background is valued but execution is still hands-on.\n\nTimeline: 10 months. He gets a PM role at a Series B fintech company that values his structured thinking but tested heavily for execution mindset.",
+      "key_insight": "Your current skills are advantages, not substitutes for missing ones. Build credibility in areas where you're weak instead of hoping your strengths will outweigh the gaps."
+    }
+  ],
+
+  "key_takeaways": [
+    {
+      "takeaway_id": "f2-t1",
+      "text": "Realistic PM transition takes 6-12 months for most career switchers. Shorter timelines are possible for engineers and designers; longer for non-tech backgrounds.",
+      "related_dimensions": ["problem_framing", "prioritization"]
+    },
+    {
+      "takeaway_id": "f2-t2",
+      "text": "Hiring managers care about product thinking (40%), execution evidence (30%), and communication (20%). Certifications and credentials matter far less than you think.",
+      "related_dimensions": ["communication_clarity", "structured_thinking"]
+    },
+    {
+      "takeaway_id": "f2-t3",
+      "text": "Track milestones, not just time spent. If you're not hitting preparation milestones at the expected pace, adjust your approach rather than just working harder.",
+      "related_dimensions": ["metrics_reasoning", "prioritization"]
+    }
+  ],
+
+  "practice_question_ids": ["f2-q01", "f2-q02", "f2-q03"],
+
+  "completion_criteria": {
+    "sections_read": true,
+    "examples_reviewed": true,
+    "practice_attempted": 1
+  },
+
+  "resources": [
+    {
+      "title": "How to Get Into Product Management",
+      "url": "https://www.lennysnewsletter.com/p/how-to-get-into-product-management",
+      "type": "article",
+      "description": "Lenny Rachitsky's comprehensive guide with advice from 50+ PMs who made the transition."
+    },
+    {
+      "title": "What Distinguishes the Top 1% of PMs",
+      "url": "https://www.lennysnewsletter.com/p/what-distinguishes-the-top-1-of-product",
+      "type": "article",
+      "description": "Insights on what separates great PMs from good ones, from hiring managers' perspective."
+    },
+    {
+      "title": "The PM Career Ladder at Different Companies",
+      "url": "https://www.levels.fyi/blog/product-manager-career-ladder.html",
+      "type": "article",
+      "description": "Understanding PM levels and expectations at top tech companies."
+    },
+    {
+      "title": "Cracking the PM Interview (Book)",
+      "url": "https://www.crackingthepminterview.com/",
+      "type": "book",
+      "description": "The classic guide by Gayle McDowell and Jackie Bavaro covering PM interview preparation."
+    },
+    {
+      "title": "Shreyas Doshi on PM Career Growth",
+      "url": "https://twitter.com/shreyas/status/1303150374124048384",
+      "type": "thread",
+      "description": "Shreyas Doshi's Twitter thread on IC vs. management track and PM career decisions."
+    },
+    {
+      "title": "Breaking into PM from Engineering/Design/Other",
+      "url": "https://www.sachinrekhi.com/how-to-break-into-product-management",
+      "type": "article",
+      "description": "Sachin Rekhi's advice on transitioning into PM from various backgrounds."
+    }
+  ],
+
+  "metadata": {
+    "author": "Shubh",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending"
+  }
+}

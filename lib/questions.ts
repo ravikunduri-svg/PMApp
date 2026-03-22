@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 
-// Data directory — one level up from the Next.js app
-const DATA_DIR = path.join(process.cwd(), '..')
+// Data directory — bundled inside the app for deployment compatibility
+const DATA_DIR = path.join(process.cwd(), 'data')
 
 export type Dimension =
   | 'problem_framing'

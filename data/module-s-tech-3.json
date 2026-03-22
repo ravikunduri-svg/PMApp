@@ -1,0 +1,134 @@
+{
+  "module_id": "s-tech-3",
+  "title": "Engineering Communication: Specs, Diagrams, and Collaboration",
+  "description": "Learn how to communicate effectively with engineers. Write technical specs that engineers want to read, understand architecture diagrams, and build the collaboration skills that make technical PMs effective.",
+  "archetype": "technical",
+  "sequence_order": 3,
+  "estimated_duration_minutes": 45,
+  "prerequisite_modules": ["s-tech-1", "s-tech-2"],
+  
+  "learning_objectives": [
+    "Write technical specs that reduce ambiguity and enable autonomous engineering work",
+    "Read and contribute to architecture diagrams and technical discussions",
+    "Build effective PM-engineering collaboration patterns",
+    "Navigate technical disagreements productively"
+  ],
+
+  "sections": [
+    {
+      "section_id": "stech3-s1",
+      "type": "text",
+      "title": "Writing Technical Specs That Engineers Actually Use",
+      "content": "A technical spec is a contract between PM and engineering. Good specs reduce back-and-forth, prevent misunderstandings, and help engineers work autonomously. Bad specs get ignored.\n\n**What belongs in a PM's technical spec:**\n\n**1. Problem Statement (Why)**\n- What problem are we solving?\n- Who experiences this problem?\n- What's the impact of not solving it?\n- What evidence do we have (data, user feedback)?\n\n**2. Goals and Non-Goals (Scope)**\n- What does success look like? (Measurable)\n- What are we explicitly NOT doing? (Prevents scope creep)\n- What are the constraints? (Timeline, budget, dependencies)\n\n**3. User Stories / Use Cases (What)**\n- Walk through the user flow step-by-step\n- Include edge cases and error states\n- Specify exact copy, validation rules, and behaviors\n- Use screenshots, mockups, or wireframes\n\n**4. Requirements (Detailed What)**\n- Functional requirements: What the system must do\n- Non-functional requirements: Performance, security, scalability\n- Data requirements: What data is needed, where it comes from\n- Integration requirements: APIs, third-party services\n\n**5. Open Questions (Acknowledge Unknowns)**\n- What decisions need engineering input?\n- What technical approaches are being considered?\n- What do you not know yet?\n\n**What does NOT belong in a PM's spec:**\n- Implementation details (let engineers decide how)\n- Database schema (unless you're a technical PM deeply involved)\n- Code architecture (that's engineering's domain)\n\n**The right level of detail:**\n\nToo vague: 'Add a search feature.'\n\nToo detailed: 'Use Elasticsearch with a BM25 ranking algorithm and a 50ms timeout.'\n\nJust right: 'Users should be able to search products by name and description. Results should return in < 2 seconds. Display top 20 results with product image, name, price. Show 'No results found' for empty searches with suggested categories.'"
+    },
+    {
+      "section_id": "stech3-s2",
+      "type": "text",
+      "title": "Reading and Contributing to Architecture Diagrams",
+      "content": "Architecture diagrams are the visual language of technical systems. You don't need to create them from scratch, but you should be able to read them and ask good questions.\n\n**Common diagram types:**\n\n**System Context Diagram**\nShows your system as a box and all the external systems/users it interacts with. Birds-eye view.\n\nQuestions to ask: 'What external dependencies do we have? What happens if [external system] goes down?'\n\n**Container Diagram**\nZooms into your system. Shows major components: web app, mobile app, API server, database, message queue.\n\nQuestions to ask: 'Which container handles this feature? How do they communicate?'\n\n**Sequence Diagram**\nShows the flow of a specific operation over time. User clicks button → Frontend calls API → API calls database → Response flows back.\n\nQuestions to ask: 'What's the latency of this flow? What happens if step 3 fails?'\n\n**Data Flow Diagram**\nShows how data moves through the system. User input → Validation → Processing → Storage → Display.\n\nQuestions to ask: 'Where is data transformed? Where could data be lost?'\n\n**Reading diagrams effectively:**\n\n1. **Start with context.** What's the purpose of this diagram? What question is it answering?\n\n2. **Identify the boundaries.** What's inside our system vs. external?\n\n3. **Follow the arrows.** Data flows, control flows, dependencies. Arrows tell the story.\n\n4. **Look for single points of failure.** Is there one component everything depends on?\n\n5. **Ask about the unhappy path.** Diagrams often show success. Ask 'What happens when X fails?'\n\n**Contributing to technical discussions:**\n\nYou don't need to propose the architecture. But you can add value by:\n\n- Bringing user context: 'Users will do X much more often than Y, does that change the design?'\n- Asking about tradeoffs: 'What are we giving up with this approach?'\n- Clarifying requirements: 'Do we need real-time or is 5-minute delay acceptable?'\n- Raising edge cases: 'What happens if a user does this in the middle of that?'"
+    },
+    {
+      "section_id": "stech3-s3",
+      "type": "text",
+      "title": "PM-Engineering Collaboration Patterns",
+      "content": "The PM-engineering relationship is the most important working relationship for product delivery. Great collaboration accelerates everything; poor collaboration creates friction and frustration.\n\n**Collaboration anti-patterns (what to avoid):**\n\n**The Ticket Machine:** PM writes specs, throws them over the wall, engineers build exactly what's written, nobody talks. No collaboration, no shared understanding.\n\n**The Micromanager:** PM tells engineers how to implement, reviews code, second-guesses technical decisions. Engineers feel distrusted.\n\n**The Absent PM:** PM defines high-level vision but isn't available for questions. Engineers make assumptions, PM is surprised by the result.\n\n**The Yes-Person:** PM agrees to every engineering push-back, even when it compromises user value. Product gets worse to avoid conflict.\n\n**Collaboration patterns that work:**\n\n**1. Shared problem context**\nBring engineers into user research. Share the 'why' behind features, not just the 'what.' When engineers understand the problem, they often find better solutions.\n\n**2. Early technical input**\nInvolve engineering before specs are finalized. 'I'm thinking about this problem. What approaches come to mind? What's hard about this?' Engineering input shapes better specs.\n\n**3. Negotiated scope**\nInstead of 'build this,' try 'here's the user problem and ideal solution. Given constraints, what's the best version we can ship?' Collaborative scoping respects engineering expertise.\n\n**4. Explicit decision rights**\nClarify who decides what. PM owns: user problems, prioritization, success metrics. Engineering owns: technical approach, code quality, system design. Overlap areas require discussion.\n\n**5. Blameless retrospectives**\nWhen things go wrong, focus on systems, not individuals. 'What can we change so this doesn't happen again?' builds trust.\n\n**Building trust:**\n\n- Deliver on your commitments (specs on time, decisions when promised)\n- Admit when you're wrong or don't know\n- Shield the team from organizational noise\n- Celebrate engineering wins, not just product wins\n- Be present — attend standups, be available for questions"
+    },
+    {
+      "section_id": "stech3-s4",
+      "type": "text",
+      "title": "Navigating Technical Disagreements",
+      "content": "You will disagree with engineers. They'll say something can't be done; you'll think it can. They'll want to refactor; you'll want features. How you handle these disagreements defines your effectiveness.\n\n**Disagreement types and responses:**\n\n**'That's technically impossible'**\n\nUsually means 'that's very hard' or 'that's not how we'd do it.' Dig deeper:\n- 'Help me understand the constraints. What makes this hard?'\n- 'Are there alternative approaches that achieve similar outcomes?'\n- 'What would we need (time, resources) to make it possible?'\n\nSometimes it really is impossible. Accept that. Sometimes there's a creative solution. Find it together.\n\n**'That's too much technical debt'**\n\nEngineers see code quality you don't. But product needs matter too.\n- 'Can you help me understand the risk? What breaks if we don't address this?'\n- 'Is there a middle ground — partial cleanup that reduces risk without full refactor?'\n- 'Can we timebox debt work alongside feature work?'\n\n**'That estimate is too long'**\n\nYou think it's a 2-week project; they say 6 weeks. Don't negotiate blindly.\n- 'Walk me through the work. What are the major chunks?'\n- 'What's driving the estimate? Is it unknowns, complexity, dependencies?'\n- 'Is there a reduced scope that's meaningfully faster?'\n\nOften, discussing the estimate reveals scope misunderstandings.\n\n**'Users don't really need that'**\n\nEngineers have opinions about users too. Sometimes they're right.\n- 'What makes you think that? Have you seen user behavior that suggests otherwise?'\n- 'Here's the evidence I'm basing this on: [data, research, feedback].'\n- 'You might be right. Let's test it and see.'\n\n**General principles:**\n\n1. **Assume good intent.** Engineers aren't lazy or obstructionist. They have reasons.\n\n2. **Seek understanding before agreement.** You can't resolve a disagreement you don't understand.\n\n3. **Separate positions from interests.** 'I want X' vs. 'I need Y outcome.' Often multiple positions serve the same interest.\n\n4. **Use data when available.** Opinions are debatable; metrics are harder to argue with.\n\n5. **Know when to escalate.** If you can't resolve it and the decision is important, involve engineering leadership. Don't stew in unresolved conflict."
+    }
+  ],
+
+  "worked_examples": [
+    {
+      "example_id": "stech3-ex1",
+      "title": "Writing a Spec for a Notification Feature",
+      "scenario": "You need to write a spec for a new feature: email notifications when a user's saved search has new results. Write the key sections.",
+      "weak_approach": "**Feature:** Email notifications for saved searches.\n\n**Description:** When there are new results for a user's saved search, send them an email.\n\n**Requirements:**\n- Send emails\n- Include new results\n- Users can unsubscribe\n\nThis is too vague. Engineers will have dozens of questions.",
+      "strong_approach": "**Problem Statement:**\nUsers save searches to track products they're interested in (e.g., 'Nike shoes under ₹5000'). Currently, they must manually re-run searches to see new results. 40% of saved searches are never re-run after creation. Users miss relevant new products.\n\n**Goals:**\n- Increase saved search engagement by 30%\n- Drive 10% of email recipients back to the app within 24 hours\n\n**Non-Goals:**\n- Real-time notifications (daily digest is sufficient for V1)\n- Push notifications (separate project)\n- SMS notifications\n\n**User Flow:**\n1. User has an existing saved search\n2. At 8 AM local time, system checks for new results since last check\n3. If new results exist (≥1), send email\n4. Email contains: search name, number of new results, top 3 results with images, CTA to view all\n5. User clicks → lands on saved search results page with 'New' badges\n\n**Edge Cases:**\n- User has 10 saved searches with new results → Send ONE email with all searches, not 10 emails\n- User unsubscribed from marketing emails → Still send (transactional), unless they unsubscribe from this specific notification type\n- Saved search has 500 new results → Show count, not all 500\n- User deleted saved search between check and send → Don't send, fail silently\n\n**Requirements:**\n- Emails sent between 8-9 AM user's local timezone\n- Unsubscribe link in every email (one-click, no login required)\n- Track: emails sent, opened, clicked, unsubscribed\n- Email template: [link to Figma]\n\n**Open Questions:**\n- Should we batch multiple saved searches or send separate emails? (Recommend: batch)\n- What's the minimum number of new results to trigger email? (Recommend: 1)\n- How do we handle timezone for users who haven't set one? (Suggest: default to app-detected timezone)",
+      "key_insight": "Good specs answer questions before they're asked. Edge cases, specific numbers, and explicit non-goals prevent misunderstandings."
+    },
+    {
+      "example_id": "stech3-ex2",
+      "title": "Resolving a Technical Disagreement",
+      "scenario": "You want to add a feature that lets users upload videos. Engineering says video processing is complex and suggests a 3-month timeline. You think it should take 6 weeks. How do you resolve this?",
+      "weak_approach": "Push back: 'Other companies do video uploads. It can't be that hard. Let's set a 6-week deadline and figure it out.' This dismisses engineering expertise and creates adversarial dynamics.",
+      "strong_approach": "**Step 1: Understand the estimate**\n\n'Walk me through the 3-month estimate. What are the major work items?'\n\nEngineering response:\n- Video upload handling (2 weeks)\n- Transcoding to multiple resolutions (3 weeks)\n- Storage and CDN integration (2 weeks)\n- Playback player with quality switching (2 weeks)\n- Thumbnail generation (1 week)\n- Moderation/content safety (2 weeks)\n- Testing and edge cases (2 weeks)\n\n**Step 2: Identify what's essential vs. nice-to-have**\n\n'For launch, what's the minimum viable version?'\n\nDiscussion reveals:\n- Multi-resolution transcoding is ideal but not essential for V1\n- Content moderation is legally required\n- Custom player might be overkill — could use standard HTML5 player\n\n**Step 3: Negotiate scope, not timeline**\n\n'What if we did: single resolution transcoding, standard player, and required moderation — but deferred quality switching and custom player to V2?'\n\nEngineering: 'That's probably 6-7 weeks.'\n\n**Step 4: Align on tradeoffs**\n\nDocument: V1 launches in 7 weeks with single resolution. V2 adds quality switching based on user feedback. Both parties agree.\n\n**Step 5: Monitor and adjust**\n\nIf at week 4 you're behind, have an honest conversation about scope or timeline adjustment — don't pretend everything's fine.",
+      "key_insight": "Timeline disagreements are usually scope disagreements in disguise. Don't negotiate time; negotiate scope. Find the smallest thing that delivers value and ship that first."
+    }
+  ],
+
+  "key_takeaways": [
+    {
+      "takeaway_id": "stech3-t1",
+      "text": "Good specs answer questions before they're asked. Include edge cases, explicit non-goals, and specific numbers. Vague specs create endless back-and-forth.",
+      "related_dimensions": ["communication_clarity", "structured_thinking"]
+    },
+    {
+      "takeaway_id": "stech3-t2",
+      "text": "PM-engineering collaboration works when both sides understand each other's context. Bring engineers into the 'why'; seek engineering input on the 'how' early.",
+      "related_dimensions": ["communication_clarity", "user_empathy"]
+    },
+    {
+      "takeaway_id": "stech3-t3",
+      "text": "Timeline disagreements are usually scope disagreements. Don't negotiate time — negotiate scope. Find the smallest valuable thing and ship that first.",
+      "related_dimensions": ["prioritization", "communication_clarity"]
+    }
+  ],
+
+  "practice_question_ids": ["tech-q11", "tech-q12", "tech-q13"],
+
+  "completion_criteria": {
+    "sections_read": true,
+    "examples_reviewed": true,
+    "practice_attempted": 1
+  },
+
+  "resources": [
+    {
+      "title": "How to Write a Product Spec",
+      "url": "https://www.lennysnewsletter.com/p/how-to-write-a-great-product-spec",
+      "type": "article",
+      "description": "Lenny Rachitsky's guide with templates and examples from top PMs."
+    },
+    {
+      "title": "Working with Engineers as a PM",
+      "url": "https://www.lennysnewsletter.com/p/working-with-engineers",
+      "type": "article",
+      "description": "How to build productive PM-engineering relationships with trust."
+    },
+    {
+      "title": "Agile Product Management with Scrum (Book)",
+      "url": "https://www.romanpichler.com/romans-books/agile-product-management-with-scrum/",
+      "type": "book",
+      "description": "Roman Pichler's guide to the PM role in agile/scrum environments."
+    },
+    {
+      "title": "How to Read Architecture Diagrams",
+      "url": "https://c4model.com/",
+      "type": "guide",
+      "description": "The C4 model for visualizing software architecture at different levels."
+    },
+    {
+      "title": "The Art of the Technical Spec",
+      "url": "https://blog.pragmaticengineer.com/how-to-write-a-technical-spec/",
+      "type": "article",
+      "description": "Gergely Orosz's guide on technical specs from an engineering perspective."
+    },
+    {
+      "title": "Disagree and Commit",
+      "url": "https://www.inc.com/jeff-bezos/amazon-founder-jeff-bezos-explains-disagree-and-commit-principle.html",
+      "type": "article",
+      "description": "Jeff Bezos explaining the 'disagree and commit' principle for team decisions."
+    }
+  ],
+
+  "metadata": {
+    "author": "Praveen",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending"
+  }
+}

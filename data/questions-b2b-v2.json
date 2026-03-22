@@ -1,0 +1,1747 @@
+{
+  "question_bank_id": "questions-b2b",
+  "description": "90 B2B/Enterprise PM practice questions: 30 per module (s-b2b-1, s-b2b-2, s-b2b-3). Approximately 1/3 MCQs.",
+  "archetype": "b2b",
+  "total_questions": 90,
+
+  "questions": [
+    {
+      "id": "b2b-m1-q01",
+      "module_id": "s-b2b-1",
+      "text": "Your B2B SaaS product has an NRR of 95%. The CEO asks you to get it to 110%. What's your approach?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "structured_thinking", "prioritization"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Strong answer segments NRR into components: gross retention (reducing churn) and expansion (increasing revenue from existing customers). Diagnose: Is the gap driven by churn (customers leaving) or lack of expansion (customers not growing)? Then propose specific product initiatives. For churn: improve onboarding, increase feature adoption, reduce time-to-value. For expansion: seat-based pricing incentives, premium feature tier, usage-based upsells. Quantify: what NRR improvement does each initiative yield?",
+      "scoring_notes": {
+        "weak_signals": ["Jumps to solutions without diagnosis", "Doesn't understand NRR components", "No quantification of impact", "Generic retention tactics"],
+        "strong_signals": ["Decomposes NRR correctly", "Segments churn vs. expansion opportunity", "Proposes measurable initiatives", "Considers product-led vs. sales-led expansion"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q02",
+      "module_id": "s-b2b-1",
+      "text": "You're a PM at an enterprise software company. Your CAC payback period is 18 months. Your CFO says it needs to be under 12 months. What levers can product pull?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["metrics_reasoning", "problem_framing", "structured_thinking"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "CAC payback = CAC / (ARPA × Gross Margin). Product can influence: (1) Reduce effective CAC through product-led growth (self-serve trial, referral loops, freemium funnel). (2) Increase ARPA through expansion features, better packaging, faster time-to-upsell. (3) Improve gross margin through product efficiency (automation, lower support costs). Quantify each lever: which has the biggest impact? Consider: shorter sales cycle through better demo/trial experience also reduces CAC.",
+      "scoring_notes": {
+        "weak_signals": ["Only suggests marketing cost cuts (not product)", "Doesn't understand formula components", "No prioritization among levers", "Ignores gross margin as a lever"],
+        "strong_signals": ["Breaks down formula correctly", "Identifies product-specific levers for each component", "Prioritizes by impact and effort", "Acknowledges tradeoffs (e.g., freemium might lower ARPA)"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q03",
+      "module_id": "s-b2b-1",
+      "text": "Your product has 85% logo retention but only 75% gross revenue retention. What does this tell you?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "The gap indicates contraction among retained customers — they're staying but spending less.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses logo vs. revenue retention"],
+        "strong_signals": ["Correctly identifies contraction as the gap driver"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Customers are churning but being replaced by higher-value customers", "is_correct": false, "explanation": "This would result in logo retention being lower than revenue retention, not higher."},
+        {"option": "B", "text": "Retained customers are contracting — downgrades, seat reductions, or reduced usage", "is_correct": true, "explanation": "Correct. 85% of customers stay (logo retention) but they spend less (75% revenue retention), indicating contraction."},
+        {"option": "C", "text": "New customer acquisition is declining", "is_correct": false, "explanation": "Retention metrics only measure existing customers, not new acquisition."},
+        {"option": "D", "text": "The pricing model needs to be changed to usage-based", "is_correct": false, "explanation": "Pricing might be a cause, but the metric gap specifically indicates contraction behavior."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q04",
+      "module_id": "s-b2b-1",
+      "text": "What is the formula for Net Revenue Retention (NRR)?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "NRR = (Starting MRR + Expansion - Contraction - Churn) / Starting MRR × 100",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the formula"],
+        "strong_signals": ["Understands all components"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "(Starting MRR + New MRR) / Starting MRR × 100", "is_correct": false, "explanation": "This includes new customers. NRR only measures existing customers."},
+        {"option": "B", "text": "(Starting MRR + Expansion - Contraction - Churn) / Starting MRR × 100", "is_correct": true, "explanation": "Correct. NRR measures revenue from existing customers including expansion and contraction."},
+        {"option": "C", "text": "Ending MRR / Starting MRR × 100", "is_correct": false, "explanation": "This would include new customers in Ending MRR, which isn't NRR."},
+        {"option": "D", "text": "(Retained Customers / Total Customers) × 100", "is_correct": false, "explanation": "This is logo retention, not revenue retention."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q05",
+      "module_id": "s-b2b-1",
+      "text": "Your enterprise product is launching a usage-based pricing model alongside the existing per-seat model. What metrics would you track to evaluate success?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["metrics_reasoning", "structured_thinking", "problem_framing"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Track: (1) Revenue metrics — ARPA comparison between models, revenue predictability (variance), expansion revenue rate. (2) Customer behavior — adoption rate of usage model, usage patterns, overage frequency. (3) Acquisition impact — conversion rates by pricing model, sales cycle length, objection frequency. (4) Retention impact — churn rate by model, NRR comparison, downgrade frequency. (5) Operational metrics — billing complexity, support ticket volume related to billing. Success = higher NRR, lower churn, without sacrificing revenue predictability unacceptably.",
+      "scoring_notes": {
+        "weak_signals": ["Only tracks revenue", "Doesn't consider customer experience impact", "Ignores comparison between models", "No leading indicators"],
+        "strong_signals": ["Comprehensive metric framework", "Includes both leading and lagging indicators", "Considers customer experience and operational impact", "Defines what success looks like upfront"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q06",
+      "module_id": "s-b2b-1",
+      "text": "Your B2B product has a 30-day free trial. Conversion rate is 15%. What product changes would you test to improve it?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "user_empathy", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "First diagnose: Where do trial users drop off? (Signup → activation → engagement → conversion). Then propose tests. Activation: improve onboarding flow, reduce time-to-first-value, add templates/quick-starts. Engagement: in-app nudges, email sequences, success milestones. Conversion: trial length optimization, soft paywalls on premium features, personalized upsell timing based on usage signals. Consider: 15% might already be good for the segment — compare to benchmarks.",
+      "scoring_notes": {
+        "weak_signals": ["Skips diagnosis", "Generic suggestions without trial context", "Doesn't consider trial length", "No mention of segmentation"],
+        "strong_signals": ["Diagnoses funnel before proposing solutions", "Tests mapped to specific funnel stages", "Considers whether 15% is actually a problem", "Proposes measurement approach for tests"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q07",
+      "module_id": "s-b2b-1",
+      "text": "An NRR of 120% means what?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "NRR of 120% means existing customers are generating 20% more revenue than last year, even without any new customers.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand NRR interpretation"],
+        "strong_signals": ["Clear understanding of what >100% NRR means"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "You acquired 20% more customers this year", "is_correct": false, "explanation": "NRR excludes new customers. It only measures existing customer revenue."},
+        {"option": "B", "text": "Existing customers generate 20% more revenue than last year, even without new customers", "is_correct": true, "explanation": "Correct. 120% NRR means expansion from existing customers exceeds churn and contraction by 20%."},
+        {"option": "C", "text": "Your churn rate is 20%", "is_correct": false, "explanation": "This is backwards. High NRR indicates low net churn (expansion exceeds losses)."},
+        {"option": "D", "text": "You need to discount prices by 20% to retain customers", "is_correct": false, "explanation": "NRR is a measurement, not a recommendation. 120% NRR is excellent."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q08",
+      "module_id": "s-b2b-1",
+      "text": "Your company's LTV:CAC ratio is 2:1. What does this indicate and what would you recommend?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "problem_framing", "prioritization"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "2:1 LTV:CAC is below the healthy benchmark of 3:1+. It means you're spending too much to acquire customers relative to their lifetime value. Diagnose: Is CAC too high (inefficient acquisition) or LTV too low (churn, low ARPA, low margin)? Product levers: Improve retention to increase LTV, add expansion paths, reduce support costs to improve margin. Or: improve trial conversion to reduce effective CAC. Recommendation depends on diagnosis — if churn is high, focus on product; if sales cycles are long, focus on product-led growth.",
+      "scoring_notes": {
+        "weak_signals": ["Thinks 2:1 is good", "Only recommends cutting marketing spend", "No product-specific recommendations", "Doesn't diagnose root cause"],
+        "strong_signals": ["Recognizes 2:1 is below benchmark", "Identifies both LTV and CAC levers", "Proposes product-specific improvements", "Recommends diagnosis before action"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q09",
+      "module_id": "s-b2b-1",
+      "text": "What's the difference between MRR and ARR?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "MRR = Monthly Recurring Revenue. ARR = Annual Recurring Revenue = MRR × 12.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses the two"],
+        "strong_signals": ["Simple, clear understanding"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "MRR is for monthly contracts; ARR is for annual contracts", "is_correct": false, "explanation": "Both measure recurring revenue. MRR normalizes all revenue to monthly; ARR annualizes it."},
+        {"option": "B", "text": "MRR = Monthly Recurring Revenue; ARR = MRR × 12", "is_correct": true, "explanation": "Correct. ARR is simply the annualized version of MRR."},
+        {"option": "C", "text": "ARR includes one-time fees; MRR doesn't", "is_correct": false, "explanation": "Neither includes one-time fees. Both measure recurring revenue only."},
+        {"option": "D", "text": "They're the same thing; just different terminology", "is_correct": false, "explanation": "They're different scales. MRR is monthly; ARR is annual (12x MRR)."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q10",
+      "module_id": "s-b2b-1",
+      "text": "Your SaaS product has 70% gross retention but 110% NRR. How is this possible, and what does it tell you?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["metrics_reasoning", "structured_thinking"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "This means 30% of customers churn each year, but the remaining 70% expand their spending so much that it more than compensates. Calculation example: Start with $100. Lose 30% ($30). Remaining $70 expands by ~57% to reach $110. This pattern indicates: (1) You have a segmentation problem — wrong customers are signing up. (2) Product-market fit is strong for the right customers. (3) Focus should be on better qualification at acquisition, not just retention. The customers who stay LOVE you; the ones who leave were never a fit.",
+      "scoring_notes": {
+        "weak_signals": ["Says this is impossible", "Doesn't understand how expansion can exceed churn", "No strategic implications"],
+        "strong_signals": ["Explains the math correctly", "Identifies segmentation as the issue", "Recommends improving acquisition quality", "Sees this as both a problem and an opportunity"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q11",
+      "module_id": "s-b2b-1",
+      "text": "What does 'negative churn' mean in SaaS metrics?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Negative churn means expansion revenue from existing customers exceeds lost revenue from churned customers.",
+      "scoring_notes": {
+        "weak_signals": ["Thinks it's impossible or an error"],
+        "strong_signals": ["Understands expansion can exceed churn"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Customers are returning after previously churning", "is_correct": false, "explanation": "Reactivation is tracked separately. Negative churn refers to net revenue from existing customers."},
+        {"option": "B", "text": "Expansion revenue from existing customers exceeds lost revenue from churn", "is_correct": true, "explanation": "Correct. When NRR > 100%, you have 'negative churn' — existing customers grow faster than they leave."},
+        {"option": "C", "text": "Your churn rate is negative, which is a calculation error", "is_correct": false, "explanation": "It's not an error. It's a desirable state where expansion exceeds losses."},
+        {"option": "D", "text": "Customers are actively recommending your product to others", "is_correct": false, "explanation": "That's referral, not negative churn. Negative churn is about revenue from existing customers."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q12",
+      "module_id": "s-b2b-1",
+      "text": "You're analyzing churn and find that 60% of churned customers never completed onboarding. What metric should you focus on improving?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning", "problem_framing"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Activation rate — the percentage of new customers who complete key onboarding milestones.",
+      "scoring_notes": {
+        "weak_signals": ["Focuses on general retention without targeting root cause"],
+        "strong_signals": ["Identifies activation as the lever for this specific churn pattern"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Trial conversion rate", "is_correct": false, "explanation": "These are paying customers who churned, not trial users. Conversion already happened."},
+        {"option": "B", "text": "NPS score", "is_correct": false, "explanation": "NPS measures satisfaction of active users. These users never got active enough to measure."},
+        {"option": "C", "text": "Activation rate", "is_correct": true, "explanation": "Correct. If users churn before completing onboarding, the problem is activation, not the core product."},
+        {"option": "D", "text": "Monthly active users (MAU)", "is_correct": false, "explanation": "MAU measures engagement of active users. The problem here is getting users to activate at all."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q13",
+      "module_id": "s-b2b-1",
+      "text": "Your enterprise product charges per seat. Customers are complaining about paying for unused seats. What pricing changes might you consider, and what are the tradeoffs?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "user_empathy", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Options: (1) Active seat pricing — only charge for users who log in. Tradeoff: revenue volatility, customers might reduce usage to save money. (2) Tiered bundles — 10/25/50 seat packages. Tradeoff: simpler but less precise; might overpay or underpay. (3) Usage-based hybrid — base platform fee plus per-active-user. Tradeoff: complexity in billing, unpredictable costs for customers. (4) Self-serve seat management — let admins easily add/remove seats monthly. Tradeoff: might accelerate downgrades. Consider: What's the real complaint? Paying for unused seats or lack of control? Different solutions for different root causes.",
+      "scoring_notes": {
+        "weak_signals": ["Only proposes one option", "Ignores revenue impact", "Doesn't consider customer psychology", "No tradeoff analysis"],
+        "strong_signals": ["Multiple options with tradeoffs", "Considers revenue predictability", "Addresses underlying customer concern", "Recommends investigation before changing"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q14",
+      "module_id": "s-b2b-1",
+      "text": "What's typically considered a 'healthy' LTV:CAC ratio for B2B SaaS?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "3:1 or higher is considered healthy. Below 3:1 suggests inefficient unit economics.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the benchmark"],
+        "strong_signals": ["Knows the 3:1 benchmark and context"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "1:1 — break even is the goal", "is_correct": false, "explanation": "1:1 means no profit margin on acquisition. Not sustainable."},
+        {"option": "B", "text": "3:1 or higher", "is_correct": true, "explanation": "Correct. 3:1 is the standard benchmark. Higher can mean underinvesting in growth."},
+        {"option": "C", "text": "10:1 or higher — maximize lifetime value", "is_correct": false, "explanation": "10:1 might indicate underinvestment in growth. You're leaving market share on the table."},
+        {"option": "D", "text": "There's no standard — it depends entirely on the industry", "is_correct": false, "explanation": "While context matters, 3:1 is a widely accepted B2B SaaS benchmark."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q15",
+      "module_id": "s-b2b-1",
+      "text": "Your product's activation rate is 40% (60% of new signups never complete onboarding). Design a 4-week experiment to improve this.",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "metrics_reasoning", "user_empathy"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Week 1: Diagnose. Where exactly do users drop off? (Step 1 → Step 2 → Step 3). Interview 5 churned users. Review session recordings. Identify the biggest drop-off point. Week 2: Hypothesize and design. Based on diagnosis, create 2-3 hypotheses. Design low-effort tests (A/B onboarding flows, different first-run experiences). Week 3: Run tests. A/B test with 50/50 split. Track micro-conversions at each step. Week 4: Analyze and iterate. Which variant won? What did we learn? Plan next experiment. Success metric: Improve activation from 40% to 50%+ (25% relative improvement).",
+      "scoring_notes": {
+        "weak_signals": ["Jumps to solutions without diagnosis", "No measurement plan", "Unrealistic scope for 4 weeks", "No control group"],
+        "strong_signals": ["Diagnosis before solutions", "Specific experiment design", "Clear success metrics", "Realistic scope"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q16",
+      "module_id": "s-b2b-1",
+      "text": "Which of these is a leading indicator (predicts future outcomes) rather than a lagging indicator (measures past outcomes)?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Product engagement (feature usage, login frequency) predicts future churn/retention.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses leading and lagging indicators"],
+        "strong_signals": ["Understands that behavior precedes outcomes"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Monthly churn rate", "is_correct": false, "explanation": "Churn is a lagging indicator — it measures customers who already left."},
+        {"option": "B", "text": "Quarterly ARR", "is_correct": false, "explanation": "ARR is a lagging indicator — it measures revenue already booked."},
+        {"option": "C", "text": "Product engagement (feature usage, login frequency)", "is_correct": true, "explanation": "Correct. Engagement patterns predict future retention/churn before it happens."},
+        {"option": "D", "text": "Customer support tickets resolved", "is_correct": false, "explanation": "This is a lagging indicator of past support activity."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q17",
+      "module_id": "s-b2b-1",
+      "text": "Your product has strong acquisition (1000 new signups/month) but only 5% become paying customers. Where would you focus product efforts?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "prioritization", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "5% conversion suggests a problem in the trial-to-paid journey. AARRR framework: strong Acquisition, weak Activation/Revenue. Focus areas: (1) Activation — are users reaching the 'aha moment'? What's the time-to-first-value? (2) Qualification — are the right people signing up? If 95% are unqualified leads, acquisition might be the problem. (3) Pricing — is there friction at the payment step specifically, or value not demonstrated? Diagnose by: funnel analysis (where drop-off occurs), user interviews with non-converters, cohort analysis by source. Prioritize the biggest leak.",
+      "scoring_notes": {
+        "weak_signals": ["Suggests more acquisition", "No diagnostic approach", "Generic conversion advice", "Ignores qualification question"],
+        "strong_signals": ["Uses AARRR to pinpoint stage", "Considers lead quality vs. product issues", "Proposes diagnostic steps", "Prioritizes based on data"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q18",
+      "module_id": "s-b2b-1",
+      "text": "CAC payback period measures what?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "How long it takes to recover the cost of acquiring a customer through their revenue.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand the concept"],
+        "strong_signals": ["Clear understanding of payback timing"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "How long customers stay before churning", "is_correct": false, "explanation": "That's customer lifetime, not CAC payback."},
+        {"option": "B", "text": "How long it takes to recover acquisition cost through customer revenue", "is_correct": true, "explanation": "Correct. CAC payback = months until the customer's contribution equals CAC."},
+        {"option": "C", "text": "How quickly you can acquire new customers", "is_correct": false, "explanation": "That's acquisition velocity, not payback period."},
+        {"option": "D", "text": "The percentage of marketing spend that converts to revenue", "is_correct": false, "explanation": "That's more like marketing ROI, not payback period."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q19",
+      "module_id": "s-b2b-1",
+      "text": "Your B2B product has low NPS (score of 20) but high retention (95% annual). How do you explain this, and what should you do?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "problem_framing", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Low NPS + high retention suggests customers are 'locked in' but not happy. Possible causes: high switching costs, no viable alternatives, contractual obligations, sunk cost (data, integrations). This is a risk: customers will leave when alternatives appear or contracts expire. Actions: (1) Identify the 'passive' and 'detractor' segments — what's frustrating them? (2) Prioritize their feedback even though they're not churning yet. (3) Improve experience before competition intensifies. (4) Watch for 'silently dissatisfied' churn — sudden exits at renewal. Don't celebrate high retention if it's just lock-in.",
+      "scoring_notes": {
+        "weak_signals": ["Ignores the tension", "Assumes retention means product is good", "No concern about future risk", "Doesn't investigate NPS drivers"],
+        "strong_signals": ["Recognizes lock-in vs. satisfaction difference", "Identifies future churn risk", "Proposes investigating detractor feedback", "Takes proactive improvement approach"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q20",
+      "module_id": "s-b2b-1",
+      "text": "What does 'expansion MRR' specifically refer to?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Additional revenue from existing customers through upsells, cross-sells, or seat additions.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with new customer revenue"],
+        "strong_signals": ["Clear understanding of expansion from existing base"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Revenue from new customers acquired this month", "is_correct": false, "explanation": "That's new MRR, not expansion MRR."},
+        {"option": "B", "text": "Additional revenue from existing customers (upsells, seat additions)", "is_correct": true, "explanation": "Correct. Expansion MRR is revenue growth from your existing customer base."},
+        {"option": "C", "text": "Revenue from expanding into new markets", "is_correct": false, "explanation": "That's geographic expansion, not expansion MRR."},
+        {"option": "D", "text": "The MRR increase from price increases", "is_correct": false, "explanation": "Price increases on existing contracts are sometimes counted separately from expansion."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q21",
+      "module_id": "s-b2b-1",
+      "text": "Your SaaS product's MRR is $100K. You have 5% monthly churn and 3% monthly expansion. What's your net MRR change each month?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["metrics_reasoning", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Churn: $100K × 5% = $5K lost. Expansion: $100K × 3% = $3K gained. Net change: -$5K + $3K = -$2K per month (negative). This gives monthly NRR of 98% (or ~78% annually if compounded). The product is shrinking from the existing base. To grow, new MRR must exceed $2K/month, or churn must decrease / expansion must increase. Note: this excludes new customer acquisition.",
+      "scoring_notes": {
+        "weak_signals": ["Gets math wrong", "Forgets to net the two", "Doesn't recognize this is concerning"],
+        "strong_signals": ["Correct calculation", "Identifies net negative as a problem", "Understands implications for growth", "Suggests what needs to change"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q22",
+      "module_id": "s-b2b-1",
+      "text": "Your cohort analysis shows that D7 retention is 60% but D30 retention is 55%. What does this tell you?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning", "problem_framing"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Most churn happens in the first week, then stabilizes. The initial experience is the problem.",
+      "scoring_notes": {
+        "weak_signals": ["Misreads the retention curve"],
+        "strong_signals": ["Correctly identifies early churn pattern"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Retention is steadily declining; product quality is degrading over time", "is_correct": false, "explanation": "The drop from 60% to 55% is small after the first week — that's flattening, not steady decline."},
+        {"option": "B", "text": "Most churn happens in the first week; users who survive week 1 tend to stick", "is_correct": true, "explanation": "Correct. 40% churn in first 7 days, but only 5% more by day 30. Focus on early activation."},
+        {"option": "C", "text": "Users are returning after initial churn, improving retention", "is_correct": false, "explanation": "Retention can't go up in a cohort analysis. This shows the curve flattening."},
+        {"option": "D", "text": "The sample size is too small to draw conclusions", "is_correct": false, "explanation": "The pattern is clear. Questioning sample size would require more context."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q23",
+      "module_id": "s-b2b-1",
+      "text": "Build a metric tree connecting product metrics to ARR growth. What are the key branches?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "metrics_reasoning"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "ARR Growth branches into: (1) New ARR: Lead volume → Trial conversion → Paid conversion → Deal size. Product influences: trial experience, onboarding, pricing/packaging. (2) Expansion ARR: Feature adoption → Seat growth → Tier upgrades. Product influences: advanced features, usage limits, value demonstration. (3) Retained ARR (inverse of churn): Activation rate → Engagement depth → NPS/CSAT → Renewal rate. Product influences: time-to-value, core workflow quality, stickiness. Each branch has leading indicators (behavior) and lagging indicators (revenue). The metric tree helps prioritize: where's the biggest gap?",
+      "scoring_notes": {
+        "weak_signals": ["Only lists top-level metrics", "No connection between levels", "Missing expansion or retention branch", "No mention of product influence"],
+        "strong_signals": ["Complete tree structure", "Leading and lagging indicators at each level", "Clear product connection", "Shows how to use tree for prioritization"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q24",
+      "module_id": "s-b2b-1",
+      "text": "What's the relationship between gross margin and LTV in SaaS?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "LTV = Revenue × Gross Margin × Customer Lifetime. Higher margin increases LTV.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't see the connection"],
+        "strong_signals": ["Understands margin directly multiplies LTV"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "They're unrelated; LTV is about customer behavior, margin is about operations", "is_correct": false, "explanation": "LTV calculation explicitly includes gross margin as a multiplier."},
+        {"option": "B", "text": "Higher gross margin directly increases LTV by the same percentage", "is_correct": true, "explanation": "Correct. LTV = ARPA × Gross Margin / Churn. Margin is a direct multiplier."},
+        {"option": "C", "text": "Lower gross margin is fine if you have high LTV", "is_correct": false, "explanation": "LTV already incorporates margin. You can't have 'high LTV' with low margin unless lifetime is very long."},
+        {"option": "D", "text": "Gross margin only matters for hardware, not SaaS", "is_correct": false, "explanation": "SaaS has gross margin too (hosting, support costs). Typical SaaS margin is 70-80%."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q25",
+      "module_id": "s-b2b-1",
+      "text": "Your boss says 'increase revenue by 50% this year.' As a PM, how do you translate this into actionable product metrics?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "metrics_reasoning", "communication_clarity"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Decompose revenue growth into levers: Revenue = Customers × ARPA. Growth comes from: new customers, reduced churn, expansion (higher ARPA). Translate to product metrics: (1) New customers: What conversion rate improvement is needed? Trial UX, onboarding, time-to-value. (2) Churn reduction: What activation/engagement metrics drive retention? (3) Expansion: What usage thresholds trigger upsells? What features drive tier upgrades? Build a model: If we have 1000 customers at $10K ARPA = $10M. 50% growth = $15M. Options: +50% customers (hard), or +25% customers and +20% ARPA (easier). Product work: focus on expansion features if that's the easier path.",
+      "scoring_notes": {
+        "weak_signals": ["Accepts target without decomposition", "No connection to product work", "Can't model scenarios", "Only suggests 'build more features'"],
+        "strong_signals": ["Decomposes revenue into components", "Models multiple scenarios", "Connects to specific product metrics", "Prioritizes levers by feasibility"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q26",
+      "module_id": "s-b2b-1",
+      "text": "What is 'quick ratio' in SaaS metrics?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Quick ratio = (New MRR + Expansion MRR) / (Churned MRR + Contraction MRR). Measures growth efficiency.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with financial quick ratio"],
+        "strong_signals": ["Knows SaaS-specific definition"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Current assets / current liabilities — a measure of financial liquidity", "is_correct": false, "explanation": "That's the accounting quick ratio. SaaS quick ratio is different."},
+        {"option": "B", "text": "(New MRR + Expansion MRR) / (Churned MRR + Contraction MRR)", "is_correct": true, "explanation": "Correct. SaaS quick ratio measures how efficiently you're growing relative to losses. 4:1 is healthy."},
+        {"option": "C", "text": "The speed at which you acquire new customers", "is_correct": false, "explanation": "That's velocity or growth rate, not quick ratio."},
+        {"option": "D", "text": "Monthly revenue / annual revenue", "is_correct": false, "explanation": "That would just be 1/12 or MRR vs ARR. Not meaningful."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q27",
+      "module_id": "s-b2b-1",
+      "text": "A customer wants to downgrade from your $500/month plan to your $200/month plan. They're using all features of the higher plan. How do you handle this as a PM?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["user_empathy", "metrics_reasoning", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "First, understand the why: Is it budget pressure? Perceived lack of value? Competitive pricing? If they're using all features, they see value — the issue is likely price sensitivity or budget cuts. Options: (1) Accept downgrade to retain customer. Better $200 than $0. (2) Offer alternative: annual commitment at discount, reduced scope that meets their needs. (3) If many customers have this pattern, consider pricing/packaging problem — maybe the tier jump is too big. PM action: Feed this into pricing analysis. Track: How many downgrades? What's the revenue impact? Is this a trend? One customer is anecdote; pattern is data.",
+      "scoring_notes": {
+        "weak_signals": ["Just accepts or rejects without investigation", "Doesn't consider customer motivation", "No systemic thinking", "Ignores revenue vs. retention tradeoff"],
+        "strong_signals": ["Investigates root cause", "Considers multiple options", "Thinks about pricing implications", "Balances individual case vs. pattern"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q28",
+      "module_id": "s-b2b-1",
+      "text": "Your dashboard shows weekly active users (WAU) increased 20%, but MRR is flat. What might explain this?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["metrics_reasoning", "problem_framing", "structured_thinking"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Possible explanations: (1) Engagement is up within existing accounts (more users per account) but no new accounts or upsells. (2) Free tier or trial usage increased, not paid. (3) Lower-tier customers are more engaged but not upgrading. (4) Pricing doesn't capture increased usage (flat per-seat, not usage-based). (5) New users are lower-value (smaller accounts with more users). Investigation: Segment WAU by plan tier. Check expansion MRR specifically. Review if engagement correlates with upsell in the product. This gap suggests engagement isn't monetized — might indicate pricing model issue.",
+      "scoring_notes": {
+        "weak_signals": ["Can only think of one explanation", "Doesn't segment the data", "Assumes data is wrong", "No investigation plan"],
+        "strong_signals": ["Multiple plausible explanations", "Proposes segmentation analysis", "Identifies potential pricing issue", "Suggests investigation steps"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m1-q29",
+      "module_id": "s-b2b-1",
+      "text": "Why is cohort analysis important for understanding retention?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Cohort analysis groups users by signup date, letting you compare retention curves over time and isolate the impact of product changes.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand cohort concept"],
+        "strong_signals": ["Understands time-based grouping and comparison"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "It groups users by how much they pay, revealing high-value segments", "is_correct": false, "explanation": "That's revenue segmentation. Cohorts are typically time-based (signup week/month)."},
+        {"option": "B", "text": "It groups users by signup time, letting you track retention curves and compare across cohorts", "is_correct": true, "explanation": "Correct. Cohorts isolate time periods so you can see if recent cohorts retain better/worse than older ones."},
+        {"option": "C", "text": "It predicts which users will churn based on behavior patterns", "is_correct": false, "explanation": "That's churn prediction. Cohort analysis measures actual retention by signup time."},
+        {"option": "D", "text": "It identifies which marketing channels produce the best customers", "is_correct": false, "explanation": "You could do cohorts by channel, but the primary purpose is time-based retention analysis."}
+      ]
+    },
+    {
+      "id": "b2b-m1-q30",
+      "module_id": "s-b2b-1",
+      "text": "Your SaaS company is debating whether to invest in reducing churn from 5% to 3% monthly, or increasing ARPA from $500 to $600. Both require similar effort. Which should you prioritize and why?",
+      "archetype": "b2b",
+      "type": "enterprise_metrics",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "prioritization", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Model the impact. Assume 1000 customers at $500 ARPA. Current: 5% monthly churn = ~46% annual churn. LTV = $500 × margin / 0.05 = $10K per customer (simplified). Option A (churn 5→3%): LTV = $500 / 0.03 = $16.7K. 67% LTV increase. Option B (ARPA $500→$600): LTV = $600 / 0.05 = $12K. 20% LTV increase. Churn reduction has much larger impact because it's in the denominator. BUT: consider which is more achievable. 2% churn reduction is significant. ARPA increase might be easier via pricing/packaging. Answer: Mathematically, churn reduction wins. Practically, evaluate feasibility and go-to-market implications of each.",
+      "scoring_notes": {
+        "weak_signals": ["Picks without modeling", "Doesn't understand compounding effect of churn", "Ignores feasibility", "No quantification"],
+        "strong_signals": ["Models both scenarios", "Shows churn is a denominator (bigger impact)", "Acknowledges feasibility consideration", "Makes recommendation with reasoning"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q01",
+      "module_id": "s-b2b-2",
+      "text": "You're building a project management tool for enterprises. The buyer (VP Ops) wants ROI dashboards. The user (project manager) wants a simpler interface. The admin (IT) wants SSO and audit logs. You can only build one major feature this quarter. How do you decide?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "user_empathy", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Framework: Map each feature to business impact. ROI dashboards → drives expansion/renewal (VP sees value → renews). Simpler interface → drives adoption/retention (users stick → less churn). SSO/audit logs → drives acquisition (enterprise deals require it → new ARR). Analyze: What's the current bottleneck? If you're losing deals to security requirements, prioritize SSO. If usage is low among won customers, prioritize UX. If renewals are at risk, prioritize ROI visibility. Decision should be data-driven, not stakeholder-volume-driven.",
+      "scoring_notes": {
+        "weak_signals": ["Picks based on loudest stakeholder", "Doesn't connect features to business outcomes", "No framework for decision", "Ignores tradeoffs"],
+        "strong_signals": ["Maps features to business metrics", "Identifies current bottleneck", "Considers deal stage impact", "Proposes how to address unprioritized stakeholders"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q02",
+      "module_id": "s-b2b-2",
+      "text": "In enterprise sales, who is typically the 'economic buyer'?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["user_empathy"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "The person who controls the budget and signs the contract — usually VP or C-level.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses buyer with user"],
+        "strong_signals": ["Understands buyer vs user distinction"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The person who will use the product most frequently", "is_correct": false, "explanation": "That's the user, not the buyer. Users influence but don't sign contracts."},
+        {"option": "B", "text": "The person who controls the budget and signs the contract", "is_correct": true, "explanation": "Correct. The economic buyer approves spend — typically VP/C-level."},
+        {"option": "C", "text": "The IT administrator who evaluates technical requirements", "is_correct": false, "explanation": "That's the technical evaluator. They can veto but usually don't control budget."},
+        {"option": "D", "text": "The procurement department", "is_correct": false, "explanation": "Procurement processes contracts but doesn't make the business decision to buy."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q03",
+      "module_id": "s-b2b-2",
+      "text": "Your biggest customer (20% of ARR) asks for a custom feature that would take 3 engineering months. It doesn't fit your roadmap and other customers haven't asked for it. What do you do?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "communication_clarity", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Don't say yes or no immediately. Investigate: (1) Why do they need it? Understand the underlying job-to-be-done. (2) Is this truly unique? Check with other customers — it might be a gap you've missed. (3) What's at stake? Is this a churn risk or a nice-to-have? (4) What are alternatives? Professional services, partner integration, workaround. Options: (A) Build it and charge for it — recoup eng cost. (B) Build a generalized version that others can use. (C) Decline but offer alternatives. (D) Negotiate — partial solution or timeline. Communicate transparently about decision criteria.",
+      "scoring_notes": {
+        "weak_signals": ["Immediately says yes (customer concentration risk)", "Immediately says no (ignores relationship value)", "Doesn't investigate underlying need", "No alternatives proposed"],
+        "strong_signals": ["Investigates before deciding", "Considers generalization potential", "Proposes multiple options", "Transparent communication about tradeoffs"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q04",
+      "module_id": "s-b2b-2",
+      "text": "What's the typical enterprise sales cycle length?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "3-6 months for mid-market, 6-12+ months for enterprise.",
+      "scoring_notes": {
+        "weak_signals": ["Thinks enterprise sales is quick"],
+        "strong_signals": ["Understands long sales cycles"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "1-2 weeks, same as consumer products", "is_correct": false, "explanation": "Enterprise sales involves multiple stakeholders, legal review, and procurement. Takes months."},
+        {"option": "B", "text": "3-6 months for mid-market, 6-12+ months for true enterprise", "is_correct": true, "explanation": "Correct. Multiple stakeholders, legal review, procurement, and implementation planning take time."},
+        {"option": "C", "text": "Exactly 30 days to align with monthly budget cycles", "is_correct": false, "explanation": "Enterprise budget cycles are annual, not monthly. Sales cycles are multi-month."},
+        {"option": "D", "text": "It depends entirely on product quality; good products sell fast", "is_correct": false, "explanation": "Even great products have long enterprise cycles due to procurement process, not product quality."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q05",
+      "module_id": "s-b2b-2",
+      "text": "Sales is pushing you to commit to a feature on the roadmap for a big deal. Engineering says it's 4 months away, but sales wants to promise it in 2 months. How do you handle this?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["communication_clarity", "structured_thinking", "prioritization"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Don't let sales promise what you can't deliver. Steps: (1) Understand the deal — ACV, strategic value, likelihood to close. (2) Get engineering reality — is 4 months padded? What would it take to do 2 months? What's the cost (other roadmap items)? (3) Explore alternatives — can we deliver partial scope in 2 months? Is there a workaround? (4) Align on what to tell the customer — honest timeline with confidence level. (5) If you must accelerate, document the tradeoff (what's deprioritized) and get exec sign-off. Never promise dates without engineering commitment.",
+      "scoring_notes": {
+        "weak_signals": ["Caves to sales pressure", "Tells engineering to 'just work faster'", "Makes promises without checking feasibility", "Doesn't explore middle ground"],
+        "strong_signals": ["Investigates deal value vs. cost", "Gets engineering reality", "Explores partial scope or alternatives", "Establishes honest communication with customer"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q06",
+      "module_id": "s-b2b-2",
+      "text": "Why do enterprise products often need SSO (Single Sign-On) integration?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["user_empathy", "structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "IT requires SSO for security, compliance, and centralized user management at scale.",
+      "scoring_notes": {
+        "weak_signals": ["Thinks it's just convenience"],
+        "strong_signals": ["Understands security/compliance requirement"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Users prefer not to remember multiple passwords", "is_correct": false, "explanation": "Convenience is a benefit, but the main driver is IT security requirements."},
+        {"option": "B", "text": "IT requires it for security, compliance, and centralized user management", "is_correct": true, "explanation": "Correct. SSO enables IT to control access, enforce security policies, and meet compliance requirements."},
+        {"option": "C", "text": "It reduces engineering complexity compared to building custom auth", "is_correct": false, "explanation": "SSO integration is actually complex. The benefit is to the customer, not your engineering team."},
+        {"option": "D", "text": "Enterprise software is legally required to support SSO", "is_correct": false, "explanation": "There's no legal requirement, but many enterprises won't buy without it."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q07",
+      "module_id": "s-b2b-2",
+      "text": "Your enterprise product has a 6-month implementation cycle. Customers complain it's too slow. Leadership asks you to reduce it to 3 months. How do you approach this?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["problem_framing", "structured_thinking", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Diagnose first: Break down the 6 months into phases (scoping, data migration, configuration, training, go-live). Where does time go? Common culprits: customer data readiness, complex configurations, lack of self-serve setup. Solutions by phase: (1) Scoping — productize implementation packages, reduce custom work. (2) Data migration — build better import tools, templates. (3) Configuration — defaults, templates, guided setup wizard. (4) Training — in-app onboarding, reduce reliance on live training. (5) Go-live — phased rollout capability, better pilot programs. Set realistic target: 50% reduction might require product investment; track leading indicators.",
+      "scoring_notes": {
+        "weak_signals": ["Promises 3 months without understanding current breakdown", "Only blames customer readiness", "No product solutions, just process changes", "Doesn't segment implementation types"],
+        "strong_signals": ["Breaks down current timeline", "Identifies product-solvable vs. customer-dependent delays", "Proposes specific product investments", "Sets measurable milestones"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q08",
+      "module_id": "s-b2b-2",
+      "text": "A 'champion' in enterprise sales refers to:",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["user_empathy"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "An internal advocate at the customer company who pushes for your product.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with other stakeholder roles"],
+        "strong_signals": ["Understands champion as internal advocate"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The salesperson who closes the most deals", "is_correct": false, "explanation": "That's your top sales rep, not a champion."},
+        {"option": "B", "text": "An internal advocate at the customer company who pushes for your product", "is_correct": true, "explanation": "Correct. Champions sell internally. Your success is tied to their credibility."},
+        {"option": "C", "text": "The CEO of your company who leads major deals", "is_correct": false, "explanation": "That's executive involvement, not a champion."},
+        {"option": "D", "text": "The customer's power user who provides testimonials", "is_correct": false, "explanation": "That could be a champion post-sale, but champions exist throughout the buying process."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q09",
+      "module_id": "s-b2b-2",
+      "text": "You discover that your power users are creating workarounds using spreadsheets because your product lacks a specific workflow. What do you do?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "text",
+      "dimensions_tested": ["user_empathy", "problem_framing", "prioritization"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Workarounds are gold — they reveal real needs. Steps: (1) Study the workaround — what exactly are they doing? What's the job-to-be-done? (2) Quantify — how many users? How much time spent? (3) Talk to users — why this workaround? What's missing? What would ideal look like? (4) Assess product opportunity — is this a narrow power-user need or a broad gap? Does it align with product strategy? (5) Prioritize — if valuable and aligned, add to roadmap. If narrow, consider API/integration to enable workaround more easily. (6) Communicate — let users know you heard them, share timeline or alternatives.",
+      "scoring_notes": {
+        "weak_signals": ["Ignores the signal", "Immediately builds what they asked for without understanding why", "Dismisses as 'edge case'", "No user conversation"],
+        "strong_signals": ["Treats workaround as product signal", "Investigates underlying need", "Quantifies opportunity", "Communicates back to users"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q10",
+      "module_id": "s-b2b-2",
+      "text": "Your product serves both SMB (small business) and Enterprise customers. They have conflicting feature requests. How do you prioritize?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "structured_thinking", "metrics_reasoning"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "First, clarify your strategy: Are you SMB-first, enterprise-first, or truly multi-segment? This should be a company decision, not a feature-by-feature call. Then evaluate by segment: (1) Revenue impact — enterprise deals are larger, but SMB volume might be higher. (2) Strategic alignment — where's the growth coming from? (3) Retention impact — which segment has higher churn that these features would address? Options: (A) Build features that serve both segments differently (configurations, permission levels). (B) Build separate experiences/products for each segment. (C) Prioritize one segment explicitly and communicate to the other. Avoid: trying to make everyone happy with a compromised solution that works for neither.",
+      "scoring_notes": {
+        "weak_signals": ["No framework for decision", "Tries to please everyone", "Ignores revenue/strategic implications", "No acknowledgment of tradeoffs"],
+        "strong_signals": ["Clarifies segment strategy first", "Evaluates by revenue and strategic impact", "Proposes multiple approaches", "Acknowledges need to communicate to deprioritized segment"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q11",
+      "module_id": "s-b2b-2",
+      "text": "What does 'land and expand' mean in B2B sales strategy?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Start with a small deal or team, then expand usage across the organization over time.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand the concept"],
+        "strong_signals": ["Understands expansion from initial foothold"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Acquire many small customers, then sell to larger ones", "is_correct": false, "explanation": "Land and expand is about growing within an account, not across market segments."},
+        {"option": "B", "text": "Start with a small deal or team, then expand usage across the organization", "is_correct": true, "explanation": "Correct. 'Land' a small foothold, then 'expand' through more seats, teams, or products."},
+        {"option": "C", "text": "Launch in one geography, then expand internationally", "is_correct": false, "explanation": "That's geographic expansion, not land-and-expand."},
+        {"option": "D", "text": "Build a basic product first, then add advanced features", "is_correct": false, "explanation": "That's product maturation, not a sales strategy."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q12",
+      "module_id": "s-b2b-2",
+      "text": "IT has rejected your product in a procurement evaluation due to missing audit logging. This wasn't on your roadmap. What do you do?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "problem_framing", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "First, assess scope: (1) Is this one deal or a pattern? Check with sales — how many deals have security/compliance blockers? (2) Is audit logging a checkbox requirement (must-have) or a strong preference (can negotiate)? (3) What's the deal value vs. engineering cost? For immediate deal: Explore workarounds — manual exports, third-party logging integration, or commitment to roadmap with timeline. For long-term: If security features are blocking multiple deals, escalate priority. These are P0 acquisition blockers. Build a 'security table stakes' checklist (SSO, audit logs, encryption, compliance certs) and address systematically. Communicate to sales: What can we commit to? What timeline?",
+      "scoring_notes": {
+        "weak_signals": ["Dismisses as one-off", "Immediately adds to roadmap without investigation", "No communication with sales", "Doesn't assess pattern"],
+        "strong_signals": ["Investigates if pattern exists", "Explores workarounds for immediate deal", "Escalates if blocking multiple deals", "Builds systematic approach"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q13",
+      "module_id": "s-b2b-2",
+      "text": "What information does a sales 'battlecard' typically contain?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Competitive comparison, objection handling, key differentiators, and win/loss patterns.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know what a battlecard is"],
+        "strong_signals": ["Understands battlecard components"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Product roadmap and upcoming features", "is_correct": false, "explanation": "Roadmap is separate. Battlecards focus on competitive positioning."},
+        {"option": "B", "text": "Competitive comparison, objection handling, key differentiators", "is_correct": true, "explanation": "Correct. Battlecards help sales compete against specific alternatives."},
+        {"option": "C", "text": "Pricing tiers and discount policies", "is_correct": false, "explanation": "Pricing guides are separate from competitive battlecards."},
+        {"option": "D", "text": "Customer testimonials and case studies", "is_correct": false, "explanation": "Those are sales collateral but not the core of a battlecard."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q14",
+      "module_id": "s-b2b-2",
+      "text": "Your customer success team reports that a major account is at risk of churning. As a PM, what's your role?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["user_empathy", "problem_framing", "prioritization"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "PM role in churn risk: (1) Understand the root cause — is it product gap, poor implementation, unmet expectations, or external factors? (2) If product gap: Assess if this is widespread or unique to this customer. If widespread, prioritize fix. If unique, explore workarounds or custom solutions. (3) Join customer calls if helpful — hear directly what's frustrating them. (4) Provide roadmap context — sometimes churn risk is about uncertainty, not current state. Showing progress helps. (5) Feed learning back — what does this churn risk tell us about our product? Are others at similar risk? PM doesn't own the save — CS does. But PM provides product perspective and learns from the situation.",
+      "scoring_notes": {
+        "weak_signals": ["Ignores because 'not my job'", "Immediately promises features to save deal", "No investigation of root cause", "Doesn't connect to broader product learning"],
+        "strong_signals": ["Investigates root cause", "Differentiates unique vs. widespread issues", "Provides appropriate product support", "Learns from the situation"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q15",
+      "module_id": "s-b2b-2",
+      "text": "A feature you shipped is causing unexpected workflow issues for a key customer segment. Customer Success is overwhelmed with tickets. What's your immediate response?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["problem_framing", "prioritization", "communication_clarity"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Immediate: (1) Assess severity — how many customers? What's broken vs. annoying? Is there a workaround? (2) If critical, evaluate rollback — can we revert quickly without data loss? (3) Create knowledge base article or workaround guide for CS to share immediately. (4) Communicate to affected customers — acknowledge the issue, share timeline for fix. Short-term: (1) Prioritize fix in current sprint. (2) If can't fix quickly, release workaround or configuration option. (3) Do retrospective — why didn't testing catch this? Was customer segment underrepresented in research? Long-term: Add this segment to testing protocols. Consider beta programs before broad release.",
+      "scoring_notes": {
+        "weak_signals": ["Downplays severity", "Blames users for using it wrong", "No immediate mitigation", "Doesn't consider rollback"],
+        "strong_signals": ["Assesses severity immediately", "Considers rollback option", "Provides workaround for CS", "Plans retrospective for prevention"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q16",
+      "module_id": "s-b2b-2",
+      "text": "When should a PM participate directly in customer calls vs. letting sales or CS handle them?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["communication_clarity", "user_empathy", "prioritization"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "PM should join when: (1) Discovery/research — understanding unmet needs, workflows, pain points. (2) Technical depth — complex feature discussions where PM has context. (3) Strategic accounts — high-value customers where PM presence signals commitment. (4) Escalated issues — when product decisions are core to resolution. (5) Roadmap discussions — when customers want to understand future direction. PM should NOT be on: (1) Standard demos (sales owns). (2) Routine support (CS owns). (3) Contract negotiations (sales owns). (4) Every call (doesn't scale). Balance: Regular cadence (e.g., 5 customer calls/week) for continuous learning, not ad-hoc involvement in everything.",
+      "scoring_notes": {
+        "weak_signals": ["Avoids all customer calls", "Joins every call (doesn't scale)", "No framework for deciding", "Only joins when escalated"],
+        "strong_signals": ["Clear criteria for involvement", "Proactive research calls", "Respects sales/CS ownership", "Sustainable cadence"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q17",
+      "module_id": "s-b2b-2",
+      "text": "What's the difference between a product 'requirement' from sales vs. 'feedback' from users?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["problem_framing", "user_empathy"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Sales requirements are often about closing deals; user feedback is about solving problems. Both are inputs but need different interpretation.",
+      "scoring_notes": {
+        "weak_signals": ["Treats them identically"],
+        "strong_signals": ["Understands different motivations and how to interpret"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "They're the same thing — both tell you what to build", "is_correct": false, "explanation": "They have different motivations and need different interpretation."},
+        {"option": "B", "text": "Sales requirements are about closing deals; user feedback is about solving actual problems — both are inputs but need different interpretation", "is_correct": true, "explanation": "Correct. Sales sees competitive gaps and deal blockers; users see daily workflow friction. Synthesize both."},
+        {"option": "C", "text": "Sales requirements are more reliable because they represent paying customers", "is_correct": false, "explanation": "Sales requirements often represent prospects, not current users. Both have biases."},
+        {"option": "D", "text": "User feedback is more reliable because users actually use the product", "is_correct": false, "explanation": "Users have biases too (power users, vocal minority). Both need interpretation."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q18",
+      "module_id": "s-b2b-2",
+      "text": "Your sales team says you're losing deals to a competitor because of a specific feature gap. How do you validate this claim?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["problem_framing", "metrics_reasoning", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Don't take sales's word at face value — validate with data. Steps: (1) Win/loss analysis — review actual lost deals. What did prospects say? Is this feature consistently mentioned? (2) Talk to lost prospects — direct conversation reveals true reasons. Was it really this feature, or price, or sales process, or fit? (3) Check competitive intel — does competitor actually have this feature, or is it perception? (4) Quantify — how many deals lost specifically to this gap? What's the ARR impact? (5) Assess alternatives — is the feature gap real or could better positioning address it? Sometimes 'we need feature X' is really 'we didn't effectively show our alternative.'",
+      "scoring_notes": {
+        "weak_signals": ["Immediately builds the feature", "Dismisses sales input entirely", "No validation steps", "Doesn't talk to lost prospects"],
+        "strong_signals": ["Win/loss data review", "Direct prospect conversations", "Competitive validation", "Quantifies actual impact"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q19",
+      "module_id": "s-b2b-2",
+      "text": "A prospect asks 'Will you add feature X?' and it's not on your roadmap. What's the best response?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Understand their underlying need, explain current capabilities, and be honest about roadmap uncertainty.",
+      "scoring_notes": {
+        "weak_signals": ["Promises it or flat-out refuses"],
+        "strong_signals": ["Investigates and responds honestly"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Say 'Yes, it's on the roadmap' to close the deal", "is_correct": false, "explanation": "Never promise what you can't deliver. This creates churn and trust issues."},
+        {"option": "B", "text": "Say 'No, and we have no plans to build it'", "is_correct": false, "explanation": "Too blunt. You might learn something valuable by understanding their need."},
+        {"option": "C", "text": "Ask why they need it, explain current alternatives, and be honest about roadmap uncertainty", "is_correct": true, "explanation": "Correct. Understand the need, show current value, and don't overpromise."},
+        {"option": "D", "text": "Defer to your product manager to answer roadmap questions", "is_correct": false, "explanation": "If you ARE the PM, this doesn't apply. Even if not, you should have guidance on how to handle."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q20",
+      "module_id": "s-b2b-2",
+      "text": "You join a meeting where sales and engineering are arguing about a feature commitment. Sales made a verbal promise to a customer; engineering says it's impossible in the timeframe. How do you facilitate?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "problem_framing", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Don't take sides initially — understand both perspectives. Steps: (1) Clarify the commitment — what exactly was promised? To whom? What's at stake? (2) Understand engineering's constraints — why impossible? Time, complexity, dependencies? Is it truly impossible or just hard? (3) Find common ground — what COULD be delivered in the timeframe? Partial scope? (4) Assess options: (A) Deliver partial scope with customer communication. (B) Negotiate timeline with customer. (C) Find creative workaround. (D) Accept the miss and manage the relationship. (5) Establish going-forward process — how do we prevent this? Approval process for commitments, PM involvement in technical scoping. PM role: translate between functions, find creative solutions, and prevent future conflicts.",
+      "scoring_notes": {
+        "weak_signals": ["Takes one side", "No investigation of what's actually possible", "Blames either party", "No prevention plan"],
+        "strong_signals": ["Understands both perspectives", "Explores partial solutions", "Focuses on customer outcome", "Proposes prevention process"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q21",
+      "module_id": "s-b2b-2",
+      "text": "Your company offers professional services for implementation. When does it make sense to productize implementation vs. keep it high-touch?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "metrics_reasoning", "prioritization"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Factors for productizing: (1) Volume — if you're doing 50+ implementations/year, self-serve saves cost. (2) Similarity — if 80% of implementations follow the same pattern, templates/automation work. (3) Customer segment — SMBs expect self-serve; enterprises expect high-touch. (4) Complexity — simple products can self-serve; complex integrations need people. (5) Revenue model — do you charge for implementation? If yes, productizing might reduce revenue. Productization options: guided setup wizards, templates, better defaults, in-app onboarding, knowledge base. Keep high-touch when: implementation is revenue center, customers expect it, or product is genuinely complex. Hybrid: self-serve for SMB, high-touch for enterprise.",
+      "scoring_notes": {
+        "weak_signals": ["One-size-fits-all answer", "Ignores revenue implications", "Doesn't consider customer expectations", "No segmentation"],
+        "strong_signals": ["Considers multiple factors", "Segment-specific approach", "Addresses revenue model", "Proposes hybrid options"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q22",
+      "module_id": "s-b2b-2",
+      "text": "What's 'shelfware' in enterprise software?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Software that's purchased but never (or rarely) used.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the term"],
+        "strong_signals": ["Understands low adoption/usage concept"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Legacy software that's no longer supported", "is_correct": false, "explanation": "That's EOL (end of life) software, not shelfware."},
+        {"option": "B", "text": "Software that's purchased but never actually used", "is_correct": true, "explanation": "Correct. Shelfware represents failed adoption — the product 'sits on the shelf.'"},
+        {"option": "C", "text": "Physical software boxes sold in retail stores", "is_correct": false, "explanation": "That's retail software distribution, an outdated concept."},
+        {"option": "D", "text": "Software that's exclusively for warehouse management", "is_correct": false, "explanation": "That's WMS (warehouse management systems), not shelfware."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q23",
+      "module_id": "s-b2b-2",
+      "text": "You're doing a quarterly business review (QBR) with your company's largest customer. What topics should a PM cover?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "user_empathy", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "PM's QBR topics: (1) Value delivered — what results have they achieved? Usage metrics, ROI, success stories. (2) Adoption — are all intended users active? Which features are underused? Why? (3) Roadmap preview — what's coming that matters to them? Get their reaction. (4) Feedback collection — what's working? What's frustrating? What's missing? (5) Strategic alignment — how are their needs evolving? Any changes in their business that affect product needs? Don't cover: support ticket review (CS), contract discussions (sales), technical issues (support). PM's role is product value, adoption, and future direction. Time allocation: 20% review, 60% listening, 20% roadmap.",
+      "scoring_notes": {
+        "weak_signals": ["Presents features without listening", "Covers non-PM topics", "No feedback collection", "All talking, no listening"],
+        "strong_signals": ["Balanced presenting and listening", "Focuses on value and adoption", "Collects actionable feedback", "Aligns roadmap with their needs"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q24",
+      "module_id": "s-b2b-2",
+      "text": "What's the primary risk of customer concentration (one customer = 20%+ of revenue)?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning", "prioritization"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Business risk if that customer churns, plus they have outsized influence on product direction.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't see the risk"],
+        "strong_signals": ["Understands both revenue and product direction risk"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "It's actually good — large customers are more stable", "is_correct": false, "explanation": "Concentration is a risk even with stable customers. Budgets change, leadership changes."},
+        {"option": "B", "text": "Revenue risk if they churn, plus outsized influence on product direction", "is_correct": true, "explanation": "Correct. Losing 20% of revenue is catastrophic, and you might build features only they need."},
+        {"option": "C", "text": "No risk if you have good contracts and relationships", "is_correct": false, "explanation": "Contracts end. Relationships change. Concentration is always a risk."},
+        {"option": "D", "text": "The risk is mainly operational — hard to support large customers", "is_correct": false, "explanation": "Operational complexity is a factor, but the main risk is revenue concentration."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q25",
+      "module_id": "s-b2b-2",
+      "text": "Your product has two pricing tiers: Professional ($50/user/month) and Enterprise ($100/user/month). Sales says Enterprise features aren't compelling enough — customers stay on Professional. What's your approach?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "problem_framing", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Diagnose first: (1) Are Enterprise features genuinely valuable, just poorly communicated? → Better demo, sales enablement. (2) Are Enterprise features valuable but poorly packaged? → Maybe some should move down, others added. (3) Are customers not large enough to need Enterprise features? → Segment mismatch. (4) Is the price gap too big for incremental value? → Consider a middle tier. Actions: Interview Professional customers — why haven't they upgraded? What would make Enterprise compelling? Review competitive packaging. Analyze feature usage — are Enterprise features used by those who have them? Build the case: either improve Enterprise value, reduce price gap, or accept that your Professional tier is the real product.",
+      "scoring_notes": {
+        "weak_signals": ["Immediately adds features to Enterprise", "Lowers Enterprise price", "Blames sales", "No customer investigation"],
+        "strong_signals": ["Diagnoses root cause", "Interviews customers", "Considers multiple hypotheses", "Data-driven recommendation"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q26",
+      "module_id": "s-b2b-2",
+      "text": "An enterprise RFP (Request for Proposal) asks if your product supports a feature you don't have. How should this be handled?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Be honest about current state, explain alternatives or workarounds, and don't overpromise on roadmap.",
+      "scoring_notes": {
+        "weak_signals": ["Misrepresents capabilities"],
+        "strong_signals": ["Honest with appropriate positioning"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Mark 'Yes' — it's probably on the roadmap somewhere", "is_correct": false, "explanation": "Misrepresenting capabilities leads to failed implementations and damaged reputation."},
+        {"option": "B", "text": "Mark 'No' without explanation and move on", "is_correct": false, "explanation": "This misses an opportunity to explain alternatives or workarounds."},
+        {"option": "C", "text": "Be honest about current state, explain alternatives or workarounds, and note roadmap status if relevant", "is_correct": true, "explanation": "Correct. Honesty builds trust. Alternatives show problem-solving orientation."},
+        {"option": "D", "text": "Decline to respond to the RFP", "is_correct": false, "explanation": "One missing feature shouldn't disqualify you. Most RFPs have must-haves and nice-to-haves."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q27",
+      "module_id": "s-b2b-2",
+      "text": "Your enterprise product has a 'freemium' tier with 10% conversion to paid. Product leadership asks if you should remove the free tier. What factors do you consider?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["metrics_reasoning", "structured_thinking", "prioritization"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Factors: (1) Does free tier drive paid? — Is 10% conversion worth the cost of 90% who don't pay? CAC comparison: free signup to paid vs. sales-qualified lead. (2) Does free tier have strategic value? — Market awareness, competitive blocking, word-of-mouth. (3) Cost of free tier — support, infrastructure, brand risk from low-quality users. (4) Alternatives to removing — limit free tier further, time-limit it, gate more features. (5) What happens to free users if removed? — Do they convert, churn, or go to competitors? Analysis: 10% conversion is decent if CAC for free-to-paid is lower than traditional CAC. But if free users demand support and dilute brand, might not be worth it. Recommendation likely depends on whether free tier is attracting right prospects or just tire-kickers.",
+      "scoring_notes": {
+        "weak_signals": ["Only considers conversion rate", "Ignores strategic value", "No cost analysis", "Binary yes/no without nuance"],
+        "strong_signals": ["Multi-factor analysis", "Considers strategic value beyond conversion", "Cost-benefit comparison", "Proposes alternatives to removal"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q28",
+      "module_id": "s-b2b-2",
+      "text": "What's the difference between a pilot program and a beta program?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Pilot is for enterprise sales validation (prove value before full purchase). Beta is for product validation (find bugs, get feedback before broad release).",
+      "scoring_notes": {
+        "weak_signals": ["Uses them interchangeably"],
+        "strong_signals": ["Understands sales vs. product purpose"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "They're the same thing — just different terminology", "is_correct": false, "explanation": "They serve different purposes: sales validation vs. product validation."},
+        {"option": "B", "text": "Pilot validates value with enterprise prospects before purchase; beta validates product quality before broad release", "is_correct": true, "explanation": "Correct. Pilot = will this work for your organization? Beta = is this feature ready for release?"},
+        {"option": "C", "text": "Pilot is free; beta is paid", "is_correct": false, "explanation": "Pilots can be paid, betas are usually free. The distinction is purpose, not pricing."},
+        {"option": "D", "text": "Pilot is shorter; beta is longer", "is_correct": false, "explanation": "Duration varies. Pilots can be 30-90 days; betas can be weeks to months."}
+      ]
+    },
+    {
+      "id": "b2b-m2-q29",
+      "module_id": "s-b2b-2",
+      "text": "An enterprise customer asks for a dedicated Slack channel with your product team. Should you agree?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "communication_clarity", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Consider: (1) What's the customer value? — their ARR, strategic importance, expansion potential. (2) What's the cost? — PM/eng time in another channel, expectation setting, precedent for other customers. (3) What's the alternative? — structured feedback sessions, advisory board membership, dedicated CS channel (not product). (4) What's the real ask? — Maybe they want faster response, more influence, or just recognition of importance. Recommendation: For true strategic accounts (top 5-10 by value), a dedicated channel with clear expectations (response time, scope) can strengthen partnership. Don't scale this broadly — it doesn't work with 50 customers. Alternative: monthly feedback sessions or advisory board membership.",
+      "scoring_notes": {
+        "weak_signals": ["Blanket yes or no", "Ignores customer value", "Doesn't set expectations", "No alternative offered"],
+        "strong_signals": ["Assesses customer value", "Considers scalability", "Proposes clear expectations", "Offers alternatives"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m2-q30",
+      "module_id": "s-b2b-2",
+      "text": "Your product team is based in India, but most enterprise customers are in the US. What time zone challenges should you consider?",
+      "archetype": "b2b",
+      "type": "stakeholder_execution",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["user_empathy", "communication_clarity"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Customer calls during India evening, release timing for US business hours, support availability, and async communication discipline.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't consider timezone implications"],
+        "strong_signals": ["Understands practical challenges"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "No challenges — async communication works perfectly", "is_correct": false, "explanation": "Async helps but doesn't eliminate timezone challenges, especially for urgent issues."},
+        {"option": "B", "text": "Customer calls during India evening, releases timed for US business hours, support coverage, and async discipline", "is_correct": true, "explanation": "Correct. All of these require planning and process adjustment."},
+        {"option": "C", "text": "Just shift the team to US hours", "is_correct": false, "explanation": "Not sustainable long-term. Better to design processes that work across timezones."},
+        {"option": "D", "text": "Only relevant for support, not product teams", "is_correct": false, "explanation": "Product teams also need to do customer calls, handle escalations, and time releases appropriately."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q01",
+      "module_id": "s-b2b-3",
+      "text": "You're launching a new product line at your B2B company. Walk me through your GTM strategy.",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "communication_clarity", "prioritization"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Structure the answer chronologically: T-90 to launch. (1) Positioning — target segment, key benefit, competitive differentiation. (2) Pricing and packaging — model, tiers, launch pricing. (3) Internal enablement — sales training, demo environment, battlecards. (4) Market seeding — beta customers, case studies, testimonials. (5) Launch execution — coordinated announcement, sales outbound, marketing campaigns. (6) Post-launch — feedback loops, iteration, success metrics. Key: show cross-functional coordination, not just product work.",
+      "scoring_notes": {
+        "weak_signals": ["Only describes product features", "No timeline structure", "Ignores sales enablement", "No success metrics defined"],
+        "strong_signals": ["Comprehensive timeline-based plan", "Cross-functional coordination clear", "Includes pre-launch and post-launch", "Defines success metrics"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q02",
+      "module_id": "s-b2b-3",
+      "text": "What does 'positioning' mean in a B2B GTM context?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "How your product is perceived relative to alternatives in your target customers' minds.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with pricing or placement"],
+        "strong_signals": ["Understands positioning as mental placement vs alternatives"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Where your product is placed in retail stores", "is_correct": false, "explanation": "That's distribution placement. Positioning is about perception."},
+        {"option": "B", "text": "How your product is perceived relative to alternatives in customers' minds", "is_correct": true, "explanation": "Correct. Positioning defines your place in the market vs. competition."},
+        {"option": "C", "text": "Your product's rank in search engines", "is_correct": false, "explanation": "That's SEO, not positioning."},
+        {"option": "D", "text": "The physical location of your servers", "is_correct": false, "explanation": "That's infrastructure, not positioning."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q03",
+      "module_id": "s-b2b-3",
+      "text": "A well-funded competitor just launched with aggressive pricing (50% below yours). How do you respond?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["problem_framing", "prioritization", "structured_thinking"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Don't panic. Analyze: (1) Which deals are they winning? Segment by customer type, size, use case. If they're winning SMB but you're winning enterprise, you might not have a problem. (2) Why are they winning? Price alone, or product gaps too? Talk to lost prospects. (3) What's sustainable? Funded competitors often underprice unsustainably. Strategic responses: (A) Don't compete on price broadly — compete on value, TCO. (B) Create competitive tier for price-sensitive segment. (C) Double down on differentiation. (D) Win/loss analysis and battlecards. Don't chase their roadmap.",
+      "scoring_notes": {
+        "weak_signals": ["Immediately cuts prices", "Ignores competitor", "Panics without analysis", "No segmentation of impact"],
+        "strong_signals": ["Analyzes before reacting", "Segments competitive threat", "Proposes differentiated response", "Considers long-term sustainability"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q04",
+      "module_id": "s-b2b-3",
+      "text": "What's the difference between per-seat pricing and usage-based pricing in SaaS?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Per-seat charges per user regardless of usage. Usage-based charges based on consumption (API calls, data volume, etc.).",
+      "scoring_notes": {
+        "weak_signals": ["Confuses the models"],
+        "strong_signals": ["Clear understanding of both models"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "They're the same — both scale with company size", "is_correct": false, "explanation": "They scale differently. Seats scale with users; usage scales with activity."},
+        {"option": "B", "text": "Per-seat charges per user; usage-based charges by consumption (API calls, storage, etc.)", "is_correct": true, "explanation": "Correct. Per-seat is predictable but may not align with value. Usage-based aligns with value but is unpredictable."},
+        {"option": "C", "text": "Per-seat is for SMB; usage-based is for enterprise", "is_correct": false, "explanation": "Both models are used across segments. Choice depends on value alignment."},
+        {"option": "D", "text": "Usage-based is always cheaper for customers", "is_correct": false, "explanation": "Depends on usage patterns. Heavy users pay more with usage-based."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q05",
+      "module_id": "s-b2b-3",
+      "text": "Your enterprise product currently uses per-seat pricing. The CEO wants to explore usage-based pricing. What factors would you consider in making this decision?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "metrics_reasoning", "problem_framing"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Framework for evaluation: (1) Value alignment — does usage correlate with value delivered? (2) Customer experience — is usage predictable for budgeting? Enterprise buyers hate surprises. (3) Revenue impact — model scenarios for ARPA changes. (4) Competitive positioning — what do competitors charge? (5) Operational complexity — can you meter accurately? Bill correctly? (6) Sales motion impact — how does this affect quoting, negotiation? (7) Migration path — how do you transition existing customers? Recommendation: Likely hybrid model — base platform fee plus usage for value-intensive actions.",
+      "scoring_notes": {
+        "weak_signals": ["Only considers revenue impact", "Ignores customer experience", "No competitive context", "Doesn't mention migration"],
+        "strong_signals": ["Comprehensive factor analysis", "Both company and customer perspective", "Addresses operational complexity", "Proposes hybrid or migration approach"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q06",
+      "module_id": "s-b2b-3",
+      "text": "You're repositioning your product from SMB to enterprise. What changes would you prioritize?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "structured_thinking", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Moving upmarket requires changes across product, GTM, and operations. Product: SSO, advanced permissions, audit logs, compliance certifications, admin controls, API/integrations. GTM: Sales-assisted motion, longer sales cycle support, RFP capability, enterprise pricing/contracts. Support: SLA commitments, dedicated support, implementation services. Prioritization: Start with table-stakes blockers (SSO, security) before nice-to-haves. Don't try to win enterprise deals with SMB product.",
+      "scoring_notes": {
+        "weak_signals": ["Only mentions features", "Ignores GTM changes", "No prioritization logic", "Underestimates effort"],
+        "strong_signals": ["Covers product, GTM, and operations", "Prioritizes security/compliance first", "Acknowledges sales motion change", "Realistic about timeline"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q07",
+      "module_id": "s-b2b-3",
+      "text": "What's a 'minimum viable segment' in B2B positioning?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["problem_framing"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "The smallest customer segment that's large enough to build a sustainable business, with distinct needs you can dominate.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with MVP (minimum viable product)"],
+        "strong_signals": ["Understands segment focus strategy"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "The smallest product you can launch", "is_correct": false, "explanation": "That's MVP (minimum viable product). MVS is about customer segment, not product scope."},
+        {"option": "B", "text": "The smallest customer segment large enough to build a sustainable business, with distinct needs you can dominate", "is_correct": true, "explanation": "Correct. MVS focuses your positioning to win a specific segment before expanding."},
+        {"option": "C", "text": "The minimum number of customers needed to break even", "is_correct": false, "explanation": "That's break-even analysis, not segment strategy."},
+        {"option": "D", "text": "The segment with the lowest customer acquisition cost", "is_correct": false, "explanation": "Low CAC is nice, but MVS is about focus and dominance, not just cost."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q08",
+      "module_id": "s-b2b-3",
+      "text": "Your company is acquiring a smaller competitor. As the PM responsible for product integration, what's your 90-day plan?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "prioritization", "communication_clarity"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "90-day plan: Days 1-30: Discovery — understand their product, interview their PMs/engineers, map overlaps/gaps, identify customer commitments. Days 31-60: Strategy — define integration approach (absorb, maintain, merge), identify quick wins, address customer concerns, align on combined roadmap. Days 61-90: Execution kickoff — begin technical integration, migrate pilot customers, establish combined processes, communicate externally. Key: customer retention is priority one. Don't break what works. Communicate proactively.",
+      "scoring_notes": {
+        "weak_signals": ["Jumps to technical integration", "Ignores customer impact", "No communication plan", "Unrealistic scope"],
+        "strong_signals": ["Phased approach with milestones", "Discovery before strategy", "Customer retention prioritized", "Proactive communication"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q09",
+      "module_id": "s-b2b-3",
+      "text": "What's value-based pricing?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "Setting price based on the value/outcome delivered to the customer, not your costs.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with cost-plus pricing"],
+        "strong_signals": ["Understands outcome-based pricing"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Pricing based on your production and delivery costs plus margin", "is_correct": false, "explanation": "That's cost-plus pricing. Value-based is customer-outcome focused."},
+        {"option": "B", "text": "Pricing based on the value/outcome delivered to the customer", "is_correct": true, "explanation": "Correct. If you save the customer $100K, you can charge based on that value, not your costs."},
+        {"option": "C", "text": "Pricing lower than competitors to win on value", "is_correct": false, "explanation": "That's competitive pricing. Value-based can actually justify higher prices."},
+        {"option": "D", "text": "Letting customers pay what they think it's worth", "is_correct": false, "explanation": "That's 'pay what you want.' Value-based is still set by the seller based on customer value."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q10",
+      "module_id": "s-b2b-3",
+      "text": "Your product is launching in a new vertical (healthcare) that has strict compliance requirements (HIPAA). What's your GTM approach?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "prioritization"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Approach: (1) Compliance first — HIPAA certification, BAA capability, audit documentation. Can't sell without these. (2) Understand vertical needs — healthcare workflows, integration requirements (EHR systems), stakeholder map (clinicians, IT, admin). (3) Adapt positioning — healthcare-specific messaging, case studies, testimonials. Generic B2B messaging won't resonate. (4) Build vertical expertise — hire or partner with healthcare domain experts for sales and CS. (5) Pricing — healthcare often has different willingness to pay; may justify premium pricing. (6) Go-to-market — healthcare-specific channels (conferences, associations), vertical sales team. (7) Start narrow — pick a sub-segment (e.g., dental practices) before trying all of healthcare.",
+      "scoring_notes": {
+        "weak_signals": ["Ignores compliance requirements", "Treats as generic expansion", "No vertical-specific adaptations", "Tries to tackle all of healthcare at once"],
+        "strong_signals": ["Compliance as gate", "Vertical-specific positioning", "Domain expertise recognition", "Narrow entry point strategy"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q11",
+      "module_id": "s-b2b-3",
+      "text": "What does 'product-led growth' (PLG) mean in B2B?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "A GTM strategy where the product itself drives user acquisition, conversion, and expansion with minimal sales touch.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with product management"],
+        "strong_signals": ["Understands PLG as GTM strategy"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Building whatever features customers request", "is_correct": false, "explanation": "That's customer-driven development, not PLG."},
+        {"option": "B", "text": "The product itself drives acquisition, conversion, and expansion with minimal sales involvement", "is_correct": true, "explanation": "Correct. Examples: Slack, Zoom, Notion — users adopt before sales engages."},
+        {"option": "C", "text": "Products that don't need marketing", "is_correct": false, "explanation": "PLG still needs marketing. The difference is how conversion happens."},
+        {"option": "D", "text": "Only selling through product demos", "is_correct": false, "explanation": "PLG is about self-serve adoption, not demos. Demos are still sales-led."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q12",
+      "module_id": "s-b2b-3",
+      "text": "You're designing pricing tiers for a new B2B product. What principles should guide your tier structure?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "user_empathy", "metrics_reasoning"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Principles: (1) Clear value metric — what's the axis of value? Users, usage, features? Should be intuitive and align with value delivered. (2) Natural expansion path — tiers should encourage starting small and growing. Don't punish small starts. (3) Distinct personas — each tier should map to a clear customer type (startup/SMB/enterprise) with different needs. (4) Simple to understand — if you can't explain tiers in 30 seconds, too complex. (5) Room for negotiation — enterprise expects discounts; build list price with headroom. (6) Minimize downgrades — make the jump to next tier attractive, not the drop to lower tier. (7) 10x value at each tier — if charging 10x more, deliver 10x more perceived value.",
+      "scoring_notes": {
+        "weak_signals": ["No clear principles", "Only cost-based reasoning", "Too many tiers", "Confusing value metric"],
+        "strong_signals": ["Clear principles articulated", "Customer-centric (persona, simplicity)", "Business-aware (negotiation room)", "Expansion-oriented"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q13",
+      "module_id": "s-b2b-3",
+      "text": "What's a 'loss leader' in B2B pricing strategy?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A product or tier priced below cost to attract customers who will then buy profitable products.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand the concept"],
+        "strong_signals": ["Understands customer acquisition strategy"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A product that's losing market share to competitors", "is_correct": false, "explanation": "That's a declining product. Loss leader is intentional pricing strategy."},
+        {"option": "B", "text": "A product priced below cost to attract customers who will then buy profitable products/tiers", "is_correct": true, "explanation": "Correct. Freemium is a form of loss leader. Goal is profitable expansion."},
+        {"option": "C", "text": "A failed product that should be discontinued", "is_correct": false, "explanation": "Loss leaders are intentional. 'Loss' refers to margin, not failure."},
+        {"option": "D", "text": "A product line run by a separate business unit", "is_correct": false, "explanation": "That's organizational structure, not pricing strategy."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q14",
+      "module_id": "s-b2b-3",
+      "text": "Your sales team wants to offer steep discounts (50%+) to win competitive deals. As a PM, what's your perspective?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["metrics_reasoning", "prioritization", "communication_clarity"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Concerns with steep discounts: (1) Sets precedent — word spreads; other customers expect same. (2) Devalues product — if you discount 50%, was it ever worth full price? (3) Attracts price-sensitive customers — who churn when prices rise. (4) Hides product gaps — if you need discounts to win, maybe the product isn't competitive. When discounts make sense: Strategic accounts (logo value), volume commitments, multi-year contracts. PM perspective: Prefer to compete on value differentiation, not price. If repeatedly losing on price, investigate root cause. Is it pricing problem, positioning problem, or product gap? Better to lose some deals at full price than win all deals at unsustainable discounts.",
+      "scoring_notes": {
+        "weak_signals": ["Just says 'yes' or 'no'", "No analysis of implications", "Ignores root cause", "Doesn't acknowledge legitimate discount scenarios"],
+        "strong_signals": ["Articulates discount risks", "Identifies when discounts make sense", "Proposes alternatives (value differentiation)", "Suggests investigating root cause"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q15",
+      "module_id": "s-b2b-3",
+      "text": "What's a 'moat' in competitive strategy?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["problem_framing"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A sustainable competitive advantage that protects your business from competitors.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand the concept"],
+        "strong_signals": ["Understands defensive competitive advantage"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A decorative water feature around your office", "is_correct": false, "explanation": "It's a metaphor, not literal. Castle moats protected from invaders."},
+        {"option": "B", "text": "A sustainable competitive advantage that protects your business from competitors", "is_correct": true, "explanation": "Correct. Examples: network effects, switching costs, proprietary technology, scale economies."},
+        {"option": "C", "text": "The geographic region where you operate", "is_correct": false, "explanation": "Geography can be a moat, but moat is the broader concept of defensibility."},
+        {"option": "D", "text": "Your company's largest customer", "is_correct": false, "explanation": "Large customers can be a moat (scale), but moat is the competitive advantage, not the customer itself."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q16",
+      "module_id": "s-b2b-3",
+      "text": "You're PM for a product that's #3 in a market dominated by two larger players. What positioning strategies should you consider?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["problem_framing", "structured_thinking", "prioritization"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Strategies for #3: (1) Niche specialization — find a segment the big players ignore or underserve. Become #1 in that niche. (2) Challenger positioning — explicitly contrast yourself against the leaders. 'Unlike [leader], we...' (3) Innovation wedge — leapfrog on a new dimension they're slow to adopt (e.g., AI, mobile, different pricing model). (4) Price disruption — if you can operate more efficiently, compete on price. Risky if they respond. (5) Superior experience — when products are similar, win on UX, support, implementation. (6) Partner ecosystem — build integrations and partnerships the leaders don't prioritize. Don't: compete head-to-head on the leaders' strengths. Do: find your unique angle and own it completely.",
+      "scoring_notes": {
+        "weak_signals": ["Suggests competing head-to-head", "No strategic focus", "Only one idea", "Ignores competitive reality"],
+        "strong_signals": ["Multiple strategic options", "Acknowledges need for differentiation", "Specific niche or wedge identified", "Realistic about competitive dynamics"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q17",
+      "module_id": "s-b2b-3",
+      "text": "What's 'category creation' as a GTM strategy?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["problem_framing"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Creating a new market category where you're the defining leader, rather than competing in an existing one.",
+      "scoring_notes": {
+        "weak_signals": ["Confuses with product innovation"],
+        "strong_signals": ["Understands category creation as market positioning"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Launching a product nobody has built before", "is_correct": false, "explanation": "Product innovation is different from category creation. You can create a category with familiar products."},
+        {"option": "B", "text": "Creating a new market category where you're the defining leader, rather than competing in an existing one", "is_correct": true, "explanation": "Correct. Examples: HubSpot ('inbound marketing'), Drift ('conversational marketing')."},
+        {"option": "C", "text": "Expanding your product to cover multiple categories", "is_correct": false, "explanation": "That's product expansion. Category creation is about defining a new category."},
+        {"option": "D", "text": "Acquiring companies in adjacent categories", "is_correct": false, "explanation": "That's M&A strategy, not category creation."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q18",
+      "module_id": "s-b2b-3",
+      "text": "Your product launch is in 2 weeks. Sales training hasn't happened yet. What do you do?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["prioritization", "communication_clarity", "problem_framing"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Immediate actions: (1) Assess readiness — can we train sales in 2 weeks? Is content ready? (2) Minimum viable training — 2-hour session covering: what it does, who it's for, demo flow, pricing, objection handling. (3) Sales collateral — battlecard, 1-pager, demo script that reps can use as crutch. (4) Internal FAQ — written answers to likely questions. (5) Designated expert — someone reps can reach for unusual questions. Options if truly not ready: (A) Delay launch for internal enablement. (B) Soft launch — limited customers, refine before broad release. (C) Launch but don't expect sales productivity for 30 days. Never launch to market without sales ready — you only get one launch moment. If sales can't explain or demo it, you're wasting demand generation spend.",
+      "scoring_notes": {
+        "weak_signals": ["Launches without addressing", "Blames sales", "No minimum viable plan", "Unrealistic training scope"],
+        "strong_signals": ["Assesses what's minimally required", "Creates supporting materials", "Considers launch delay as option", "Pragmatic approach to readiness"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q19",
+      "module_id": "s-b2b-3",
+      "text": "What's the purpose of a product 'one-pager' or 'slick'?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["communication_clarity"],
+      "time_limit_seconds": 30,
+      "ideal_answer_outline": "A single-page summary document for sales/marketing that communicates key value prop, features, and differentiators.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the format"],
+        "strong_signals": ["Understands purpose as sales enablement"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A detailed technical specification document", "is_correct": false, "explanation": "Technical specs are multi-page engineering documents. One-pagers are marketing summaries."},
+        {"option": "B", "text": "A single-page summary for sales/marketing with value prop, key features, and differentiators", "is_correct": true, "explanation": "Correct. One-pagers are leave-behinds after meetings or email attachments."},
+        {"option": "C", "text": "A legal terms and conditions document", "is_correct": false, "explanation": "Legal documents are never one page. One-pagers are marketing collateral."},
+        {"option": "D", "text": "A summary of competitive analysis", "is_correct": false, "explanation": "Competitive analysis is internal. One-pagers are customer-facing."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q20",
+      "module_id": "s-b2b-3",
+      "text": "Your company is launching a partner program (resellers, integrators). What product considerations should you account for?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "prioritization"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Product considerations: (1) Partner portal — deal registration, lead tracking, commission tracking. (2) White-labeling or co-branding — can partners present product with their brand? (3) Multi-tenant or partner-specific environments — data isolation, configuration options. (4) API and integration capabilities — partners need to integrate with their stack. (5) Partner-specific pricing/packaging — wholesale, margin structure. (6) Training and certification — partner team enablement. (7) Support escalation — when partner can't resolve, how does it reach you? (8) Analytics — partner visibility into their customers' usage. (9) Sandbox environments — for partner demos and development. Product work often underestimated: partner programs seem like business deals but require significant product investment.",
+      "scoring_notes": {
+        "weak_signals": ["Treats as pure business issue", "No product considerations", "Ignores technical requirements", "Underestimates effort"],
+        "strong_signals": ["Comprehensive product requirements", "Technical considerations (API, isolation)", "Operational considerations (support, training)", "Acknowledges significant investment"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q21",
+      "module_id": "s-b2b-3",
+      "text": "What's a 'wedge' product in B2B strategy?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["problem_framing"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "A focused entry product that gets you into accounts, from which you can expand to broader solutions.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't understand the concept"],
+        "strong_signals": ["Understands land-and-expand entry strategy"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "A product that splits competitor deals", "is_correct": false, "explanation": "That could be an outcome, but wedge refers to your entry strategy, not competitive tactics."},
+        {"option": "B", "text": "A focused entry product that gets you into accounts, enabling expansion to broader solutions", "is_correct": true, "explanation": "Correct. Example: Datadog started with infrastructure monitoring, expanded to full observability."},
+        {"option": "C", "text": "A product sold at a steep discount", "is_correct": false, "explanation": "Wedge isn't about pricing. It's about focused initial value proposition."},
+        {"option": "D", "text": "A product that only appeals to a small market", "is_correct": false, "explanation": "A wedge can address a large market; it's just a focused entry point."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q22",
+      "module_id": "s-b2b-3",
+      "text": "Marketing wants to position your product as 'AI-powered.' Your product uses some ML but it's not the core value proposition. What's your recommendation?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "problem_framing", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Concerns: (1) If AI isn't core value, leading with it creates expectation gap. Customers buy 'AI' and find basic ML. (2) AI is overused — everyone claims it. Becomes meaningless. (3) Sets up wrong buying criteria — if they're evaluating AI capabilities, you might lose to AI-native products. Better approach: Lead with the outcome/value ('automated reporting,' 'predictive insights'). Mention AI/ML as how you deliver the outcome, not the headline. Test positioning: 'Which resonates more with target customers — AI capabilities or the business outcome?' If customers specifically want AI, then lead with it. If they want outcomes, lead with outcomes. Be authentic about what the technology does.",
+      "scoring_notes": {
+        "weak_signals": ["Agrees without analysis", "Ignores authenticity concerns", "No customer perspective", "Trend-chasing"],
+        "strong_signals": ["Articulates expectation gap risk", "Outcome-first positioning", "Customer-centric testing", "Authentic representation of capabilities"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q23",
+      "module_id": "s-b2b-3",
+      "text": "You're doing competitive analysis for your B2B product. What sources and methods would you use?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "problem_framing"],
+      "time_limit_seconds": 240,
+      "ideal_answer_outline": "Sources: (1) Public: competitor websites, pricing pages, case studies, blog posts, press releases. (2) Review sites: G2, Capterra, TrustRadius — real customer perspectives. (3) Social: LinkedIn posts, Twitter, employee reviews on Glassdoor. (4) Win/loss analysis: internal data on deals won/lost against specific competitors. (5) Sales intel: what prospects say about competitors during deals. (6) Customer conversations: what do customers who evaluated competitors say? (7) Industry analysts: Gartner, Forrester reports. (8) Job postings: hiring signals investment areas. Methods: (1) Feature comparison matrix. (2) Positioning analysis (how they describe themselves). (3) Pricing model comparison. (4) Strengths/weaknesses summary. (5) Where they win vs. where you win. Output: battlecards for sales, positioning recommendations for marketing.",
+      "scoring_notes": {
+        "weak_signals": ["Only looks at competitor website", "No internal sources", "No customer perspective", "No actionable output"],
+        "strong_signals": ["Multiple public and internal sources", "Customer/prospect perspectives", "Review sites and analyst reports", "Actionable outputs (battlecards)"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q24",
+      "module_id": "s-b2b-3",
+      "text": "What's 'TCO' (Total Cost of Ownership) and why does it matter in B2B sales?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "The full cost of a product over its lifetime including purchase, implementation, training, maintenance, and hidden costs.",
+      "scoring_notes": {
+        "weak_signals": ["Only considers purchase price"],
+        "strong_signals": ["Understands full cost picture"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "Just the license or subscription price", "is_correct": false, "explanation": "That's purchase price. TCO includes implementation, training, support, maintenance, etc."},
+        {"option": "B", "text": "The full cost over a product's lifetime: purchase, implementation, training, maintenance, and hidden costs", "is_correct": true, "explanation": "Correct. TCO helps compare products with different pricing models fairly."},
+        {"option": "C", "text": "The cost to competitors of switching to your product", "is_correct": false, "explanation": "That's switching cost, not TCO."},
+        {"option": "D", "text": "Total revenue generated from owning the product", "is_correct": false, "explanation": "That's ROI or revenue. TCO is about costs, not revenue."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q25",
+      "module_id": "s-b2b-3",
+      "text": "Your product is perceived as 'expensive' compared to competitors. But customers who buy it are very successful and rarely churn. How do you address the pricing perception?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "voice",
+      "dimensions_tested": ["communication_clarity", "metrics_reasoning", "user_empathy"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Perception problem, not pricing problem. Strategies: (1) Reframe to value — if customers succeed and don't churn, ROI is good. Calculate and communicate ROI clearly. 'You pay more but get more.' (2) TCO comparison — lower-cost alternatives might have hidden costs (implementation, churn, productivity loss). (3) Customer evidence — testimonials, case studies with specific ROI numbers. 'Customer X saved $500K with our $50K product.' (4) Guarantee or pilot — reduce risk perception. 'If you don't see ROI in 90 days, we'll refund.' (5) Acknowledge positioning — premium positioning isn't wrong. 'We're not the cheapest and we're not trying to be.' Don't: drop price if the issue is perception not value.",
+      "scoring_notes": {
+        "weak_signals": ["Immediately reduces price", "Ignores success evidence", "No ROI framing", "Apologetic about pricing"],
+        "strong_signals": ["Reframes to value/ROI", "Uses customer success as evidence", "TCO comparison", "Confident premium positioning"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q26",
+      "module_id": "s-b2b-3",
+      "text": "What's the 'Rule of 40' in SaaS business metrics?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "intermediate",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["metrics_reasoning"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Growth rate + profit margin should equal or exceed 40%. Balances growth vs. profitability.",
+      "scoring_notes": {
+        "weak_signals": ["Doesn't know the rule"],
+        "strong_signals": ["Understands growth-profitability tradeoff metric"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "40% of features should be new each year", "is_correct": false, "explanation": "Not related. Rule of 40 is about financial performance."},
+        {"option": "B", "text": "Growth rate + profit margin should equal or exceed 40%", "is_correct": true, "explanation": "Correct. A company growing 30% with 10% margin meets the rule. It balances growth investment vs. profitability."},
+        {"option": "C", "text": "40% of customers should be enterprise accounts", "is_correct": false, "explanation": "Not related. Rule of 40 is about financial metrics."},
+        {"option": "D", "text": "Churn should be below 40% annually", "is_correct": false, "explanation": "40% churn would be extremely high. This isn't the Rule of 40."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q27",
+      "module_id": "s-b2b-3",
+      "text": "You're preparing for an analyst briefing (Gartner, Forrester) about your product. What should you cover and what should you avoid?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["communication_clarity", "structured_thinking"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "Cover: (1) Company overview — size, funding, customer count, growth trajectory. (2) Product vision and strategy — where are you headed? (3) Key differentiators — what makes you unique? Back with customer evidence. (4) Target market and ICP — who are you for? (5) Recent momentum — launches, customers, metrics that show traction. (6) Roadmap themes — where are you investing? (7) Customer references — provide 2-3 customers they can call. Avoid: (1) Overselling or exaggerating — analysts see through it. (2) Trashing competitors — unprofessional. (3) Confidential details — they publish research. (4) Sales pitch — they're not buying. (5) Ignoring weaknesses — address them honestly. Tone: confident but honest. Analysts value credibility over marketing polish.",
+      "scoring_notes": {
+        "weak_signals": ["Treats as sales pitch", "Ignores evidence requirements", "Defensive about weaknesses", "No customer references"],
+        "strong_signals": ["Comprehensive coverage", "Evidence-backed claims", "Honest about position", "Customer references offered"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q28",
+      "module_id": "s-b2b-3",
+      "text": "What's the role of a 'beta customer' vs. a 'design partner' in product development?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "beginner",
+      "answer_mode": "mcq",
+      "dimensions_tested": ["structured_thinking"],
+      "time_limit_seconds": 45,
+      "ideal_answer_outline": "Design partner helps shape the product during development; beta customer tests near-final product before release.",
+      "scoring_notes": {
+        "weak_signals": ["Uses terms interchangeably"],
+        "strong_signals": ["Understands different timing and purpose"]
+      },
+      "mcq_options": [
+        {"option": "A", "text": "They're the same — both test early versions of the product", "is_correct": false, "explanation": "They have different roles and timing in product development."},
+        {"option": "B", "text": "Design partners help shape the product during development; beta customers test the near-final product", "is_correct": true, "explanation": "Correct. Design partners are co-creators; beta customers are validators."},
+        {"option": "C", "text": "Design partners pay; beta customers get it for free", "is_correct": false, "explanation": "Either can be paid or free. The difference is in their role, not payment."},
+        {"option": "D", "text": "Design partners are internal; beta customers are external", "is_correct": false, "explanation": "Both are external customers. Design partners are just more deeply involved."}
+      ]
+    },
+    {
+      "id": "b2b-m3-q29",
+      "module_id": "s-b2b-3",
+      "text": "Your company wants to expand internationally (India to US). What product and GTM considerations should you prioritize?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "advanced",
+      "answer_mode": "voice",
+      "dimensions_tested": ["structured_thinking", "problem_framing", "prioritization"],
+      "time_limit_seconds": 180,
+      "ideal_answer_outline": "Product: (1) Compliance/legal — GDPR (if EU), data residency requirements, payment processing. (2) Localization — not just language, but terminology, date formats, currency. (3) Integration ecosystem — US customers use different tools (Salesforce, HubSpot, Slack). (4) Support coverage — timezone-appropriate support hours. GTM: (1) Positioning adaptation — what resonates in India may not in US. (2) Pricing — US willingness to pay is different. (3) Sales motion — relationship dynamics differ. (4) Competition — US market has different competitors. (5) Hiring — likely need US-based sales and CS eventually. Prioritize: Start with what blocks deals (compliance, integrations) before nice-to-haves (full localization).",
+      "scoring_notes": {
+        "weak_signals": ["Treats as simple replication", "Ignores compliance", "No cultural/market adaptation", "Underestimates effort"],
+        "strong_signals": ["Comprehensive product and GTM considerations", "Compliance first", "Market adaptation recognized", "Realistic prioritization"]
+      },
+      "mcq_options": null
+    },
+    {
+      "id": "b2b-m3-q30",
+      "module_id": "s-b2b-3",
+      "text": "Your product is successful with a 'bottom-up' PLG motion (users adopt, then upgrade). Sales wants to add a 'top-down' enterprise motion. How do you reconcile these?",
+      "archetype": "b2b",
+      "type": "strategy_gtm",
+      "difficulty": "advanced",
+      "answer_mode": "text",
+      "dimensions_tested": ["structured_thinking", "prioritization", "problem_framing"],
+      "time_limit_seconds": 300,
+      "ideal_answer_outline": "This is the PLG → sales-assisted transition. Not 'or' but 'and.' Strategies: (1) Product-qualified leads (PQLs) — usage signals that indicate enterprise readiness (team size, feature usage, company domain). Route to sales. (2) Enterprise features that require sales — security certifications, custom contracts, SLAs. Gate these behind sales conversation. (3) Different tracks — self-serve for SMB, sales-assisted for enterprise. Same product, different journey. (4) Upsell triggers — when self-serve account hits threshold (users, spend, features), sales engages. Avoid: (1) Forcing sales conversation too early — kills PLG efficiency. (2) Gatekeeping trial behind sales — opposite of PLG. (3) Conflicting motions — sales shouldn't cold-call active free users without signal. Balance: let PLG do acquisition; use sales for expansion and enterprise deals.",
+      "scoring_notes": {
+        "weak_signals": ["Sees as either/or", "Ignores PLG benefits", "No PQL concept", "No clear signal for sales engagement"],
+        "strong_signals": ["Both motions combined", "PQL concept for routing", "Clear enterprise gates", "Preserves PLG efficiency"]
+      },
+      "mcq_options": null
+    }
+  ],
+
+  "metadata": {
+    "author": "Shubh",
+    "created_date": "2026-03-21",
+    "version": "2.0",
+    "review_status": "pending",
+    "notes": "90 questions total. 30 per module. Approximately 1/3 MCQs (10 per module)."
+  }
+}

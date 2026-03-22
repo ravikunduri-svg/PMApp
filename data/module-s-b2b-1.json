@@ -1,0 +1,134 @@
+{
+  "module_id": "s-b2b-1",
+  "title": "Enterprise Metrics Deep-Dive",
+  "description": "Master the metrics that drive B2B/Enterprise PM decisions: ARR, NRR, churn, expansion revenue, CAC, and LTV. Learn how to speak the language of enterprise business.",
+  "archetype": "b2b",
+  "sequence_order": 1,
+  "estimated_duration_minutes": 50,
+  "prerequisite_modules": ["f1-pm-roles", "f5-metrics"],
+  
+  "learning_objectives": [
+    "Calculate and interpret ARR, MRR, and revenue growth metrics",
+    "Understand NRR and why it matters more than gross retention",
+    "Apply CAC/LTV analysis to product decisions",
+    "Connect product metrics to business outcomes in enterprise contexts"
+  ],
+
+  "sections": [
+    {
+      "section_id": "sb2b1-s1",
+      "type": "text",
+      "title": "ARR and MRR: The Foundation of SaaS Metrics",
+      "content": "Annual Recurring Revenue (ARR) and Monthly Recurring Revenue (MRR) are the heartbeat of enterprise SaaS. Unlike consumer products where you might track DAU or transactions, enterprise products live and die by predictable recurring revenue.\n\n**MRR = Sum of all monthly subscription revenue**\nIf you have 100 customers each paying ₹10,000/month, your MRR is ₹10,00,000 (₹10L).\n\n**ARR = MRR × 12**\nSame example: ARR = ₹1.2 crore.\n\nBut the real insight is in how ARR changes over time:\n\n- **New ARR**: Revenue from new customers acquired this period\n- **Expansion ARR**: Revenue increase from existing customers (upsells, seat additions)\n- **Contraction ARR**: Revenue decrease from existing customers (downgrades)\n- **Churned ARR**: Revenue lost from customers who cancelled\n\n**Net New ARR = New + Expansion - Contraction - Churned**\n\nAs a PM, you influence all four. Your product decisions affect whether customers expand, contract, or churn. Your onboarding flow affects time-to-value which affects churn. Your pricing and packaging affect expansion opportunities."
+    },
+    {
+      "section_id": "sb2b1-s2",
+      "type": "text",
+      "title": "Net Revenue Retention: The Metric That Reveals Product Quality",
+      "content": "Net Revenue Retention (NRR) measures how much revenue you retain and expand from your existing customer base, excluding new customers.\n\n**NRR = (Starting MRR + Expansion - Contraction - Churned) / Starting MRR × 100**\n\nExample:\n- Starting MRR: ₹100L\n- Expansion: ₹15L (upsells, new seats)\n- Contraction: ₹5L (downgrades)\n- Churned: ₹8L (cancellations)\n- Ending MRR from existing customers: ₹102L\n- NRR = 102%\n\n**Interpreting NRR:**\n- < 100%: You're shrinking. Existing customers generate less revenue over time.\n- 100-110%: Healthy. You're retaining and slightly expanding.\n- > 120%: Exceptional. Strong product-market fit with clear expansion paths.\n\n**Why NRR > Gross Retention:**\nGross retention just measures churn. NRR captures the full story: are customers finding more value over time? A product with 90% gross retention but 120% NRR is healthier than one with 95% gross retention but 100% NRR.\n\n**Product implications:**\n- Low NRR suggests customers aren't getting enough value → focus on activation and engagement\n- High churn but high expansion among survivors → you have a segmentation problem\n- Low expansion but low churn → you might be underpriced or missing upsell opportunities"
+    },
+    {
+      "section_id": "sb2b1-s3",
+      "type": "text",
+      "title": "CAC, LTV, and the Unit Economics That Matter",
+      "content": "Customer Acquisition Cost (CAC) and Lifetime Value (LTV) determine whether your business model is sustainable. As a PM, you directly influence LTV through product quality.\n\n**CAC = Total Sales & Marketing Spend / Number of New Customers**\n\nIf you spend ₹50L on S&M and acquire 50 customers: CAC = ₹1L per customer.\n\n**LTV = Average Revenue per Account × Gross Margin × Customer Lifetime**\n\nSimplified: LTV = ARPA × Gross Margin / Churn Rate\n\nExample:\n- ARPA (Average Revenue per Account): ₹5L/year\n- Gross Margin: 80%\n- Annual Churn Rate: 10%\n- LTV = ₹5L × 0.8 / 0.1 = ₹40L\n\n**LTV:CAC Ratio:**\n- < 1:1: You're losing money on every customer. Not sustainable.\n- 1:1 to 3:1: Barely sustainable. High risk.\n- 3:1 to 5:1: Healthy. Industry benchmark.\n- > 5:1: Either you're underinvesting in growth or you have exceptional product-market fit.\n\n**CAC Payback Period = CAC / (ARPA × Gross Margin)**\n\nExample: ₹1L / (₹5L × 0.8) = 0.25 years = 3 months\n\n**As a PM, you can improve LTV by:**\n- Reducing churn through better product experience\n- Increasing ARPA through expansion features and pricing optimization\n- Improving gross margin through efficiency (though this is less common)\n\n**You can improve CAC efficiency by:**\n- Creating product-led growth loops (referrals, viral features)\n- Reducing sales cycle through better demos and trials\n- Improving conversion through better onboarding"
+    },
+    {
+      "section_id": "sb2b1-s4",
+      "type": "text",
+      "title": "Connecting Product Metrics to Business Metrics",
+      "content": "The gap between product teams and business teams often comes down to metric language. Product thinks in engagement; finance thinks in revenue. Bridge the gap.\n\n**Activation → ARR**: Users who complete onboarding successfully are X% more likely to convert to paid. Improving activation directly increases new ARR.\n\n**Feature Adoption → NRR**: Customers using 3+ features have 50% lower churn than those using 1 feature. Feature adoption drives retention, which drives NRR.\n\n**Time-to-Value → CAC Payback**: Faster time-to-value means customers see ROI sooner, which means sales cycles shorten, which reduces effective CAC.\n\n**NPS → Expansion Revenue**: Promoters (NPS 9-10) are 3x more likely to expand. Your product experience drives expansion ARR.\n\n**Build your own metric tree:**\n\n```\nARR Growth\n├── New ARR\n│   ├── Lead volume (marketing)\n│   ├── Conversion rate (sales + product trial)\n│   └── Deal size (pricing + packaging)\n├── Expansion ARR\n│   ├── Feature adoption\n│   ├── Seat growth\n│   └── Tier upgrades\n└── Retained ARR (inverse of churn)\n    ├── Activation rate\n    ├── Engagement depth\n    └── Support satisfaction\n```\n\nWhen you propose a feature, connect it to this tree. 'This feature improves activation by X%, which based on our data should reduce churn by Y%, contributing Z to NRR.'"
+    }
+  ],
+
+  "worked_examples": [
+    {
+      "example_id": "sb2b1-ex1",
+      "title": "Diagnosing a Churn Problem with Metrics",
+      "scenario": "Your B2B SaaS product has gross retention of 85% (15% annual churn). Leadership asks you to 'fix churn.' Where do you start?",
+      "weak_approach": "Start building anti-churn features: better onboarding, in-app messages, win-back campaigns. Launch everything at once and hope churn improves. When it doesn't, blame external factors (market, competition).",
+      "strong_approach": "First, segment the churn:\n\n1. **By tenure**: Is churn concentrated in first 90 days (activation problem) or distributed (ongoing value problem)?\n\n2. **By cohort**: Are recent cohorts churning faster (product regression) or is churn stable (structural issue)?\n\n3. **By customer type**: Are SMBs churning more than enterprise (segment fit) or vice versa (support/onboarding quality)?\n\n4. **By usage pattern**: Do churned customers have common behavioral signatures (low login frequency, unused features)?\n\nSuppose you find: 60% of churn happens in first 90 days, concentrated among customers who never completed implementation. The problem isn't product value — it's activation.\n\nNow you can focus: improve implementation success, not general engagement. Track activation rate as the leading indicator. Churn is the lagging indicator.",
+      "key_insight": "Churn is a symptom, not a diagnosis. Segment the data to find the root cause before building solutions."
+    },
+    {
+      "example_id": "sb2b1-ex2",
+      "title": "Making the Case for a Feature with Business Metrics",
+      "scenario": "You want to build a self-serve upgrade flow that lets customers add seats without talking to sales. How do you justify the investment?",
+      "weak_approach": "'It's a better user experience. Customers shouldn't have to email sales to add a seat. It's basic functionality.' This might be true but doesn't get budget approved.",
+      "strong_approach": "Build the business case with metrics:\n\n1. **Current state**: 500 expansion requests/month via sales. Average deal: ₹50,000. Sales touches: 3 calls, 5 emails. Sales time per request: 4 hours. Effective CAC for expansion: ₹20,000 (sales cost per deal).\n\n2. **Opportunity**: 60% of expansion requests are <₹1L and straightforward seat additions. These could be self-serve.\n\n3. **Impact model**: 300 requests/month become self-serve. CAC drops to near-zero. Conversion rate improves 20% (less friction). Net impact: ₹1.8Cr additional expansion ARR + ₹60L saved sales cost = ₹2.4Cr annual impact.\n\n4. **Engineering cost**: 6 weeks of eng time (~₹15L fully loaded).\n\n5. **ROI**: 16x return in first year.\n\nPresent this with a metric dashboard that tracks: self-serve expansion rate, average deal size self-serve vs. sales-assist, conversion rate by path, and sales time saved.",
+      "key_insight": "Product investments compete for resources. Translate user value into business value to win the prioritization battle."
+    }
+  ],
+
+  "key_takeaways": [
+    {
+      "takeaway_id": "sb2b1-t1",
+      "text": "NRR is the single best metric for B2B product quality. It captures both retention and expansion — whether customers find increasing value over time.",
+      "related_dimensions": ["metrics_reasoning", "prioritization"]
+    },
+    {
+      "takeaway_id": "sb2b1-t2",
+      "text": "LTV:CAC ratio should be 3:1 or better. As a PM, you primarily influence LTV through product quality and CAC through product-led growth.",
+      "related_dimensions": ["metrics_reasoning", "structured_thinking"]
+    },
+    {
+      "takeaway_id": "sb2b1-t3",
+      "text": "Build a metric tree connecting product metrics (activation, adoption) to business metrics (ARR, NRR). This lets you justify product investments in business language.",
+      "related_dimensions": ["metrics_reasoning", "communication_clarity"]
+    }
+  ],
+
+  "practice_question_ids": ["b2b-q01", "b2b-q02", "b2b-q03"],
+
+  "completion_criteria": {
+    "sections_read": true,
+    "examples_reviewed": true,
+    "practice_attempted": 1
+  },
+
+  "resources": [
+    {
+      "title": "SaaS Metrics 2.0 by David Skok",
+      "url": "https://www.forentrepreneurs.com/saas-metrics-2/",
+      "type": "article",
+      "description": "The definitive guide to SaaS metrics including LTV, CAC, churn, and unit economics."
+    },
+    {
+      "title": "What is Good Net Revenue Retention?",
+      "url": "https://www.lennysnewsletter.com/p/what-is-good-retention-issue-29",
+      "type": "article",
+      "description": "Benchmarks for NRR across different B2B SaaS segments and company stages."
+    },
+    {
+      "title": "The SaaS CFO's Guide to Metrics",
+      "url": "https://www.thesaascfo.com/saas-metrics-cheat-sheet/",
+      "type": "article",
+      "description": "Comprehensive cheat sheet of all key SaaS metrics with formulas and benchmarks."
+    },
+    {
+      "title": "OpenView's SaaS Benchmarks Report",
+      "url": "https://openviewpartners.com/blog/saas-benchmarks-report/",
+      "type": "report",
+      "description": "Annual benchmarking data on growth rates, retention, and efficiency metrics."
+    },
+    {
+      "title": "How to Calculate and Improve NRR",
+      "url": "https://www.chargebee.com/resources/guides/net-revenue-retention/",
+      "type": "guide",
+      "description": "Practical guide to measuring and improving net revenue retention."
+    },
+    {
+      "title": "a16z Guide to Enterprise Metrics",
+      "url": "https://a16z.com/16-metrics-that-matter-for-b2b-saas/",
+      "type": "article",
+      "description": "Andreessen Horowitz's guide to the 16 metrics that matter for B2B SaaS companies."
+    }
+  ],
+
+  "metadata": {
+    "author": "Shubh",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending"
+  }
+}

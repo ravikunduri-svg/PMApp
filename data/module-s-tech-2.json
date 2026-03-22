@@ -1,0 +1,134 @@
+{
+  "module_id": "s-tech-2",
+  "title": "Technical Tradeoffs: SQL vs NoSQL, Monolith vs Microservices, Build vs Buy",
+  "description": "Learn to navigate the major technical decisions that shape products. Understand the tradeoffs well enough to participate meaningfully in architecture discussions and make informed product decisions.",
+  "archetype": "technical",
+  "sequence_order": 2,
+  "estimated_duration_minutes": 50,
+  "prerequisite_modules": ["s-tech-1"],
+  
+  "learning_objectives": [
+    "Evaluate SQL vs NoSQL tradeoffs for different product requirements",
+    "Understand when monolithic vs microservices architecture makes sense",
+    "Apply a framework for build vs buy decisions",
+    "Recognize how technical choices constrain future product options"
+  ],
+
+  "sections": [
+    {
+      "section_id": "stech2-s1",
+      "type": "text",
+      "title": "SQL vs NoSQL: Choosing the Right Data Model",
+      "content": "This is one of the most common technical decisions, and it has lasting product implications. The choice isn't about which is 'better' — it's about which fits your specific needs.\n\n**SQL (Relational Databases)**\n\nData lives in tables with defined schemas. Tables relate to each other. You query using SQL (Structured Query Language).\n\n*Strengths:*\n- **ACID compliance:** Transactions are atomic, consistent, isolated, and durable. If you transfer money from account A to account B, both operations succeed or both fail. Never a partial state.\n- **Complex queries:** JOINs across tables let you answer complex questions. 'Show me all orders from users who signed up last month and have spent more than ₹5000.'\n- **Data integrity:** Foreign keys and constraints enforce rules. You can't create an order for a user that doesn't exist.\n- **Mature tooling:** Decades of optimization, well-understood performance tuning.\n\n*Weaknesses:*\n- **Schema rigidity:** Changing the structure requires migrations. Adding a new field to millions of rows is a project.\n- **Scaling challenges:** Vertical scaling is easier than horizontal. Sharding (splitting data across databases) is complex.\n- **Not great for:** Rapidly changing data structures, extremely high write volumes, document-style data.\n\n**NoSQL (Non-Relational Databases)**\n\nMany flavors: document stores (MongoDB), key-value (Redis, DynamoDB), column-family (Cassandra), graph (Neo4j).\n\n*Strengths:*\n- **Flexible schema:** Documents can have different structures. Add fields without migrations.\n- **Horizontal scaling:** Designed to distribute across many servers. Handles massive scale.\n- **Performance for specific patterns:** Key-value lookups are extremely fast. Document retrieval is efficient.\n\n*Weaknesses:*\n- **No JOINs (usually):** Complex queries across data types require application-level logic.\n- **Eventual consistency:** Many NoSQL databases trade immediate consistency for availability. You might read stale data briefly.\n- **Less mature tooling:** Depending on the specific database, fewer optimization options.\n\n**PM decision framework:**\n\n| If you need... | Choose... |\n|----------------|----------|\n| Financial transactions, inventory | SQL (ACID matters) |\n| User sessions, caching | Key-value NoSQL |\n| Product catalogs with varying attributes | Document NoSQL |\n| Social graphs, recommendations | Graph NoSQL |\n| Analytics on structured data | SQL (or data warehouse) |\n| Massive write scale, eventual consistency OK | NoSQL |"
+    },
+    {
+      "section_id": "stech2-s2",
+      "type": "text",
+      "title": "Monolith vs Microservices: Organizational and Technical Tradeoffs",
+      "content": "This architecture decision affects how teams work as much as how code runs. It's fundamentally about complexity management.\n\n**Monolith Architecture**\n\nOne codebase, one deployable unit. Everything — user auth, payments, search, notifications — lives together.\n\n*Strengths:*\n- **Simplicity:** One repo, one deployment, one thing to monitor. Fewer moving parts to break.\n- **Easy refactoring:** Changing code across features is straightforward. No API contracts to maintain.\n- **Lower latency:** No network calls between services. Function calls are fast.\n- **Easier debugging:** Full stack traces. No distributed tracing needed.\n\n*Weaknesses:*\n- **Scaling challenges:** Must scale everything together. If search is CPU-heavy but auth isn't, you still scale both.\n- **Deployment risk:** One bad change can take down everything. Deploying is all-or-nothing.\n- **Team coordination:** Large teams stepping on each other's code. Merge conflicts, unclear ownership.\n- **Tech stack lock-in:** The whole app uses one language/framework.\n\n**Microservices Architecture**\n\nMany small, independent services. Each owns its data and exposes APIs. Auth service, payments service, search service, etc.\n\n*Strengths:*\n- **Independent scaling:** Scale search horizontally without scaling auth.\n- **Independent deployment:** Deploy payments without touching search. Faster releases.\n- **Team autonomy:** Each team owns their service end-to-end. Clear boundaries.\n- **Tech diversity:** Use the right tool for each service. Python for ML, Go for performance.\n\n*Weaknesses:*\n- **Distributed system complexity:** Network failures, eventual consistency, distributed transactions. Hard problems.\n- **Operational overhead:** Many things to deploy, monitor, and debug. Need sophisticated DevOps.\n- **API management:** Services must maintain backward compatibility. Breaking changes are painful.\n- **Latency:** Network calls add milliseconds. A request touching 10 services is slower than one touching 1.\n\n**The honest truth:**\n\nMost startups should start with a monolith. Microservices solve scaling and team coordination problems that you don't have yet. Premature microservices add complexity without benefit.\n\nMigrate to microservices when:\n- Your team is > 30-50 engineers and stepping on each other\n- Specific components need independent scaling\n- You have the DevOps maturity to operate distributed systems\n\n**PM implications:**\n- Monolith = faster feature development, simpler reasoning about data\n- Microservices = slower feature development that crosses service boundaries, but better isolation\n- Ask: 'Which services does this feature touch?' to estimate complexity"
+    },
+    {
+      "section_id": "stech2-s3",
+      "type": "text",
+      "title": "Build vs Buy: A Framework for Technical Decisions",
+      "content": "Should we build our own analytics, or use Amplitude? Build our own auth, or use Auth0? Build our own payments, or use Razorpay? This decision appears constantly.\n\n**The default answer is usually 'buy' (or use open source).**\n\nBuilding is expensive. A 'simple' auth system is 3-6 months of engineering when you account for security, password reset, social login, 2FA, session management, and edge cases. That's engineering time not spent on your core product.\n\n**When to build:**\n\n1. **Core competitive advantage:** If this is what makes your product special, own it. Stripe built their own payment infrastructure because that IS their product.\n\n2. **Unique requirements:** If no solution fits your needs and customization isn't possible, building might be necessary.\n\n3. **Long-term cost:** If you'll spend $10M on vendor fees over 5 years, building for $2M might make sense. But account for maintenance, not just initial build.\n\n4. **Control and security:** If you can't have vendor dependency for compliance, strategic, or security reasons.\n\n**When to buy:**\n\n1. **Not your core competency:** You're building a food delivery app, not an authentication company. Use Auth0.\n\n2. **Time-to-market matters:** Buying gets you to market faster. Speed has value.\n\n3. **Mature solutions exist:** Standing on giants' shoulders beats reinventing wheels.\n\n4. **Maintenance is included:** The vendor handles updates, security patches, and scaling.\n\n**The build vs buy framework:**\n\n| Factor | Build | Buy |\n|--------|-------|-----|\n| Speed to market | Slow | Fast |\n| Upfront cost | Low (engineering time) | Medium (licensing) |\n| Ongoing cost | High (maintenance) | Predictable (subscription) |\n| Customization | Unlimited | Limited |\n| Control | Full | Dependent |\n| Risk | You own failures | Vendor dependency |\n\n**PM role in build vs buy:**\n\nYou represent the product perspective. Engineering might want to build (it's interesting work). Business might want to buy (faster, predictable costs). Your job:\n\n1. Define requirements precisely. What do we actually need?\n2. Evaluate whether vendor solutions meet those requirements\n3. Estimate the product cost of building (delayed roadmap)\n4. Assess long-term vendor risk (pricing changes, deprecation)"
+    },
+    {
+      "section_id": "stech2-s4",
+      "type": "text",
+      "title": "Technical Debt: What It Is and When to Pay It",
+      "content": "Technical debt is the accumulated cost of shortcuts taken in the past. Like financial debt, it accrues interest — the longer you wait, the more painful it becomes.\n\n**Types of technical debt:**\n\n**Deliberate debt:** 'We know this isn't the right architecture, but we need to ship by Friday. We'll fix it next quarter.' Conscious tradeoff.\n\n**Accidental debt:** 'We didn't know any better when we built this.' Learning reveals past mistakes.\n\n**Bit rot:** 'The codebase was fine, but the world changed.' Dependencies became outdated, patterns became obsolete.\n\n**Why technical debt matters to PMs:**\n\n1. **It slows feature development.** 'Why does adding a field take 2 weeks?' Because we have to work around debt.\n\n2. **It causes bugs.** Fragile systems break more often. More incidents, more firefighting.\n\n3. **It limits options.** 'We can't build that feature without refactoring X first.' Debt constrains your roadmap.\n\n4. **It affects hiring.** Good engineers don't want to work in a codebase that's painful.\n\n**When to pay down debt:**\n\n**Prioritize debt paydown when:**\n- The debt is blocking a strategic feature\n- The debt is causing frequent incidents\n- The debt is in a high-change area (you'll keep paying interest)\n- You have a natural pause in feature work\n\n**Defer debt paydown when:**\n- The debt is in a stable area that rarely changes\n- There's a critical time-to-market window\n- The company is in survival mode (different rules apply)\n\n**PM's role:**\n\nYou don't decide what debt to pay — that's engineering leadership. But you advocate for the product perspective:\n\n- 'If we pay down X, what features become unblocked?'\n- 'What's the cost of NOT paying this debt in the next 6 months?'\n- 'Can we sequence debt work with low-activity periods?'\n\nHealthy teams allocate 15-25% of engineering capacity to debt and platform work. If your team does 0%, you're accumulating debt faster than you realize."
+    }
+  ],
+
+  "worked_examples": [
+    {
+      "example_id": "stech2-ex1",
+      "title": "Choosing a Database for a New Product",
+      "scenario": "You're launching a social fitness app where users log workouts, follow friends, and see a feed of friends' activities. What database approach would you recommend?",
+      "weak_approach": "Pick whatever the team knows best. 'We've always used PostgreSQL, so let's use that.' No analysis of specific requirements.",
+      "strong_approach": "Analyze the data patterns:\n\n**User profiles and authentication:** Structured data, relational. Users have accounts, passwords, settings. → SQL makes sense.\n\n**Workout logs:** Structured but variable. Some workouts have distance, some have reps, some have duration. Schema might evolve. → Document store (MongoDB) could work, or SQL with JSONB columns.\n\n**Social graph:** Users follow users. Classic graph problem. Queries like 'friends of friends' are expensive in SQL. → Could use a graph database (Neo4j) or model in SQL with careful indexing.\n\n**Activity feed:** High read volume, eventual consistency is fine. Feed can lag by seconds. → Could use a feed-specific solution or cache heavily.\n\n**Recommendation:**\n\nFor a startup, don't over-engineer. Start with PostgreSQL for everything. It handles all these patterns adequately at early scale. Use JSONB for flexible workout data. Optimize the social graph with proper indexes.\n\nIf you hit scale problems:\n- Move activity feed to Redis or a stream processor\n- Consider a dedicated graph database if social queries become bottleneck\n- But don't prematurely optimize\n\n**Key insight:** The right answer for a 10-person startup is different from the right answer for Instagram. Start simple, evolve based on real bottlenecks.",
+      "key_insight": "Database decisions should match your current scale, not your aspirational scale. You can migrate later; you can't get back wasted engineering time."
+    },
+    {
+      "example_id": "stech2-ex2",
+      "title": "Build vs Buy: Analytics Platform",
+      "scenario": "Your product is growing and stakeholders want better analytics. Engineering proposes building a custom analytics pipeline. The alternative is paying for Amplitude or Mixpanel. How do you think through this?",
+      "weak_approach": "Side with whoever makes the stronger argument in the meeting. Or default to 'building is risky, let's buy' without analysis.",
+      "strong_approach": "**Define requirements first:**\n\n- Event tracking (page views, clicks, conversions)\n- User identification and session tracking\n- Funnel analysis and retention cohorts\n- Custom dashboards for different teams\n- Data export for ML/data science\n\n**Evaluate build:**\n\n*Cost:* 2 engineers for 6 months = ~₹60L fully loaded. Plus ongoing maintenance (0.5 engineer = ₹15L/year).\n\n*Timeline:* 6 months to basic functionality, 12 months to parity with commercial tools.\n\n*Pros:* Full control, custom features, no per-event pricing.\n\n*Cons:* Delayed roadmap, maintenance burden, building something that's not your core product.\n\n**Evaluate buy (e.g., Amplitude):**\n\n*Cost:* ~₹20-40L/year at your scale, scaling with events.\n\n*Timeline:* 2-4 weeks to integrate.\n\n*Pros:* Fast, maintained by experts, rich features out of the box.\n\n*Cons:* Cost scales with success, vendor dependency, limited customization.\n\n**Decision framework:**\n\nIs analytics your core differentiator? No. You're building [product X], not an analytics company.\n\n→ **Buy.** Use Amplitude or Mixpanel. Get to value in weeks instead of months. Invest engineering in your actual product.\n\n**Exceptions that would flip the decision:**\n- You have extreme data privacy requirements (can't send data to vendor)\n- Your scale makes vendor pricing prohibitive (10B+ events/month)\n- You need ML/custom analysis that no vendor supports",
+      "key_insight": "The opportunity cost of engineering time is the killer. 2 engineers spending 6 months on analytics is 2 engineers NOT building features that differentiate your product."
+    }
+  ],
+
+  "key_takeaways": [
+    {
+      "takeaway_id": "stech2-t1",
+      "text": "SQL vs NoSQL is about consistency vs flexibility. Use SQL when data integrity and complex queries matter. Use NoSQL when schema flexibility and horizontal scaling matter.",
+      "related_dimensions": ["structured_thinking", "problem_framing"]
+    },
+    {
+      "takeaway_id": "stech2-t2",
+      "text": "Start with a monolith, evolve to microservices. Microservices solve team scaling and independent deployment problems that most early-stage companies don't have.",
+      "related_dimensions": ["prioritization", "structured_thinking"]
+    },
+    {
+      "takeaway_id": "stech2-t3",
+      "text": "Default to 'buy' unless the capability is core to your competitive advantage. The opportunity cost of engineering time usually exceeds the cost of vendor solutions.",
+      "related_dimensions": ["prioritization", "metrics_reasoning"]
+    }
+  ],
+
+  "practice_question_ids": ["tech-q06", "tech-q07", "tech-q08"],
+
+  "completion_criteria": {
+    "sections_read": true,
+    "examples_reviewed": true,
+    "practice_attempted": 1
+  },
+
+  "resources": [
+    {
+      "title": "Monolith vs Microservices: How to Choose",
+      "url": "https://martinfowler.com/articles/microservices.html",
+      "type": "article",
+      "description": "Martin Fowler's definitive guide to microservices architecture and when to use it."
+    },
+    {
+      "title": "Build vs Buy: A Framework",
+      "url": "https://review.firstround.com/the-best-framework-for-make-vs-buy-decisions",
+      "type": "article",
+      "description": "First Round's practical framework for build vs. buy decisions."
+    },
+    {
+      "title": "Technical Debt: What It Is and How to Manage It",
+      "url": "https://martinfowler.com/bliki/TechnicalDebt.html",
+      "type": "article",
+      "description": "Martin Fowler's explanation of technical debt as a concept and strategy."
+    },
+    {
+      "title": "SQL vs NoSQL: The Differences Explained",
+      "url": "https://www.ibm.com/cloud/blog/sql-vs-nosql",
+      "type": "article",
+      "description": "IBM's clear explanation of database types and selection criteria."
+    },
+    {
+      "title": "Scaling to 100k Users",
+      "url": "https://alexpareto.com/scalability/systems/2020/02/03/scaling-100k.html",
+      "type": "article",
+      "description": "Practical walkthrough of scaling decisions as a product grows."
+    },
+    {
+      "title": "The Twelve-Factor App",
+      "url": "https://12factor.net/",
+      "type": "guide",
+      "description": "Best practices for building modern, scalable software-as-a-service applications."
+    }
+  ],
+
+  "metadata": {
+    "author": "Praveen",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending"
+  }
+}

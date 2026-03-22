@@ -1,0 +1,134 @@
+{
+  "module_id": "f4-product-sense",
+  "title": "Product Sense and User Empathy",
+  "description": "Learn how to think about users, identify real pain points, and avoid shallow demographic-level thinking. This module builds the foundation for understanding what makes products genuinely useful.",
+  "archetype": "shared",
+  "sequence_order": 4,
+  "estimated_duration_minutes": 45,
+  "prerequisite_modules": ["f1-pm-roles", "f2-pm-journey"],
+  
+  "learning_objectives": [
+    "Distinguish between demographic segments and behavioral segments",
+    "Identify genuine user pain points vs. surface-level complaints",
+    "Apply user empathy techniques in product thinking",
+    "Avoid common product sense pitfalls in PM interviews"
+  ],
+
+  "sections": [
+    {
+      "section_id": "f4-s1",
+      "type": "text",
+      "title": "What is Product Sense?",
+      "content": "Product sense is the ability to understand what makes a product valuable to users and how to make it better. It's not about having opinions — everyone has those. It's about having *informed* opinions backed by a mental model of how users think, behave, and make decisions.\n\nWhen interviewers ask product sense questions, they're testing whether you can think like a user while also thinking like a business. Can you identify what matters to someone who isn't you? Can you spot the difference between what users say they want and what they actually need?\n\nProduct sense is built, not born. It comes from observing users, studying successful products, and developing frameworks for breaking down why things work or fail. The good news: it's a learnable skill. The bad news: there are no shortcuts.\n\nThe foundation of product sense is user empathy — the ability to genuinely understand and share the feelings of your users. But empathy alone isn't enough. You need to combine it with analytical thinking to translate user understanding into product decisions."
+    },
+    {
+      "section_id": "f4-s2",
+      "type": "text",
+      "title": "The Demographic Trap: Why 'Millennials' Isn't a User Segment",
+      "content": "One of the most common mistakes in product thinking is confusing demographics with user segments. Demographics describe who people are: age, gender, income, location. User segments describe what people do and why they do it.\n\nConsider this: 'Our target user is women aged 25-34 in urban areas.' This tells you almost nothing useful for product decisions. Within this demographic, you'll find:\n\n- A new mother who needs quick meal solutions because she has no time\n- A fitness enthusiast who tracks macros and wants precise nutritional info\n- A busy professional who orders takeout 5 nights a week\n- A home cooking hobbyist who spends weekends experimenting with recipes\n\nThese four people share demographics but have completely different needs, behaviors, and willingness to pay. Building a product for 'women 25-34' means building for no one.\n\nBehavioral segments are more useful: 'Time-starved parents who need to feed their family healthy meals in under 30 minutes.' Now you have a clear pain point (no time), a clear need (healthy family meals), and a clear constraint (30 minutes). You can build features, prioritize a roadmap, and write marketing copy that resonates.\n\nIn interviews, when you define a user persona, always ground it in behavior: what they're trying to accomplish, what's blocking them, and what alternatives they currently use. If your persona could be described by demographics alone, go deeper."
+    },
+    {
+      "section_id": "f4-s3",
+      "type": "text",
+      "title": "Finding Real Pain Points vs. Surface Complaints",
+      "content": "Users are often bad at articulating their actual problems. They'll tell you they want a faster horse when they need a car. They'll complain about a button color when the real issue is they can't find the feature. Your job is to dig beneath the surface.\n\nThe 'Five Whys' technique helps here. When a user says 'I want the app to load faster,' ask why that matters. Maybe they're checking the app during their commute (context). Maybe they have limited data (constraint). Maybe they're comparing prices while standing in a store (use case). Each 'why' reveals more about the actual need.\n\nAnother technique: observe what users do, not just what they say. If users say they want more features but your analytics show they only use three core features, the stated need and revealed preference don't match. Trust behavior over words.\n\nReal pain points have these characteristics:\n\n1. **Frequency**: The problem occurs often enough to be worth solving\n2. **Intensity**: The problem causes significant frustration or cost\n3. **Willingness to pay**: Users would pay money or attention to solve it\n4. **Current workarounds**: Users are already doing something (usually inefficient) to address it\n\nIf you can't identify existing workarounds, the pain might not be real enough. People tolerate a lot of friction before actively seeking solutions."
+    },
+    {
+      "section_id": "f4-s4",
+      "type": "text",
+      "title": "Empathy Without Projection: Understanding Users Who Aren't You",
+      "content": "The hardest part of user empathy is separating your preferences from your users' needs. You might love a minimal interface; your users might need more guidance. You might find a feature obvious; your users might have never seen anything like it before.\n\nThis is called the 'curse of knowledge.' Once you know how something works, you can't un-know it. You lose the ability to see it through a beginner's eyes. Every PM struggles with this.\n\nStrategies to combat projection:\n\n**Talk to users regularly.** Not occasionally — regularly. Set a cadence: 3-5 user conversations per week. Record them. Re-listen. Notice when your assumptions are wrong.\n\n**Build user personas from research, not imagination.** If you can't point to three real users who match your persona, it's fiction. Fiction doesn't validate product decisions.\n\n**Use 'jobs to be done' framing.** Instead of 'what features do users want,' ask 'what job are users hiring this product to do?' A job is situational: 'When I'm waiting in line and bored, I want to browse something entertaining.' This grounds you in user context.\n\n**Watch users use your product.** Screen recordings, usability tests, and session replays show you reality. Where do they pause? Where do they rage-click? Where do they give up?\n\nThe goal isn't to become the user. It's to build an accurate mental model of the user that you can reference when making decisions. That model should be based on evidence, not intuition."
+    }
+  ],
+
+  "worked_examples": [
+    {
+      "example_id": "f4-ex1",
+      "title": "Designing a Feature for a Food Delivery App",
+      "scenario": "You're a PM at a food delivery app. The data team shows you that 40% of users abandon their cart before checkout. You're asked to improve conversion. How do you approach this?",
+      "weak_approach": "A weak approach jumps to solutions: 'Add a discount popup when users try to leave.' This assumes the problem is price sensitivity without validating it. It might work short-term but could train users to always wait for discounts, destroying margins.",
+      "strong_approach": "A strong approach investigates the 'why' first:\n\n1. **Segment the abandoners.** Are they new users or returning? Mobile or desktop? High-value or low-value carts?\n\n2. **Look at the funnel.** Where exactly do they drop off? Cart page? Payment page? Address entry?\n\n3. **Talk to users.** Run exit surveys or call users who abandoned recently. Ask what happened.\n\nSuppose you find that 60% of abandonment happens at the delivery fee screen, and users say 'I didn't realize delivery would be ₹50 on a ₹200 order.' The pain point isn't cart abandonment — it's fee surprise.\n\nNow you can design solutions that address the actual problem: show estimated total earlier in the flow, offer free delivery thresholds, bundle delivery into menu prices. You're solving the real pain, not patching symptoms.",
+      "key_insight": "Good product sense means resisting the urge to jump to solutions. Diagnose before you prescribe."
+    },
+    {
+      "example_id": "f4-ex2",
+      "title": "Identifying the Real User for an Enterprise Tool",
+      "scenario": "You're building a project management tool for enterprises. The buyer is a VP who signs the contract. The admin is an IT manager who sets it up. The user is an individual contributor who uses it daily. Who do you optimize for?",
+      "weak_approach": "A weak approach picks one: 'The VP, because they write the check.' This ignores that VPs don't use the product daily. If ICs hate it, adoption fails, renewal doesn't happen, and the VP doesn't buy again.",
+      "strong_approach": "A strong approach maps the stakeholder ecosystem:\n\n- **VP (Buyer):** Cares about ROI, team productivity metrics, security compliance, vendor reputation. Evaluates during sales process.\n\n- **IT Admin (Implementer):** Cares about SSO integration, user provisioning, data export, API access. Evaluates during procurement and setup.\n\n- **IC (Daily User):** Cares about task management, notifications, mobile access, speed. Evaluates every day they use it.\n\nYou need to satisfy all three, but with different features at different stages. The pitch deck speaks to VPs. The documentation speaks to IT. The product experience speaks to ICs.\n\nCritically, IC satisfaction drives long-term retention. VPs rely on usage metrics and team feedback to decide on renewal. If ICs create workarounds (using Slack or spreadsheets instead), the tool becomes shelfware.",
+      "key_insight": "In B2B, 'the user' is often multiple people with different jobs. Map the ecosystem before designing."
+    }
+  ],
+
+  "key_takeaways": [
+    {
+      "takeaway_id": "f4-t1",
+      "text": "User segments should be behavioral, not demographic. 'Busy parents who need quick healthy meals' is actionable; 'adults 30-45' is not.",
+      "related_dimensions": ["user_empathy", "problem_framing"]
+    },
+    {
+      "takeaway_id": "f4-t2",
+      "text": "Real pain points have frequency, intensity, willingness to pay, and existing workarounds. If you can't find workarounds, the pain might not be real enough.",
+      "related_dimensions": ["user_empathy", "prioritization"]
+    },
+    {
+      "takeaway_id": "f4-t3",
+      "text": "Empathy requires evidence, not imagination. Talk to users, watch them use your product, and build personas from data — not from your assumptions about what users want.",
+      "related_dimensions": ["user_empathy", "structured_thinking"]
+    }
+  ],
+
+  "practice_question_ids": ["f4-q01", "f4-q02", "f4-q03"],
+
+  "completion_criteria": {
+    "sections_read": true,
+    "examples_reviewed": true,
+    "practice_attempted": 1
+  },
+
+  "resources": [
+    {
+      "title": "How to Develop Product Sense",
+      "url": "https://www.lennysnewsletter.com/p/product-sense",
+      "type": "article",
+      "description": "Lenny Rachitsky's guide on building product intuition with exercises and examples."
+    },
+    {
+      "title": "The Mom Test (Book)",
+      "url": "http://momtestbook.com/",
+      "type": "book",
+      "description": "Rob Fitzpatrick's essential guide on how to talk to customers without leading them to lie."
+    },
+    {
+      "title": "Empathy Maps: A Complete Guide",
+      "url": "https://www.nngroup.com/articles/empathy-mapping/",
+      "type": "article",
+      "description": "Nielsen Norman Group's guide on creating and using empathy maps for user research."
+    },
+    {
+      "title": "Don't Listen to Users, Watch Them",
+      "url": "https://www.intercom.com/blog/dont-listen-to-users-watch-them/",
+      "type": "article",
+      "description": "Intercom's guide on behavioral observation over stated preferences."
+    },
+    {
+      "title": "Jobs to Be Done Interviews",
+      "url": "https://jtbd.info/2-what-is-jobs-to-be-done-jtbd-796b82081c5",
+      "type": "article",
+      "description": "Deep dive into conducting JTBD interviews to uncover real user motivations."
+    },
+    {
+      "title": "Building Products for the 'Jobs' People Want Done",
+      "url": "https://review.firstround.com/build-products-that-solve-real-problems-with-this-lightweight-jtbd-framework",
+      "type": "article",
+      "description": "First Round Review's practical JTBD framework for product development."
+    }
+  ],
+
+  "metadata": {
+    "author": "Rudra",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending"
+  }
+}

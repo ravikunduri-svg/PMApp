@@ -1,0 +1,134 @@
+{
+  "module_id": "s-tech-1",
+  "title": "System Design Basics for PMs",
+  "description": "Understand the building blocks of modern software systems: APIs, databases, caching, and load balancing. Learn enough to have meaningful conversations with engineers without pretending to be one.",
+  "archetype": "technical",
+  "sequence_order": 1,
+  "estimated_duration_minutes": 55,
+  "prerequisite_modules": ["f1-pm-roles", "f3-frameworks"],
+  
+  "learning_objectives": [
+    "Explain how APIs work and why they matter for product decisions",
+    "Understand database fundamentals and when different types are appropriate",
+    "Grasp caching and CDN concepts and their impact on user experience",
+    "Know enough about scalability to ask informed questions"
+  ],
+
+  "sections": [
+    {
+      "section_id": "stech1-s1",
+      "type": "text",
+      "title": "APIs: The Contracts Between Systems",
+      "content": "An API (Application Programming Interface) is a contract between two pieces of software. When you use the Zomato app, the app talks to Zomato's servers via APIs. When Zomato shows you a map, their servers talk to Google Maps via APIs.\n\n**Why PMs need to understand APIs:**\n\n1. **Feature scoping:** 'Can we add Uber ride booking to our app?' depends on whether Uber has a public API and what it allows.\n\n2. **Integration decisions:** Partner integrations are API integrations. Understanding API limits helps you set realistic timelines.\n\n3. **Third-party risks:** If your feature depends on a third-party API, you inherit their uptime, rate limits, and pricing changes.\n\n**Key API concepts:**\n\n**Endpoints:** URLs where the API lives. `/api/users/123` might return user data for user 123.\n\n**Methods:** What you're asking to do.\n- GET: Retrieve data (read)\n- POST: Create new data\n- PUT/PATCH: Update existing data\n- DELETE: Remove data\n\n**Request/Response:** You send a request with parameters; you get a response with data (usually JSON).\n\n**Authentication:** Most APIs require API keys or tokens. 'Unauthenticated' APIs are rare and limited.\n\n**Rate limits:** APIs limit how often you can call them (e.g., 100 requests per minute). Exceeding limits gets you blocked.\n\n**Versioning:** APIs change over time. Good APIs version themselves (/v1/users, /v2/users) so existing integrations don't break.\n\n**PM application:** When proposing a feature that requires data from another system, ask: 'Is there an API for this? What are its limits? What's the latency? Who maintains it?'"
+    },
+    {
+      "section_id": "stech1-s2",
+      "type": "text",
+      "title": "Databases: Where Data Lives",
+      "content": "Every product stores data somewhere. Understanding database basics helps you reason about data requirements, performance, and feasibility.\n\n**Two main families:**\n\n**Relational databases (SQL):** Data in tables with rows and columns. Tables relate to each other via keys. Examples: PostgreSQL, MySQL.\n\n- Strengths: Structured data, complex queries, data integrity, transactions (all-or-nothing operations)\n- Use when: Data has clear relationships, you need joins across tables, consistency is critical (financial transactions, inventory)\n\n**Non-relational databases (NoSQL):** Flexible structures — documents, key-value pairs, graphs. Examples: MongoDB, Redis, DynamoDB.\n\n- Strengths: Flexible schema, horizontal scaling, fast for specific access patterns\n- Use when: Data structure varies, scale is massive, speed matters more than complex queries (user sessions, product catalogs, social feeds)\n\n**PM implications:**\n\n**Schema changes are expensive.** 'Can we add a new field to the user profile?' is easy. 'Can we change how we model orders?' might be a multi-month migration.\n\n**Queries have costs.** 'Show me all users who bought product X and also viewed product Y last month' might be instant or might take minutes, depending on data model and indexes.\n\n**Scale changes the game.** A database that works for 10,000 users might collapse at 10 million. Technical PMs need to think about future scale when making data model decisions.\n\n**Questions to ask engineers:**\n- 'How is this data modeled?'\n- 'What happens to query performance at 10x scale?'\n- 'Are there existing indexes we can use, or do we need new ones?'\n- 'What's the migration path if we need to change the schema?'"
+    },
+    {
+      "section_id": "stech1-s3",
+      "type": "text",
+      "title": "Caching and CDNs: Making Things Fast",
+      "content": "Users hate waiting. Caching is how we make things feel instant by storing results closer to the user or by not recomputing things we've already computed.\n\n**How caching works:**\n\nInstead of calculating the same result every time, store it and serve the stored copy. Example: Instead of querying the database for 'top 10 trending products' on every page load, compute it once per hour and cache the result.\n\n**Cache layers:**\n\n**Browser cache:** Your browser stores static files (images, CSS, JS) locally. Controlled via HTTP headers.\n\n**CDN (Content Delivery Network):** Servers distributed globally that store copies of your content. User in Delhi hits Delhi server, not your US server. Cloudflare, AWS CloudFront, Fastly are CDN providers.\n\n**Application cache:** In-memory storage (like Redis) for frequently accessed data. 'User profile for user 123' cached for 5 minutes.\n\n**Database cache:** Database's internal caching of query results.\n\n**The tradeoff: Freshness vs. Speed**\n\nCached data might be stale. If you cache product prices for 1 hour, a price change takes up to 1 hour to reflect. PM decisions:\n\n- How stale is acceptable? Real-time stock prices: never cached. Product descriptions: can be cached for hours.\n- What's the invalidation strategy? When data changes, how do you update caches?\n\n**Cache invalidation is hard.** It's a famous computer science problem. When you hear engineers groan about 'cache invalidation,' they're dealing with making sure stale data doesn't persist.\n\n**CDN decisions for PMs:**\n- Static content (images, videos, JS) should almost always be CDN-served\n- Dynamic content (personalized feeds) usually isn't cached or has very short TTL (time-to-live)\n- CDN costs scale with traffic — high-traffic products can spend significantly on CDN"
+    },
+    {
+      "section_id": "stech1-s4",
+      "type": "text",
+      "title": "Scalability: Thinking About Load",
+      "content": "Scalability is the ability to handle more load — more users, more data, more requests. Every product decision has scalability implications.\n\n**Two types of scaling:**\n\n**Vertical scaling (scale up):** Get a bigger machine. More CPU, more RAM. Simple but has limits — you can't buy an infinitely big computer.\n\n**Horizontal scaling (scale out):** Add more machines. Instead of one server handling 10,000 requests, have 10 servers handling 1,000 each. More complex but can scale indefinitely.\n\n**Load balancing:** When you have multiple servers, a load balancer distributes incoming requests across them. If one server dies, others handle the load (fault tolerance).\n\n**Bottlenecks and limits:**\n\nEvery system has a bottleneck — the component that limits throughput. Common bottlenecks:\n\n- **Database:** Single database can only handle so many queries/second\n- **CPU:** Computation-heavy operations max out processing\n- **Network:** Data transfer has bandwidth limits\n- **Third-party APIs:** External dependencies with rate limits\n\n**PM implications:**\n\n**Ask about capacity:** 'How many concurrent users can this feature support?' If your launch expects 100K users and the system supports 10K, you have a problem.\n\n**Think about spikes:** Flash sales, viral moments, and major launches create traffic spikes. Can the system handle 10x normal load?\n\n**Understand degradation:** What happens when the system is overloaded? Graceful degradation (slower but functional) or total failure? Design fallbacks.\n\n**Scale affects costs:** Cloud infrastructure is pay-per-use. A feature that works at 100 users might be cost-prohibitive at 1 million. Ask about cost scaling."
+    }
+  ],
+
+  "worked_examples": [
+    {
+      "example_id": "stech1-ex1",
+      "title": "Evaluating a Third-Party Integration",
+      "scenario": "You want to add real-time currency conversion to your e-commerce checkout. Engineering says they can integrate with a currency API. What questions should you ask?",
+      "weak_approach": "Accept the engineering proposal and move forward. 'If engineering says it works, it works.' Write the PRD with the feature and assume it's handled.",
+      "strong_approach": "**API-specific questions:**\n\n1. 'Which currency API are we using? What are their rate limits?' If you have 1000 checkouts per minute and the API allows 100 requests per minute, you have a problem.\n\n2. 'What's the API latency?' If the API adds 500ms to every checkout, conversion rates will drop.\n\n3. 'How often are exchange rates updated?' If they're cached for 24 hours, your prices might be inaccurate.\n\n4. 'What happens if the API is down?' Do we fail checkout, use stale rates, or default to a single currency?\n\n5. 'What's the cost structure?' Per-request pricing? Monthly fee? Does it scale linearly or step-function?\n\n**Product decisions enabled:**\n- If latency is high, cache rates locally and refresh every N minutes\n- If rate limits are low, batch conversions or pre-compute for popular currencies\n- If uptime is uncertain, build fallback logic into the spec",
+      "key_insight": "As a Technical PM, you don't write the code, but you ask questions that prevent engineering from building something that fails in production."
+    },
+    {
+      "example_id": "stech1-ex2",
+      "title": "Understanding a Performance Complaint",
+      "scenario": "Users report that your product's search feature is slow. It takes 5+ seconds to return results. Engineering says 'it's a database problem.' How do you dig deeper?",
+      "weak_approach": "Tell engineering to 'fix the database' and wait. You don't understand the technical details, so you defer entirely.",
+      "strong_approach": "**Ask clarifying questions:**\n\n1. 'What makes it a database problem? Is it query execution, missing indexes, or data volume?'\n\n2. 'Is this affecting all searches or specific query patterns?' Maybe searches with many filters are slow, but simple searches are fine.\n\n3. 'What's the current query doing? Is it scanning the full table or using indexes?'\n\n4. 'How many records are we searching across? How fast is this growing?'\n\n5. 'Are there caching opportunities? Could we cache popular searches?'\n\n**Possible solutions you might discuss:**\n\n- **Add indexes:** If the query isn't using indexes, this might be a quick fix\n- **Implement caching:** Cache results for common queries (top 100 searches account for 80% of volume)\n- **Use a search service:** For complex search, dedicated services like Elasticsearch are faster than relational databases\n- **Pagination:** Instead of returning 10,000 results, return 20 with infinite scroll\n\n**PM role:** You're not solving the technical problem, but you're shaping the solution by asking 'What tradeoffs does each approach have?' and 'Which approach best serves the user need?'",
+      "key_insight": "Technical PM credibility comes from asking good questions, not from having all the answers. Engineers respect PMs who engage meaningfully with technical constraints."
+    }
+  ],
+
+  "key_takeaways": [
+    {
+      "takeaway_id": "stech1-t1",
+      "text": "APIs are contracts between systems. When scoping features, ask about API availability, rate limits, latency, authentication, and fallback handling.",
+      "related_dimensions": ["structured_thinking", "problem_framing"]
+    },
+    {
+      "takeaway_id": "stech1-t2",
+      "text": "Database decisions have long-term implications. Schema changes and data model choices are expensive to reverse. Ask 'what happens at 10x scale?' early.",
+      "related_dimensions": ["structured_thinking", "prioritization"]
+    },
+    {
+      "takeaway_id": "stech1-t3",
+      "text": "Caching trades freshness for speed. As a PM, decide what level of staleness is acceptable for each piece of data based on user needs.",
+      "related_dimensions": ["user_empathy", "prioritization"]
+    }
+  ],
+
+  "practice_question_ids": ["tech-q01", "tech-q02", "tech-q03"],
+
+  "completion_criteria": {
+    "sections_read": true,
+    "examples_reviewed": true,
+    "practice_attempted": 1
+  },
+
+  "resources": [
+    {
+      "title": "System Design Primer",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "type": "guide",
+      "description": "Comprehensive open-source guide to system design concepts for interviews and learning."
+    },
+    {
+      "title": "APIs for Beginners (Video)",
+      "url": "https://www.youtube.com/watch?v=GZvSYJDk-us",
+      "type": "video",
+      "description": "FreeCodeCamp's beginner-friendly explanation of what APIs are and how they work."
+    },
+    {
+      "title": "SQL vs NoSQL: When to Use Each",
+      "url": "https://www.mongodb.com/nosql-explained/nosql-vs-sql",
+      "type": "article",
+      "description": "Clear comparison of relational and non-relational databases with use cases."
+    },
+    {
+      "title": "High Scalability Blog",
+      "url": "http://highscalability.com/",
+      "type": "blog",
+      "description": "Case studies of how real companies architect their systems at scale."
+    },
+    {
+      "title": "How HTTPS Works (Comic)",
+      "url": "https://howhttps.works/",
+      "type": "interactive",
+      "description": "Visual, beginner-friendly explanation of HTTPS and web security."
+    },
+    {
+      "title": "The Technical PM Guide",
+      "url": "https://www.sachinrekhi.com/the-technical-skills-every-pm-should-have",
+      "type": "article",
+      "description": "Sachin Rekhi's guide to the technical skills PMs actually need."
+    }
+  ],
+
+  "metadata": {
+    "author": "Praveen",
+    "created_date": "2026-03-21",
+    "version": "1.1",
+    "review_status": "pending"
+  }
+}

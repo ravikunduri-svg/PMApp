@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMPathfinder — User Guide</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #030712;
+      --bg-card:    #0f172a;
+      --bg-card2:   #1e293b;
+      --border:     #1e293b;
+      --border2:    #334155;
+      --text:       #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim:   #475569;
+      --indigo:     #6366f1;
+      --indigo-light: #818cf8;
+      --indigo-dark:  #3730a3;
+      --emerald:    #10b981;
+      --amber:      #f59e0b;
+      --red:        #ef4444;
+      --radius:     16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 24px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-logo { font-size: 52px; margin-bottom: 16px; position: relative; }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #e2e8f0 0%, #818cf8 60%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+    .hero-sub {
+      margin-top: 12px;
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 99px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--indigo-light);
+      font-weight: 500;
+      position: relative;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 48px 0;
+    }
+    .toc h3 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    .toc ol { list-style: none; counter-reset: toc; }
+    .toc li {
+      counter-increment: toc;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc li:last-child { border-bottom: none; }
+    .toc li::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--indigo);
+      font-family: monospace;
+      min-width: 24px;
+    }
+    .toc a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.15s; }
+    .toc a:hover { color: var(--indigo-light); }
+
+    /* ── Sections ── */
+    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    .section-header { margin-bottom: 36px; }
+    .section-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .section-desc { color: var(--text-muted); margin-top: 8px; font-size: 15px; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── Step-by-step ── */
+    .steps { counter-reset: step; }
+    .step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 44px;
+      bottom: -28px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--indigo-dark), transparent);
+    }
+    .step-num {
+      counter-increment: step;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.15);
+      border: 2px solid var(--indigo-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--indigo-light);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-body { flex: 1; padding-top: 8px; }
+    .step-body h3 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .step-body p { font-size: 14px; color: var(--text-muted); }
+    .step-body .step-detail {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── Dimension cards ── */
+    .dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .dim-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      transition: border-color 0.2s;
+    }
+    .dim-card:hover { border-color: var(--border2); }
+    .dim-icon { font-size: 24px; margin-bottom: 10px; }
+    .dim-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .dim-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── Score scale ── */
+    .score-scale {
+      display: flex;
+      gap: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin: 24px 0;
+    }
+    .score-band {
+      flex: 1;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .score-band.red    { background: rgba(239,68,68,0.1); }
+    .score-band.amber  { background: rgba(245,158,11,0.1); }
+    .score-band.emerald{ background: rgba(16,185,129,0.1); }
+    .score-band .range { font-size: 18px; font-weight: 800; font-family: monospace; }
+    .score-band.red    .range { color: var(--red); }
+    .score-band.amber  .range { color: var(--amber); }
+    .score-band.emerald .range { color: var(--emerald); }
+    .score-band .label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── Archetype cards ── */
+    .archetype-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .arch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .arch-card:hover { border-color: var(--indigo-dark); transform: translateY(-2px); }
+    .arch-emoji { font-size: 32px; margin-bottom: 12px; }
+    .arch-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .arch-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; }
+    .arch-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .arch-tag {
+      font-size: 11px;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.25);
+      color: var(--indigo-light);
+      border-radius: 99px;
+      padding: 2px 10px;
+    }
+
+    /* ── Callouts ── */
+    .callout {
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 14px;
+    }
+    .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .callout-body { flex: 1; }
+    .callout-body strong { display: block; margin-bottom: 2px; }
+    .callout.tip   { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); color: #a5b4fc; }
+    .callout.warn  { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); color: #fcd34d; }
+    .callout.good  { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); color: #6ee7b7; }
+
+    /* ── FAQ ── */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── Progress bar example ── */
+    .progress-demo { margin: 20px 0; }
+    .prog-row { margin-bottom: 14px; }
+    .prog-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+    .prog-label span:first-child { color: var(--text-muted); }
+    .prog-bar-bg { background: var(--bg-card2); border-radius: 99px; height: 6px; }
+    .prog-bar { height: 6px; border-radius: 99px; }
+
+    /* ── Answer mode badges ── */
+    .mode-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 20px 0; }
+    .mode-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .mode-icon { font-size: 28px; margin-bottom: 8px; }
+    .mode-name { font-size: 13px; font-weight: 700; color: var(--text); }
+    .mode-desc { font-size: 11px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--text-dim);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--indigo-light); text-decoration: none; }
+
+    /* ── Utility ── */
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 99px;
+    }
+    .tag-indigo { background: rgba(99,102,241,0.15); color: var(--indigo-light); border: 1px solid rgba(99,102,241,0.3); }
+    .tag-amber  { background: rgba(245,158,11,0.15); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+    .tag-emerald{ background: rgba(16,185,129,0.15); color: var(--emerald); border: 1px solid rgba(16,185,129,0.3); }
+
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+    @media (max-width: 600px) {
+      .mode-grid { grid-template-columns: 1fr; }
+      .score-scale { flex-direction: column; }
+      .toc { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<div class="hero">
+  <div class="hero-logo">🧭</div>
+  <h1>PMPathfinder</h1>
+  <p class="hero-sub">Your AI-powered PM interview coach. Know exactly which muscle is weak — and close the gap before your next interview.</p>
+  <div class="hero-badge">📖 User Guide &nbsp;·&nbsp; v1.0</div>
+</div>
+
+<div class="container">
+
+  <!-- ══════════════════ TOC ══════════════════ -->
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#what">What is PMPathfinder?</a></li>
+      <li><a href="#start">Getting Started</a></li>
+      <li><a href="#dimensions">The 6 PM Dimensions</a></li>
+      <li><a href="#archetypes">Your PM Archetype</a></li>
+      <li><a href="#modules">Learning Modules</a></li>
+      <li><a href="#practice">Practice Tests</a></li>
+      <li><a href="#report">Reading Your Report Card</a></li>
+      <li><a href="#jd">JD Readiness Check</a></li>
+      <li><a href="#tips">Tips to Improve Faster</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <!-- ══════════════════ 1. WHAT ══════════════════ -->
+  <div class="section" id="what">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <h2>What is PMPathfinder?</h2>
+      <p class="section-desc">Not another PM course. A diagnostic coaching system.</p>
+    </div>
+
+    <p style="color:var(--text-muted); margin-bottom: 24px;">
+      Every PM candidate faces the same broken prep loop: read blogs → do a mock → get vague feedback → repeat. PMPathfinder breaks the loop by doing one thing competitors don't: <strong style="color:var(--text)">telling you exactly which PM skill is weak</strong> and scoring every answer on 6 specific dimensions — the same dimensions hiring managers use.
+    </p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>🎯 Diagnostic, not grade-based</h3>
+        <p>Every answer is scored across 6 PM dimensions. You see where you're strong, where you're weak, and why — not just a pass/fail.</p>
+      </div>
+      <div class="card">
+        <h3>🏷️ Archetype-aware scoring</h3>
+        <p>A Consumer PM's user empathy score matters 1.5× more than a B2B PM's. Your archetype shapes which gaps are most important to close.</p>
+      </div>
+      <div class="card">
+        <h3>📋 JD-specific readiness</h3>
+        <p>Paste any job description. Get a % readiness score, a gap analysis, and a clear verdict: ready / almost / not yet.</p>
+      </div>
+      <div class="card">
+        <h3>🤖 AI-scored answers</h3>
+        <p>Text answers are scored by an LLM trained to evaluate PM thinking — not just keyword matching. Voice and text both supported.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 2. GETTING STARTED ══════════════════ -->
+  <div class="section" id="start">
+    <div class="section-header">
+      <div class="section-number">02</div>
+      <h2>Getting Started</h2>
+      <p class="section-desc">From signup to your first test in under 5 minutes.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Create your account</h3>
+          <p>Go to the app and click <strong>Sign up</strong>. Enter your email and a password. Check your inbox for a confirmation link and click it to activate.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Choose your PM archetype</h3>
+          <p>After login you'll be asked to pick the type of PM role you're preparing for. This personalises your scoring weights throughout the platform.</p>
+          <div class="step-detail">
+            📱 <strong>Consumer PM</strong> — B2C apps, mobile, consumer internet (Swiggy, Zomato, Instagram)<br>
+            🏢 <strong>B2B PM</strong> — Enterprise SaaS, sales-assisted, platforms (Salesforce, Jira, Razorpay)<br>
+            ⚙️ <strong>Technical PM</strong> — Developer tools, APIs, infra, ML platforms (Stripe, AWS, Cloudflare)
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Study a module (optional but recommended)</h3>
+          <p>Visit <strong>Modules</strong> and read through at least one foundation module before your first test. It primes you on the frameworks and vocabulary the scoring system uses.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Take your first practice test</h3>
+          <p>Click <strong>Start Practice</strong>. The system selects 5 questions tailored to your archetype. Answer them honestly — the AI scores your thinking, not your polish.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Read your report card</h3>
+          <p>After the last question, you'll see a radar chart across all 6 dimensions, per-question scores, and specific improvement tips. This is your baseline.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body">
+        <strong>First test tip</strong>
+        Don't over-prepare for your first attempt. A cold baseline is more honest — and more useful for identifying real gaps.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 3. DIMENSIONS ══════════════════ -->
+  <div class="section" id="dimensions">
+    <div class="section-header">
+      <div class="section-number">03</div>
+      <h2>The 6 PM Dimensions</h2>
+      <p class="section-desc">Every question and score is anchored to these six skills.</p>
+    </div>
+
+    <p style="color:var(--text-muted); margin-bottom: 24px;">
+      These aren't arbitrary categories — they map directly to what hiring managers probe for in PM interviews. Each question you answer is tagged to 2–4 dimensions, and only those dimensions get scored.
+    </p>
+
+    <div class="dim-grid">
+      <div class="dim-card">
+        <div class="dim-icon">🔍</div>
+        <div class="dim-name">Problem Framing</div>
+        <div class="dim-desc">Did you scope before solutioning? Did you challenge the premise? Did you define success before jumping to features?</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-icon">👥</div>
+        <div class="dim-name">User Empathy</div>
+        <div class="dim-desc">Behavioral segmentation, not demographics. "Millennials" is weak. "Users who open the app but don't complete checkout" is strong.</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-icon">🏗️</div>
+        <div class="dim-name">Structured Thinking</div>
+        <div class="dim-desc">Logical flow that serves the answer. Frameworks used when appropriate, not forced. No circular reasoning.</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-icon">⚖️</div>
+        <div class="dim-name">Prioritization</div>
+        <div class="dim-desc">Hard choices with named tradeoffs. "I would deprioritize X because…" is strong. Trying to do everything is weak.</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-icon">📊</div>
+        <div class="dim-name">Metrics Reasoning</div>
+        <div class="dim-desc">Leading + lagging indicators. North Star vs. vanity metrics. Can you define what success looks like in a way a hiring manager trusts?</div>
+      </div>
+      <div class="dim-card">
+        <div class="dim-icon">🗣️</div>
+        <div class="dim-name">Communication Clarity</div>
+        <div class="dim-desc">Clear, concise, compelling. Would this answer impress in a real interview room? Assessed automatically on voice answers.</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <p style="color:var(--text-muted); margin-bottom: 16px; font-size:14px;">Scores are on a <strong style="color:var(--text)">1–10 scale</strong>:</p>
+
+    <div class="score-scale">
+      <div class="score-band red">
+        <div class="range">1–4</div>
+        <div class="label">Needs work</div>
+      </div>
+      <div class="score-band amber">
+        <div class="range">5–6</div>
+        <div class="label">Developing</div>
+      </div>
+      <div class="score-band emerald">
+        <div class="range">7–8</div>
+        <div class="label">Strong</div>
+      </div>
+      <div class="score-band emerald" style="background:rgba(16,185,129,0.18)">
+        <div class="range">9–10</div>
+        <div class="label">Exceptional</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-body">
+        <strong>Mastery threshold = 7</strong>
+        Once you score ≥7 on a dimension for a given question, that question is marked "mastered" and removed from future selections. The algorithm keeps pulling you toward your weakest spots.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 4. ARCHETYPES ══════════════════ -->
+  <div class="section" id="archetypes">
+    <div class="section-header">
+      <div class="section-number">04</div>
+      <h2>Your PM Archetype</h2>
+      <p class="section-desc">Your archetype changes which dimensions matter most in your scores.</p>
+    </div>
+
+    <p style="color:var(--text-muted); margin-bottom: 24px;">
+      "Good PM" isn't universal. A B2B PM who scores 8 on user empathy is impressive. A Consumer PM who scores the same is expected. PMPathfinder applies multipliers so your gaps reflect what actually matters for your track.
+    </p>
+
+    <div class="archetype-grid">
+      <div class="arch-card">
+        <div class="arch-emoji">📱</div>
+        <div class="arch-name">Consumer PM</div>
+        <div class="arch-desc">B2C apps, mobile, consumer internet. Growth, retention, and delight are your game.</div>
+        <div class="arch-tags">
+          <span class="arch-tag">User Empathy ×1.5</span>
+          <span class="arch-tag">Communication ×1.2</span>
+        </div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-emoji">🏢</div>
+        <div class="arch-name">B2B PM</div>
+        <div class="arch-desc">Enterprise SaaS, platforms, sales-assisted. Metrics, ROI, and stakeholder alignment are your game.</div>
+        <div class="arch-tags">
+          <span class="arch-tag">Metrics ×1.5</span>
+          <span class="arch-tag">Prioritization ×1.3</span>
+        </div>
+      </div>
+      <div class="arch-card">
+        <div class="arch-emoji">⚙️</div>
+        <div class="arch-name">Technical PM</div>
+        <div class="arch-desc">Developer tools, APIs, infrastructure. Architecture, trade-offs, and technical depth are your game.</div>
+        <div class="arch-tags">
+          <span class="arch-tag">Structured Thinking ×1.5</span>
+          <span class="arch-tag">Problem Framing ×1.2</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body">
+        <strong>Can I change my archetype?</strong>
+        Yes — go to your profile settings. Note that your historical scores were calculated with your old archetype weights and won't be retroactively recalculated.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 5. MODULES ══════════════════ -->
+  <div class="section" id="modules">
+    <div class="section-header">
+      <div class="section-number">05</div>
+      <h2>Learning Modules</h2>
+      <p class="section-desc">5 foundation modules to build your PM vocabulary and frameworks.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card" style="border-left: 3px solid var(--indigo);">
+        <h3>🗺️ F1 — PM Roles & Archetypes</h3>
+        <p>How Consumer, B2B, and Technical PMs differ in responsibilities, mindset, and interview expectations.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--indigo);">
+        <h3>🛤️ F2 — The PM Journey</h3>
+        <p>Discovery → Delivery → Growth. How PMs operate across the full product lifecycle.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--indigo);">
+        <h3>🏗️ F3 — Product Frameworks</h3>
+        <p>CIRCLES, RICE, Jobs-to-be-done, and how to use them without sounding robotic.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--indigo);">
+        <h3>🧠 F4 — Product Sense</h3>
+        <p>Problem framing, user empathy, product instinct — and how interviewers test for all three.</p>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--indigo);">
+        <h3>📊 F5 — Metrics & Prioritization</h3>
+        <p>North Star metrics, OKRs, funnel analysis, and how to make (and defend) hard tradeoffs.</p>
+      </div>
+    </div>
+
+    <div class="callout good">
+      <span class="callout-icon">✅</span>
+      <div class="callout-body">
+        <strong>Recommended reading order</strong>
+        F1 → F2 → F3 → take a test → check your report → F4 or F5 based on your weakest dimension.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 6. PRACTICE ══════════════════ -->
+  <div class="section" id="practice">
+    <div class="section-header">
+      <div class="section-number">06</div>
+      <h2>Practice Tests</h2>
+      <p class="section-desc">5 questions per test, selected based on your weakest dimensions.</p>
+    </div>
+
+    <p style="color:var(--text-muted); margin-bottom: 24px;">
+      Every test is unique. The selection engine looks at your historical scores across all 6 dimensions and picks questions that target your biggest gaps — ensuring every test is productive, not repetitive.
+    </p>
+
+    <h3 style="color:var(--text); margin-bottom: 16px; font-size:16px;">Answer modes</h3>
+    <div class="mode-grid">
+      <div class="mode-card">
+        <div class="mode-icon">🔘</div>
+        <div class="mode-name">Multiple Choice</div>
+        <div class="mode-desc">Instant feedback. No AI cost. Tests conceptual knowledge and PM vocabulary.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">⌨️</div>
+        <div class="mode-name">Text Answer</div>
+        <div class="mode-desc">Open-ended. Scored by AI on 2–4 dimensions. Takes ~10 seconds to score after submission.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">🎙️</div>
+        <div class="mode-name">Voice Answer</div>
+        <div class="mode-desc">Spoken response. Transcript sent to AI. Communication Clarity score gets a ×1.5 bonus.</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="color:var(--text); margin-bottom: 16px; font-size:16px;">How the selection engine works</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Gap calculation</h3>
+          <p>For each of your 6 dimension scores, the engine calculates your gap: <code style="background:var(--bg-card2); padding:2px 6px; border-radius:4px; font-size:12px;">gap = 10 − your_score</code>. Higher gap = higher priority.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Relevance scoring</h3>
+          <p>Each candidate question gets a relevance score = sum of your gaps across the dimensions it tests. Questions that target multiple weak spots score higher.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Difficulty matching</h3>
+          <p>Questions are matched to your current level: Beginner (avg &lt;4), Intermediate (4–7), Advanced (7+).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Format constraints</h3>
+          <p>The final 5 always include at least 1 MCQ, 1 text, and no two questions testing identical dimension combinations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body">
+        <strong>Write like you speak in interviews</strong>
+        Structure your answer out loud first. "Let me start by defining the problem, then I'll discuss users, then prioritise solutions…" The AI rewards structure, framing, and explicit tradeoffs — not length.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 7. REPORT CARD ══════════════════ -->
+  <div class="section" id="report">
+    <div class="section-header">
+      <div class="section-number">07</div>
+      <h2>Reading Your Report Card</h2>
+      <p class="section-desc">Three layers of feedback after every test.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">→</div>
+        <div class="step-body">
+          <h3>Overall score + radar chart</h3>
+          <p>The radar chart shows your scores across all 6 dimensions simultaneously. A lopsided shape tells you exactly where your gaps are. A high overall score with low metrics_reasoning means you're covering it up with other strengths — not good for a B2B role.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">→</div>
+        <div class="step-body">
+          <h3>Score breakdown</h3>
+          <p>Bar chart for each of the 6 dimensions. Scored dimensions are from this test; unscored ones (grey) weren't tested this round.</p>
+          <div class="score-scale" style="margin-top:16px;">
+            <div class="score-band red"><div class="range">1–4</div><div class="label">Study module</div></div>
+            <div class="score-band amber"><div class="range">5–6</div><div class="label">Practice more</div></div>
+            <div class="score-band emerald"><div class="range">7+</div><div class="label">Mastered</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">→</div>
+        <div class="step-body">
+          <h3>Per-question feedback</h3>
+          <p>For every question you answered, you'll see three cards:</p>
+          <div class="step-detail">
+            <span style="color:var(--emerald);">💚 Strength</span> — what you did best in this answer<br><br>
+            <span style="color:var(--red);">❌ Gap</span> — the single biggest weakness the AI detected<br><br>
+            <span style="color:var(--amber);">💛 Improvement Tip</span> — one concrete, actionable thing to do differently next time
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-body">
+        <strong>Don't chase the score — chase the tip</strong>
+        The improvement tip is the most valuable part of each result. Write it down. Apply it in your next test. That compounding is how the score actually improves.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 8. JD CHECK ══════════════════ -->
+  <div class="section" id="jd">
+    <div class="section-header">
+      <div class="section-number">08</div>
+      <h2>JD Readiness Check</h2>
+      <p class="section-desc">Answer the question every PM candidate asks: "Am I ready for this specific role?"</p>
+    </div>
+
+    <div class="callout warn">
+      <span class="callout-icon">🔒</span>
+      <div class="callout-body">
+        <strong>Unlocks after 3 completed practice tests</strong>
+        The readiness check needs enough data to meaningfully represent your skill profile. Three tests is the minimum for a Moderate confidence rating.
+      </div>
+    </div>
+
+    <h3 style="color:var(--text); margin: 24px 0 16px; font-size:16px;">How it works</h3>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Paste the job description</h3>
+          <p>Copy the full JD — title, responsibilities, requirements, preferred qualifications. The more text, the better the analysis. Minimum 100 characters.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>AI parses the role</h3>
+          <p>The system extracts: company + role title, inferred PM archetype (Consumer / B2B / Technical), and a 1–10 importance score for each of the 6 dimensions based on what the JD emphasises.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Your scores are compared</h3>
+          <p>Your weighted average across your last 5 practice sessions is compared against the role's requirements. Each dimension gap is calculated.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Verdict + gap radar</h3>
+          <p>You get a % readiness score and one of three verdicts:</p>
+          <div class="step-detail">
+            <span class="tag tag-emerald">✅ Ready to Apply</span> &nbsp;80%+ readiness — apply now<br><br>
+            <span class="tag tag-amber">🟡 Almost Ready</span> &nbsp;60–79% — 1–2 more focused tests could tip you over<br><br>
+            <span class="tag" style="background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3);">❌ Not Yet Ready</span> &nbsp;&lt;60% — meaningful gaps to close first
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <h3 style="color:var(--text); margin-bottom: 12px; font-size:15px;">Confidence indicators</h3>
+    <div class="card-grid">
+      <div class="card">
+        <h3>🔵 Low confidence</h3>
+        <p>Fewer than 3 tests. Feature is locked.</p>
+      </div>
+      <div class="card">
+        <h3>🟡 Moderate</h3>
+        <p>3–5 tests completed. Directional signal.</p>
+      </div>
+      <div class="card">
+        <h3>🟢 High</h3>
+        <p>6–10 tests. Reliable gap analysis.</p>
+      </div>
+      <div class="card">
+        <h3>⭐ Very High</h3>
+        <p>10+ tests. Strong predictive accuracy.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 9. TIPS ══════════════════ -->
+  <div class="section" id="tips">
+    <div class="section-header">
+      <div class="section-number">09</div>
+      <h2>Tips to Improve Faster</h2>
+      <p class="section-desc">What separates candidates who improve 2+ points in 2 weeks from those who plateau.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:16px; border-left: 3px solid var(--emerald);">
+      <h3>📌 One improvement tip per test, applied immediately</h3>
+      <p>Don't wait until test 5 to act on feedback. After each test, take the single most important improvement tip and practise it in your next text answer before moving on.</p>
+    </div>
+    <div class="card" style="margin-bottom:16px; border-left: 3px solid var(--emerald);">
+      <h3>📌 Structure before you type</h3>
+      <p>Spend 30 seconds mentally framing your answer before you write. Interviewers — and the AI — reward visible thinking structure. "Let me break this into three parts…" is a strong opening.</p>
+    </div>
+    <div class="card" style="margin-bottom:16px; border-left: 3px solid var(--emerald);">
+      <h3>📌 Name your tradeoffs explicitly</h3>
+      <p>Prioritization scores rise dramatically when you explicitly say "I would deprioritize X because it has lower impact relative to Y." Implicit tradeoffs score poorly.</p>
+    </div>
+    <div class="card" style="margin-bottom:16px; border-left: 3px solid var(--emerald);">
+      <h3>📌 Describe users by behavior, not demographics</h3>
+      <p>Replace "young urban professionals" with "users who browse for 5+ minutes but don't add to cart." Behavioral segmentation always scores higher on User Empathy.</p>
+    </div>
+    <div class="card" style="margin-bottom:16px; border-left: 3px solid var(--emerald);">
+      <h3>📌 Do 2–3 tests per week, not one big burst</h3>
+      <p>Spaced repetition works. Three tests over a week beats seven tests in one sitting. The algorithm surfaces new weak spots as you improve, so fresh sessions expose more.</p>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--emerald);">
+      <h3>📌 Use JD Readiness to set a deadline</h3>
+      <p>Once you unlock it, paste the JD for your target role every week. Watching your readiness % rise from 58% → 71% → 82% over 3 weeks is the most motivating feedback loop in the product.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════ 10. FAQ ══════════════════ -->
+  <div class="section" id="faq">
+    <div class="section-header">
+      <div class="section-number">10</div>
+      <h2>FAQ</h2>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How is my overall score calculated?</div>
+      <div class="faq-a">It's the unweighted average of all dimension scores across questions answered in that session. Archetype multipliers apply to how the system <em>weights gaps for selection</em>, not to the displayed score itself.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why do some questions not score all 6 dimensions?</div>
+      <div class="faq-a">Each question is designed to test 2–4 specific dimensions. A metrics question can't meaningfully assess problem framing. Only tested dimensions get a score; others show as "—".</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long should my text answers be?</div>
+      <div class="faq-a">Aim for 150–300 words. Long enough to demonstrate structure and depth, short enough to stay focused. The AI doesn't reward padding — it rewards clarity and completeness of reasoning.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">The AI scored me lower than I expected. What do I do?</div>
+      <div class="faq-a">Read the specific feedback for that dimension, not just the number. The AI will tell you exactly what was missing. Disagreeing with a score? Reframe your answer applying the improvement tip and retake the question type in your next test.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use this for FAANG-level preparation?</div>
+      <div class="faq-a">Yes. The scoring rubric and question bank are calibrated to senior PM interview standards at high-growth companies. The dimensions — especially problem framing and metrics reasoning — directly map to what Google, Meta, and Stripe interviewers probe for.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How accurate is the JD Readiness Check?</div>
+      <div class="faq-a">Accuracy improves with more test data. At 3 tests (Moderate confidence), treat it as a directional signal. At 10+ tests (Very High confidence), it's a reliable gap predictor. The AI parses the JD honestly — if a role has unusually high requirements, the % will reflect that.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if I'm preparing for multiple archetypes?</div>
+      <div class="faq-a">Currently the platform supports one active archetype. Pick the one that best matches your primary target role. If your target company is B2C, pick Consumer. If you're applying to both, create two separate accounts for separate diagnostics — or set your archetype to whichever role has the nearest interview.</div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<div class="footer">
+  <p>🧭 <strong>PMPathfinder</strong> — Diagnostic PM Coaching at Scale</p>
+  <p style="margin-top:8px;">Questions or feedback? Reach out to the team.</p>
+  <p style="margin-top: 20px; color: var(--text-dim); font-size:12px;">© 2026 PMPathfinder · Built for serious PM candidates</p>
+</div>
+
+</body>
+</html>

@@ -17,7 +17,9 @@ create policy "Users can view and edit their own profile"
 
 -- Auto-create profile on signup
 create or replace function handle_new_user()
-returns trigger language plpgsql security definer as $$
+returns trigger language plpgsql security definer
+set search_path = public
+as $$
 begin
   insert into profiles (id, email)
   values (new.id, new.email)

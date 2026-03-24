@@ -146,6 +146,109 @@ Return ONLY valid JSON:
   return JDSchema.parse(parsed)
 }
 
+// ── Resume Critique ───────────────────────────────────────────────────────────
+
+const ResumeDimSchema = z.object({
+  score: z.number().min(1).max(10),
+  feedback: z.string(),
+  example_from_resume: z.string().optional(),
+  suggested_rewrite: z.string().optional(),
+})
+
+const ResumeCritiqueSchema = z.object({
+  overall_signal: z.enum(['pm_ready', 'needs_work', 'not_yet']),
+  overall_score: z.number().min(1).max(10),
+  summary: z.string(),
+  dimensions: z.object({
+    impact_framing: ResumeDimSchema,
+    quantification: ResumeDimSchema,
+    pm_narrative: ResumeDimSchema,
+    cross_functional: ResumeDimSchema,
+    transition_readiness: ResumeDimSchema,
+  }),
+  top_strength: z.string(),
+  biggest_gap: z.string(),
+  rewrites: z.array(z.object({
+    original: z.string(),
+    improved: z.string(),
+    why: z.string(),
+  })).max(3),
+  next_actions: z.array(z.string()).max(4),
+})
+
+export type ResumeCritiqueResult = z.infer<typeof ResumeCritiqueSchema>
+
+export async function critiqueResume(resumeText: string): Promise<ResumeCritiqueResult> {
+  const prompt = `You are a senior PM hiring manager who has reviewed thousands of resumes for product management roles. Analyze this resume with honest, specific, and actionable feedback.
+
+RESUME:
+${resumeText}
+
+EVALUATE THESE 5 PM-SPECIFIC DIMENSIONS (score 1-10 each):
+
+1. IMPACT_FRAMING: Does the resume show product outcomes, not just activities?
+   - Weak (1-3): "Led team", "Worked on mobile app", "Responsible for roadmap" — all activity, no impact
+   - Good (4-6): Mentions results but vaguely ("improved engagement", "grew the team")
+   - Strong (7-10): "Launched X that drove 23% lift in day-7 retention", "Cut support tickets 40% by shipping Y"
+
+2. QUANTIFICATION: Are results backed with real numbers — scale, growth, time?
+   - Weak (1-3): No numbers anywhere. Pure narrative.
+   - Good (4-6): Some numbers but mixed with vague claims
+   - Strong (7-10): Almost every achievement has a number: users, %, time saved, revenue, NPS
+
+3. PM_NARRATIVE: Does this tell a coherent story of someone who thinks like a PM?
+   - Weak (1-3): Looks like an ops or eng resume with no product thinking visible
+   - Good (4-6): Some PM keywords but reads like a task list, not a strategic story
+   - Strong (7-10): Shows the full cycle: user insight → prioritization → launch → measurement. Even if implicit.
+
+4. CROSS_FUNCTIONAL: Does this show working with engineering, design, data, sales?
+   - Weak (1-3): Silo work, no mention of cross-functional collaboration
+   - Good (4-6): Mentions working with other teams but no specifics
+   - Strong (7-10): Names specific cross-functional outcomes — "aligned 3 eng teams", "led design sprint with 2 designers"
+
+5. TRANSITION_READINESS (especially for career switchers): Is the PM story clear?
+   - Weak (1-3): Nothing connects past experience to PM. No PM-adjacent projects, courses, or reframing.
+   - Good (4-6): Some PM keywords but unclear pivot narrative
+   - Strong (7-10): Clear bridge — volunteer PM work, side products, internal rotations, PM coursework, visible PM thinking in past roles
+
+IMPORTANT CALIBRATION: Be honest. This person's job search depends on accurate feedback. Average work gets 4-6. A polished PM resume gets 7-8. An exceptional one gets 9-10. Do not inflate scores.
+
+REWRITES: Pick 2-3 actual bullet points or lines from the resume that most need improvement. Show the original, write an improved version, and explain why.
+
+NEXT_ACTIONS: Give 3-4 specific, actionable steps this person should take before sending this resume again.
+
+Return ONLY valid JSON, no markdown, no backticks:
+{
+  "overall_signal": "pm_ready" | "needs_work" | "not_yet",
+  "overall_score": <1-10>,
+  "summary": "<2-3 sentence honest overall assessment>",
+  "dimensions": {
+    "impact_framing": { "score": <1-10>, "feedback": "<2-3 sentences>", "example_from_resume": "<quote from their resume if possible>", "suggested_rewrite": "<how to fix the example>" },
+    "quantification": { "score": <1-10>, "feedback": "<2-3 sentences>", "example_from_resume": "<quote>", "suggested_rewrite": "<improvement>" },
+    "pm_narrative": { "score": <1-10>, "feedback": "<2-3 sentences>" },
+    "cross_functional": { "score": <1-10>, "feedback": "<2-3 sentences>" },
+    "transition_readiness": { "score": <1-10>, "feedback": "<2-3 sentences>" }
+  },
+  "top_strength": "<1-2 sentences on the best element>",
+  "biggest_gap": "<1-2 sentences on the most critical thing to fix>",
+  "rewrites": [
+    { "original": "<exact text from resume>", "improved": "<better version>", "why": "<1 sentence explanation>" }
+  ],
+  "next_actions": ["<specific action 1>", "<specific action 2>", "<specific action 3>"]
+}`
+
+  const response = await groq.chat.completions.create({
+    model: 'llama-3.3-70b-versatile',
+    messages: [{ role: 'user', content: prompt }],
+    temperature: 0.2,
+    response_format: { type: 'json_object' },
+  })
+
+  const raw = response.choices[0].message.content ?? '{}'
+  const parsed = JSON.parse(raw)
+  return ResumeCritiqueSchema.parse(parsed)
+}
+
 // ── Score aggregation helper ──────────────────────────────────────────────────
 
 type DimScores = Record<Dimension, number | null>

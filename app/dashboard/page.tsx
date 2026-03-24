@@ -28,6 +28,96 @@ function ScoreBar({ score }: { score: number | null }) {
   )
 }
 
+// ── Score trend sparkline (pure SVG, server-rendered) ─────────────────────────
+function ScoreTrend({ scores }: { scores: (number | null)[] }) {
+  const valid = scores.filter((s): s is number => s !== null)
+  if (valid.length < 2) return null
+
+  const W = 500
+  const H = 72
+  const PAD = 6
+
+  const minVal = Math.max(0, Math.min(...valid) - 0.5)
+  const maxVal = Math.min(10, Math.max(...valid) + 0.5)
+  const range = maxVal - minVal || 1
+
+  const toX = (i: number) => PAD + (i / (valid.length - 1)) * (W - PAD * 2)
+  const toY = (v: number) => H - PAD - ((v - minVal) / range) * (H - PAD * 2)
+
+  const points = valid.map((s, i) => `${toX(i)},${toY(s)}`).join(' ')
+  const fillPoints = `${toX(0)},${H} ${points} ${toX(valid.length - 1)},${H}`
+
+  const latest = valid[valid.length - 1]
+  const latestX = toX(valid.length - 1)
+  const latestY = toY(latest)
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ width: '100%', height: '72px' }}>
+      <defs>
+        <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#6366f1" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {/* Grid lines at 5 and 7 */}
+      {[5, 7].map((v) => (
+        <line
+          key={v}
+          x1={PAD} y1={toY(v)} x2={W - PAD} y2={toY(v)}
+          stroke={v === 7 ? '#10b981' : '#1e2d45'}
+          strokeWidth="1"
+          strokeDasharray={v === 7 ? '4,3' : ''}
+        />
+      ))}
+      {/* Fill area */}
+      <polygon points={fillPoints} fill="url(#tg)" />
+      {/* Line */}
+      <polyline points={points} fill="none" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Session dots */}
+      {valid.map((s, i) => (
+        <circle key={i} cx={toX(i)} cy={toY(s)} r="3" fill={i === valid.length - 1 ? '#6366f1' : '#1e2d45'} stroke="#6366f1" strokeWidth="1.5" />
+      ))}
+      {/* Latest score label */}
+      <circle cx={latestX} cy={latestY} r="4" fill="#6366f1" />
+      <text x={latestX - 4} y={latestY - 10} fill="#a5b4fc" fontSize="10" fontFamily="Inter,sans-serif" fontWeight="600" textAnchor="middle">
+        {latest}
+      </text>
+      {/* Mastery line label */}
+      <text x={W - PAD - 2} y={toY(7) - 3} fill="#10b981" fontSize="9" fontFamily="Inter,sans-serif" textAnchor="end">mastery 7</text>
+    </svg>
+  )
+}
+
+// ── Streak helper ────────────────────────────────────────────────────────────
+function computeStreak(dates: string[]): number {
+  if (dates.length === 0) return 0
+  const dayMs = 86_400_000
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+
+  const daySet = new Set(
+    dates.map((d) => {
+      const dt = new Date(d)
+      dt.setHours(0, 0, 0, 0)
+      return dt.getTime()
+    })
+  )
+
+  let check = today.getTime()
+  // Allow today or yesterday as the streak start
+  if (!daySet.has(check)) {
+    check -= dayMs
+    if (!daySet.has(check)) return 0
+  }
+
+  let streak = 0
+  while (daySet.has(check)) {
+    streak++
+    check -= dayMs
+  }
+  return streak
+}
+
 export default async function DashboardPage() {
   const supabase = await createServerSupabaseClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -51,14 +141,14 @@ export default async function DashboardPage() {
       .limit(5),
     adminClient
       .from('practice_sessions')
-      .select('scores, overall_score, created_at')
+      .select('scores, overall_score, created_at, question_results')
       .eq('user_id', user.id)
       .eq('status', 'complete')
       .order('created_at', { ascending: true }),
   ])
 
-  const completedSessions = sessions?.filter((s) => s.status === 'complete') ?? []
   const allCompletedSessions = allCompleted ?? []
+  const totalCompleted = allCompletedSessions.length
 
   // Avg scores across ALL completed sessions
   const dimTotals: Record<string, { sum: number; count: number }> = {}
@@ -77,9 +167,7 @@ export default async function DashboardPage() {
       : null
   }
 
-  // ── Derived stats ──────────────────────────────────────────────
-  const totalCompleted = allCompletedSessions.length
-
+  // ── Derived stats ────────────────────────────────────────────────────────────
   const avgOverall = totalCompleted > 0
     ? Math.round(
         allCompletedSessions.reduce((sum, s) => sum + (s.overall_score ?? 0), 0) / totalCompleted * 10
@@ -88,7 +176,7 @@ export default async function DashboardPage() {
 
   const masteredCount = Object.values(avgScores).filter((v) => v !== null && v >= 7).length
 
-  // Weakest scored dimension (lowest non-null avg)
+  // Weakest scored dimension
   let weakestDim: string | null = null
   let weakestScore = Infinity
   for (const [dim, score] of Object.entries(avgScores)) {
@@ -99,13 +187,25 @@ export default async function DashboardPage() {
   }
   const weakestGap = weakestDim ? Math.round((7 - weakestScore) * 10) / 10 : null
 
-  // Score delta: latest vs previous completed session
+  // Score delta: latest vs previous
   const last2 = allCompletedSessions.slice(-2)
   const scoreDelta = last2.length === 2 && last2[0].overall_score != null && last2[1].overall_score != null
     ? Math.round((last2[1].overall_score - last2[0].overall_score) * 10) / 10
     : null
 
-  // Per-session delta for the recent tests list (descending order, so index 0 = latest)
+  // Score trend (chronological list of overall scores)
+  const scoreTrend = allCompletedSessions.map((s) => s.overall_score as number | null)
+
+  // Practice streak
+  const streak = computeStreak(allCompletedSessions.map((s) => s.created_at))
+
+  // Total questions answered
+  const totalQuestions = allCompletedSessions.reduce((sum, s) => {
+    const qr = s.question_results
+    return sum + (Array.isArray(qr) ? qr.length : 0)
+  }, 0)
+
+  // Per-session delta for recent tests list
   const recentCompleted = (sessions ?? []).filter((s) => s.status === 'complete')
   const sessionDeltas: Record<string, number | null> = {}
   for (let i = 0; i < recentCompleted.length; i++) {
@@ -133,6 +233,8 @@ export default async function DashboardPage() {
             <Link href="/modules" className="text-sm text-gray-400 hover:text-white transition-colors">Modules</Link>
             <Link href="/practice" className="text-sm text-gray-400 hover:text-white transition-colors">Practice</Link>
             <Link href="/readiness" className="text-sm text-gray-400 hover:text-white transition-colors">JD Check</Link>
+            <Link href="/resume" className="text-sm text-gray-400 hover:text-white transition-colors">Resume</Link>
+            <Link href="/knowledge" className="text-sm text-gray-400 hover:text-white transition-colors">Knowledge</Link>
             <form action="/api/auth/signout" method="POST">
               <button className="text-sm text-gray-500 hover:text-white transition-colors">Sign out</button>
             </form>
@@ -152,57 +254,82 @@ export default async function DashboardPage() {
           <p className="text-gray-400 text-sm mt-1">
             {totalCompleted === 0
               ? 'Complete your first practice test to see your scores.'
-              : `${totalCompleted} test${totalCompleted > 1 ? 's' : ''} completed`}
+              : `${totalCompleted} test${totalCompleted > 1 ? 's' : ''} completed · ${totalQuestions} questions answered`}
           </p>
         </div>
 
-        {/* Stats row */}
+        {/* ── 6-tile stats row ── */}
         {totalCompleted > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+            {/* Tests completed */}
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
-              <p className="text-xs text-gray-500 mb-1">Tests completed</p>
+              <p className="text-xs text-gray-500 mb-1">Tests done</p>
               <p className="text-2xl font-bold text-white">{totalCompleted}</p>
               <p className="text-xs text-gray-500 mt-1">
-                {totalCompleted < 3 ? `${3 - totalCompleted} more to unlock JD check` : 'JD check unlocked ✓'}
+                {totalCompleted < 3 ? `${3 - totalCompleted} to JD unlock` : 'JD unlocked ✓'}
               </p>
             </div>
+
+            {/* Avg score */}
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
-              <p className="text-xs text-gray-500 mb-1">Avg overall score</p>
+              <p className="text-xs text-gray-500 mb-1">Avg score</p>
               <p className={`text-2xl font-bold ${scoreColor(avgOverall)}`}>
                 {avgOverall ?? '—'}<span className="text-sm font-normal text-gray-500">/10</span>
               </p>
               {scoreDelta !== null && (
-                <p className={`text-xs mt-1 ${scoreDelta >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                  {scoreDelta >= 0 ? '▲' : '▼'} {Math.abs(scoreDelta)} vs prev test
+                <p className={`text-xs mt-1 font-medium ${scoreDelta >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                  {scoreDelta >= 0 ? '▲' : '▼'} {Math.abs(scoreDelta)} vs prev
                 </p>
               )}
             </div>
+
+            {/* Streak */}
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
+              <p className="text-xs text-gray-500 mb-1">Streak</p>
+              <p className="text-2xl font-bold text-orange-400">
+                {streak > 0 ? `🔥 ${streak}` : '—'}
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                {streak > 0 ? `day${streak > 1 ? 's' : ''} in a row` : 'Practice today'}
+              </p>
+            </div>
+
+            {/* Questions answered */}
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
+              <p className="text-xs text-gray-500 mb-1">Questions</p>
+              <p className="text-2xl font-bold text-sky-400">{totalQuestions}</p>
+              <p className="text-xs text-gray-500 mt-1">answered total</p>
+            </div>
+
+            {/* Focus area */}
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
               <p className="text-xs text-gray-500 mb-1">Focus area</p>
               {weakestDim ? (
                 <>
-                  <p className="text-sm font-semibold text-amber-400 leading-tight">{DIM_LABELS[weakestDim]}</p>
+                  <p className="text-sm font-semibold text-amber-400 leading-tight mt-1">{DIM_LABELS[weakestDim]}</p>
                   <p className="text-xs text-gray-500 mt-1">
                     {weakestScore.toFixed(1)}/10
-                    {weakestGap !== null && weakestGap > 0 && ` · ${weakestGap} to mastery`}
+                    {weakestGap !== null && weakestGap > 0 && ` · ${weakestGap} gap`}
                   </p>
                 </>
               ) : (
-                <p className="text-sm text-gray-500">—</p>
+                <p className="text-xl font-bold text-emerald-400 mt-1">All ✓</p>
               )}
             </div>
+
+            {/* Mastered */}
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
-              <p className="text-xs text-gray-500 mb-1">Dimensions mastered</p>
+              <p className="text-xs text-gray-500 mb-1">Mastered</p>
               <p className="text-2xl font-bold text-emerald-400">
                 {masteredCount}<span className="text-sm font-normal text-gray-500">/6</span>
               </p>
-              <p className="text-xs text-gray-500 mt-1">score ≥ 7</p>
+              <p className="text-xs text-gray-500 mt-1">dims ≥ 7.0</p>
             </div>
           </div>
         )}
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <Link href="/practice" className="bg-indigo-600 hover:bg-indigo-500 transition-colors rounded-2xl p-5 flex items-center gap-4">
             <span className="text-3xl">🎯</span>
             <div>
@@ -230,10 +357,33 @@ export default async function DashboardPage() {
           </Link>
         </div>
 
+        {/* ── Score trend card (full width) ── */}
+        {scoreTrend.filter(Boolean).length >= 2 && (
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="font-semibold text-white">Score Trend</h2>
+                <p className="text-xs text-gray-500 mt-0.5">Overall score across all {totalCompleted} tests · green dashed = mastery threshold</p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-gray-500">Latest</p>
+                <p className={`text-lg font-bold font-mono ${scoreColor(scoreTrend[scoreTrend.length - 1])}`}>
+                  {scoreTrend[scoreTrend.length - 1]}/10
+                </p>
+              </div>
+            </div>
+            <ScoreTrend scores={scoreTrend} />
+            <div className="flex justify-between text-xs text-gray-600 mt-2">
+              <span>Test 1</span>
+              <span>Test {totalCompleted}</span>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Dimension Scores */}
           <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-            <h2 className="font-semibold text-white mb-4">Your Dimension Scores</h2>
+            <h2 className="font-semibold text-white mb-4">Dimension Scores</h2>
             {totalCompleted === 0 ? (
               <p className="text-gray-500 text-sm">Complete a practice test to see scores.</p>
             ) : (
@@ -263,7 +413,7 @@ export default async function DashboardPage() {
                 <div>
                   <p className="text-xs text-amber-400 font-semibold">Next focus</p>
                   <p className="text-sm text-white mt-0.5">{DIM_LABELS[weakestDim]}</p>
-                  <p className="text-xs text-gray-500">{weakestGap} points to mastery</p>
+                  <p className="text-xs text-gray-500">{weakestGap} pts to mastery</p>
                 </div>
                 <Link href="/practice" className="text-xs bg-amber-600 hover:bg-amber-500 text-white px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap">
                   Practice →
@@ -272,7 +422,7 @@ export default async function DashboardPage() {
             )}
           </div>
 
-          {/* Recent Sessions */}
+          {/* Recent Tests */}
           <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
             <h2 className="font-semibold text-white mb-4">Recent Tests</h2>
             {!sessions || sessions.length === 0 ? (

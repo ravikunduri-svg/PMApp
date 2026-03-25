@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { createBrowserClient } from '@/lib/supabase-client'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
+import SessionCelebration, { type CelebrationData } from '@/app/components/SessionCelebration'
 
 type MCQOption = { option: string; text: string; is_correct: boolean; explanation: string }
 
@@ -50,6 +51,7 @@ export default function ActiveTestPage() {
   const [userId, setUserId] = useState<string | null>(null)
   const [error, setError] = useState('')
   const [done, setDone] = useState(false)
+  const [celebrationData, setCelebrationData] = useState<CelebrationData | null>(null)
 
   useEffect(() => {
     async function load() {
@@ -106,13 +108,25 @@ export default function ActiveTestPage() {
 
   async function nextQuestion() {
     if (isLastQuestion) {
-      // Mark session complete
-      await supabase
-        .from('practice_sessions')
-        .update({ status: 'complete', completed_at: new Date().toISOString() })
-        .eq('id', sessionId)
       setDone(true)
-      router.push(`/report/${sessionId}`)
+      // Mark session complete + award XP/badges
+      const res = await fetch('/api/complete-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, user_id: userId }),
+      })
+      const completeData = await res.json()
+
+      // Show celebration overlay — navigation happens via its button
+      setCelebrationData({
+        xpEarned:   completeData.xp_earned ?? 50,
+        newBadges:  completeData.new_badges ?? [],
+        leveledUp:  completeData.leveled_up ?? false,
+        oldLevel:   completeData.old_level ?? 1,
+        level:      completeData.level ?? 1,
+        levelName:  completeData.level_name ?? 'Aspiring PM',
+        sessionId,
+      })
       return
     }
     setCurrentIdx((i) => i + 1)
@@ -129,15 +143,19 @@ export default function ActiveTestPage() {
     )
   }
 
-  if (done) {
+  if (done && !celebrationData) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
         <div className="text-center">
           <div className="text-4xl mb-4">✅</div>
-          <p className="text-white font-semibold">Test complete! Redirecting to report…</p>
+          <p className="text-white font-semibold">Test complete! Loading results…</p>
         </div>
       </div>
     )
+  }
+
+  if (celebrationData) {
+    return <SessionCelebration data={celebrationData} />
   }
 
   return (

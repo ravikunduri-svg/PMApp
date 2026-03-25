@@ -94,18 +94,6 @@
       "description": "Lenny Rachitsky's comprehensive guide with advice from 50+ PMs who made the transition."
     },
     {
-      "title": "What Distinguishes the Top 1% of PMs",
-      "url": "https://www.lennysnewsletter.com/p/what-distinguishes-the-top-1-of-product",
-      "type": "article",
-      "description": "Insights on what separates great PMs from good ones, from hiring managers' perspective."
-    },
-    {
-      "title": "The PM Career Ladder at Different Companies",
-      "url": "https://www.levels.fyi/blog/product-manager-career-ladder.html",
-      "type": "article",
-      "description": "Understanding PM levels and expectations at top tech companies."
-    },
-    {
       "title": "Cracking the PM Interview (Book)",
       "url": "https://www.crackingthepminterview.com/",
       "type": "book",
@@ -113,15 +101,9 @@
     },
     {
       "title": "Shreyas Doshi on PM Career Growth",
-      "url": "https://twitter.com/shreyas/status/1303150374124048384",
-      "type": "thread",
-      "description": "Shreyas Doshi's Twitter thread on IC vs. management track and PM career decisions."
-    },
-    {
-      "title": "Breaking into PM from Engineering/Design/Other",
-      "url": "https://www.sachinrekhi.com/how-to-break-into-product-management",
+      "url": "https://x.com/shreyas/status/1303150374124048384",
       "type": "article",
-      "description": "Sachin Rekhi's advice on transitioning into PM from various backgrounds."
+      "description": "Shreyas Doshi's thread on IC vs. management track and PM career decisions."
     }
   ],
 

@@ -88,12 +88,6 @@
 
   "resources": [
     {
-      "title": "CIRCLES Method: The Framework for Product Design Questions",
-      "url": "https://www.lewis-lin.com/blog/circles-method",
-      "type": "article",
-      "description": "Original explanation of the CIRCLES framework by Lewis Lin, author of Decode and Conquer."
-    },
-    {
       "title": "RICE Scoring Model by Intercom",
       "url": "https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/",
       "type": "article",
@@ -104,12 +98,6 @@
       "url": "https://www.slideshare.net/dmc500hats/startup-metrics-for-pirates-long-version",
       "type": "slides",
       "description": "Original presentation by Dave McClure introducing the AARRR framework for startup metrics."
-    },
-    {
-      "title": "How to Prioritize Features: A PM's Guide",
-      "url": "https://www.lennysnewsletter.com/p/how-to-prioritize",
-      "type": "article",
-      "description": "Lenny Rachitsky's comprehensive guide on feature prioritization with real examples."
     },
     {
       "title": "Jobs-to-be-Done Framework Explained",

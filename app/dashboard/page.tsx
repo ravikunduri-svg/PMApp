@@ -1,6 +1,12 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createServerSupabaseClient, adminClient } from '@/lib/supabase-server'
+import { getQuestionsByArchetype } from '@/lib/questions'
+import type { Archetype, Dimension } from '@/lib/questions'
+import InterviewCountdownCard from '@/app/components/InterviewCountdownCard'
+import DailyDrillCard from '@/app/components/DailyDrillCard'
+import XPLevelBar from '@/app/components/XPLevelBar'
+import BadgeShowcase from '@/app/components/BadgeShowcase'
 
 const DIM_LABELS: Record<string, string> = {
   problem_framing: 'Problem Framing',
@@ -120,12 +126,13 @@ function computeStreak(dates: string[]): number {
 
 export default async function DashboardPage() {
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: { session } } = await supabase.auth.getSession()
+  const user = session?.user
   if (!user) redirect('/auth/login')
 
   const { data: profile } = await adminClient
     .from('profiles')
-    .select('archetype, email')
+    .select('archetype, email, interview_date, streak_count, streak_last_active, daily_drill_date, daily_drill_qid, xp_total, level, badges_earned, modules_completed')
     .eq('id', user.id)
     .single()
 
@@ -187,6 +194,53 @@ export default async function DashboardPage() {
   }
   const weakestGap = weakestDim ? Math.round((7 - weakestScore) * 10) / 10 : null
 
+  // ── Daily drill selection ─────────────────────────────────────────────────────
+  const todayStr = new Date().toISOString().split('T')[0]
+  const yesterdayStr = new Date(Date.now() - 86_400_000).toISOString().split('T')[0]
+
+  let drillQuestion = null as import('@/lib/questions').NormalizedQuestion | null
+
+  if (profile.archetype) {
+    const masteredIds = new Set(
+      allCompletedSessions
+        .flatMap((s) => (s.question_results as { question_id: string; overall_score: number }[] ?? []))
+        .filter((r) => r.overall_score >= 7)
+        .map((r) => r.question_id)
+    )
+
+    if (profile.daily_drill_date === todayStr && profile.daily_drill_qid) {
+      // Use cached drill for today
+      const { getQuestionById } = await import('@/lib/questions')
+      drillQuestion = getQuestionById(profile.daily_drill_qid) ?? null
+    } else {
+      // Pick a new drill: weakest-dim questions not mastered
+      const candidates = getQuestionsByArchetype(profile.archetype as Archetype)
+        .filter((q) => !masteredIds.has(q.id))
+        .filter((q) => weakestDim ? q.dimensions.includes(weakestDim as Dimension) : true)
+
+      if (candidates.length > 0) {
+        const seed = [...todayStr].reduce((acc, c) => acc + c.charCodeAt(0), 0)
+        drillQuestion = candidates[seed % candidates.length]
+        await adminClient
+          .from('profiles')
+          .update({ daily_drill_date: todayStr, daily_drill_qid: drillQuestion.id })
+          .eq('id', user.id)
+      }
+    }
+  }
+
+  // ── Interview countdown ───────────────────────────────────────────────────────
+  const interviewDate = (profile.interview_date as string | null) ?? null
+  const daysRemaining = interviewDate
+    ? Math.ceil((new Date(interviewDate + 'T00:00:00').getTime() - Date.now()) / 86_400_000)
+    : null
+  const readinessPct = avgOverall !== null ? Math.min(100, Math.round((avgOverall / 10) * 100)) : 0
+
+  // ── Streak (persisted) + recovery window ─────────────────────────────────────
+  const persistedStreak = (profile.streak_count as number) ?? 0
+  const lastActive = (profile.streak_last_active as string | null) ?? null
+  const showRecovery = lastActive === yesterdayStr && persistedStreak > 0
+
   // Score delta: latest vs previous
   const last2 = allCompletedSessions.slice(-2)
   const scoreDelta = last2.length === 2 && last2[0].overall_score != null && last2[1].overall_score != null
@@ -196,8 +250,10 @@ export default async function DashboardPage() {
   // Score trend (chronological list of overall scores)
   const scoreTrend = allCompletedSessions.map((s) => s.overall_score as number | null)
 
-  // Practice streak
-  const streak = computeStreak(allCompletedSessions.map((s) => s.created_at))
+  // Practice streak — use persisted value, fall back to computed for existing users
+  const streak = persistedStreak > 0
+    ? persistedStreak
+    : computeStreak(allCompletedSessions.map((s) => s.created_at))
 
   // Total questions answered
   const totalQuestions = allCompletedSessions.reduce((sum, s) => {
@@ -328,6 +384,49 @@ export default async function DashboardPage() {
           </div>
         )}
 
+        {/* ── XP + Level bar ── */}
+        <XPLevelBar xpTotal={(profile.xp_total as number) ?? 0} />
+
+        {/* ── Streak recovery banner ── */}
+        {showRecovery && (
+          <div className="mb-4 bg-amber-950/30 border border-amber-700/40 rounded-xl px-4 py-3 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">🔥</span>
+              <div>
+                <p className="text-sm font-semibold text-amber-300">Your {persistedStreak}-day streak is at risk!</p>
+                <p className="text-xs text-amber-500/80">You haven't practiced today. Complete any session or drill to keep it alive.</p>
+              </div>
+            </div>
+            <Link href="/practice" className="bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg whitespace-nowrap transition-colors">
+              Practice now →
+            </Link>
+          </div>
+        )}
+
+        {/* ── Interview countdown + Daily drill (side by side) ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <InterviewCountdownCard
+            interviewDate={interviewDate}
+            daysRemaining={daysRemaining}
+            readinessPct={readinessPct}
+          />
+          {drillQuestion ? (
+            <DailyDrillCard
+              question={{ id: drillQuestion.id, text: drillQuestion.text, dimensions: drillQuestion.dimensions, answer_mode: drillQuestion.answer_mode }}
+              weakestDim={weakestDim}
+              userId={user.id}
+              archetype={profile.archetype!}
+              fullQuestion={drillQuestion}
+            />
+          ) : (
+            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5 flex flex-col items-center justify-center text-center gap-2">
+              <span className="text-2xl">⚡</span>
+              <p className="text-sm font-semibold text-white">No drill today</p>
+              <p className="text-xs text-gray-500">Complete a practice test to unlock daily drills.</p>
+            </div>
+          )}
+        </div>
+
         {/* Quick Actions */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <Link href="/practice" className="bg-indigo-600 hover:bg-indigo-500 transition-colors rounded-2xl p-5 flex items-center gap-4">
@@ -379,6 +478,9 @@ export default async function DashboardPage() {
             </div>
           </div>
         )}
+
+        {/* ── Badge showcase ── */}
+        <BadgeShowcase badgesEarned={(profile.badges_earned as { id: string; earned_at: string }[]) ?? []} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Dimension Scores */}

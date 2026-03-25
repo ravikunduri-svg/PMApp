@@ -33,7 +33,8 @@ export default async function ReportPage({ params }: { params: Promise<{ session
   const { sessionId } = await params
 
   const supabase = await createServerSupabaseClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: { session: authSession } } = await supabase.auth.getSession()
+  const user = authSession?.user
   if (!user) redirect('/auth/login')
 
   const { data: session } = await adminClient

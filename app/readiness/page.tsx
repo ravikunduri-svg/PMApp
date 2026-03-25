@@ -56,7 +56,8 @@ export default function ReadinessPage() {
     setError('')
 
     try {
-      const { data: { user } } = await supabase.auth.getUser()
+      const { data: { session } } = await supabase.auth.getSession()
+  const user = session?.user
       if (!user) { window.location.href = '/auth/login'; return }
 
       const res = await fetch('/api/parse-jd', {
